@@ -1,8 +1,9 @@
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [, navigate] = useLocation();
   
   return (
     <footer className="bg-[#0A2463] py-12 text-white">
@@ -11,10 +12,13 @@ const Footer = () => {
           <div>
             <div className="mb-6 flex items-center">
               <div className="mr-3 h-10 w-10 rounded-full bg-white"></div>
-              <span className="text-xl font-bold text-white">Horizon College</span>
+              <div className="flex flex-col">
+                <span className="text-xs text-white/80">JSS Mahavidyapeetha</span>
+                <span className="text-lg font-bold text-white">JSS Polytechnic For Women</span>
+              </div>
             </div>
             <p className="mb-6 text-white/80">
-              Empowering minds and shaping futures since 1905. Horizon College is committed to excellence in education, research, and community engagement.
+              Empowering women through technical education since 1985. JSS Polytechnic For Women is committed to excellence in education, innovation, and industry-ready skill development.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D8315B]" aria-label="Facebook">
@@ -39,12 +43,12 @@ const Footer = () => {
             <h4 className="mb-6 text-lg font-semibold text-white">Quick Links</h4>
             <ul className="space-y-3">
               <li><a href="#about" className="text-white/80 hover:text-[#D8315B]">About Us</a></li>
-              <li><a href="#programs" className="text-white/80 hover:text-[#D8315B]">Academic Programs</a></li>
+              <li><a href="#programs" className="text-white/80 hover:text-[#D8315B]">Diploma Programs</a></li>
               <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Admissions</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Financial Aid</a></li>
+              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Scholarships</a></li>
               <li><a href="#campus" className="text-white/80 hover:text-[#D8315B]">Campus Life</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Research</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Career Services</a></li>
+              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Training & Placement</a></li>
+              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Industry Partners</a></li>
               <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Alumni</a></li>
             </ul>
           </div>
@@ -58,8 +62,8 @@ const Footer = () => {
               <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Student Portal</a></li>
               <li><a href="#faculty" className="text-white/80 hover:text-[#D8315B]">Faculty Directory</a></li>
               <li><a href="#events" className="text-white/80 hover:text-[#D8315B]">News & Events</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Giving</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">COVID-19 Information</a></li>
+              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Grievance Redressal</a></li>
+              <li><a href="#" className="text-white/80 hover:text-[#D8315B]">Anti-Ragging Cell</a></li>
             </ul>
           </div>
           
@@ -81,17 +85,14 @@ const Footer = () => {
               </button>
             </form>
             <div className="mt-6">
-              <h5 className="mb-2 font-semibold text-white">Download Our App</h5>
-              <div className="flex space-x-3">
-                <a href="#" className="inline-flex items-center rounded bg-white/10 px-4 py-2 hover:bg-white/20">
-                  <span className="mr-2">App Store</span>
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-                <a href="#" className="inline-flex items-center rounded bg-white/10 px-4 py-2 hover:bg-white/20">
-                  <span className="mr-2">Google Play</span>
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
+              <h5 className="mb-2 font-semibold text-white">Contact Us</h5>
+              <address className="not-italic text-white/80">
+                JSS Polytechnic For Women<br />
+                JSS Technical Institutions Campus<br />
+                Mysuru, Karnataka - 570006<br />
+                Phone: +91 821 2548315<br />
+                Email: principal@jsspw.edu.in
+              </address>
             </div>
           </div>
         </div>
@@ -99,13 +100,13 @@ const Footer = () => {
         <div className="mt-12 border-t border-white/20 pt-6">
           <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <div className="text-sm text-white/80">
-              &copy; {currentYear} Horizon College. All rights reserved.
+              &copy; {currentYear} JSS Polytechnic For Women. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm text-white/80">
               <a href="#" className="hover:text-[#D8315B]">Privacy Policy</a>
               <a href="#" className="hover:text-[#D8315B]">Terms of Use</a>
               <a href="#" className="hover:text-[#D8315B]">Accessibility</a>
-              <a href="#" className="hover:text-[#D8315B]">Consumer Information</a>
+              <a href="#" className="hover:text-[#D8315B]">Mandatory Disclosure</a>
             </div>
           </div>
         </div>

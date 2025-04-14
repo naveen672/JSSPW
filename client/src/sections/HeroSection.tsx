@@ -1,45 +1,126 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const slideImages = [
+  {
+    id: 1,
+    url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    title: "Welcome to JSS Polytechnic For Women",
+    description: "Empowering women through quality technical education and holistic development in a supportive learning environment."
+  },
+  {
+    id: 2,
+    url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    title: "Excellence in Technical Education",
+    description: "Our modern facilities and innovative teaching methods prepare students for successful careers in engineering and technology."
+  },
+  {
+    id: 3,
+    url: "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    title: "Building Future Leaders",
+    description: "Developing technical expertise, leadership skills, and confidence in women to excel in their chosen fields."
+  }
+];
 
 const HeroSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = slideImages.length;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
+
   return (
     <section id="home" className="relative h-[80vh] overflow-hidden bg-gray-900">
-      {/* Hero Slide */}
-      <div className="hero-slide absolute inset-0 bg-cover bg-center bg-no-repeat" 
-           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')" }}>
-        <div className="absolute inset-0 bg-[#0A2463]/60"></div>
-        <div className="container relative mx-auto h-full px-6">
-          <div className="flex h-full flex-col items-start justify-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
-            >
-              Welcome to Horizon College
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="my-6 max-w-2xl text-lg text-white"
-            >
-              Empowering minds, inspiring futures. Experience excellence in education at one of the nation's leading institutions.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap gap-4"
-            >
-              <a href="#programs" className="rounded-full bg-[#D8315B] px-8 py-3 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
-                Explore Programs
-              </a>
-              <a href="#campus" className="rounded-full border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
-                Campus Tour
-              </a>
-            </motion.div>
+      {/* Hero Slides */}
+      {slideImages.map((slide, index) => (
+        <div 
+          key={slide.id}
+          className={`hero-slide absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            currentSlide === index ? "opacity-100" : "opacity-0"
+          }`} 
+          style={{ backgroundImage: `url('${slide.url}')` }}
+        >
+          <div className="absolute inset-0 bg-[#0A2463]/60"></div>
+          <div className="container relative mx-auto h-full px-6">
+            <div className="flex h-full flex-col items-start justify-center">
+              <motion.h1 
+                key={`title-${slide.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+              >
+                {slide.title}
+              </motion.h1>
+              <motion.p 
+                key={`desc-${slide.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="my-6 max-w-2xl text-lg text-white"
+              >
+                {slide.description}
+              </motion.p>
+              <motion.div 
+                key={`buttons-${slide.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-wrap gap-4"
+              >
+                <a href="#programs" className="rounded-full bg-[#D8315B] px-8 py-3 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
+                  Explore Programs
+                </a>
+                <a href="#campus" className="rounded-full border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
+                  Campus Tour
+                </a>
+              </motion.div>
+            </div>
           </div>
         </div>
+      ))}
+      
+      {/* Slide Navigation Arrows */}
+      <button 
+        onClick={goToPrevSlide} 
+        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/40"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      <button 
+        onClick={goToNextSlide} 
+        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/40"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+      
+      {/* Slide Indicators */}
+      <div className="absolute bottom-24 left-0 right-0 z-10 flex justify-center gap-2">
+        {slideImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-2 w-8 rounded-full transition-all ${
+              currentSlide === index ? "bg-white" : "bg-white/40"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
       
       {/* Hero Stats */}
@@ -48,19 +129,19 @@ const HeroSection = () => {
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             <div className="text-center">
               <h4 className="text-3xl font-bold text-[#0A2463]">95%</h4>
-              <p className="text-sm text-[#1C1C1C]">Graduate Employment</p>
+              <p className="text-sm text-[#1C1C1C]">Graduate Placement</p>
             </div>
             <div className="text-center">
-              <h4 className="text-3xl font-bold text-[#0A2463]">150+</h4>
-              <p className="text-sm text-[#1C1C1C]">Academic Programs</p>
+              <h4 className="text-3xl font-bold text-[#0A2463]">12+</h4>
+              <p className="text-sm text-[#1C1C1C]">Technical Programs</p>
             </div>
             <div className="text-center">
-              <h4 className="text-3xl font-bold text-[#0A2463]">12:1</h4>
+              <h4 className="text-3xl font-bold text-[#0A2463]">15:1</h4>
               <p className="text-sm text-[#1C1C1C]">Student-Faculty Ratio</p>
             </div>
             <div className="text-center">
-              <h4 className="text-3xl font-bold text-[#0A2463]">200+</h4>
-              <p className="text-sm text-[#1C1C1C]">Campus Organizations</p>
+              <h4 className="text-3xl font-bold text-[#0A2463]">50+</h4>
+              <p className="text-sm text-[#1C1C1C]">Campus Activities</p>
             </div>
           </div>
         </div>

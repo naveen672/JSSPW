@@ -1,47 +1,47 @@
-import { Code, FlaskRound, BookOpen, LineChart, Building, Heart, ArrowRight, Check } from "lucide-react";
+import { Code, Cpu, LineChart, Building, Wrench, CircuitBoard, ArrowRight, Check } from "lucide-react";
 
 const programData = [
   {
     id: 1,
     icon: <Code className="text-3xl" />,
-    title: "Computer Science",
-    description: "Cutting-edge curriculum covering software development, AI, cybersecurity, and data science.",
-    degrees: ["Bachelor of Science", "Master of Science", "Ph.D. Program"]
+    title: "Computer Science & Engineering",
+    description: "Cutting-edge curriculum covering programming, software development, database management, and networking.",
+    features: ["3-year Diploma Program", "Industry-Aligned Curriculum", "Hands-on Lab Experience"]
   },
   {
     id: 2,
-    icon: <FlaskRound className="text-3xl" />,
-    title: "Biological Sciences",
-    description: "Comprehensive programs in molecular biology, genetics, ecology, and biotechnology.",
-    degrees: ["Bachelor of Science", "Master of Science", "Ph.D. Program"]
+    icon: <Cpu className="text-3xl" />,
+    title: "Electronics & Communication",
+    description: "Comprehensive training in electronic circuits, communication systems, embedded systems, and signal processing.",
+    features: ["3-year Diploma Program", "Modern Electronics Labs", "Industry Projects"]
   },
   {
     id: 3,
-    icon: <BookOpen className="text-3xl" />,
-    title: "Liberal Arts",
-    description: "Interdisciplinary programs in humanities, social sciences, and creative arts.",
-    degrees: ["Bachelor of Arts", "Master of Arts", "Ph.D. Program"]
+    icon: <CircuitBoard className="text-3xl" />,
+    title: "Electrical & Electronics",
+    description: "Programs covering electrical machines, power systems, control systems, and electronics fundamentals.",
+    features: ["3-year Diploma Program", "Practical Training", "Industry Visits"]
   },
   {
     id: 4,
     icon: <LineChart className="text-3xl" />,
-    title: "Business Administration",
-    description: "Programs in management, finance, marketing, and entrepreneurship.",
-    degrees: ["Bachelor of Business", "MBA Program", "Executive Education"]
+    title: "Information Science & Technology",
+    description: "Studies focused on information systems, data science, web development, and IT infrastructure.",
+    features: ["3-year Diploma Program", "Software Project Experience", "Industry Internships"]
   },
   {
     id: 5,
     icon: <Building className="text-3xl" />,
-    title: "Engineering",
-    description: "Programs in mechanical, electrical, civil, and chemical engineering disciplines.",
-    degrees: ["Bachelor of Engineering", "Master of Engineering", "Ph.D. Program"]
+    title: "Civil Engineering",
+    description: "Programs in structural design, construction management, surveying, and infrastructure development.",
+    features: ["3-year Diploma Program", "Field Work & Surveying", "Design Projects"]
   },
   {
     id: 6,
-    icon: <Heart className="text-3xl" />,
-    title: "Health Sciences",
-    description: "Programs in nursing, public health, pre-med, and health administration.",
-    degrees: ["Bachelor of Science", "Master's Programs", "Professional Certificates"]
+    icon: <Wrench className="text-3xl" />,
+    title: "Mechanical Engineering",
+    description: "Training in mechanical design, manufacturing processes, thermal engineering, and materials science.",
+    features: ["3-year Diploma Program", "Workshop Practice", "CAD/CAM Training"]
   }
 ];
 
@@ -50,10 +50,10 @@ const ProgramsSection = () => {
     <section id="programs" className="bg-[#F3F4F6] py-20">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[#0A2463] md:text-4xl">Academic Programs</h2>
+          <h2 className="mb-4 text-3xl font-bold text-[#0A2463] md:text-4xl">Diploma Programs</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
           <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C]">
-            Discover our diverse range of undergraduate, graduate, and doctoral programs designed to prepare you for success in your chosen field.
+            Discover our range of AICTE-approved diploma programs in engineering designed specifically for women to excel in technical fields and build rewarding careers.
           </p>
         </div>
         
@@ -66,15 +66,15 @@ const ProgramsSection = () => {
               <h3 className="mb-3 text-xl font-semibold text-[#0A2463]">{program.title}</h3>
               <p className="mb-4 text-[#1C1C1C]">{program.description}</p>
               <ul className="mb-6 space-y-2 text-sm text-[#1C1C1C]">
-                {program.degrees.map((degree, index) => (
+                {program.features.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <Check className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                    <span>{degree}</span>
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
               <a href="#" className="inline-flex items-center font-medium text-[#3E92CC] hover:text-[#0A2463]">
-                Learn more
+                Program details
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
@@ -83,7 +83,7 @@ const ProgramsSection = () => {
         
         <div className="mt-12 text-center">
           <a href="#" className="rounded-full bg-[#0A2463] px-8 py-3 font-medium text-white transition-colors hover:bg-[#0A2463]/90">
-            View All Programs
+            Admission Information
           </a>
         </div>
       </div>

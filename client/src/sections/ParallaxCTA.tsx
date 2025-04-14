@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const ParallaxCTA = () => {
   return (
     <section className="relative py-32 bg-fixed bg-center bg-cover" 
-             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')" }}>
+             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')" }}>
       <div className="absolute inset-0 bg-[#0A2463]/70"></div>
       <div className="container relative mx-auto px-6 text-center text-white">
         <motion.h2 
@@ -13,7 +13,7 @@ const ParallaxCTA = () => {
           viewport={{ once: true }}
           className="mb-6 text-3xl font-bold md:text-4xl"
         >
-          Ready to Begin Your Journey?
+          Ready to Begin Your Technical Journey?
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -22,7 +22,7 @@ const ParallaxCTA = () => {
           viewport={{ once: true }}
           className="mx-auto mb-8 max-w-2xl text-lg text-white/90"
         >
-          Join our community of scholars, innovators, and leaders who are shaping the future. Applications for the Fall 2025 semester are now open.
+          Join our community of aspiring women engineers and technologists who are building the future. Applications for the 2025-2026 academic year are now open.
         </motion.p>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -35,10 +35,10 @@ const ParallaxCTA = () => {
             Apply Now
           </a>
           <a href="#" className="rounded-full border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
-            Request Information
+            Download Brochure
           </a>
           <a href="#" className="rounded-full border-2 border-white bg-transparent px-8 py-3 font-medium text-white transition-colors hover:bg-white/10">
-            Schedule a Visit
+            Schedule a Campus Visit
           </a>
         </motion.div>
       </div>
