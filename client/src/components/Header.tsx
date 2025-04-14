@@ -39,7 +39,7 @@ const Header = () => {
             onClick={() => navigate("/")}
           >
             <img 
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpFbO4BNxXEa_XROvxd81wZE5qHkBjTnm9Zw&usqp=CAU" 
+              src="/logo_jss.jpeg" 
               alt="JSS Polytechnic Logo" 
               className="mr-3 h-12 w-auto object-contain"
             />
