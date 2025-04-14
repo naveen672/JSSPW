@@ -32,11 +32,6 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6">
-        {/* JSS Mahavidyapeetha banner */}
-        <div className="text-center py-1 text-sm text-[#0A2463] font-medium border-b border-gray-200">
-          JSS Mahavidyapeetha
-        </div>
-        
         <div className="flex items-center justify-between py-4 lg:py-0">
           {/* Logo */}
           <div 
@@ -45,6 +40,7 @@ const Header = () => {
           >
             <div className="mr-3 h-10 w-10 rounded-full bg-[#0A2463]"></div>
             <div className="flex flex-col">
+              <span className="text-xs text-[#0A2463]/80">JSS Mahavidyapeetha</span>
               <span className="text-xl font-bold text-[#0A2463]">JSS Polytechnic For Women</span>
             </div>
           </div>

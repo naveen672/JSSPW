@@ -26,7 +26,7 @@ const eventsData = [
     date: { day: "28", month: "OCT" },
     time: "10:00 AM - 3:00 PM",
     location: "Training & Placement Cell",
-    image: "https://images.unsplash.com/photo-1560523159-4a9692d222f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+    image: "https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
   }
 ];
 

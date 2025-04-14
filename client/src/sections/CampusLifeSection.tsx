@@ -77,29 +77,29 @@ const CampusLifeSection = () => {
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Main administrative building" 
+                src="https://images.unsplash.com/photo-1563474993043-bada1ce52ca6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="College entrance with students" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Electronics lab with students working" 
+                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="Women in technical training" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1574331909276-e16ff705ce4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Student common area" 
+                src="https://images.unsplash.com/photo-1581092160607-ee22731b4ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="Modern computer lab" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
             <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1601600576337-c1d8a1b85fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Digital library" 
+                src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="College library" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>

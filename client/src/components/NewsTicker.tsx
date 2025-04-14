@@ -45,7 +45,7 @@ const NewsTicker = () => {
   };
 
   return (
-    <div className="fixed top-[72px] z-30 w-full bg-[#0A2463] text-white lg:top-[80px]">
+    <div className="fixed top-[120px] z-30 w-full bg-[#0A2463] text-white lg:top-[100px]">
       <div className="overflow-hidden whitespace-nowrap py-2">
         <motion.div
           animate={controls}
