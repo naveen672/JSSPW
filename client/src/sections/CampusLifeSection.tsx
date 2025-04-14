@@ -75,30 +75,30 @@ const CampusLifeSection = () => {
         <div className="mt-16">
           <h3 className="mb-8 text-center text-2xl font-semibold text-white">Campus Gallery</h3>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
+            <div className="aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1563474993043-bada1ce52ca6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="College entrance with students" 
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="College computer lab" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
-            <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
+            <div className="aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Women in technical training" 
+                src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="College training session" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
-            <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
+            <div className="aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1581092160607-ee22731b4ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Modern computer lab" 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                alt="Students working on project" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
-            <div className="animate-on-scroll aspect-square overflow-hidden rounded-lg">
+            <div className="aspect-square overflow-hidden rounded-lg">
               <img 
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
                 alt="College library" 
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
               />

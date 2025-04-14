@@ -21,14 +21,26 @@ function Router() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
+    // Ensure splash screen is visible for at least 3 seconds
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 2500);
+    }, 3000);
 
-    return () => clearTimeout(timer);
+    // Mark the page as loaded
+    window.addEventListener('load', () => setIsLoading(false));
+
+    if (document.readyState === 'complete') {
+      setIsLoading(false);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', () => setIsLoading(false));
+    };
   }, []);
 
   return (
