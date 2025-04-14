@@ -43,7 +43,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative h-[80vh] overflow-hidden bg-gray-900">
+    <section id="home" className="relative h-[80vh] overflow-hidden bg-gray-900 pt-8">
       {/* Hero Slides */}
       {slideImages.map((slide, index) => (
         <div 

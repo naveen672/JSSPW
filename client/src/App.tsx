@@ -39,7 +39,7 @@ function App() {
         <>
           <Header />
           <NewsTicker />
-          <main className="pt-[108px] lg:pt-[116px]">
+          <main className="pt-[140px] lg:pt-[140px]">
             <Router />
           </main>
           <Footer />
