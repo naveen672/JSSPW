@@ -3,29 +3,29 @@ import { ArrowRight, Clock, MapPin } from "lucide-react";
 const eventsData = [
   {
     id: 1,
-    title: "Distinguished Speaker Series",
-    description: "Join us for an engaging talk by Nobel laureate Dr. James Wilson on \"The Future of Genomic Medicine.\"",
+    title: "Industry Expert Workshop",
+    description: "Join us for a hands-on workshop with Infosys experts on \"The Future of Cloud Computing and DevOps.\"",
     date: { day: "15", month: "OCT" },
     time: "2:00 PM - 4:00 PM",
-    location: "Anderson Hall",
+    location: "IT Seminar Hall",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
   },
   {
     id: 2,
-    title: "Fall Symphonic Concert",
-    description: "Experience our award-winning symphony orchestra performing classical and contemporary pieces.",
+    title: "Annual Technical Fest",
+    description: "Join our exciting 3-day technical fest featuring competitions, exhibitions, and technical paper presentations.",
     date: { day: "21", month: "OCT" },
-    time: "7:30 PM - 9:30 PM",
-    location: "Performing Arts Center",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
+    time: "9:00 AM - 5:00 PM",
+    location: "College Auditorium",
+    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
   },
   {
     id: 3,
-    title: "Fall Career Fair",
-    description: "Connect with over 150 employers from various industries offering internships and full-time positions.",
+    title: "Campus Recruitment Drive",
+    description: "Connect with over 30 top companies recruiting for technical positions and internships in engineering fields.",
     date: { day: "28", month: "OCT" },
     time: "10:00 AM - 3:00 PM",
-    location: "Student Center",
+    location: "Training & Placement Cell",
     image: "https://images.unsplash.com/photo-1560523159-4a9692d222f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80"
   }
 ];
@@ -38,7 +38,7 @@ const EventsSection = () => {
           <h2 className="mb-4 text-3xl font-bold text-[#0A2463] md:text-4xl">Upcoming Events</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
           <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C]">
-            Stay connected with the latest happenings on campus and never miss an opportunity to engage with our vibrant community.
+            Stay connected with the latest technical events, workshops, and opportunities at JSS Polytechnic For Women.
           </p>
         </div>
         
@@ -66,7 +66,7 @@ const EventsSection = () => {
                 <h3 className="mb-3 text-xl font-semibold text-[#0A2463]">{event.title}</h3>
                 <p className="mb-4 text-[#1C1C1C]">{event.description}</p>
                 <a href="#" className="inline-flex items-center font-medium text-[#3E92CC] hover:text-[#0A2463]">
-                  Learn more & RSVP
+                  Event details & Registration
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </div>
