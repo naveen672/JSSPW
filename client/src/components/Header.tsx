@@ -1,0 +1,93 @@
+import { useState, useEffect } from "react";
+import { Link } from "wouter";
+import { Menu } from "lucide-react";
+
+const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <header 
+      className={`fixed top-0 left-0 right-0 z-40 bg-white transition-all duration-300 ${
+        isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
+      }`}
+    >
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between py-4 lg:py-0">
+          {/* Logo */}
+          <Link href="/">
+            <a className="flex items-center">
+              <div className="mr-3 h-10 w-10 rounded-full bg-primary"></div>
+              <span className="text-xl font-bold text-primary">Horizon College</span>
+            </a>
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="text-dark focus:outline-none lg:hidden"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+
+          {/* Desktop Navigation Menu */}
+          <nav className="hidden lg:flex">
+            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-8">
+              <li><a href="#home" className="block py-6 font-medium text-primary hover:text-accent">Home</a></li>
+              <li><a href="#about" className="block py-6 font-medium text-dark hover:text-accent">About</a></li>
+              <li><a href="#programs" className="block py-6 font-medium text-dark hover:text-accent">Programs</a></li>
+              <li><a href="#faculty" className="block py-6 font-medium text-dark hover:text-accent">Faculty</a></li>
+              <li><a href="#campus" className="block py-6 font-medium text-dark hover:text-accent">Campus Life</a></li>
+              <li><a href="#events" className="block py-6 font-medium text-dark hover:text-accent">Events</a></li>
+              <li><a href="#contact" className="block py-6 font-medium text-dark hover:text-accent">Contact</a></li>
+              <li>
+                <a href="#apply" className="rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
+                  Apply Now
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* Mobile Menu (Toggleable) */}
+        <div className={`border-t-2 py-4 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
+          <ul className="space-y-4">
+            <li><a href="#home" onClick={closeMobileMenu} className="block font-medium text-primary hover:text-accent">Home</a></li>
+            <li><a href="#about" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">About</a></li>
+            <li><a href="#programs" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">Programs</a></li>
+            <li><a href="#faculty" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">Faculty</a></li>
+            <li><a href="#campus" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">Campus Life</a></li>
+            <li><a href="#events" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">Events</a></li>
+            <li><a href="#contact" onClick={closeMobileMenu} className="block font-medium text-dark hover:text-accent">Contact</a></li>
+            <li className="pt-2">
+              <a href="#apply" onClick={closeMobileMenu} className="inline-block rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
+                Apply Now
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
