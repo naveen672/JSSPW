@@ -45,27 +45,29 @@ const NewsTicker = () => {
   };
 
   return (
-    <div className="fixed top-[80px] z-30 w-full lg:top-[80px]">
-      <div className="bg-[#0A2463] overflow-hidden whitespace-nowrap py-2 shadow-md">
-        <motion.div
-          animate={controls}
-          className="inline-block"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <span className="mr-8 font-bold text-white">FLASH NEWS:</span>
-          {newsItems.map((item) => (
-            <a 
-              key={item.id} 
-              href={item.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mr-8 cursor-pointer text-white hover:text-[#D8315B] inline-block"
-            >
-              {item.text}
-            </a>
-          ))}
-        </motion.div>
+    <div className="w-full" style={{height: '40px'}}>
+      <div className="bg-[#0A2463] overflow-hidden whitespace-nowrap py-3 shadow-md h-full">
+        <div className="container mx-auto px-6">
+          <motion.div
+            animate={controls}
+            className="inline-block"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <span className="mr-8 font-bold text-white">FLASH NEWS:</span>
+            {newsItems.map((item) => (
+              <a 
+                key={item.id} 
+                href={item.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mr-8 cursor-pointer text-white hover:text-[#D8315B] inline-block"
+              >
+                {item.text}
+              </a>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-40 bg-white transition-all duration-300 ${
+      className={`relative bg-white transition-all duration-300 ${
         isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
       }`}
     >

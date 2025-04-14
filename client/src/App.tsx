@@ -49,9 +49,11 @@ function App() {
         <SplashScreen />
       ) : (
         <>
-          <Header />
-          <NewsTicker />
-          <main className="pt-[140px] lg:pt-[140px]">
+          <div className="sticky top-0 z-40 bg-white">
+            <Header />
+            <NewsTicker />
+          </div>
+          <main>
             <Router />
           </main>
           <Footer />
