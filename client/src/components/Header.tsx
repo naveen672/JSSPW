@@ -38,7 +38,11 @@ const Header = () => {
             className="flex items-center cursor-pointer" 
             onClick={() => navigate("/")}
           >
-            <div className="mr-3 h-10 w-10 rounded-full bg-[#0A2463]"></div>
+            <img 
+              src="https://media.licdn.com/dms/image/D4D03AQGi3jlM2R1q2w/profile-displayphoto-shrink_800_800/0/1691413229715?e=2147483647&v=beta&t=KmS66DpqZVmPD4XV8BPxZ9mN5aOAGwHkQRKLbYEIl7Y" 
+              alt="JSS Polytechnic Logo" 
+              className="mr-3 h-12 w-auto object-contain"
+            />
             <div className="flex flex-col">
               <span className="text-xs text-[#0A2463]/80">JSS Mahavidyapeetha</span>
               <span className="text-xl font-bold text-[#0A2463]">JSS Polytechnic For Women</span>
