@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import naacLogo from "@assets/NAACAlogo-1.png";
-import nbaLogo from "@assets/smalllogo2.png";
-import aicteLogo from "@assets/smalllogo1.png";
 
 const AccreditationSection = () => {
   return (
@@ -39,7 +36,7 @@ const AccreditationSection = () => {
           >
             <div className="h-32 flex items-center justify-center">
               <img 
-                src={naacLogo} 
+                src="/NAACAlogo-1.png" 
                 alt="NAAC A+ Accreditation" 
                 className="max-h-full max-w-full object-contain" 
               />
@@ -60,7 +57,7 @@ const AccreditationSection = () => {
           >
             <div className="h-32 flex items-center justify-center">
               <img 
-                src={nbaLogo} 
+                src="/smalllogo2.png" 
                 alt="NBA Accreditation" 
                 className="max-h-full max-w-full object-contain" 
               />
@@ -81,7 +78,7 @@ const AccreditationSection = () => {
           >
             <div className="h-32 flex items-center justify-center">
               <img 
-                src={aicteLogo} 
+                src="/smalllogo1.png" 
                 alt="AICTE Approval" 
                 className="max-h-full max-w-full object-contain" 
               />

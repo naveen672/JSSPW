@@ -165,17 +165,17 @@ const Header = () => {
             <div className="hidden md:flex items-center ml-4 pl-4 border-l border-gray-300 dark:border-gray-700">
               <a href="/#accreditations" className="flex items-center group">
                 <img 
-                  src="/NAACAlogo-1.png" 
+                  src="./NAACAlogo-1.png" 
                   alt="NAAC A+ Accredited" 
                   className="h-8 w-auto object-contain mr-2" 
                 />
                 <img 
-                  src="/smalllogo2.png" 
+                  src="./smalllogo2.png" 
                   alt="NBA Accredited" 
                   className="h-8 w-auto object-contain mr-2" 
                 />
                 <img 
-                  src="/smalllogo1.png" 
+                  src="./smalllogo1.png" 
                   alt="AICTE Approved" 
                   className="h-8 w-auto object-contain" 
                 />
