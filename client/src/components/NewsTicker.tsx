@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useAnimationControls } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
 
 interface NewsItem {
@@ -9,7 +8,6 @@ interface NewsItem {
 }
 
 const NewsTicker = () => {
-  const controls = useAnimationControls();
   const [isPaused, setIsPaused] = useState(false);
   
   const newsItems: NewsItem[] = [
@@ -18,24 +16,6 @@ const NewsTicker = () => {
     { id: 3, text: "New Engineering Building opening September 1st", link: "/campus" },
     { id: 4, text: "JSS Polytechnic For Women ranks #5 in Best Technical Institutions", link: "/rankings" }
   ];
-
-  useEffect(() => {
-    if (!isPaused) {
-      controls.start({
-        x: ["100%", "-150%"],
-        transition: {
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 30,
-            ease: "linear"
-          }
-        }
-      });
-    } else {
-      controls.stop();
-    }
-  }, [isPaused, controls]);
 
   const handleMouseEnter = () => {
     setIsPaused(true);
@@ -54,11 +34,9 @@ const NewsTicker = () => {
             <span className="font-bold text-white">FLASH NEWS:</span>
           </div>
           
-          <div className="overflow-hidden flex-1 relative">
-            <motion.div
-              animate={controls}
-              initial={{ x: "100%" }}
-              className="whitespace-nowrap absolute top-0"
+          <div className="overflow-hidden flex-1">
+            <div 
+              className={`whitespace-nowrap ${isPaused ? '' : 'animate-marquee'}`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -73,7 +51,20 @@ const NewsTicker = () => {
                   {item.text}
                 </a>
               ))}
-            </motion.div>
+              
+              {/* Duplicate items for seamless looping */}
+              {newsItems.map((item) => (
+                <a 
+                  key={`repeat-${item.id}`} 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mr-12 cursor-pointer text-white hover:text-[#D8315B] inline-block"
+                >
+                  {item.text}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
