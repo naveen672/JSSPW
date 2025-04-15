@@ -196,7 +196,7 @@ const ContactSection = () => {
             
             <div className="h-80 w-full overflow-hidden rounded-lg shadow-md">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.2104043490816!2d76.6366678!3d12.3118722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf701103f9a1f1%3A0xc37fbae2a124da0a!2sJSS%20Polytechnic%20for%20Women!5e0!3m2!1sen!2sin!4v1649675858091!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.2104043490837!2d76.6341472749444!3d12.31186732357486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf701103f9a1f1%3A0xc37fbae2a124da0a!2sJSS%20Polytechnic%20for%20Women!5e0!3m2!1sen!2sin!4v1734575455753!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -205,6 +205,17 @@ const ContactSection = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="JSS Polytechnic for Women Map"
               ></iframe>
+            </div>
+            <div className="mt-3 text-center">
+              <a 
+                href="https://maps.app.goo.gl/mKPLnDHG4Rn6apQv9" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463] transition-colors"
+              >
+                <MapPin className="mr-1 h-4 w-4" />
+                Open in Google Maps
+              </a>
             </div>
           </div>
         </div>
