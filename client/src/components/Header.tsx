@@ -82,6 +82,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
+  const [mobileOpenDropdowns, setMobileOpenDropdowns] = useState<Set<number>>(new Set());
   const [, navigate] = useLocation();
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -122,11 +123,16 @@ const Header = () => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
-  const handleMobileSubMenuClick = (e: React.MouseEvent, item: { title: string, children: any[] }) => {
-    if (item.children.length > 0) {
-      e.preventDefault();
-      // Toggle submenu visibility instead of navigating
-    }
+  const toggleMobileDropdown = (index: number) => {
+    setMobileOpenDropdowns(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
   };
 
   return (
@@ -217,11 +223,6 @@ const Header = () => {
                   </div>
                 </li>
               ))}
-              <li className="ml-2">
-                <a href="#apply" className="rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
-                  Apply Now
-                </a>
-              </li>
             </ul>
           </nav>
         </div>
@@ -237,7 +238,7 @@ const Header = () => {
                     onClick={(e) => {
                       if (item.children.length > 0) {
                         e.preventDefault();
-                        toggleDropdown(index);
+                        toggleMobileDropdown(index);
                       } else {
                         closeMobileMenu();
                       }
@@ -250,14 +251,14 @@ const Header = () => {
                     {item.children.length > 0 && (
                       <ChevronDown 
                         className={`ml-1 h-4 w-4 transition-transform ${
-                          activeDropdown === index ? "rotate-180" : ""
+                          mobileOpenDropdowns.has(index) ? "rotate-180" : ""
                         }`} 
                       />
                     )}
                   </a>
                   
                   {/* Mobile Submenu */}
-                  {item.children.length > 0 && activeDropdown === index && (
+                  {item.children.length > 0 && mobileOpenDropdowns.has(index) && (
                     <div className="mt-2 space-y-2 pl-4">
                       {item.children.map((child, childIndex) => (
                         <a
@@ -274,11 +275,7 @@ const Header = () => {
                 </div>
               </li>
             ))}
-            <li className="pt-2">
-              <a href="#apply" onClick={closeMobileMenu} className="inline-block rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
-                Apply Now
-              </a>
-            </li>
+
           </ul>
         </div>
       </div>
