@@ -13,7 +13,11 @@ const Footer = () => {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="mb-6 flex items-center">
-              <div className="mr-3 h-10 w-10 rounded-full bg-white"></div>
+              <img 
+                src="/logo_jss.jpeg" 
+                alt="JSS Polytechnic Logo" 
+                className="mr-3 h-10 w-10 rounded-full object-cover bg-white"
+              />
               <div className="flex flex-col">
                 <span className="text-xs text-white/80">JSS Mahavidyapeetha</span>
                 <span className="text-lg font-bold text-white">JSS Polytechnic For Women</span>
@@ -104,12 +108,12 @@ const Footer = () => {
             <div className="text-sm text-white/80">
               &copy; {currentYear} JSS Polytechnic For Women. All rights reserved.
             </div>
-            <div className="flex items-center space-x-4 text-sm">
+            <div className="flex flex-col items-center space-y-3 text-sm md:flex-row md:space-x-4 md:space-y-0">
               <div className="flex items-center text-white/80">
                 <Users className="mr-2 h-4 w-4 text-[#D8315B]" />
                 <span>Visitors: {loading ? "Loading..." : visitorCount?.toLocaleString() || "-"}</span>
               </div>
-              <div className="hidden sm:flex sm:space-x-6 sm:text-white/80">
+              <div className="flex flex-wrap justify-center gap-3 text-white/80 sm:gap-6">
                 <a href="#" className="hover:text-[#D8315B]">Privacy Policy</a>
                 <a href="#" className="hover:text-[#D8315B]">Terms of Use</a>
                 <a href="#" className="hover:text-[#D8315B]">Accessibility</a>
