@@ -7,7 +7,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 const navItems = [
   {
     title: "HOME",
-    href: "#home",
+    href: "/",
     children: []
   },
   {
@@ -192,6 +192,9 @@ const Header = () => {
                         if (item.children.length > 0) {
                           e.preventDefault();
                           toggleDropdown(index);
+                        } else if (item.href.startsWith('/')) {
+                          e.preventDefault();
+                          navigate(item.href);
                         }
                       }}
                     >
@@ -252,6 +255,10 @@ const Header = () => {
                         toggleMobileDropdown(index);
                       } else {
                         closeMobileMenu();
+                        if (item.href.startsWith('/')) {
+                          e.preventDefault();
+                          navigate(item.href);
+                        }
                       }
                     }}
                     className={`flex items-center justify-between font-medium ${
