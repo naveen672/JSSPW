@@ -360,6 +360,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Special endpoint for creating the first admin user (will be accessible only once if no users exist)
+  app.post("/api/setup/admin", async (req, res) => {
+    try {
+      // Check if any users exist in the system
+      const users = await storage.getAllUsers();
+      if (users.length > 0) {
+        return res.status(403).json({ message: "Setup already completed. Admin users already exist." });
+      }
+      
+      const { username, password } = req.body;
+      
+      // Validate required fields
+      if (!username || !password) {
+        return res.status(400).json({ message: "Username and password are required" });
+      }
+      
+      // Check if username already exists
+      const existingUser = await storage.getUserByUsername(username);
+      if (existingUser) {
+        return res.status(400).json({ message: "Username already exists" });
+      }
+      
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      // Create admin user
+      const user = await storage.createUser({
+        username,
+        password: hashedPassword,
+        role: "admin"
+      });
+      
+      // Return user without password
+      const { password: _, ...userWithoutPassword } = user;
+      res.status(201).json({ 
+        message: "Admin setup completed successfully",
+        user: userWithoutPassword 
+      });
+    } catch (error) {
+      console.error("Error creating first admin user:", error);
+      res.status(500).json({ message: "Failed to create admin user" });
+    }
+  });
+  
   // Admin Users Management
   app.post("/api/admin/users", checkAdmin, async (req, res) => {
     try {
