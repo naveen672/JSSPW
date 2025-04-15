@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { Menu, ChevronDown } from "lucide-react";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 // Navigation structure
 const navItems = [
@@ -137,7 +138,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`relative z-50 bg-white transition-all duration-300 ${
+      className={`relative z-50 bg-white dark:bg-gray-900 transition-all duration-300 ${
         isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
       }`}
     >
@@ -159,14 +160,17 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="text-dark focus:outline-none lg:hidden"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          {/* Mobile Menu Button and Dark Mode Toggle */}
+          <div className="flex items-center space-x-4">
+            <DarkModeToggle />
+            <button 
+              className="text-dark focus:outline-none lg:hidden dark:text-gray-200"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
 
           {/* Desktop Navigation Menu */}
           <nav className="hidden lg:flex">
@@ -179,8 +183,8 @@ const Header = () => {
                   >
                     <a 
                       href={item.children.length > 0 ? "#" : item.href}
-                      className={`flex items-center py-6 font-medium text-[#1C1C1C] border-b-2 ${
-                        index === 0 ? "text-[#0A2463]" : ""
+                      className={`flex items-center py-6 font-medium text-[#1C1C1C] dark:text-gray-200 border-b-2 ${
+                        index === 0 ? "text-[#0A2463] dark:text-white" : ""
                       } ${
                         activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
                       } hover:border-[#D8315B] transition-all duration-200`}

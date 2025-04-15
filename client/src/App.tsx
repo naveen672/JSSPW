@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import NewsTicker from "@/components/NewsTicker";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { DarkModeProvider } from "@/lib/DarkModeContext";
 
 function Router() {
   return (
@@ -45,22 +46,24 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {showSplash ? (
-        <SplashScreen />
-      ) : (
-        <>
-          <div className="sticky top-0 z-40 bg-white">
-            <Header />
-            <NewsTicker />
-          </div>
-          <main>
-            <Router />
-          </main>
-          <Footer />
-          <BackToTop />
-        </>
-      )}
-      <Toaster />
+      <DarkModeProvider>
+        {showSplash ? (
+          <SplashScreen />
+        ) : (
+          <>
+            <div className="sticky top-0 z-40 bg-white dark:bg-gray-900 transition-colors duration-300">
+              <Header />
+              <NewsTicker />
+            </div>
+            <main className="dark:bg-gray-900 transition-colors duration-300">
+              <Router />
+            </main>
+            <Footer />
+            <BackToTop />
+          </>
+        )}
+        <Toaster />
+      </DarkModeProvider>
     </QueryClientProvider>
   );
 }
