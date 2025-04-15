@@ -138,7 +138,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`relative z-50 bg-white dark:bg-gray-900 transition-all duration-300 ${
+      className={`sticky top-0 z-50 bg-white dark:bg-gray-900 transition-all duration-300 ${
         isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
       }`}
     >
@@ -232,8 +232,8 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu (Toggleable) */}
-        <div className={`border-t-2 dark:border-gray-700 py-4 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
-          <ul className="space-y-4">
+        <div className={`border-t-2 dark:border-gray-700 py-4 px-6 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"} max-h-[calc(100vh-80px)] overflow-y-auto absolute left-0 right-0 top-[calc(100%)] bg-white dark:bg-gray-900 shadow-lg`}>
+          <ul className="space-y-4 pb-12">
             {navItems.map((item, index) => (
               <li key={index}>
                 <div>
