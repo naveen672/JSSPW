@@ -2,7 +2,7 @@
 // Set headers
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Handle preflight request (OPTIONS method)
@@ -18,11 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Include necessary files
-require_once '../includes/auth.php';
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Logout
-$auth->logout();
+// Destroy session
+session_destroy();
 
 // Return success message
 http_response_code(200);

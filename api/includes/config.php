@@ -1,22 +1,38 @@
 <?php
-// Database configuration
+/**
+ * Site Configuration Settings
+ */
+
+// Database Configuration
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'username'); // Replace with your database username
-define('DB_PASSWORD', 'password'); // Replace with your database password
-define('DB_NAME', 'jsspw');        // Replace with your database name
+define('DB_USERNAME', 'root'); // Change this for production
+define('DB_PASSWORD', ''); // Change this for production
+define('DB_NAME', 'jsspw_db');
 
-// Site configuration
+// Site Configuration
+define('SITE_URL', 'http://localhost:5000'); // Change this for production
 define('SITE_NAME', 'JSS Polytechnic for Women');
-define('SITE_URL', 'https://yourdomain.com'); // Replace with your actual domain
-define('ADMIN_EMAIL', 'admin@example.com');   // Replace with admin email
-
-// Email settings
+define('ADMIN_EMAIL', 'admin@jsspwmys.org'); // Change this for production
 define('EMAIL_FROM', 'naveenravi.ch@gmail.com');
-define('EMAIL_FROM_NAME', 'JSS Polytechnic for Women');
+define('SITE_LOGO', 'logo_jss.jpeg');
 
-// Session settings
-define('SESSION_NAME', 'jsspw_session');
+// Session Configuration
+define('SESSION_SECRET', 'jsspw_secret_key_change_this_in_production');
 define('SESSION_LIFETIME', 86400); // 24 hours
 
-// Security settings
-define('HASH_COST', 12); // Password hashing cost
+// Default Admin User (only used for initial setup)
+define('DEFAULT_ADMIN_USERNAME', 'admin');
+define('DEFAULT_ADMIN_PASSWORD', 'admin123');
+
+// Error Reporting
+// Set to false in production
+define('DISPLAY_ERRORS', true);
+
+if (DISPLAY_ERRORS) {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+} else {
+    ini_set('display_errors', 0);
+    error_reporting(0);
+}

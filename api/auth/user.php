@@ -2,7 +2,7 @@
 // Set headers
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Methods: GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Handle preflight request (OPTIONS method)
@@ -18,19 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
-// Include necessary files
+// Include auth file
 require_once '../includes/auth.php';
 
-// Get current user
-$user = $auth->getCurrentUser();
-
-// Check if user is logged in
-if (!$user) {
-    http_response_code(401); // Unauthorized
-    echo json_encode(['error' => 'Not authenticated']);
-    exit;
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-// Return user data
-http_response_code(200);
-echo json_encode(['user' => $user]);
+// Check if user is logged in
+if (isset($_SESSION['user'])) {
+    // Return user data
+    http_response_code(200);
+    echo json_encode(['user' => $_SESSION['user']]);
+} else {
+    // User not authenticated
+    http_response_code(401); // Unauthorized
+    echo json_encode(['message' => 'Not authenticated']);
+}

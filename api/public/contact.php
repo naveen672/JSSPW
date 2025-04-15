@@ -2,7 +2,7 @@
 // Set headers
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Handle preflight request (OPTIONS method)
@@ -25,15 +25,21 @@ require_once '../includes/email.php';
 // Get JSON data from request body
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Check if data is valid
-if (!$data || !isset($data['name']) || !isset($data['email']) || !isset($data['subject']) || !isset($data['message'])) {
+// Validate input data
+if (!$data || !isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
     http_response_code(400); // Bad Request
     echo json_encode(['error' => 'Invalid request data']);
     exit;
 }
 
-// Validate email format
-if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+// Sanitize inputs
+$name = filter_var(trim($data['name']), FILTER_SANITIZE_STRING);
+$email = filter_var(trim($data['email']), FILTER_SANITIZE_EMAIL);
+$phone = isset($data['phone']) ? filter_var(trim($data['phone']), FILTER_SANITIZE_STRING) : '';
+$message = filter_var(trim($data['message']), FILTER_SANITIZE_STRING);
+
+// Further validate email
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400); // Bad Request
     echo json_encode(['error' => 'Invalid email format']);
     exit;
@@ -43,27 +49,32 @@ if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
 $db = new Database();
 $conn = $db->getConnection();
 
-// Prepare and execute query to save message
-$stmt = $conn->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $data['name'], $data['email'], $data['subject'], $data['message']);
+// Insert contact message into database
+$stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, message) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $name, $email, $phone, $message);
 
 if ($stmt->execute()) {
-    $messageId = $stmt->insert_id;
+    $id = $stmt->insert_id;
     
-    // Try to send confirmation email to user
-    $emailSent = $email->sendContactConfirmationEmail($data);
+    // Create contact message object for email
+    $contactMessage = [
+        'id' => $id,
+        'name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'message' => $message,
+        'createdAt' => date('Y-m-d H:i:s')
+    ];
     
-    // Try to send notification email to admin
-    $adminEmailSent = $email->sendAdminNotificationEmail($data);
+    // Send confirmation email to user
+    sendContactConfirmationEmail($contactMessage);
     
-    // Return success with message ID
+    // Send notification email to admin
+    sendAdminNotificationEmail($contactMessage);
+    
+    // Return success response
     http_response_code(201); // Created
-    echo json_encode([
-        'id' => $messageId,
-        'message' => 'Contact message submitted successfully',
-        'emailSent' => $emailSent,
-        'adminEmailSent' => $adminEmailSent
-    ]);
+    echo json_encode(['success' => true, 'message' => 'Your message has been sent successfully.']);
 } else {
     // Return error
     http_response_code(500); // Internal Server Error

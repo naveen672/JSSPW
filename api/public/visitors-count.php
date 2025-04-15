@@ -25,18 +25,22 @@ require_once '../includes/database.php';
 $db = new Database();
 $conn = $db->getConnection();
 
-// Get visitor count
-$result = $conn->query("SELECT value FROM site_stats WHERE name = 'visitor_count'");
+// Get visitor count from database
+$query = "SELECT visitorsCount FROM site_stats WHERE id = 1";
+$result = $conn->query($query);
 
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $count = (int)$row['value'];
+    $count = (int)$row['visitorsCount'];
     
     // Return visitor count
     http_response_code(200);
     echo json_encode(['count' => $count]);
 } else {
-    // Return error
-    http_response_code(500); // Internal Server Error
-    echo json_encode(['error' => 'Failed to get visitor count']);
+    // If no record exists, create one with count = 0
+    $conn->query("INSERT INTO site_stats (id, visitorsCount) VALUES (1, 0)");
+    
+    // Return initial count
+    http_response_code(200);
+    echo json_encode(['count' => 0]);
 }

@@ -25,19 +25,25 @@ require_once '../includes/database.php';
 $db = new Database();
 $conn = $db->getConnection();
 
-// Get active flash news
-$result = $conn->query("SELECT id, text, link, active, createdAt FROM flash_news WHERE active = 1 ORDER BY createdAt DESC");
+// Build query for active flash news only
+$query = "SELECT id, text, link 
+          FROM flash_news 
+          WHERE active = 1
+          ORDER BY createdAt DESC";
+
+// Execute query
+$result = $conn->query($query);
 
 if ($result) {
-    $flashNews = [];
+    $flashNewsList = [];
     
     while ($row = $result->fetch_assoc()) {
-        $flashNews[] = $row;
+        $flashNewsList[] = $row;
     }
     
-    // Return flash news
+    // Return flash news list
     http_response_code(200);
-    echo json_encode($flashNews);
+    echo json_encode($flashNewsList);
 } else {
     // Return error
     http_response_code(500); // Internal Server Error
