@@ -155,8 +155,8 @@ const Header = () => {
               className="mr-3 h-12 w-auto object-contain"
             />
             <div className="flex flex-col">
-              <span className="text-xs text-[#0A2463]/80">JSS Mahavidyapeetha</span>
-              <span className="text-xl font-bold text-[#0A2463]">JSS Polytechnic For Women</span>
+              <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
+              <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic For Women</span>
             </div>
           </div>
 
@@ -208,7 +208,7 @@ const Header = () => {
                     {/* Dropdown Menu */}
                     {item.children.length > 0 && (
                       <div 
-                        className={`absolute left-0 z-10 mt-1 min-w-[250px] rounded-md bg-white py-2 shadow-lg transition-all ${
+                        className={`absolute left-0 z-10 mt-1 min-w-[250px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
                           activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
                         }`}
                       >
@@ -216,7 +216,7 @@ const Header = () => {
                           <a
                             key={childIndex}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-[#1C1C1C] hover:bg-[#0A2463]/5 hover:text-[#0A2463]"
+                            className="block px-4 py-2 text-sm text-[#1C1C1C] dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {child.title}
@@ -232,7 +232,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu (Toggleable) */}
-        <div className={`border-t-2 py-4 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
+        <div className={`border-t-2 dark:border-gray-700 py-4 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
           <ul className="space-y-4">
             {navItems.map((item, index) => (
               <li key={index}>
@@ -248,8 +248,8 @@ const Header = () => {
                       }
                     }}
                     className={`flex items-center justify-between font-medium ${
-                      index === 0 ? "text-[#0A2463]" : "text-[#1C1C1C]"
-                    } hover:text-[#D8315B]`}
+                      index === 0 ? "text-[#0A2463] dark:text-white" : "text-[#1C1C1C] dark:text-gray-200"
+                    } hover:text-[#D8315B] dark:hover:text-[#D8315B]`}
                   >
                     <span>{item.title}</span>
                     {item.children.length > 0 && (
@@ -268,7 +268,7 @@ const Header = () => {
                         <a
                           key={childIndex}
                           href={child.href}
-                          className="block py-1 text-sm text-[#1C1C1C] hover:text-[#D8315B]"
+                          className="block py-1 text-sm text-[#1C1C1C] dark:text-gray-300 hover:text-[#D8315B] dark:hover:text-[#D8315B]"
                           onClick={closeMobileMenu}
                         >
                           {child.title}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useAnimationControls } from "framer-motion";
+import { Bell } from "lucide-react";
 
 interface NewsItem {
   id: number;
@@ -46,7 +47,7 @@ const NewsTicker = () => {
 
   return (
     <div className="w-full" style={{height: '40px'}}>
-      <div className="bg-[#0A2463] overflow-hidden whitespace-nowrap py-3 shadow-md h-full">
+      <div className="bg-[#0A2463] dark:bg-gray-900 overflow-hidden whitespace-nowrap py-3 shadow-md h-full">
         <div className="container mx-auto px-6">
           <motion.div
             animate={controls}
@@ -54,7 +55,10 @@ const NewsTicker = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <span className="mr-8 font-bold text-white">FLASH NEWS:</span>
+            <span className="mr-8 font-bold text-white flex items-center">
+              <Bell className="h-4 w-4 mr-2 animate-pulse" />
+              FLASH NEWS:
+            </span>
             {newsItems.map((item) => (
               <a 
                 key={item.id} 
