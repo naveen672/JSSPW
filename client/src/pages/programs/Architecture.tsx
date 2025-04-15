@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Architecture = () => {
   return (
@@ -35,7 +36,7 @@ const Architecture = () => {
                 <CardTitle className="text-[#0A2463] dark:text-white">Vision</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <p className="text-gray-800 dark:text-gray-300">
+                <p className="text-black dark:text-gray-300">
                   To create globally and intellectually competent, professionally skilled, ethically strong, morally upright, 
                   socially responsive, culturally tolerant professionals.
                 </p>
@@ -47,7 +48,7 @@ const Architecture = () => {
                 <CardTitle className="text-[#0A2463] dark:text-white">Mission</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <ul className="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-300">
+                <ul className="list-disc pl-6 space-y-2 text-black dark:text-gray-300">
                   <li>Imparting Knowledge with Academic Excellence by incorporating competitive curriculum and to make students excellent Designers and Professionals.</li>
                   <li>Develop professionally skilled and innovative planners, designers, constructors and operators of society's economic and social engine.</li>
                   <li>Creating learning environment with technological orientation to maximize individual potential.</li>
@@ -75,14 +76,22 @@ const Architecture = () => {
               {/* Faculty Member 1 */}
               <Card>
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
-                  <CardTitle className="text-[#0A2463] dark:text-white">DEVIKA S J</CardTitle>
-                  <CardDescription>HOD</CardDescription>
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-20 w-20 border-2 border-white">
+                      <AvatarImage src="/faculty-profile-1.svg" alt="DEVIKA S J" />
+                      <AvatarFallback>DS</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <CardTitle className="text-[#0A2463] dark:text-white">DEVIKA S J</CardTitle>
+                      <CardDescription>HOD</CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p><span className="font-medium">Specialization:</span> Architecture & Interiors</p>
-                    <p className="flex items-center">
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> Architecture & Interiors</p>
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
                       <a href="mailto:devikajram@gmail.com" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
                         devikajram@gmail.com
@@ -95,14 +104,22 @@ const Architecture = () => {
               {/* Faculty Member 2 */}
               <Card>
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
-                  <CardTitle className="text-[#0A2463] dark:text-white">ANUSHA G</CardTitle>
-                  <CardDescription>Lecturer</CardDescription>
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-20 w-20 border-2 border-white">
+                      <AvatarImage src="/faculty-profile-2.svg" alt="ANUSHA G" />
+                      <AvatarFallback>AG</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <CardTitle className="text-[#0A2463] dark:text-white">ANUSHA G</CardTitle>
+                      <CardDescription>Lecturer</CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p><span className="font-medium">Specialization:</span> ARCHITECTURE</p>
-                    <p className="flex items-center">
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> ARCHITECTURE</p>
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
                       <a href="mailto:anuguru29@jsspwmys.org" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
                         anuguru29@jsspwmys.org
@@ -115,14 +132,22 @@ const Architecture = () => {
               {/* Faculty Member 3 */}
               <Card>
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
-                  <CardTitle className="text-[#0A2463] dark:text-white">William Kadam</CardTitle>
-                  <CardDescription>Lecturer</CardDescription>
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-20 w-20 border-2 border-white">
+                      <AvatarImage src="/faculty-profile-3.svg" alt="William Kadam" />
+                      <AvatarFallback>WK</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <CardTitle className="text-[#0A2463] dark:text-white">William Kadam</CardTitle>
+                      <CardDescription>Lecturer</CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p><span className="font-medium">Specialization:</span> Architecture</p>
-                    <p className="flex items-center">
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> Architecture</p>
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
                       <a href="mailto:williamkdm@gmail.com" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
                         williamkdm@gmail.com
@@ -135,14 +160,22 @@ const Architecture = () => {
               {/* Faculty Member 4 */}
               <Card>
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
-                  <CardTitle className="text-[#0A2463] dark:text-white">PALLAVI H S</CardTitle>
-                  <CardDescription>Lecturer</CardDescription>
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-20 w-20 border-2 border-white">
+                      <AvatarImage src="/faculty-profile-4.svg" alt="PALLAVI H S" />
+                      <AvatarFallback>PH</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <CardTitle className="text-[#0A2463] dark:text-white">PALLAVI H S</CardTitle>
+                      <CardDescription>Lecturer</CardDescription>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p><span className="font-medium">Specialization:</span> Architecture</p>
-                    <p className="flex items-center">
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
+                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> Architecture</p>
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
                       <a href="mailto:pallavihs@jsspwmys.org" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
                         pallavihs@jsspwmys.org
@@ -158,7 +191,7 @@ const Architecture = () => {
           <TabsContent value="facilities" className="mt-6">
             <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
               <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Facilities</h3>
-              <p className="mb-6 text-gray-800 dark:text-gray-300">
+              <p className="mb-6 text-black dark:text-gray-300">
                 The total building area is 600 square metres.
               </p>
               
@@ -237,7 +270,7 @@ const Architecture = () => {
                   <CardTitle className="text-[#0A2463] dark:text-white">Program Educational Objectives</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ul className="space-y-3 text-gray-800 dark:text-gray-300">
+                  <ul className="space-y-3 text-black dark:text-gray-300">
                     <li>
                       <span className="font-semibold">PEO - 1:</span> To educate students in the fundamental principles of architecture.
                     </li>
@@ -262,7 +295,7 @@ const Architecture = () => {
                   <CardTitle className="text-[#0A2463] dark:text-white">Program Outcomes</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-3 text-black dark:text-gray-300">
                     <li>
                       <span className="font-semibold">PO - 1:</span> Apply knowledge of basic mathematics, science and engineering fundamentals and
                       engineering specialization to solve the engineering problems.
