@@ -252,13 +252,13 @@ export default function FacultyPage() {
     setSelectedFaculty(faculty);
     editForm.reset({
       name: faculty.name,
-      position: faculty.position,
+      designation: faculty.designation,
       department: faculty.department,
       qualification: faculty.qualification,
-      imageUrl: faculty.imageUrl || "",
-      bio: faculty.bio || "",
+      image: faculty.image || "",
+      profile: faculty.profile || "",
       email: faculty.email || "",
-      phone: faculty.phone || "",
+      experience: faculty.experience || "",
     });
     setIsEditDialogOpen(true);
   };
@@ -298,7 +298,7 @@ export default function FacultyPage() {
         
         <FormField
           control={form.control}
-          name="position"
+          name="designation"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Position</FormLabel>
@@ -357,7 +357,7 @@ export default function FacultyPage() {
       
       <FormField
         control={form.control}
-        name="imageUrl"
+        name="image"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Image URL (Optional)</FormLabel>
@@ -374,7 +374,7 @@ export default function FacultyPage() {
       
       <FormField
         control={form.control}
-        name="bio"
+        name="profile"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Biography (Optional)</FormLabel>
@@ -408,12 +408,12 @@ export default function FacultyPage() {
         
         <FormField
           control={form.control}
-          name="phone"
+          name="experience"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone (Optional)</FormLabel>
+              <FormLabel>Experience (Optional)</FormLabel>
               <FormControl>
-                <Input placeholder="+91 9876543210" {...field} />
+                <Input placeholder="10+ years" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -516,28 +516,28 @@ export default function FacultyPage() {
                         <TableCell>
                           <div className="flex items-center gap-3">
                             <Avatar>
-                              <AvatarImage src={faculty.imageUrl || ""} alt={faculty.name} />
+                              <AvatarImage src={faculty.image || ""} alt={faculty.name} />
                               <AvatarFallback>{getInitials(faculty.name)}</AvatarFallback>
                             </Avatar>
                             <div>
                               <p className="font-medium">{faculty.name}</p>
-                              {faculty.bio && (
+                              {faculty.profile && (
                                 <p className="text-xs text-muted-foreground max-w-[200px] truncate">
-                                  {faculty.bio}
+                                  {faculty.profile}
                                 </p>
                               )}
                             </div>
                           </div>
                         </TableCell>
-                        <TableCell>{faculty.position}</TableCell>
+                        <TableCell>{faculty.designation}</TableCell>
                         <TableCell>{faculty.department}</TableCell>
                         <TableCell>{faculty.qualification}</TableCell>
                         <TableCell>
                           {faculty.email && (
                             <p className="text-sm">{faculty.email}</p>
                           )}
-                          {faculty.phone && (
-                            <p className="text-sm text-muted-foreground">{faculty.phone}</p>
+                          {faculty.experience && (
+                            <p className="text-sm text-muted-foreground">{faculty.experience}</p>
                           )}
                         </TableCell>
                         <TableCell className="text-right">
