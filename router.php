@@ -1,111 +1,96 @@
 <?php
 /**
- * Router for the PHP development server
- * This script handles routing for both the API endpoints and the static React files
+ * Router for PHP built-in web server
+ * This file handles both API and frontend routes
  */
 
-// Get the requested URI
-$uri = $_SERVER['REQUEST_URI'];
+// Set session path in tmp directory
+ini_set('session.save_path', __DIR__ . '/tmp');
+
+// Get the URL path
+$url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Handle API requests
-if (strpos($uri, '/api/') === 0) {
-    // Map API endpoints to PHP files
-    $apiPath = parse_url($uri, PHP_URL_PATH);
-    $apiFile = __DIR__ . $apiPath . '.php';
+if (strpos($url_path, '/api/') === 0) {
+    // Remove '/api/' from the path
+    $api_path = substr($url_path, 5);
     
-    // Strip trailing slashes for better matching
-    if (substr($apiFile, -1) === '/') {
-        $apiFile = substr($apiFile, 0, -1);
-    }
+    // Map API routes to PHP files
+    $file_path = __DIR__ . '/api/' . $api_path . '.php';
     
-    // Check if the API file exists
-    if (file_exists($apiFile)) {
-        // Include the API file
-        include $apiFile;
+    if (file_exists($file_path)) {
+        // API file exists, include it to process the request
+        include $file_path;
+        return true;
+    } else {
+        // API endpoint not found
+        header('HTTP/1.1 404 Not Found');
+        echo json_encode(['error' => 'API endpoint not found']);
         return true;
     }
-    
-    // Special handling for resource endpoints (e.g., /api/admin/faculty/1)
-    $parts = explode('/', $apiPath);
-    $lastPart = end($parts);
-    
-    // Check if the last part is numeric (resource ID)
-    if (is_numeric($lastPart)) {
-        // Remove the ID from the path
-        array_pop($parts);
-        $resourcePath = implode('/', $parts);
-        $resourceFile = __DIR__ . $resourcePath . '.php';
+}
+
+// Handle static files (CSS, JS, images)
+$extension = pathinfo($url_path, PATHINFO_EXTENSION);
+if ($extension !== '') {
+    $file_path = __DIR__ . $url_path;
+    if (file_exists($file_path)) {
+        // Serve the file with appropriate content type
+        $content_types = [
+            'js' => 'application/javascript',
+            'css' => 'text/css',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'png' => 'image/png',
+            'gif' => 'image/gif',
+            'svg' => 'image/svg+xml',
+            'woff' => 'font/woff',
+            'woff2' => 'font/woff2',
+            'ttf' => 'font/ttf',
+            'eot' => 'application/vnd.ms-fontobject',
+            'otf' => 'font/otf',
+            'ico' => 'image/x-icon',
+            'json' => 'application/json',
+        ];
         
-        if (file_exists($resourceFile)) {
-            // Include the resource file
-            include $resourceFile;
-            return true;
+        if (isset($content_types[$extension])) {
+            header('Content-Type: ' . $content_types[$extension]);
         }
+        
+        readfile($file_path);
+        return true;
+    } else {
+        header('HTTP/1.1 404 Not Found');
+        echo '404 File Not Found';
+        return true;
     }
-    
-    // API endpoint not found
-    header('Content-Type: application/json');
-    http_response_code(404);
-    echo json_encode(['error' => 'API endpoint not found']);
+}
+
+// For all other requests, serve the index.html (SPA) if it exists
+$index_path = __DIR__ . '/client/dist/index.html';
+if (file_exists($index_path)) {
+    readfile($index_path);
+    return true;
+} else {
+    // Otherwise serve a fallback page
+    echo '<!DOCTYPE html>
+    <html>
+    <head>
+        <title>JSS Polytechnic for Women</title>
+        <style>
+            body { font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; flex-direction: column; }
+            .message { text-align: center; max-width: 600px; padding: 20px; }
+            h1 { color: #0A2463; }
+            p { margin-bottom: 20px; line-height: 1.5; }
+        </style>
+    </head>
+    <body>
+        <div class="message">
+            <h1>JSS Polytechnic for Women</h1>
+            <p>The website is currently under maintenance or not built yet. Please check back soon.</p>
+            <p>If you are a developer, make sure to run <code>npm run build</code> in the client directory to build the frontend.</p>
+        </div>
+    </body>
+    </html>';
     return true;
 }
-
-// Handle static React files in dist/public
-$staticPath = __DIR__ . '/dist/public' . $uri;
-
-// If the path is a directory, look for index.html
-if (is_dir($staticPath)) {
-    $staticPath = rtrim($staticPath, '/') . '/index.html';
-}
-
-// If the file exists, serve it
-if (file_exists($staticPath) && !is_dir($staticPath)) {
-    // Get the file extension
-    $extension = pathinfo($staticPath, PATHINFO_EXTENSION);
-    
-    // Set the appropriate Content-Type header
-    switch ($extension) {
-        case 'html':
-            header('Content-Type: text/html');
-            break;
-        case 'css':
-            header('Content-Type: text/css');
-            break;
-        case 'js':
-            header('Content-Type: application/javascript');
-            break;
-        case 'json':
-            header('Content-Type: application/json');
-            break;
-        case 'svg':
-            header('Content-Type: image/svg+xml');
-            break;
-        case 'png':
-            header('Content-Type: image/png');
-            break;
-        case 'jpg':
-        case 'jpeg':
-            header('Content-Type: image/jpeg');
-            break;
-        case 'gif':
-            header('Content-Type: image/gif');
-            break;
-    }
-    
-    // Serve the file
-    readfile($staticPath);
-    return true;
-}
-
-// For all other routes, serve the React app's index.html (for client-side routing)
-$indexPath = __DIR__ . '/dist/public/index.html';
-if (file_exists($indexPath)) {
-    header('Content-Type: text/html');
-    readfile($indexPath);
-    return true;
-}
-
-// File not found
-http_response_code(404);
-echo '404 Not Found';
-return true;

@@ -4,6 +4,10 @@
  */
 
 // Database Configuration
+define('DB_TYPE', 'sqlite'); // Use 'mysql' for production
+define('SQLITE_PATH', __DIR__ . '/../../db.sqlite');
+
+// MySQL configurations (for production)
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root'); // Change this for production
 define('DB_PASSWORD', ''); // Change this for production
