@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const slideImages = [
   {
     id: 1,
-    url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    url: "/attached_assets/bg1.jpg",
     title: "Welcome to JSS Polytechnic For Women",
     description: "Empowering women through quality technical education and holistic development in a supportive learning environment."
   },

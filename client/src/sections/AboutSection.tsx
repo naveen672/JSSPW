@@ -28,7 +28,7 @@ const AboutSection = () => {
           
           <div className="animate-on-scroll overflow-hidden rounded-lg shadow-lg">
             <img 
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              src="/attached_assets/bg1.jpg" 
               alt="JSS Polytechnic For Women campus building" 
               className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
             />
