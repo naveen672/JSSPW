@@ -1,11 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
+
+// Navigation structure
+const navItems = [
+  {
+    title: "HOME",
+    href: "#home",
+    children: []
+  },
+  {
+    title: "ABOUT US",
+    href: "#about",
+    children: [
+      { title: "JSS MAHAVIDYAPEETHA", href: "#jss-mahavidyapeetha" },
+      { title: "Technical Education under JSSMVP", href: "#technical-education" },
+      { title: "About the College", href: "#about-college" }
+    ]
+  },
+  {
+    title: "PROGRAMMES",
+    href: "#programs",
+    children: [
+      { title: "Architecture", href: "#architecture" },
+      { title: "Apparel Design and Fabrication Technology", href: "#apparel-design" },
+      { title: "Commercial Practice", href: "#commercial-practice" },
+      { title: "Computer Science & Engineering", href: "#computer-science" },
+      { title: "Electronics & Communication Engineering", href: "#electronics-communication" },
+      { title: "Electronics Instrumentation and Control ENGG", href: "#electronics-instrumentation" },
+      { title: "Interior Design", href: "#interior-design" },
+      { title: "Information Science", href: "#information-science" }
+    ]
+  },
+  {
+    title: "ADMISSION",
+    href: "#admission",
+    children: []
+  },
+  {
+    title: "SUPPORTS",
+    href: "#supports",
+    children: [
+      { title: "III Cell (Placements & Training Cell)", href: "#iii-cell" },
+      { title: "Hostel", href: "#hostel" },
+      { title: "Library", href: "#library" },
+      { title: "NSS", href: "#nss" },
+      { title: "NCC", href: "#ncc" },
+      { title: "ISTE Chapter", href: "#iste" },
+      { title: "Community Development Through Polytechnic", href: "#community-development" }
+    ]
+  },
+  {
+    title: "EXAMS",
+    href: "#exams",
+    children: []
+  },
+  {
+    title: "CIRCULARS",
+    href: "#circulars",
+    children: [
+      { title: "Academic Calendar", href: "#academic-calendar" },
+      { title: "Exam", href: "#exam-circular" },
+      { title: "Scholarship", href: "#scholarship" },
+      { title: "III Cell", href: "#iii-cell-circular" },
+      { title: "NCC", href: "#ncc-circular" },
+      { title: "NSS", href: "#nss-circular" },
+      { title: "Cultural", href: "#cultural" },
+      { title: "Sports", href: "#sports" },
+      { title: "Alumni", href: "#alumni-circular" },
+      { title: "Hostel", href: "#hostel-circular" }
+    ]
+  },
+  {
+    title: "ALUMNI",
+    href: "#alumni",
+    children: []
+  }
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [, navigate] = useLocation();
+  const dropdownRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +91,24 @@ const Header = () => {
       setIsScrolled(scrollPosition > 50);
     };
 
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeDropdown !== null) {
+        const currentRef = dropdownRefs.current[activeDropdown];
+        if (currentRef && !currentRef.contains(event.target as Node)) {
+          setActiveDropdown(null);
+        }
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeDropdown]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -25,9 +118,20 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleDropdown = (index: number) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  const handleMobileSubMenuClick = (e: React.MouseEvent, item: { title: string, children: any[] }) => {
+    if (item.children.length > 0) {
+      e.preventDefault();
+      // Toggle submenu visibility instead of navigating
+    }
+  };
+
   return (
     <header 
-      className={`relative bg-white transition-all duration-300 ${
+      className={`relative z-50 bg-white transition-all duration-300 ${
         isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
       }`}
     >
@@ -60,15 +164,60 @@ const Header = () => {
 
           {/* Desktop Navigation Menu */}
           <nav className="hidden lg:flex">
-            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-8">
-              <li><a href="#home" className="block py-6 font-medium text-[#0A2463] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Home</a></li>
-              <li><a href="#about" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">About</a></li>
-              <li><a href="#programs" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Programs</a></li>
-              <li><a href="#faculty" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Faculty</a></li>
-              <li><a href="#campus" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Campus Life</a></li>
-              <li><a href="#events" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Events</a></li>
-              <li><a href="#contact" className="block py-6 font-medium text-[#1C1C1C] border-b-2 border-transparent hover:border-[#D8315B] transition-all duration-200">Contact</a></li>
-              <li>
+            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4">
+              {navItems.map((item, index) => (
+                <li key={index} className="relative">
+                  <div
+                    ref={(el) => (dropdownRefs.current[index] = el)}
+                    className="relative"
+                  >
+                    <a 
+                      href={item.children.length > 0 ? "#" : item.href}
+                      className={`flex items-center py-6 font-medium text-[#1C1C1C] border-b-2 ${
+                        index === 0 ? "text-[#0A2463]" : ""
+                      } ${
+                        activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
+                      } hover:border-[#D8315B] transition-all duration-200`}
+                      onClick={(e) => {
+                        if (item.children.length > 0) {
+                          e.preventDefault();
+                          toggleDropdown(index);
+                        }
+                      }}
+                    >
+                      {item.title}
+                      {item.children.length > 0 && (
+                        <ChevronDown 
+                          className={`ml-1 h-4 w-4 transition-transform ${
+                            activeDropdown === index ? "rotate-180" : ""
+                          }`} 
+                        />
+                      )}
+                    </a>
+                    
+                    {/* Dropdown Menu */}
+                    {item.children.length > 0 && (
+                      <div 
+                        className={`absolute left-0 z-10 mt-1 min-w-[250px] rounded-md bg-white py-2 shadow-lg transition-all ${
+                          activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
+                        }`}
+                      >
+                        {item.children.map((child, childIndex) => (
+                          <a
+                            key={childIndex}
+                            href={child.href}
+                            className="block px-4 py-2 text-sm text-[#1C1C1C] hover:bg-[#0A2463]/5 hover:text-[#0A2463]"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {child.title}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </li>
+              ))}
+              <li className="ml-2">
                 <a href="#apply" className="rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
                   Apply Now
                 </a>
@@ -80,13 +229,51 @@ const Header = () => {
         {/* Mobile Menu (Toggleable) */}
         <div className={`border-t-2 py-4 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
           <ul className="space-y-4">
-            <li><a href="#home" onClick={closeMobileMenu} className="block font-medium text-[#0A2463] hover:text-[#D8315B]">Home</a></li>
-            <li><a href="#about" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">About</a></li>
-            <li><a href="#programs" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">Programs</a></li>
-            <li><a href="#faculty" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">Faculty</a></li>
-            <li><a href="#campus" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">Campus Life</a></li>
-            <li><a href="#events" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">Events</a></li>
-            <li><a href="#contact" onClick={closeMobileMenu} className="block font-medium text-[#1C1C1C] hover:text-[#D8315B]">Contact</a></li>
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <div>
+                  <a 
+                    href={item.children.length > 0 ? "#" : item.href}
+                    onClick={(e) => {
+                      if (item.children.length > 0) {
+                        e.preventDefault();
+                        toggleDropdown(index);
+                      } else {
+                        closeMobileMenu();
+                      }
+                    }}
+                    className={`flex items-center justify-between font-medium ${
+                      index === 0 ? "text-[#0A2463]" : "text-[#1C1C1C]"
+                    } hover:text-[#D8315B]`}
+                  >
+                    <span>{item.title}</span>
+                    {item.children.length > 0 && (
+                      <ChevronDown 
+                        className={`ml-1 h-4 w-4 transition-transform ${
+                          activeDropdown === index ? "rotate-180" : ""
+                        }`} 
+                      />
+                    )}
+                  </a>
+                  
+                  {/* Mobile Submenu */}
+                  {item.children.length > 0 && activeDropdown === index && (
+                    <div className="mt-2 space-y-2 pl-4">
+                      {item.children.map((child, childIndex) => (
+                        <a
+                          key={childIndex}
+                          href={child.href}
+                          className="block py-1 text-sm text-[#1C1C1C] hover:text-[#D8315B]"
+                          onClick={closeMobileMenu}
+                        >
+                          {child.title}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
             <li className="pt-2">
               <a href="#apply" onClick={closeMobileMenu} className="inline-block rounded-full bg-[#D8315B] px-6 py-2 font-medium text-white transition-colors hover:bg-[#D8315B]/90">
                 Apply Now
