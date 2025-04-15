@@ -4,6 +4,9 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/Home";
+import JSSMahavidyapeetha from "@/pages/JSSMahavidyapeetha";
+import TechnicalEducation from "@/pages/TechnicalEducation";
+import AboutCollege from "@/pages/AboutCollege";
 import NotFound from "@/pages/not-found";
 import SplashScreen from "@/components/SplashScreen";
 import Header from "@/components/Header";
@@ -16,6 +19,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/jss-mahavidyapeetha" component={JSSMahavidyapeetha} />
+      <Route path="/technical-education" component={TechnicalEducation} />
+      <Route path="/about-college" component={AboutCollege} />
       <Route component={NotFound} />
     </Switch>
   );

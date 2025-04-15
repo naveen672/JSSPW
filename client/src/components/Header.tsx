@@ -14,9 +14,9 @@ const navItems = [
     title: "ABOUT US",
     href: "#about",
     children: [
-      { title: "JSS MAHAVIDYAPEETHA", href: "#jss-mahavidyapeetha" },
-      { title: "Technical Education under JSSMVP", href: "#technical-education" },
-      { title: "About the College", href: "#about-college" }
+      { title: "JSS MAHAVIDYAPEETHA", href: "/jss-mahavidyapeetha" },
+      { title: "Technical Education under JSSMVP", href: "/technical-education" },
+      { title: "About the College", href: "/about-college" }
     ]
   },
   {
@@ -217,7 +217,14 @@ const Header = () => {
                             key={childIndex}
                             href={child.href}
                             className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white"
-                            onClick={() => setActiveDropdown(null)}
+                            onClick={(e) => {
+                              setActiveDropdown(null);
+                              // If it's an external page (not a hash link), use navigate
+                              if (child.href.startsWith('/')) {
+                                e.preventDefault();
+                                navigate(child.href);
+                              }
+                            }}
                           >
                             {child.title}
                           </a>
@@ -269,7 +276,14 @@ const Header = () => {
                           key={childIndex}
                           href={child.href}
                           className="block py-1 text-sm text-gray-700 dark:text-gray-300 hover:text-[#D8315B] dark:hover:text-[#D8315B]"
-                          onClick={closeMobileMenu}
+                          onClick={(e) => {
+                            closeMobileMenu();
+                            // If it's an external page (not a hash link), use navigate
+                            if (child.href.startsWith('/')) {
+                              e.preventDefault();
+                              navigate(child.href);
+                            }
+                          }}
                         >
                           {child.title}
                         </a>
