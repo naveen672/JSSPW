@@ -115,7 +115,7 @@ const ContactSection = () => {
                 <select 
                   id="subject"
                   {...register("subject")}
-                  className={`w-full rounded-lg border ${errors.subject ? 'border-red-500' : 'border-gray-300'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30`}
+                  className={`w-full rounded-lg border ${errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 >
                   <option value="" disabled>Please select</option>
                   <option value="admissions">Admissions Information</option>
@@ -136,7 +136,7 @@ const ContactSection = () => {
                   id="message"
                   rows={5}
                   {...register("message")}
-                  className={`w-full rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30`}
+                  className={`w-full rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 ></textarea>
                 {errors.message && (
                   <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>

@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, type ContactMessage, type InsertContactMessage } from "@shared/schema";
+import { users, type User, type InsertUser, type ContactMessage, type InsertContactMessage, type SiteStats } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -8,11 +8,14 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  getVisitorCount(): Promise<number>;
+  incrementVisitorCount(): Promise<number>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private contactMessages: Map<number, ContactMessage>;
+  private siteStats: SiteStats;
   currentUserId: number;
   currentContactMessageId: number;
 
@@ -21,6 +24,11 @@ export class MemStorage implements IStorage {
     this.contactMessages = new Map();
     this.currentUserId = 1;
     this.currentContactMessageId = 1;
+    this.siteStats = {
+      id: 1,
+      visitorCount: 1000, // Start with an initial count
+      lastUpdated: new Date()
+    };
   }
 
   async getUser(id: number): Promise<User | undefined> {

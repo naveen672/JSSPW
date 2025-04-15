@@ -2,6 +2,12 @@ import { pgTable, text, serial, integer, boolean, timestamp } from "drizzle-orm/
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+export const siteStats = pgTable("site_stats", {
+  id: serial("id").primaryKey(),
+  visitorCount: integer("visitor_count").notNull().default(0),
+  lastUpdated: timestamp("last_updated").defaultNow().notNull(),
+});
+
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
@@ -36,3 +42,5 @@ export type User = typeof users.$inferSelect;
 
 export type InsertContactMessage = z.infer<typeof insertContactMessageSchema>;
 export type ContactMessage = typeof contactMessages.$inferSelect;
+
+export type SiteStats = typeof siteStats.$inferSelect;
