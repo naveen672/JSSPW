@@ -23,58 +23,58 @@ const navItems = [
     title: "PROGRAMMES",
     href: "#programs",
     children: [
-      { title: "Architecture", href: "#architecture" },
-      { title: "Apparel Design and Fabrication Technology", href: "#apparel-design" },
-      { title: "Commercial Practice", href: "#commercial-practice" },
-      { title: "Computer Science & Engineering", href: "#computer-science" },
-      { title: "Electronics & Communication Engineering", href: "#electronics-communication" },
-      { title: "Electronics Instrumentation and Control ENGG", href: "#electronics-instrumentation" },
-      { title: "Interior Design", href: "#interior-design" },
-      { title: "Information Science", href: "#information-science" }
+      { title: "Architecture", href: "/programs/architecture" },
+      { title: "Apparel Design and Fabrication Technology", href: "/programs/apparel-design" },
+      { title: "Commercial Practice", href: "/programs/commercial-practice" },
+      { title: "Computer Science & Engineering", href: "/programs/computer-science" },
+      { title: "Electronics & Communication Engineering", href: "/programs/electronics-communication" },
+      { title: "Electronics Instrumentation and Control ENGG", href: "/programs/electronics-instrumentation" },
+      { title: "Interior Design", href: "/programs/interior-design" },
+      { title: "Information Science", href: "/programs/information-science" }
     ]
   },
   {
     title: "ADMISSION",
-    href: "#admission",
+    href: "/admission",
     children: []
   },
   {
     title: "SUPPORTS",
     href: "#supports",
     children: [
-      { title: "III Cell (Placements & Training Cell)", href: "#iii-cell" },
-      { title: "Hostel", href: "#hostel" },
-      { title: "Library", href: "#library" },
-      { title: "NSS", href: "#nss" },
-      { title: "NCC", href: "#ncc" },
-      { title: "ISTE Chapter", href: "#iste" },
-      { title: "Community Development Through Polytechnic", href: "#community-development" }
+      { title: "III Cell (Placements & Training Cell)", href: "/supports/iii-cell" },
+      { title: "Hostel", href: "/supports/hostel" },
+      { title: "Library", href: "/supports/library" },
+      { title: "NSS", href: "/supports/nss" },
+      { title: "NCC", href: "/supports/ncc" },
+      { title: "ISTE Chapter", href: "/supports/iste-chapter" },
+      { title: "Community Development Through Polytechnic", href: "/supports/community-development" }
     ]
   },
   {
     title: "EXAMS",
-    href: "#exams",
+    href: "/exams",
     children: []
   },
   {
     title: "CIRCULARS",
     href: "#circulars",
     children: [
-      { title: "Academic Calendar", href: "#academic-calendar" },
-      { title: "Exam", href: "#exam-circular" },
-      { title: "Scholarship", href: "#scholarship" },
-      { title: "III Cell", href: "#iii-cell-circular" },
-      { title: "NCC", href: "#ncc-circular" },
-      { title: "NSS", href: "#nss-circular" },
-      { title: "Cultural", href: "#cultural" },
-      { title: "Sports", href: "#sports" },
-      { title: "Alumni", href: "#alumni-circular" },
-      { title: "Hostel", href: "#hostel-circular" }
+      { title: "Academic Calendar", href: "/circulars/academic-calendar" },
+      { title: "Exam", href: "/circulars/exam" },
+      { title: "Scholarship", href: "/circulars/scholarship" },
+      { title: "III Cell", href: "/circulars/iii-cell" },
+      { title: "NCC", href: "/circulars/ncc" },
+      { title: "NSS", href: "/circulars/nss" },
+      { title: "Cultural", href: "/circulars/cultural" },
+      { title: "Sports", href: "/circulars/sports" },
+      { title: "Alumni", href: "/circulars/alumni" },
+      { title: "Hostel", href: "/circulars/hostel" }
     ]
   },
   {
     title: "ALUMNI",
-    href: "#alumni",
+    href: "/alumni",
     children: []
   }
 ];
