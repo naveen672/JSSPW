@@ -33,10 +33,15 @@ const ContactSection = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (data: ContactFormValues) => 
       apiRequest("POST", "/api/contact", data),
-    onSuccess: () => {
+    onSuccess: (response) => {
+      // Check if the email confirmation was sent successfully
+      const emailSent = response.emailSent;
+      
       toast({
         title: "Message Sent",
-        description: "Thank you for contacting us. We will get back to you soon.",
+        description: emailSent 
+          ? "Thank you for contacting us. A confirmation email has been sent to your inbox. Our team will get in touch with you shortly."
+          : "Thank you for contacting us. We will get back to you soon.",
         variant: "default",
       });
       reset();

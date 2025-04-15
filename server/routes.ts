@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertContactMessageSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { sendContactConfirmationEmail, sendAdminNotificationEmail } from "./emailService";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Visitor counter endpoints
@@ -36,9 +37,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Store contact message
       const message = await storage.createContactMessage(contactData);
       
+      // Send confirmation email to the user
+      const userEmailResult = await sendContactConfirmationEmail(message);
+      
+      // Send notification email to admin
+      const adminEmailResult = await sendAdminNotificationEmail(message);
+      
+      // Log email sending results
+      console.log(`Confirmation email to user: ${userEmailResult ? 'Sent' : 'Failed'}`);
+      console.log(`Notification email to admin: ${adminEmailResult ? 'Sent' : 'Failed'}`);
+      
       res.status(201).json({
         message: "Contact message submitted successfully",
-        data: message
+        data: message,
+        emailSent: userEmailResult
       });
     } catch (error) {
       if (error instanceof ZodError) {
