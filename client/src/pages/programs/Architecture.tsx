@@ -59,10 +59,11 @@ const Architecture = () => {
         
         {/* Tabs for Different Sections */}
         <Tabs defaultValue="faculty" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
             <TabsTrigger value="faculty">Faculty</TabsTrigger>
             <TabsTrigger value="facilities">Facilities</TabsTrigger>
             <TabsTrigger value="academics">Academics</TabsTrigger>
+            <TabsTrigger value="activities">Activities</TabsTrigger>
             <TabsTrigger value="contacts">Contacts</TabsTrigger>
           </TabsList>
           
@@ -296,19 +297,90 @@ const Architecture = () => {
                           </Button>
                         </a>
                       </div>
-                      
-                      <div className="flex items-center justify-between rounded-md border p-4">
-                        <div className="flex items-center">
-                          <FileText className="mr-2 h-5 w-5 text-[#3E92CC]" />
-                          <span>Department Activities</span>
-                        </div>
-                        <a href="/architecture-activities.pdf" download className="inline-flex items-center">
-                          <Button variant="outline" size="sm">
-                            <Download className="mr-2 h-4 w-4" />
-                            Download
-                          </Button>
-                        </a>
-                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </TabsContent>
+          
+          {/* Activities Tab */}
+          <TabsContent value="activities" className="mt-6">
+            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+              <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Activities</h3>
+              
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <Card>
+                  <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
+                    <CardTitle className="text-[#0A2463] dark:text-white">Recent Workshops</CardTitle>
+                    <CardDescription>Hands-on learning experiences for students</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Urban Planning and Sustainable Design Workshop</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Digital Architectural Modeling Techniques</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Traditional Construction Methods and Materials</span>
+                      </li>
+                    </ul>
+                    <div className="mt-6">
+                      <a href="/architecture-workshops.pdf" download className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Workshops Calendar
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
+                    <CardTitle className="text-[#0A2463] dark:text-white">Competitions & Events</CardTitle>
+                    <CardDescription>Opportunities for students to showcase their talents</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Annual Architecture Design Competition</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Model Making Exhibition</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
+                        <span>Heritage Conservation Projects</span>
+                      </li>
+                    </ul>
+                    <div className="mt-6">
+                      <a href="/architecture-competitions.pdf" download className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Competition Guidelines
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="md:col-span-2">
+                  <CardHeader className="bg-[#0A2463]/10 dark:bg-[#0A2463]/20">
+                    <CardTitle className="text-[#0A2463] dark:text-white">Industrial Visits & Field Trips</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <p className="mb-4 text-gray-700 dark:text-gray-300">
+                      The department regularly organizes industrial visits and field trips to expose students to real-world architectural practices, construction sites, and historical buildings. These visits provide valuable hands-on learning experiences and help students understand the practical applications of their studies.
+                    </p>
+                    <div className="mt-6">
+                      <a href="/architecture-activities.pdf" download className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Activities Report
+                      </a>
                     </div>
                   </CardContent>
                 </Card>
