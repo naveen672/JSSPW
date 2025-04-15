@@ -1,166 +1,146 @@
 <?php
+/**
+ * Database Connection and Table Setup
+ */
+
+// Include config file
 require_once 'config.php';
 
 class Database {
     private $conn;
     
     /**
-     * Connect to the database
-     * @return mysqli connection object
+     * Constructor - establishes database connection and sets up tables if needed
      */
-    public function getConnection() {
-        $this->conn = null;
+    public function __construct() {
+        // Create connection
+        $this->conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD);
         
-        try {
-            $this->conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-            
-            if ($this->conn->connect_error) {
-                throw new Exception("Connection failed: " . $this->conn->connect_error);
-            }
-            
-            // Set character set
-            $this->conn->set_charset("utf8");
-            
-        } catch(Exception $e) {
-            echo "Database connection error: " . $e->getMessage();
-            die();
+        // Check connection
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
         }
         
+        // Create database if it doesn't exist
+        $this->createDatabase();
+        
+        // Select database
+        $this->conn->select_db(DB_NAME);
+        
+        // Create tables if they don't exist
+        $this->createTables();
+    }
+    
+    /**
+     * Get database connection
+     */
+    public function getConnection() {
         return $this->conn;
     }
     
     /**
-     * Create database tables if they don't exist
+     * Create database if it doesn't exist
      */
-    public function createTablesIfNotExist() {
-        $conn = $this->getConnection();
-        
-        // Users table
+    private function createDatabase() {
+        $sql = "CREATE DATABASE IF NOT EXISTS " . DB_NAME;
+        $this->conn->query($sql);
+    }
+    
+    /**
+     * Create required tables if they don't exist
+     */
+    private function createTables() {
+        // Create users table
         $sql = "CREATE TABLE IF NOT EXISTS users (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(50) NOT NULL UNIQUE,
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            username VARCHAR(50) NOT NULL,
             password VARCHAR(255) NOT NULL,
             role VARCHAR(20) NOT NULL DEFAULT 'user',
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id),
+            UNIQUE KEY (username)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating users table: " . $conn->error;
-        }
-        
-        // Contact messages table
+        // Create contact_messages table
         $sql = "CREATE TABLE IF NOT EXISTS contact_messages (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            id INT(11) NOT NULL AUTO_INCREMENT,
             name VARCHAR(100) NOT NULL,
             email VARCHAR(100) NOT NULL,
-            subject VARCHAR(200) NOT NULL,
+            phone VARCHAR(20),
             message TEXT NOT NULL,
-            read TINYINT(1) DEFAULT 0,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            isRead TINYINT(1) NOT NULL DEFAULT 0,
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating contact_messages table: " . $conn->error;
-        }
-        
-        // Flash news table
+        // Create flash_news table
         $sql = "CREATE TABLE IF NOT EXISTS flash_news (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            text VARCHAR(255) NOT NULL,
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            text TEXT NOT NULL,
             link VARCHAR(255),
-            active TINYINT(1) DEFAULT 1,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            active TINYINT(1) NOT NULL DEFAULT 1,
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating flash_news table: " . $conn->error;
-        }
-        
-        // Events table
+        // Create events table
         $sql = "CREATE TABLE IF NOT EXISTS events (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(200) NOT NULL,
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            title VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
             date DATE NOT NULL,
             time VARCHAR(50),
-            location VARCHAR(200) NOT NULL,
+            location VARCHAR(255) NOT NULL,
             image VARCHAR(255),
-            active TINYINT(1) DEFAULT 1,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            active TINYINT(1) NOT NULL DEFAULT 1,
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating events table: " . $conn->error;
-        }
-        
-        // Faculty table
+        // Create faculty table
         $sql = "CREATE TABLE IF NOT EXISTS faculty (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            firstName VARCHAR(100) NOT NULL,
-            lastName VARCHAR(100) NOT NULL,
-            designation VARCHAR(200) NOT NULL,
-            department VARCHAR(200) NOT NULL,
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            firstName VARCHAR(50) NOT NULL,
+            lastName VARCHAR(50) NOT NULL,
+            designation VARCHAR(100) NOT NULL,
+            department VARCHAR(100) NOT NULL,
             profile TEXT,
             image VARCHAR(255),
             email VARCHAR(100),
             phone VARCHAR(20),
-            active TINYINT(1) DEFAULT 1,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            active TINYINT(1) NOT NULL DEFAULT 1,
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating faculty table: " . $conn->error;
-        }
-        
-        // Site stats table
+        // Create site_stats table
         $sql = "CREATE TABLE IF NOT EXISTS site_stats (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(50) NOT NULL UNIQUE,
-            value INT(11) NOT NULL DEFAULT 0,
-            updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            visitorsCount INT(11) NOT NULL DEFAULT 0,
+            lastUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
         )";
+        $this->conn->query($sql);
         
-        if (!$conn->query($sql)) {
-            echo "Error creating site_stats table: " . $conn->error;
-        }
-        
-        // Insert default visitor count if it doesn't exist
-        $sql = "INSERT IGNORE INTO site_stats (name, value) VALUES ('visitor_count', 0)";
-        $conn->query($sql);
-        
-        // Create default admin user if none exists
-        $this->createDefaultAdminIfNotExists();
-    }
-    
-    /**
-     * Create default admin user if no users exist
-     */
-    private function createDefaultAdminIfNotExists() {
-        $conn = $this->getConnection();
-        
-        // Check if any users exist
-        $result = $conn->query("SELECT COUNT(*) as count FROM users");
+        // Create default admin user if no users exist
+        $result = $this->conn->query("SELECT COUNT(*) as count FROM users");
         $row = $result->fetch_assoc();
         
         if ($row['count'] == 0) {
-            // Create default admin
-            $username = 'admin';
-            $password = password_hash('admin123', PASSWORD_BCRYPT, ['cost' => HASH_COST]);
-            $role = 'admin';
+            // Hash the default admin password
+            $hashedPassword = password_hash(DEFAULT_ADMIN_PASSWORD, PASSWORD_DEFAULT);
             
-            $stmt = $conn->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $username, $password, $role);
-            
-            if ($stmt->execute()) {
-                echo "Default admin user created.";
-            } else {
-                echo "Error creating default admin: " . $stmt->error;
-            }
-            
+            // Insert default admin user
+            $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, 'admin')";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("ss", DEFAULT_ADMIN_USERNAME, $hashedPassword);
+            $stmt->execute();
             $stmt->close();
         }
     }
 }
-
-// Initialize database
-$database = new Database();

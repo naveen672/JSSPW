@@ -1,187 +1,134 @@
 <?php
-require_once 'config.php';
+/**
+ * Authentication Utility Class
+ */
+
+// Include database connection
 require_once 'database.php';
 
 class Auth {
     private $db;
-    private $conn;
     
+    /**
+     * Constructor - initializes database connection
+     */
     public function __construct() {
         $this->db = new Database();
-        $this->conn = $this->db->getConnection();
-        
-        // Start session if not already started
-        if (session_status() == PHP_SESSION_NONE) {
-            session_name(SESSION_NAME);
-            session_start();
-        }
     }
     
     /**
-     * Login user
+     * Authenticate user with username and password
+     * 
      * @param string $username
      * @param string $password
-     * @return array User data or error message
+     * @return array|false User data if authenticated, false otherwise
      */
-    public function login($username, $password) {
-        // Validate input
-        if (empty($username) || empty($password)) {
-            return ['error' => 'Username and password are required'];
-        }
+    public function authenticate($username, $password) {
+        $conn = $this->db->getConnection();
         
-        $stmt = $this->conn->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
+        // Prepare query
+        $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
-        if ($result->num_rows > 0) {
+        if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
             
+            // Verify password
             if (password_verify($password, $user['password'])) {
-                // Don't store password in session
+                // Don't return the password
                 unset($user['password']);
-                
-                // Set session variables
-                $_SESSION['user'] = $user;
-                $_SESSION['loggedin'] = true;
-                
-                return ['user' => $user];
-            } else {
-                return ['error' => 'Invalid password'];
+                return $user;
             }
-        } else {
-            return ['error' => 'User not found'];
         }
+        
+        return false;
     }
     
     /**
-     * Register a new user
-     * @param string $username
-     * @param string $password
-     * @param string $role
-     * @return array User data or error message
-     */
-    public function register($username, $password, $role = 'user') {
-        // Validate input
-        if (empty($username) || empty($password)) {
-            return ['error' => 'Username and password are required'];
-        }
-        
-        // Check if username already exists
-        $stmt = $this->conn->prepare("SELECT id FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows > 0) {
-            return ['error' => 'Username already exists'];
-        }
-        
-        // Hash password
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ['cost' => HASH_COST]);
-        
-        // Insert new user
-        $stmt = $this->conn->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $hashedPassword, $role);
-        
-        if ($stmt->execute()) {
-            $userId = $stmt->insert_id;
-            
-            // Fetch the created user
-            $stmt = $this->conn->prepare("SELECT id, username, role FROM users WHERE id = ?");
-            $stmt->bind_param("i", $userId);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $user = $result->fetch_assoc();
-            
-            return ['user' => $user];
-        } else {
-            return ['error' => 'Registration failed: ' . $stmt->error];
-        }
-    }
-    
-    /**
-     * Logout user
-     * @return boolean Success status
-     */
-    public function logout() {
-        // Unset all session variables
-        $_SESSION = [];
-        
-        // Destroy the session
-        session_destroy();
-        
-        return true;
-    }
-    
-    /**
-     * Check if user is logged in
-     * @return boolean
+     * Check if the current session has a logged-in user
+     * 
+     * @return bool True if user is logged in, false otherwise
      */
     public function isLoggedIn() {
-        return isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
-    }
-    
-    /**
-     * Get current logged in user
-     * @return array|null User data or null
-     */
-    public function getCurrentUser() {
-        if ($this->isLoggedIn()) {
-            return $_SESSION['user'];
+        // Start session if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-        return null;
+        
+        return isset($_SESSION['user']);
     }
     
     /**
-     * Check if current user is admin
-     * @return boolean
+     * Check if the current session has a logged-in admin
+     * 
+     * @return bool True if user is admin, false otherwise
      */
     public function isAdmin() {
-        $user = $this->getCurrentUser();
-        return $user && $user['role'] === 'admin';
-    }
-    
-    /**
-     * Require user to be logged in
-     * @param boolean $returnJson Whether to return JSON response or redirect
-     * @return mixed
-     */
-    public function requireLogin($returnJson = true) {
+        // Check if logged in
         if (!$this->isLoggedIn()) {
-            if ($returnJson) {
-                header('Content-Type: application/json');
-                echo json_encode(['error' => 'Not authenticated']);
-                exit;
-            } else {
-                header('Location: /login.php');
-                exit;
-            }
+            return false;
         }
-        return true;
+        
+        // Check if user is admin
+        return $_SESSION['user']['role'] === 'admin';
     }
     
     /**
-     * Require user to be admin
-     * @param boolean $returnJson Whether to return JSON response or redirect
-     * @return mixed
+     * Require authentication for protected routes
+     * Will send 401 Unauthorized response if not authenticated
      */
-    public function requireAdmin($returnJson = true) {
-        $this->requireLogin($returnJson);
-        
-        if (!$this->isAdmin()) {
-            if ($returnJson) {
-                header('Content-Type: application/json');
-                echo json_encode(['error' => 'Not authorized']);
-                exit;
-            } else {
-                header('Location: /unauthorized.php');
-                exit;
-            }
+    public function requireAuth() {
+        if (!$this->isLoggedIn()) {
+            http_response_code(401); // Unauthorized
+            echo json_encode(['error' => 'Authentication required']);
+            exit;
         }
-        return true;
+    }
+    
+    /**
+     * Require admin authentication for protected routes
+     * Will send 401 Unauthorized or 403 Forbidden response if not authorized
+     */
+    public function requireAdmin() {
+        // First check if user is logged in
+        if (!$this->isLoggedIn()) {
+            http_response_code(401); // Unauthorized
+            echo json_encode(['error' => 'Authentication required']);
+            exit;
+        }
+        
+        // Then check if user is admin
+        if (!$this->isAdmin()) {
+            http_response_code(403); // Forbidden
+            echo json_encode(['error' => 'Admin privileges required']);
+            exit;
+        }
+    }
+    
+    /**
+     * Change user password
+     * 
+     * @param int $userId
+     * @param string $newPassword
+     * @return bool True if password changed successfully, false otherwise
+     */
+    public function changePassword($userId, $newPassword) {
+        $conn = $this->db->getConnection();
+        
+        // Hash the new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        
+        // Prepare and execute query
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt->bind_param("si", $hashedPassword, $userId);
+        $result = $stmt->execute();
+        $stmt->close();
+        
+        return $result;
     }
 }
 
-// Initialize auth
+// Create global auth instance
 $auth = new Auth();
