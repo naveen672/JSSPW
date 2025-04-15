@@ -3,7 +3,7 @@ import buildingImg from "../assets/bg1.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 dark:bg-gray-900">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic For Women</h2>
@@ -13,10 +13,10 @@ const AboutSection = () => {
         <div className="grid gap-12 md:grid-cols-2">
           <div className="animate-on-scroll">
             <h3 className="mb-6 text-2xl font-semibold text-[#0A2463] dark:text-white">Our Mission & Vision</h3>
-            <p className="mb-6 text-[#1C1C1C] dark:text-gray-300">
+            <p className="mb-6 text-gray-700 dark:text-gray-300">
               JSS Polytechnic For Women is dedicated to empowering women through quality technical education, fostering innovation, and developing industry-ready professionals. Our vision is to be a premier technical institution that transforms young women into skilled, confident, and socially responsible engineers.
             </p>
-            <p className="mb-6 text-[#1C1C1C] dark:text-gray-300">
+            <p className="mb-6 text-gray-700 dark:text-gray-300">
               Established under the JSS Mahavidyapeetha, we have been committed to providing exceptional technical education exclusively for women. Our institute has consistently maintained excellence in academics, placement, and creating a supportive environment for women to excel in STEM fields.
             </p>
             <div className="mt-8">
@@ -41,25 +41,25 @@ const AboutSection = () => {
           <div className="animate-on-scroll text-center">
             <Building2 className="mx-auto mb-4 h-12 w-12 text-[#3E92CC]" />
             <h4 className="mb-2 text-xl font-semibold text-[#0A2463] dark:text-white">Established</h4>
-            <p className="text-[#1C1C1C] dark:text-gray-300">Under JSS Mahavidyapeetha, a premier educational group</p>
+            <p className="text-gray-700 dark:text-gray-300">Under JSS Mahavidyapeetha, a premier educational group</p>
           </div>
           
           <div className="animate-on-scroll text-center">
             <User className="mx-auto mb-4 h-12 w-12 text-[#3E92CC]" />
             <h4 className="mb-2 text-xl font-semibold text-[#0A2463] dark:text-white">1000+ Students</h4>
-            <p className="text-[#1C1C1C] dark:text-gray-300">Focused exclusively on women's technical education</p>
+            <p className="text-gray-700 dark:text-gray-300">Focused exclusively on women's technical education</p>
           </div>
           
           <div className="animate-on-scroll text-center">
             <Award className="mx-auto mb-4 h-12 w-12 text-[#3E92CC]" />
             <h4 className="mb-2 text-xl font-semibold text-[#0A2463] dark:text-white">#1 in Region</h4>
-            <p className="text-[#1C1C1C] dark:text-gray-300">For women's technical education and placement</p>
+            <p className="text-gray-700 dark:text-gray-300">For women's technical education and placement</p>
           </div>
           
           <div className="animate-on-scroll text-center">
             <GraduationCap className="mx-auto mb-4 h-12 w-12 text-[#3E92CC]" />
             <h4 className="mb-2 text-xl font-semibold text-[#0A2463] dark:text-white">95% Placement</h4>
-            <p className="text-[#1C1C1C] dark:text-gray-300">Excellent industry connections for career growth</p>
+            <p className="text-gray-700 dark:text-gray-300">Excellent industry connections for career growth</p>
           </div>
         </div>
       </div>
