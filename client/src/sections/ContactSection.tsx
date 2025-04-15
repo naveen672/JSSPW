@@ -80,7 +80,7 @@ const ContactSection = () => {
                     type="text" 
                     id="first-name"
                     {...register("firstName")}
-                    className={`w-full rounded-lg border ${errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
+                    className={`w-full rounded-lg border ${errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 text-gray-900 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                   />
                   {errors.firstName && (
                     <p className="mt-1 text-xs text-red-500">{errors.firstName.message}</p>
@@ -92,7 +92,7 @@ const ContactSection = () => {
                     type="text" 
                     id="last-name"
                     {...register("lastName")}
-                    className={`w-full rounded-lg border ${errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
+                    className={`w-full rounded-lg border ${errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 text-gray-900 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                   />
                   {errors.lastName && (
                     <p className="mt-1 text-xs text-red-500">{errors.lastName.message}</p>
@@ -106,7 +106,7 @@ const ContactSection = () => {
                   type="email" 
                   id="email"
                   {...register("email")}
-                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
+                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 text-gray-900 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 />
                 {errors.email && (
                   <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
@@ -118,7 +118,7 @@ const ContactSection = () => {
                 <select 
                   id="subject"
                   {...register("subject")}
-                  className={`w-full rounded-lg border ${errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
+                  className={`w-full rounded-lg border ${errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 text-gray-900 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 >
                   <option value="" disabled>Please select</option>
                   <option value="admissions">Admissions Information</option>
@@ -139,7 +139,7 @@ const ContactSection = () => {
                   id="message"
                   rows={5}
                   {...register("message")}
-                  className={`w-full rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
+                  className={`w-full rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 text-gray-900 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 ></textarea>
                 {errors.message && (
                   <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>

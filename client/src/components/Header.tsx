@@ -164,7 +164,7 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <DarkModeToggle />
             <button 
-              className="text-dark focus:outline-none lg:hidden dark:text-gray-200"
+              className="text-gray-800 focus:outline-none lg:hidden dark:text-gray-200"
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
             >
@@ -183,7 +183,7 @@ const Header = () => {
                   >
                     <a 
                       href={item.children.length > 0 ? "#" : item.href}
-                      className={`flex items-center py-6 font-medium text-[#1C1C1C] dark:text-gray-200 border-b-2 ${
+                      className={`flex items-center py-6 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
                         index === 0 ? "text-[#0A2463] dark:text-white" : ""
                       } ${
                         activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
@@ -248,7 +248,7 @@ const Header = () => {
                       }
                     }}
                     className={`flex items-center justify-between font-medium ${
-                      index === 0 ? "text-[#0A2463] dark:text-white" : "text-[#1C1C1C] dark:text-gray-200"
+                      index === 0 ? "text-[#0A2463] dark:text-white" : "text-gray-700 dark:text-gray-200"
                     } hover:text-[#D8315B] dark:hover:text-[#D8315B]`}
                   >
                     <span>{item.title}</span>
@@ -268,7 +268,7 @@ const Header = () => {
                         <a
                           key={childIndex}
                           href={child.href}
-                          className="block py-1 text-sm text-[#1C1C1C] dark:text-gray-300 hover:text-[#D8315B] dark:hover:text-[#D8315B]"
+                          className="block py-1 text-sm text-gray-700 dark:text-gray-300 hover:text-[#D8315B] dark:hover:text-[#D8315B]"
                           onClick={closeMobileMenu}
                         >
                           {child.title}
