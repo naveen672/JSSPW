@@ -6,6 +6,7 @@ import CampusLifeSection from "@/sections/CampusLifeSection";
 import EventsSection from "@/sections/EventsSection";
 import ParallaxCTA from "@/sections/ParallaxCTA";
 import ContactSection from "@/sections/ContactSection";
+import AccreditationSection from "@/sections/AccreditationSection";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { useInView } from "framer-motion";
@@ -41,6 +42,7 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <ProgramsSection />
+      <AccreditationSection />
       <FacultySection />
       <CampusLifeSection />
       <EventsSection />
