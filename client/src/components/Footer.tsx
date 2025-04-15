@@ -1,9 +1,11 @@
 import { useLocation } from "wouter";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, ExternalLink } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Users } from "lucide-react";
+import { useVisitorCounter } from "@/hooks/use-visitor-counter";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [, navigate] = useLocation();
+  const { visitorCount, loading, error } = useVisitorCounter();
   
   return (
     <footer className="bg-[#0A2463] py-12 text-white">
@@ -102,11 +104,17 @@ const Footer = () => {
             <div className="text-sm text-white/80">
               &copy; {currentYear} JSS Polytechnic For Women. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm text-white/80">
-              <a href="#" className="hover:text-[#D8315B]">Privacy Policy</a>
-              <a href="#" className="hover:text-[#D8315B]">Terms of Use</a>
-              <a href="#" className="hover:text-[#D8315B]">Accessibility</a>
-              <a href="#" className="hover:text-[#D8315B]">Mandatory Disclosure</a>
+            <div className="flex items-center space-x-4 text-sm">
+              <div className="flex items-center text-white/80">
+                <Users className="mr-2 h-4 w-4 text-[#D8315B]" />
+                <span>Visitors: {loading ? "Loading..." : visitorCount?.toLocaleString() || "-"}</span>
+              </div>
+              <div className="hidden sm:flex sm:space-x-6 sm:text-white/80">
+                <a href="#" className="hover:text-[#D8315B]">Privacy Policy</a>
+                <a href="#" className="hover:text-[#D8315B]">Terms of Use</a>
+                <a href="#" className="hover:text-[#D8315B]">Accessibility</a>
+                <a href="#" className="hover:text-[#D8315B]">Mandatory Disclosure</a>
+              </div>
             </div>
           </div>
         </div>

@@ -6,6 +6,27 @@ import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Visitor counter endpoints
+  app.get("/api/visitors/count", async (req, res) => {
+    try {
+      const count = await storage.getVisitorCount();
+      res.json({ count });
+    } catch (error) {
+      console.error("Error getting visitor count:", error);
+      res.status(500).json({ message: "Failed to get visitor count" });
+    }
+  });
+
+  app.post("/api/visitors/increment", async (req, res) => {
+    try {
+      const count = await storage.incrementVisitorCount();
+      res.json({ count });
+    } catch (error) {
+      console.error("Error incrementing visitor count:", error);
+      res.status(500).json({ message: "Failed to increment visitor count" });
+    }
+  });
+
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {

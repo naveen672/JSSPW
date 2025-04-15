@@ -59,6 +59,16 @@ export class MemStorage implements IStorage {
     this.contactMessages.set(id, message);
     return message;
   }
+
+  async getVisitorCount(): Promise<number> {
+    return this.siteStats.visitorCount;
+  }
+
+  async incrementVisitorCount(): Promise<number> {
+    this.siteStats.visitorCount += 1;
+    this.siteStats.lastUpdated = new Date();
+    return this.siteStats.visitorCount;
+  }
 }
 
 export const storage = new MemStorage();
