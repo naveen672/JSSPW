@@ -110,10 +110,13 @@ const ComputerScience = () => {
               <div>
                 <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">About the Computer Science Program</h2>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Computer Science & Engineering program at JSS Polytechnic for Women provides comprehensive education in computing fundamentals, programming, and software development. The program equips students with technical skills needed to excel in the rapidly evolving IT industry.
+                  The department comprises of qualified and experienced teaching staff, who are committed to excellence and have brought creative and innovative methods in teaching. Department also has experienced and motivated technical staff who impart the requisite knowledge and technical skills to the students.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  With a blend of theoretical knowledge and practical training, our program prepares students for careers in software development, web design, database administration, and various other IT domains.
+                  The department has well equipped laboratories housing state of the art computer systems with latest configuration and peripherals.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  The Internet facility at 50 mbps has been provided for the students to access information. Besides imparting theoretical knowledge, lot of effort is put in for hands-on training. Students get individual attention and counseling for their personality development.
                 </p>
               </div>
 

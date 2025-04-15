@@ -110,27 +110,27 @@ const ElectronicsCommunication = () => {
               <div>
                 <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">About the Electronics & Communication Program</h2>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Electronics & Communication Engineering program at JSS Polytechnic for Women provides a comprehensive education in electronic systems, communication networks, and signal processing. Our program equips students with the technical knowledge and practical skills needed for careers in the rapidly evolving field of electronics and telecommunications.
+                  The Electronics & Communication Engineering program was started in the year 1980. The focus of the department is to produce technicians with strong fundamentals in electronics and communication domain. The plan is underway to adopt outcome based education system to help students to achieve the goal. 
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  With a focus on both theoretical concepts and practical applications, our curriculum covers digital electronics, communication systems, microprocessors, embedded systems, and more. The program prepares students for careers in sectors like telecommunications, consumer electronics, semiconductor manufacturing, and IoT.
+                  The department is the most sought after branch of engineering by toppers in SSLC examination (conducted by Karnataka Secondary Education Board). The department of Electronics and Communications Engineering has got experienced faculty & well equipped laboratories. The Department has organized many Guest lectures and workshops to enhance the knowledge in field of electronics and communication. Every year the dept. secures good results, placement & higher study opportunities.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Vision</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  To be a center of excellence in electronics and communication engineering education, producing skilled professionals who contribute to technological innovation and sustainable development.
+                  To produce creative, innovative, dynamic, and ethical technologists who can lead in the ever-changing world of electronics and communication technologies.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Providing quality education in electronics and communication engineering with a focus on practical skills.</li>
-                  <li>Fostering innovation and research in emerging areas of electronics and communication technologies.</li>
-                  <li>Developing strong industry connections to enhance student employability and professional growth.</li>
-                  <li>Promoting ethical practices and environmental consciousness in technological applications.</li>
+                  <li>To impart quality technical education to the students providing excellent teaching-learning environment and competitive curriculum in collaboration with industry through state-of-the-art infrastructure and resources.</li>
+                  <li>To provide experience in teamwork, communications-oral, written and hands-on skills with the help of structured and unstructured real-world projects.</li>
+                  <li>To create an environment to suit the needs of entrepreneurship.</li>
+                  <li>To inculcate ethical values and leadership abilities in the minds of students to work towards the growth of the society.</li>
                 </ul>
               </div>
 

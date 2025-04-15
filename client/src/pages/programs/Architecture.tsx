@@ -110,7 +110,10 @@ const Architecture = () => {
               <div>
                 <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">About the Architecture Program</h2>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate the architectural education at diploma level. We started the diploma program in architecture with the intake of 20 and later the intake was enhanced to 30 meet the growing demand.
+                  The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate the architectural education at diploma level. We started the diploma program in architecture with the intake of 20 and later the intake was enhanced to 30 meet the growing demand. The institute takes very special care in selecting students for admission to various academic programmes based on the merit with the objective of providing better technical education.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  The programme focuses in training the students for acquiring the skills on drafting and design development of various types of buildings according to user requirement. During the course of study, the students are made to understand the design concepts adopted in ancient and modern buildings.
                 </p>
               </div>
 
