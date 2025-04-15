@@ -78,7 +78,7 @@ const eventSchema = z.object({
   date: z.date({
     required_error: "Please select a date for the event",
   }),
-  imageUrl: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
+  image: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
   active: z.boolean().default(true),
 });
 
@@ -102,7 +102,7 @@ export default function EventsPage() {
       title: "",
       description: "",
       location: "",
-      imageUrl: "",
+      image: "",
       active: true,
     },
   });
@@ -114,7 +114,7 @@ export default function EventsPage() {
       title: "",
       description: "",
       location: "",
-      imageUrl: "",
+      image: "",
       active: true,
     },
   });
@@ -241,7 +241,7 @@ export default function EventsPage() {
       description: event.description,
       location: event.location,
       date: new Date(event.date),
-      imageUrl: event.imageUrl || "",
+      image: event.image || "",
       active: event.active,
     });
     setIsEditDialogOpen(true);
@@ -378,7 +378,7 @@ export default function EventsPage() {
                   
                   <FormField
                     control={createForm.control}
-                    name="imageUrl"
+                    name="image"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Image URL (Optional)</FormLabel>
@@ -650,7 +650,7 @@ export default function EventsPage() {
               
               <FormField
                 control={editForm.control}
-                name="imageUrl"
+                name="image"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Image URL (Optional)</FormLabel>
