@@ -23,7 +23,7 @@ const Architecture = () => {
         {/* Program Overview */}
         <div className="mb-12 rounded-lg bg-white dark:bg-gray-800 p-8 shadow-md">
           <h2 className="mb-6 text-2xl font-bold text-[#0A2463] dark:text-white">Program Overview</h2>
-          <p className="mb-4 text-gray-700 dark:text-gray-300">
+          <p className="mb-4 text-gray-800 dark:text-gray-300">
             The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate 
             architectural education at diploma level. We started the diploma program in architecture with the intake of 20 and 
             later the intake was enhanced to 30 to meet the growing demand.
@@ -35,7 +35,7 @@ const Architecture = () => {
                 <CardTitle className="text-[#0A2463] dark:text-white">Vision</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-800 dark:text-gray-300">
                   To create globally and intellectually competent, professionally skilled, ethically strong, morally upright, 
                   socially responsive, culturally tolerant professionals.
                 </p>
@@ -47,7 +47,7 @@ const Architecture = () => {
                 <CardTitle className="text-[#0A2463] dark:text-white">Mission</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                <ul className="list-disc pl-6 space-y-2 text-gray-800 dark:text-gray-300">
                   <li>Imparting Knowledge with Academic Excellence by incorporating competitive curriculum and to make students excellent Designers and Professionals.</li>
                   <li>Develop professionally skilled and innovative planners, designers, constructors and operators of society's economic and social engine.</li>
                   <li>Creating learning environment with technological orientation to maximize individual potential.</li>
@@ -158,7 +158,7 @@ const Architecture = () => {
           <TabsContent value="facilities" className="mt-6">
             <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
               <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Facilities</h3>
-              <p className="mb-6 text-gray-700 dark:text-gray-300">
+              <p className="mb-6 text-gray-800 dark:text-gray-300">
                 The total building area is 600 square metres.
               </p>
               
@@ -237,7 +237,7 @@ const Architecture = () => {
                   <CardTitle className="text-[#0A2463] dark:text-white">Program Educational Objectives</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-3 text-gray-800 dark:text-gray-300">
                     <li>
                       <span className="font-semibold">PEO - 1:</span> To educate students in the fundamental principles of architecture.
                     </li>
@@ -316,7 +316,7 @@ const Architecture = () => {
                     <CardDescription>Hands-on learning experiences for students</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                    <ul className="space-y-3 text-gray-800 dark:text-gray-300">
                       <li className="flex items-start">
                         <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
                         <span>Urban Planning and Sustainable Design Workshop</span>
@@ -345,7 +345,7 @@ const Architecture = () => {
                     <CardDescription>Opportunities for students to showcase their talents</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                    <ul className="space-y-3 text-gray-800 dark:text-gray-300">
                       <li className="flex items-start">
                         <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
                         <span>Annual Architecture Design Competition</span>
@@ -373,7 +373,7 @@ const Architecture = () => {
                     <CardTitle className="text-[#0A2463] dark:text-white">Industrial Visits & Field Trips</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <p className="mb-4 text-gray-700 dark:text-gray-300">
+                    <p className="mb-4 text-gray-800 dark:text-gray-300">
                       The department regularly organizes industrial visits and field trips to expose students to real-world architectural practices, construction sites, and historical buildings. These visits provide valuable hands-on learning experiences and help students understand the practical applications of their studies.
                     </p>
                     <div className="mt-6">
@@ -396,13 +396,13 @@ const Architecture = () => {
               <div className="space-y-4">
                 <div className="rounded-lg bg-[#0A2463]/5 dark:bg-[#0A2463]/20 p-5">
                   <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">DEVIKA S J</h4>
-                  <p className="text-gray-600 dark:text-gray-400">HOD, Architecture Department</p>
+                  <p className="text-gray-800 dark:text-gray-400">HOD, Architecture Department</p>
                   <div className="mt-4 space-y-2">
-                    <p className="flex items-center text-gray-700 dark:text-gray-300">
+                    <p className="flex items-center text-gray-800 dark:text-gray-300">
                       <Phone className="mr-2 h-4 w-4 text-[#3E92CC]" />
                       <a href="tel:8217621733" className="hover:text-[#3E92CC] transition-colors">8217621733</a>
                     </p>
-                    <p className="flex items-center text-gray-700 dark:text-gray-300">
+                    <p className="flex items-center text-gray-800 dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
                       <a href="mailto:devikajram@gmail.com" className="hover:text-[#3E92CC] transition-colors">devikajram@gmail.com</a>
                     </p>
