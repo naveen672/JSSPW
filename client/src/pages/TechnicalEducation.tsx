@@ -63,7 +63,7 @@ const TechnicalEducation = () => {
           </p>
           
           <p className="text-gray-700 dark:text-gray-300">
-            JSS Polytechnic For Women is one such pioneering institution that focuses exclusively on providing technical education to women, empowering them to excel in fields traditionally dominated by men. The institution offers diploma programs in various engineering disciplines and has been instrumental in increasing women's participation in technical fields.
+            JSS Polytechnic for Women is one such pioneering institution that focuses exclusively on providing technical education to women, empowering them to excel in fields traditionally dominated by men. The institution offers diploma programs in various engineering disciplines and has been instrumental in increasing women's participation in technical fields.
           </p>
         </div>
         

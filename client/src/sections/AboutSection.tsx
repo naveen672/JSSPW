@@ -8,7 +8,7 @@ const AboutSection = () => {
         {/* JSS Polytechnic For Women Section */}
         <div id="about-college">
           <div className="mx-auto mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic For Women</h2>
+            <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic for Women</h2>
             <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
           </div>
           
@@ -16,7 +16,7 @@ const AboutSection = () => {
             <div className="animate-on-scroll">
               <h3 className="mb-6 text-2xl font-semibold text-[#0A2463] dark:text-white">Our Mission & Vision</h3>
               <p className="mb-6 text-gray-700 dark:text-gray-300">
-                JSS Polytechnic For Women is dedicated to empowering women through quality technical education, fostering innovation, and developing industry-ready professionals. Our vision is to be a premier technical institution that transforms young women into skilled, confident, and socially responsible engineers.
+                JSS Polytechnic for Women is dedicated to empowering women through quality technical education, fostering innovation, and developing industry-ready professionals. Our vision is to be a premier technical institution that transforms young women into skilled, confident, and socially responsible engineers.
               </p>
               <p className="mb-6 text-gray-700 dark:text-gray-300">
                 Established under the JSS Mahavidyapeetha, we have been committed to providing exceptional technical education exclusively for women. Our institute has consistently maintained excellence in academics, placement, and creating a supportive environment for women to excel in STEM fields.
@@ -32,7 +32,7 @@ const AboutSection = () => {
             <div className="animate-on-scroll overflow-hidden rounded-lg shadow-lg">
               <img 
                 src={buildingImg} 
-                alt="JSS Polytechnic For Women campus building" 
+                alt="JSS Polytechnic for Women campus building" 
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>

@@ -156,8 +156,8 @@ const Header = () => {
                 className="mr-3 h-12 w-auto object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
-                <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic For Women</span>
+                <span className="text-sm text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
+                <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</span>
               </div>
             </div>
             
