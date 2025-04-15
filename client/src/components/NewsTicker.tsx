@@ -9,10 +9,24 @@ interface NewsItem {
 
 const NewsTicker = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+    
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
   
   const newsItems: NewsItem[] = [
     { id: 1, text: "Summer admissions now open for 2025-2026 academic year", link: "/admissions" },
-    { id: 2, text: "⭐ Dr. Rajeshwari awarded National Teaching Excellence Medal", link: "/faculty" },
+    { id: 2, text: "⭐ Dr. B.G. Lokesha awarded National Teaching Excellence Medal", link: "/faculty" },
     { id: 3, text: "New Engineering Building opening September 1st", link: "/campus" },
     { id: 4, text: "JSS Polytechnic For Women ranks #5 in Best Technical Institutions", link: "/rankings" }
   ];
@@ -36,9 +50,11 @@ const NewsTicker = () => {
           
           <div className="overflow-hidden flex-1">
             <div 
-              className={`whitespace-nowrap ${isPaused ? '' : 'animate-marquee'}`}
+              className={`whitespace-nowrap ${isPaused ? '' : (isMobile ? 'animate-marquee-fast' : 'animate-marquee')}`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onTouchStart={handleMouseEnter}
+              onTouchEnd={handleMouseLeave}
             >
               {newsItems.map((item) => (
                 <a 
