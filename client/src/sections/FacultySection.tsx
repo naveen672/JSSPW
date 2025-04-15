@@ -34,19 +34,19 @@ const facultyData = [
 
 const FacultySection = () => {
   return (
-    <section id="faculty" className="py-20">
+    <section id="faculty" className="py-20 bg-gradient-to-b from-white to-[#f5f7fa] dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[#0A2463] md:text-4xl">Our Experienced Faculty</h2>
-          <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
-          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C]">
+          <h2 className="mb-4 text-3xl font-bold text-[#D8315B] md:text-4xl">Our Experienced Faculty</h2>
+          <div className="mx-auto h-1 w-24 bg-[#3E92CC]"></div>
+          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C] dark:text-gray-300">
             Learn from dedicated educators with extensive academic and industry experience who are committed to empowering women in technical education.
           </p>
         </div>
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {facultyData.map((faculty) => (
-            <div key={faculty.id} className="animate-on-scroll group overflow-hidden rounded-lg bg-white shadow-md">
+            <div key={faculty.id} className="animate-on-scroll group overflow-hidden rounded-lg bg-white shadow-lg border border-[#3E92CC]/10 hover:shadow-xl transition-all duration-300 dark:bg-gray-800 dark:border-gray-700">
               <div className="relative overflow-hidden">
                 <img 
                   src={faculty.image} 
@@ -54,20 +54,20 @@ const FacultySection = () => {
                   className="h-80 w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0A2463]/90 to-transparent p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <p className="text-sm">{faculty.bio}</p>
+                  <p className="text-sm leading-relaxed">{faculty.bio}</p>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="mb-1 text-xl font-semibold text-[#0A2463]">{faculty.name}</h3>
+                <h3 className="mb-1 text-xl font-semibold text-[#D8315B]">{faculty.name}</h3>
                 <p className="mb-4 text-sm font-medium text-[#3E92CC]">{faculty.title}</p>
                 <div className="flex space-x-3">
-                  <a href="#" className="text-[#1C1C1C] hover:text-[#D8315B]" aria-label="LinkedIn">
+                  <a href="#" className="text-[#0A2463] hover:text-[#D8315B] transition-colors" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </a>
-                  <a href="#" className="text-[#1C1C1C] hover:text-[#D8315B]" aria-label="Twitter">
+                  <a href="#" className="text-[#0A2463] hover:text-[#D8315B] transition-colors" aria-label="Twitter">
                     <Twitter className="h-5 w-5" />
                   </a>
-                  <a href="#" className="text-[#1C1C1C] hover:text-[#D8315B]" aria-label="Email">
+                  <a href="#" className="text-[#0A2463] hover:text-[#D8315B] transition-colors" aria-label="Email">
                     <Mail className="h-5 w-5" />
                   </a>
                 </div>
@@ -77,7 +77,7 @@ const FacultySection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <a href="#" className="rounded-full bg-[#3E92CC] px-8 py-3 font-medium text-white transition-colors hover:bg-[#3E92CC]/90">
+          <a href="#" className="rounded-full bg-[#D8315B] px-8 py-3 font-medium text-white transition-all hover:bg-[#D8315B]/90 hover:shadow-lg">
             View Full Faculty Directory
           </a>
         </div>
