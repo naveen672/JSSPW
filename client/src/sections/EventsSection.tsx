@@ -38,7 +38,7 @@ const EventsSection = () => {
           <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Upcoming Events</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
           <p className="mx-auto mt-6 max-w-3xl text-gray-700 dark:text-gray-300">
-            Stay connected with the latest technical events, workshops, and opportunities at JSS Polytechnic For Women.
+            Stay connected with the latest technical events, workshops, and opportunities at JSS Polytechnic for Women.
           </p>
         </div>
         
