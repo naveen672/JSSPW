@@ -77,7 +77,7 @@ const ContactSection = () => {
                     type="text" 
                     id="first-name"
                     {...register("firstName")}
-                    className={`w-full rounded-lg border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30`}
+                    className={`w-full rounded-lg border ${errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                   />
                   {errors.firstName && (
                     <p className="mt-1 text-xs text-red-500">{errors.firstName.message}</p>
@@ -89,7 +89,7 @@ const ContactSection = () => {
                     type="text" 
                     id="last-name"
                     {...register("lastName")}
-                    className={`w-full rounded-lg border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30`}
+                    className={`w-full rounded-lg border ${errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                   />
                   {errors.lastName && (
                     <p className="mt-1 text-xs text-red-500">{errors.lastName.message}</p>
@@ -103,7 +103,7 @@ const ContactSection = () => {
                   type="email" 
                   id="email"
                   {...register("email")}
-                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30`}
+                  className={`w-full rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'} p-3 focus:border-[#3E92CC] focus:outline-none focus:ring-2 focus:ring-[#3E92CC]/30 dark:bg-gray-700 dark:text-white`}
                 />
                 {errors.email && (
                   <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
@@ -111,7 +111,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-[#1C1C1C]">Subject *</label>
+                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Subject *</label>
                 <select 
                   id="subject"
                   {...register("subject")}
@@ -131,7 +131,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-[#1C1C1C]">Message *</label>
+                <label htmlFor="message" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Message *</label>
                 <textarea 
                   id="message"
                   rows={5}
@@ -155,39 +155,39 @@ const ContactSection = () => {
           
           {/* Contact Information */}
           <div className="animate-on-scroll">
-            <h3 className="mb-6 text-2xl font-semibold text-[#0A2463]">Contact Information</h3>
+            <h3 className="mb-6 text-2xl font-semibold text-[#0A2463] dark:text-white">Contact Information</h3>
             
             <div className="mb-8 grid gap-6 md:grid-cols-2">
-              <div className="rounded-lg bg-white p-6 shadow-md">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10">
-                  <MapPin className="h-6 w-6 text-[#0A2463]" />
+              <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10 dark:bg-blue-900/20">
+                  <MapPin className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
-                <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Main Campus</h4>
-                <p className="text-[#1C1C1C]">8J97+MRP, University Of Mysore Campus<br />Mysuru, Karnataka 570006<br />India</p>
+                <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Main Campus</h4>
+                <p className="text-[#1C1C1C] dark:text-gray-300">8J97+MRP, University Of Mysore Campus<br />Mysuru, Karnataka 570006<br />India</p>
               </div>
               
-              <div className="rounded-lg bg-white p-6 shadow-md">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10">
-                  <Phone className="h-6 w-6 text-[#0A2463]" />
+              <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10 dark:bg-blue-900/20">
+                  <Phone className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
-                <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Phone</h4>
-                <p className="text-[#1C1C1C]">Main: (555) 123-4567<br />Admissions: (555) 123-8910<br />Financial Aid: (555) 123-1112</p>
+                <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Phone</h4>
+                <p className="text-[#1C1C1C] dark:text-gray-300">Main: (555) 123-4567<br />Admissions: (555) 123-8910<br />Financial Aid: (555) 123-1112</p>
               </div>
               
-              <div className="rounded-lg bg-white p-6 shadow-md">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10">
-                  <Mail className="h-6 w-6 text-[#0A2463]" />
+              <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10 dark:bg-blue-900/20">
+                  <Mail className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
-                <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Email</h4>
-                <p className="text-[#1C1C1C]">info@jsspolytechnic.ac.in<br />admissions@jsspolytechnic.ac.in<br />principal@jsspolytechnic.ac.in</p>
+                <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Email</h4>
+                <p className="text-[#1C1C1C] dark:text-gray-300">info@jsspolytechnic.ac.in<br />admissions@jsspolytechnic.ac.in<br />principal@jsspolytechnic.ac.in</p>
               </div>
               
-              <div className="rounded-lg bg-white p-6 shadow-md">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10">
-                  <Clock className="h-6 w-6 text-[#0A2463]" />
+              <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2463]/10 dark:bg-blue-900/20">
+                  <Clock className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
-                <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Office Hours</h4>
-                <p className="text-[#1C1C1C]">Monday-Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM - 1:00 PM<br />Sunday: Closed</p>
+                <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Office Hours</h4>
+                <p className="text-[#1C1C1C] dark:text-gray-300">Monday-Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM - 1:00 PM<br />Sunday: Closed</p>
               </div>
             </div>
             
