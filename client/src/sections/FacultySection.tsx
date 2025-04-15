@@ -1,12 +1,13 @@
 import { Twitter, Linkedin, Mail } from "lucide-react";
+import principalImg from "../assets/prin.jpg";
 
 const facultyData = [
   {
     id: 1,
-    name: "Dr. Rajeshwari K",
+    name: "Dr. B.G. Lokesha",
     title: "Principal",
-    bio: "Ph.D. in Electronics with over 20 years of experience in technical education and academic leadership.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    bio: "Ph.D. in Engineering with extensive experience in technical education and leadership at JSS Mahavidyapeetha institutions.",
+    image: principalImg
   },
   {
     id: 2,

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import buildingImg from "../assets/bg1.jpg";
 import labImg from "../assets/bg2.jpg";
+import assemblyImg from "../assets/bg3.jpg";
 
 const slideImages = [
   {
@@ -19,6 +20,12 @@ const slideImages = [
   },
   {
     id: 3,
+    url: assemblyImg,
+    title: "Vibrant Student Community",
+    description: "Join a diverse community of motivated students participating in academic and cultural activities that foster leadership and teamwork."
+  },
+  {
+    id: 4,
     url: buildingImg,
     title: "JSS Mahavidyapeetha Excellence",
     description: "Developing technical expertise, leadership skills, and confidence in women to excel in their chosen fields under the guidance of JSS Mahavidyapeetha."
