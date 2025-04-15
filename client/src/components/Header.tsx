@@ -144,19 +144,45 @@ const Header = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4 lg:py-0">
-          {/* Logo */}
-          <div 
-            className="flex items-center cursor-pointer" 
-            onClick={() => navigate("/")}
-          >
-            <img 
-              src="/logo_jss.jpeg" 
-              alt="JSS Polytechnic Logo" 
-              className="mr-3 h-12 w-auto object-contain"
-            />
-            <div className="flex flex-col">
-              <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
-              <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic For Women</span>
+          {/* Logo and Accreditation */}
+          <div className="flex items-center">
+            <div 
+              className="flex items-center cursor-pointer" 
+              onClick={() => navigate("/")}
+            >
+              <img 
+                src="/logo_jss.jpeg" 
+                alt="JSS Polytechnic Logo" 
+                className="mr-3 h-12 w-auto object-contain"
+              />
+              <div className="flex flex-col">
+                <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
+                <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic For Women</span>
+              </div>
+            </div>
+            
+            {/* Accreditation Logos (visible only on larger screens) */}
+            <div className="hidden md:flex items-center ml-4 pl-4 border-l border-gray-300 dark:border-gray-700">
+              <a href="/#accreditations" className="flex items-center group">
+                <img 
+                  src="/NAACAlogo-1.png" 
+                  alt="NAAC A+ Accredited" 
+                  className="h-8 w-auto object-contain mr-2" 
+                />
+                <img 
+                  src="/smalllogo2.png" 
+                  alt="NBA Accredited" 
+                  className="h-8 w-auto object-contain mr-2" 
+                />
+                <img 
+                  src="/smalllogo1.png" 
+                  alt="AICTE Approved" 
+                  className="h-8 w-auto object-contain" 
+                />
+                <span className="ml-2 text-xs text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                  View Accreditations
+                </span>
+              </a>
             </div>
           </div>
 
