@@ -1,6 +1,7 @@
 import { ArrowLeft, Download, Phone, Mail, User, BookOpen, Building, Image, CalendarClock, FileText } from "lucide-react";
 import { useState } from "react";
 import buildingImg from "../../assets/bg1.jpg";
+import facultyImg from "../../assets/prin.jpg";
 
 // Tab interface
 type TabType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
@@ -259,8 +260,11 @@ const Architecture = () => {
               
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2">DEVIKA S J</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4">Head of Department</p>
+                  <div className="mb-4 flex justify-center">
+                    <img src={facultyImg} alt="DEVIKA S J" className="h-32 w-32 rounded-full object-cover" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">DEVIKA S J</h3>
+                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
                   <div className="space-y-2 text-gray-700 dark:text-gray-300">
                     <p><span className="font-semibold">Educational Qualification:</span> B.Arch</p>
                     <p><span className="font-semibold">Area of Specialization:</span> Architecture & Interiors</p>
@@ -272,8 +276,11 @@ const Architecture = () => {
                 </div>
 
                 <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2">ANUSHA G</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4">Lecturer</p>
+                  <div className="mb-4 flex justify-center">
+                    <img src={facultyImg} alt="ANUSHA G" className="h-32 w-32 rounded-full object-cover" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">ANUSHA G</h3>
+                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                   <div className="space-y-2 text-gray-700 dark:text-gray-300">
                     <p><span className="font-semibold">Educational Qualification:</span> B.Arch</p>
                     <p><span className="font-semibold">Area of Specialization:</span> ARCHITECTURE</p>
@@ -285,8 +292,11 @@ const Architecture = () => {
                 </div>
 
                 <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2">William Kadam</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4">Lecturer</p>
+                  <div className="mb-4 flex justify-center">
+                    <img src={facultyImg} alt="William Kadam" className="h-32 w-32 rounded-full object-cover" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">William Kadam</h3>
+                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                   <div className="space-y-2 text-gray-700 dark:text-gray-300">
                     <p><span className="font-semibold">Educational Qualification:</span> B.Arch</p>
                     <p><span className="font-semibold">Area of Specialization:</span> Architecture</p>
@@ -298,8 +308,11 @@ const Architecture = () => {
                 </div>
 
                 <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2">PALLAVI H S</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4">Lecturer</p>
+                  <div className="mb-4 flex justify-center">
+                    <img src={facultyImg} alt="PALLAVI H S" className="h-32 w-32 rounded-full object-cover" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">PALLAVI H S</h3>
+                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                   <div className="space-y-2 text-gray-700 dark:text-gray-300">
                     <p><span className="font-semibold">Educational Qualification:</span> B.Arch</p>
                     <p><span className="font-semibold">Area of Specialization:</span> Architecture</p>
