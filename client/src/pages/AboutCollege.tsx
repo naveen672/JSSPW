@@ -16,14 +16,14 @@ const AboutCollege = () => {
             <ArrowLeft className="mr-2 h-5 w-5" />
             Back
           </a>
-          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic For Women</h1>
+          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic for Women</h1>
         </div>
         
         {/* Featured Image */}
         <div className="mb-12 overflow-hidden rounded-lg shadow-lg">
           <img 
             src={buildingImg} 
-            alt="JSS Polytechnic For Women campus" 
+            alt="JSS Polytechnic for Women campus" 
             className="h-full w-full object-cover"
           />
         </div>
@@ -35,7 +35,7 @@ const AboutCollege = () => {
               <div className="overflow-hidden rounded-lg border-4 border-[#0A2463] dark:border-blue-400 shadow-lg h-80 w-64">
                 <img 
                   src={principalImg} 
-                  alt="Principal, JSS Polytechnic For Women" 
+                  alt="Principal, JSS Polytechnic for Women" 
                   className="h-full w-full object-cover"
                 />
               </div>

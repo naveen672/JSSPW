@@ -39,7 +39,7 @@ const SplashScreen = () => {
             transition={{ delay: 0.4 }}
             className="mt-2 text-3xl font-bold text-white"
           >
-            JSS Polytechnic For Women
+            JSS Polytechnic for Women
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

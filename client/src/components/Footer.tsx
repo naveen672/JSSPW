@@ -20,11 +20,11 @@ const Footer = () => {
               />
               <div className="flex flex-col">
                 <span className="text-xs text-white/80">JSS Mahavidyapeetha</span>
-                <span className="text-lg font-bold text-white">JSS Polytechnic For Women</span>
+                <span className="text-lg font-bold text-white">JSS Polytechnic for Women</span>
               </div>
             </div>
             <p className="mb-6 text-white/80">
-              Empowering women through technical education since 1985. JSS Polytechnic For Women is committed to excellence in education, innovation, and industry-ready skill development.
+              Empowering women through technical education since 1985. JSS Polytechnic for Women is committed to excellence in education, innovation, and industry-ready skill development.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-[#D8315B]" aria-label="Facebook">
@@ -93,7 +93,7 @@ const Footer = () => {
             <div className="mt-6">
               <h5 className="mb-2 font-semibold text-white">Contact Us</h5>
               <address className="not-italic text-white/80">
-                JSS Polytechnic For Women<br />
+                JSS Polytechnic for Women<br />
                 JSS Technical Institutions Campus<br />
                 Mysuru, Karnataka - 570006<br />
                 Phone: +91 821 2548315<br />
@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-white/20 pt-6">
           <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <div className="text-sm text-white/80">
-              &copy; {currentYear} JSS Polytechnic For Women. All rights reserved.
+              &copy; {currentYear} JSS Polytechnic for Women. All rights reserved.
             </div>
             <div className="flex flex-col items-center space-y-3 text-sm md:flex-row md:space-x-4 md:space-y-0">
               <div className="flex items-center text-white/80">

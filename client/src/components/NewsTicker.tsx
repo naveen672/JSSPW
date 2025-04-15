@@ -28,7 +28,7 @@ const NewsTicker = () => {
     { id: 1, text: "Summer admissions now open for 2025-2026 academic year", link: "/admissions" },
     { id: 2, text: "⭐ Dr. B.G. Lokesha awarded National Teaching Excellence Medal", link: "/faculty" },
     { id: 3, text: "New Engineering Building opening September 1st", link: "/campus" },
-    { id: 4, text: "JSS Polytechnic For Women ranks #5 in Best Technical Institutions", link: "/rankings" }
+    { id: 4, text: "JSS Polytechnic for Women ranks #5 in Best Technical Institutions", link: "/rankings" }
   ];
 
   const handleMouseEnter = () => {
