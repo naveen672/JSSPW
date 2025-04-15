@@ -221,7 +221,7 @@ export default function MessagesPage() {
                       <TableRow key={message.id} className={!message.isRead ? "bg-muted/30" : ""}>
                         <TableCell className="font-medium">
                           <div>
-                            <p>{message.name}</p>
+                            <p>{`${message.firstName} ${message.lastName}`}</p>
                             <p className="text-sm text-muted-foreground">{message.email}</p>
                           </div>
                         </TableCell>
@@ -309,7 +309,7 @@ export default function MessagesPage() {
         <Dialog open={isMessageDialogOpen} onOpenChange={setIsMessageDialogOpen}>
           <DialogContent className="max-w-3xl">
             <DialogHeader>
-              <DialogTitle>Message from {selectedMessage.name}</DialogTitle>
+              <DialogTitle>Message from {`${selectedMessage.firstName} ${selectedMessage.lastName}`}</DialogTitle>
               <DialogDescription>
                 {selectedMessage.createdAt && (
                   <span>
@@ -323,7 +323,7 @@ export default function MessagesPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h3 className="text-sm font-medium text-muted-foreground">From</h3>
-                  <p>{selectedMessage.name}</p>
+                  <p>{`${selectedMessage.firstName} ${selectedMessage.lastName}`}</p>
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-muted-foreground">Email</h3>
