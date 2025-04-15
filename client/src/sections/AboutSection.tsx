@@ -1,4 +1,5 @@
 import { ArrowRight, Building2, User, Award, GraduationCap } from "lucide-react";
+import buildingImg from "../assets/bg1.jpg";
 
 const AboutSection = () => {
   return (
@@ -28,7 +29,7 @@ const AboutSection = () => {
           
           <div className="animate-on-scroll overflow-hidden rounded-lg shadow-lg">
             <img 
-              src="/attached_assets/bg1.jpg" 
+              src={buildingImg} 
               alt="JSS Polytechnic For Women campus building" 
               className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
             />

@@ -52,7 +52,7 @@ const HeroSection = () => {
           className={`hero-slide absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`} 
-          style={{ backgroundImage: `url('${slide.url}')` }}
+          style={{ backgroundImage: typeof slide.url === 'string' ? `url('${slide.url}')` : `url(${slide.url})` }}
         >
           <div className="absolute inset-0 bg-[#0A2463]/60"></div>
           <div className="container relative mx-auto h-full px-4 md:px-6">
