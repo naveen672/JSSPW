@@ -66,6 +66,7 @@ const NewsTicker = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="mr-8 cursor-pointer text-white hover:text-[#D8315B] inline-block"
+                style={{display: 'inline-block'}}
               >
                 {item.text}
               </a>
