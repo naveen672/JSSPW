@@ -103,11 +103,14 @@ export class MemStorage implements IStorage {
     };
     
     // Create an admin user for testing
-    this.createUser({
+    this.users.set(this.currentUserId, {
+      id: this.currentUserId,
       username: "admin",
       password: "$2b$10$F6XE.pSfNLB3X7OhTGLuw.kgEVIuK6DwN2XmLgSY36ZGjm/L.2Doa", // "admin123"
-      role: "admin"
+      role: "admin",
+      createdAt: new Date()
     });
+    this.currentUserId++;
     
     // Add some initial flash news
     this.createFlashNews({
