@@ -18,12 +18,12 @@ const Architecture = () => {
             <ArrowLeft className="mr-2 h-5 w-5" />
             Back
           </a>
-          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Architecture</h1>
+          <h1 className="text-3xl font-bold !text-[#0A2463] dark:!text-white md:text-4xl">Architecture</h1>
         </div>
         
         {/* Program Overview */}
-        <div className="mb-12 rounded-lg bg-white dark:bg-gray-800 p-8 shadow-md">
-          <h2 className="mb-6 text-2xl font-bold text-[#0A2463] dark:text-white">Program Overview</h2>
+        <div className="mb-12 rounded-lg bg-white dark:bg-gray-800 p-8 shadow-md !border-[1px] !border-slate-400">
+          <h2 className="mb-6 text-2xl font-bold !text-[#0A2463] dark:!text-white">Program Overview</h2>
           <p className="mb-4 !text-[#000000] dark:!text-gray-300 font-medium">
             The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate 
             architectural education at diploma level. We started the diploma program in architecture with the intake of 20 and 
@@ -70,7 +70,7 @@ const Architecture = () => {
           
           {/* Faculty Tab */}
           <TabsContent value="faculty" className="mt-6">
-            <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Faculty</h3>
+            <h3 className="mb-6 text-xl font-semibold !text-[#0A2463] dark:!text-white">Department Faculty</h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               
               {/* Faculty Member 1 */}
@@ -102,7 +102,7 @@ const Architecture = () => {
               </Card>
               
               {/* Faculty Member 2 */}
-              <Card>
+              <Card className="!border-[1px] !border-slate-400">
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
                   <div className="flex items-center space-x-4">
                     <Avatar className="h-20 w-20 border-2 border-white">
@@ -110,18 +110,18 @@ const Architecture = () => {
                       <AvatarFallback>AG</AvatarFallback>
                     </Avatar>
                     <div>
-                      <CardTitle className="text-[#0A2463] dark:text-white">ANUSHA G</CardTitle>
-                      <CardDescription>Lecturer</CardDescription>
+                      <CardTitle className="!text-[#0A2463] dark:!text-white">ANUSHA G</CardTitle>
+                      <CardDescription className="!text-[#000000] dark:!text-gray-400">Lecturer</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> ARCHITECTURE</p>
-                    <p className="flex items-center text-black dark:text-gray-300">
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Qualification:</span> B.Arch</p>
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Specialization:</span> ARCHITECTURE</p>
+                    <p className="flex items-center !text-[#000000] dark:!text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
-                      <a href="mailto:anuguru29@jsspwmys.org" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                      <a href="mailto:anuguru29@jsspwmys.org" className="!text-[#3E92CC] hover:!text-[#0A2463] transition-colors">
                         anuguru29@jsspwmys.org
                       </a>
                     </p>
@@ -130,7 +130,7 @@ const Architecture = () => {
               </Card>
               
               {/* Faculty Member 3 */}
-              <Card>
+              <Card className="!border-[1px] !border-slate-400">
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
                   <div className="flex items-center space-x-4">
                     <Avatar className="h-20 w-20 border-2 border-white">
@@ -138,18 +138,18 @@ const Architecture = () => {
                       <AvatarFallback>WK</AvatarFallback>
                     </Avatar>
                     <div>
-                      <CardTitle className="text-[#0A2463] dark:text-white">William Kadam</CardTitle>
-                      <CardDescription>Lecturer</CardDescription>
+                      <CardTitle className="!text-[#0A2463] dark:!text-white">William Kadam</CardTitle>
+                      <CardDescription className="!text-[#000000] dark:!text-gray-400">Lecturer</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> Architecture</p>
-                    <p className="flex items-center text-black dark:text-gray-300">
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Qualification:</span> B.Arch</p>
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Specialization:</span> Architecture</p>
+                    <p className="flex items-center !text-[#000000] dark:!text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
-                      <a href="mailto:williamkdm@gmail.com" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                      <a href="mailto:williamkdm@gmail.com" className="!text-[#3E92CC] hover:!text-[#0A2463] transition-colors">
                         williamkdm@gmail.com
                       </a>
                     </p>
@@ -158,7 +158,7 @@ const Architecture = () => {
               </Card>
               
               {/* Faculty Member 4 */}
-              <Card>
+              <Card className="!border-[1px] !border-slate-400">
                 <CardHeader className="bg-[#D8315B]/10 dark:bg-[#D8315B]/20">
                   <div className="flex items-center space-x-4">
                     <Avatar className="h-20 w-20 border-2 border-white">
@@ -166,18 +166,18 @@ const Architecture = () => {
                       <AvatarFallback>PH</AvatarFallback>
                     </Avatar>
                     <div>
-                      <CardTitle className="text-[#0A2463] dark:text-white">PALLAVI H S</CardTitle>
-                      <CardDescription>Lecturer</CardDescription>
+                      <CardTitle className="!text-[#0A2463] dark:!text-white">PALLAVI H S</CardTitle>
+                      <CardDescription className="!text-[#000000] dark:!text-gray-400">Lecturer</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
                   <div className="space-y-2">
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Qualification:</span> B.Arch</p>
-                    <p className="text-black dark:text-gray-300"><span className="font-medium">Specialization:</span> Architecture</p>
-                    <p className="flex items-center text-black dark:text-gray-300">
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Qualification:</span> B.Arch</p>
+                    <p className="!text-[#000000] dark:!text-gray-300 font-medium"><span className="font-bold">Specialization:</span> Architecture</p>
+                    <p className="flex items-center !text-[#000000] dark:!text-gray-300">
                       <Mail className="mr-2 h-4 w-4" />
-                      <a href="mailto:pallavihs@jsspwmys.org" className="text-[#3E92CC] hover:text-[#0A2463] transition-colors">
+                      <a href="mailto:pallavihs@jsspwmys.org" className="!text-[#3E92CC] hover:!text-[#0A2463] transition-colors">
                         pallavihs@jsspwmys.org
                       </a>
                     </p>
@@ -189,13 +189,13 @@ const Architecture = () => {
           
           {/* Facilities Tab */}
           <TabsContent value="facilities" className="mt-6">
-            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
-              <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Facilities</h3>
-              <p className="mb-6 text-black dark:text-gray-300">
+            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md !border-[1px] !border-slate-400">
+              <h3 className="mb-6 text-xl font-semibold !text-[#0A2463] dark:!text-white">Department Facilities</h3>
+              <p className="mb-6 !text-[#000000] dark:!text-gray-300 font-medium">
                 The total building area is 600 square metres.
               </p>
               
-              <h4 className="mb-4 text-lg font-semibold text-[#0A2463] dark:text-white">Major Equipment</h4>
+              <h4 className="mb-4 text-lg font-semibold !text-[#0A2463] dark:!text-white">Major Equipment</h4>
               <div className="overflow-x-auto">
                 <Table className="[&_td]:!text-[#000000] dark:[&_td]:!text-gray-300">
                   <TableHeader>
@@ -312,21 +312,21 @@ const Architecture = () => {
               </Card>
               
               <div className="md:col-span-2">
-                <Card>
+                <Card className="!border-[1px] !border-slate-400">
                   <CardHeader className="bg-[#0A2463]/10 dark:bg-[#0A2463]/20">
-                    <CardTitle className="text-[#0A2463] dark:text-white">Resources & Downloads</CardTitle>
+                    <CardTitle className="!text-[#0A2463] dark:!text-white">Resources & Downloads</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between rounded-md border p-4">
                         <div className="flex items-center">
-                          <FileText className="mr-2 h-5 w-5 text-[#3E92CC]" />
-                          <span className="!text-[#000000] dark:!text-white">Architecture Syllabus</span>
+                          <FileText className="mr-2 h-5 w-5 !text-[#3E92CC]" />
+                          <span className="!text-[#000000] dark:!text-white font-medium">Architecture Syllabus</span>
                         </div>
                         <a href="/architecture-syllabus.pdf" download className="inline-flex items-center">
                           <Button variant="outline" size="sm">
                             <Download className="mr-2 h-4 w-4" />
-                            Download
+                            <span className="!text-[#000000] dark:!text-white">Download</span>
                           </Button>
                         </a>
                       </div>
@@ -339,8 +339,8 @@ const Architecture = () => {
           
           {/* Activities Tab */}
           <TabsContent value="activities" className="mt-6">
-            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
-              <h3 className="mb-6 text-xl font-semibold text-[#0A2463] dark:text-white">Department Activities</h3>
+            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md !border-[1px] !border-slate-400">
+              <h3 className="mb-6 text-xl font-semibold !text-[#0A2463] dark:!text-white">Department Activities</h3>
               
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <Card className="!border-[1px] !border-slate-400">
@@ -423,7 +423,7 @@ const Architecture = () => {
           
           {/* Contacts Tab */}
           <TabsContent value="contacts" className="mt-6">
-            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
+            <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md !border-[1px] !border-slate-400">
               <h3 className="mb-6 text-xl font-semibold !text-[#0A2463] dark:!text-white">Department Contact Information</h3>
               
               <div className="space-y-4">
