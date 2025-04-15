@@ -106,7 +106,7 @@ export class MemStorage implements IStorage {
     this.users.set(this.currentUserId, {
       id: this.currentUserId,
       username: "admin",
-      password: "$2b$10$F6XE.pSfNLB3X7OhTGLuw.kgEVIuK6DwN2XmLgSY36ZGjm/L.2Doa", // "admin123"
+      password: "$2b$10$G62LkLCbHDtFCI/ceyeJzOFlmQZqLX7/8y1po97C30uNhePfu8IHy", // "admin123" - fresh bcrypt hash
       role: "admin",
       createdAt: new Date()
     });
