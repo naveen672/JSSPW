@@ -12,11 +12,16 @@ import {
   type Faculty,
   type InsertFaculty
 } from "@shared/schema";
+import session from "express-session";
+import createMemoryStore from "memorystore";
+
+const MemoryStore = createMemoryStore(session);
 
 // modify the interface with any CRUD methods
 // you might need
 
 export interface IStorage {
+  sessionStore: session.Store;
   // User methods
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
@@ -65,6 +70,8 @@ export class MemStorage implements IStorage {
   private faculty: Map<number, Faculty>;
   private siteStats: SiteStats;
   
+  sessionStore: session.Store;
+  
   currentUserId: number;
   currentContactMessageId: number;
   currentFlashNewsId: number;
@@ -77,6 +84,11 @@ export class MemStorage implements IStorage {
     this.flashNews = new Map();
     this.events = new Map();
     this.faculty = new Map();
+    
+    // Initialize session store
+    this.sessionStore = new MemoryStore({
+      checkPeriod: 86400000 // Prune expired entries every 24h
+    });
     
     this.currentUserId = 1;
     this.currentContactMessageId = 1;
@@ -136,8 +148,11 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.currentUserId++;
+    // Ensure role is assigned
+    const role = insertUser.role || "user";
     const user: User = { 
       ...insertUser, 
+      role,
       id, 
       createdAt: new Date() 
     };
@@ -196,8 +211,11 @@ export class MemStorage implements IStorage {
   // Flash news methods
   async createFlashNews(news: InsertFlashNews): Promise<FlashNews> {
     const id = this.currentFlashNewsId++;
+    // Ensure active is defined
+    const active = news.active ?? true;
     const flashNews: FlashNews = {
       ...news,
+      active,
       id,
       createdAt: new Date()
     };
@@ -237,8 +255,11 @@ export class MemStorage implements IStorage {
   // Events methods
   async createEvent(event: InsertEvent): Promise<Event> {
     const id = this.currentEventId++;
+    // Ensure active is defined
+    const active = event.active ?? true;
     const newEvent: Event = {
       ...event,
+      active,
       id,
       createdAt: new Date()
     };
@@ -280,6 +301,10 @@ export class MemStorage implements IStorage {
     const id = this.currentFacultyId++;
     const newFaculty: Faculty = {
       ...faculty,
+      // Handle optional fields
+      email: faculty.email || null,
+      image: faculty.image || null,
+      profile: faculty.profile || null,
       id,
       createdAt: new Date()
     };
