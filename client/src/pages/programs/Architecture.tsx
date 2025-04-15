@@ -349,7 +349,7 @@ const Architecture = () => {
                     <CardDescription>Hands-on learning experiences for students</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <ul className="space-y-3 text-gray-800 dark:text-gray-300">
+                    <ul className="space-y-3 text-black dark:text-gray-300">
                       <li className="flex items-start">
                         <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
                         <span>Urban Planning and Sustainable Design Workshop</span>
@@ -378,7 +378,7 @@ const Architecture = () => {
                     <CardDescription>Opportunities for students to showcase their talents</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <ul className="space-y-3 text-gray-800 dark:text-gray-300">
+                    <ul className="space-y-3 text-black dark:text-gray-300">
                       <li className="flex items-start">
                         <span className="mr-2 inline-block h-6 w-6 shrink-0 rounded-full bg-[#0A2463]/20 text-center text-[#0A2463] dark:bg-blue-900/30 dark:text-blue-400">•</span>
                         <span>Annual Architecture Design Competition</span>
@@ -406,7 +406,7 @@ const Architecture = () => {
                     <CardTitle className="text-[#0A2463] dark:text-white">Industrial Visits & Field Trips</CardTitle>
                   </CardHeader>
                   <CardContent className="pt-6">
-                    <p className="mb-4 text-gray-800 dark:text-gray-300">
+                    <p className="mb-4 text-black dark:text-gray-300">
                       The department regularly organizes industrial visits and field trips to expose students to real-world architectural practices, construction sites, and historical buildings. These visits provide valuable hands-on learning experiences and help students understand the practical applications of their studies.
                     </p>
                     <div className="mt-6">
@@ -429,13 +429,13 @@ const Architecture = () => {
               <div className="space-y-4">
                 <div className="rounded-lg bg-[#0A2463]/5 dark:bg-[#0A2463]/20 p-5">
                   <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">DEVIKA S J</h4>
-                  <p className="text-gray-800 dark:text-gray-400">HOD, Architecture Department</p>
+                  <p className="text-black dark:text-gray-400">HOD, Architecture Department</p>
                   <div className="mt-4 space-y-2">
-                    <p className="flex items-center text-gray-800 dark:text-gray-300">
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Phone className="mr-2 h-4 w-4 text-[#3E92CC]" />
                       <a href="tel:8217621733" className="hover:text-[#3E92CC] transition-colors">8217621733</a>
                     </p>
-                    <p className="flex items-center text-gray-800 dark:text-gray-300">
+                    <p className="flex items-center text-black dark:text-gray-300">
                       <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
                       <a href="mailto:devikajram@gmail.com" className="hover:text-[#3E92CC] transition-colors">devikajram@gmail.com</a>
                     </p>
