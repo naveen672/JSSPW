@@ -68,13 +68,13 @@ import { Faculty } from "@shared/schema";
 
 const facultySchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
-  position: z.string().min(3, "Position must be at least 3 characters"),
+  designation: z.string().min(3, "Position must be at least 3 characters"),
   department: z.string().min(3, "Department must be at least 3 characters"),
   qualification: z.string().min(3, "Qualification must be at least 3 characters"),
-  imageUrl: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
-  bio: z.string().optional(),
+  image: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
+  profile: z.string().optional(),
   email: z.string().email("Must be a valid email").optional(),
-  phone: z.string().optional(),
+  experience: z.string().optional(),
 });
 
 type FacultyFormValues = z.infer<typeof facultySchema>;
@@ -108,13 +108,13 @@ export default function FacultyPage() {
     resolver: zodResolver(facultySchema),
     defaultValues: {
       name: "",
-      position: "",
+      designation: "",
       department: "",
       qualification: "",
-      imageUrl: "",
-      bio: "",
+      image: "",
+      profile: "",
       email: "",
-      phone: "",
+      experience: "",
     },
   });
   
@@ -123,13 +123,13 @@ export default function FacultyPage() {
     resolver: zodResolver(facultySchema),
     defaultValues: {
       name: "",
-      position: "",
+      designation: "",
       department: "",
       qualification: "",
-      imageUrl: "",
-      bio: "",
+      image: "",
+      profile: "",
       email: "",
-      phone: "",
+      experience: "",
     },
   });
   
