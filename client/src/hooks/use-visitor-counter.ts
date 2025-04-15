@@ -10,15 +10,21 @@ export function useVisitorCounter() {
     const fetchVisitorCount = async () => {
       try {
         setLoading(true);
-        // Get visitor count
-        const countResponse = await apiRequest("GET", "/api/visitors/count");
-        const countData = await countResponse.json();
-        if (countData && typeof countData === 'object' && 'count' in countData) {
-          setVisitorCount(countData.count);
-        }
         
-        // Increment the visitor count
-        await apiRequest("POST", "/api/visitors/increment");
+        // Increment the visitor count and get the updated count
+        const incrementResponse = await apiRequest("POST", "/api/visitors/increment");
+        const incrementData = await incrementResponse.json();
+        
+        if (incrementData && typeof incrementData === 'object' && 'count' in incrementData) {
+          setVisitorCount(incrementData.count);
+        } else {
+          // Fallback to GET if the POST response doesn't include the count
+          const countResponse = await apiRequest("GET", "/api/visitors/count");
+          const countData = await countResponse.json();
+          if (countData && typeof countData === 'object' && 'count' in countData) {
+            setVisitorCount(countData.count);
+          }
+        }
       } catch (err) {
         console.error("Error fetching visitor count:", err);
         setError("Failed to load visitor counter");
