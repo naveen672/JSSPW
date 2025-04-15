@@ -32,12 +32,12 @@ const eventsData = [
 
 const EventsSection = () => {
   return (
-    <section id="events" className="py-20 dark:bg-gray-900">
+    <section id="events" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Upcoming Events</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
-          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C] dark:text-gray-300">
+          <p className="mx-auto mt-6 max-w-3xl text-gray-700 dark:text-gray-300">
             Stay connected with the latest technical events, workshops, and opportunities at JSS Polytechnic For Women.
           </p>
         </div>
@@ -64,7 +64,7 @@ const EventsSection = () => {
                   <span>{event.location}</span>
                 </div>
                 <h3 className="mb-3 text-xl font-semibold text-[#0A2463] dark:text-white">{event.title}</h3>
-                <p className="mb-4 text-[#1C1C1C] dark:text-gray-300">{event.description}</p>
+                <p className="mb-4 text-gray-700 dark:text-gray-300">{event.description}</p>
                 <a href="#" className="inline-flex items-center font-medium text-[#3E92CC] hover:text-[#0A2463] dark:text-blue-400 dark:hover:text-blue-300">
                   Event details & Registration
                   <ArrowRight className="ml-2 h-4 w-4" />

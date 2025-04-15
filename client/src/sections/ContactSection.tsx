@@ -58,12 +58,12 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 dark:bg-gray-900">
+    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Contact Us</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
-          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C] dark:text-gray-300">
+          <p className="mx-auto mt-6 max-w-3xl text-gray-700 dark:text-gray-300">
             Have questions? We're here to help. Reach out to us for more information about our programs, campus, or admissions process.
           </p>
         </div>
@@ -75,7 +75,7 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-6 grid gap-6 md:grid-cols-2">
                 <div>
-                  <label htmlFor="first-name" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">First Name *</label>
+                  <label htmlFor="first-name" className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">First Name *</label>
                   <input 
                     type="text" 
                     id="first-name"
@@ -87,7 +87,7 @@ const ContactSection = () => {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="last-name" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Last Name *</label>
+                  <label htmlFor="last-name" className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name *</label>
                   <input 
                     type="text" 
                     id="last-name"
@@ -101,7 +101,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Email Address *</label>
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address *</label>
                 <input 
                   type="email" 
                   id="email"
@@ -114,7 +114,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Subject *</label>
+                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Subject *</label>
                 <select 
                   id="subject"
                   {...register("subject")}
@@ -134,7 +134,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Message *</label>
+                <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Message *</label>
                 <textarea 
                   id="message"
                   rows={5}
@@ -166,7 +166,7 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Main Campus</h4>
-                <p className="text-[#1C1C1C] dark:text-gray-300">8J97+MRP, University Of Mysore Campus<br />Mysuru, Karnataka 570006<br />India</p>
+                <p className="text-gray-700 dark:text-gray-300">8J97+MRP, University Of Mysore Campus<br />Mysuru, Karnataka 570006<br />India</p>
               </div>
               
               <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
@@ -174,7 +174,7 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Phone</h4>
-                <p className="text-[#1C1C1C] dark:text-gray-300">Main: (555) 123-4567<br />Admissions: (555) 123-8910<br />Financial Aid: (555) 123-1112</p>
+                <p className="text-gray-700 dark:text-gray-300">Main: (555) 123-4567<br />Admissions: (555) 123-8910<br />Financial Aid: (555) 123-1112</p>
               </div>
               
               <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
@@ -182,7 +182,7 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Email</h4>
-                <p className="text-[#1C1C1C] dark:text-gray-300">info@jsspolytechnic.ac.in<br />admissions@jsspolytechnic.ac.in<br />principal@jsspolytechnic.ac.in</p>
+                <p className="text-gray-700 dark:text-gray-300">info@jsspolytechnic.ac.in<br />admissions@jsspolytechnic.ac.in<br />principal@jsspolytechnic.ac.in</p>
               </div>
               
               <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-md">
@@ -190,7 +190,7 @@ const ContactSection = () => {
                   <Clock className="h-6 w-6 text-[#0A2463] dark:text-blue-400" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463] dark:text-white">Office Hours</h4>
-                <p className="text-[#1C1C1C] dark:text-gray-300">Monday-Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM - 1:00 PM<br />Sunday: Closed</p>
+                <p className="text-gray-700 dark:text-gray-300">Monday-Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM - 1:00 PM<br />Sunday: Closed</p>
               </div>
             </div>
             
