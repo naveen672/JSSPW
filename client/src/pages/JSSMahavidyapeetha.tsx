@@ -8,12 +8,13 @@ const JSSMahavidyapeetha = () => {
       <div className="container mx-auto px-6">
         {/* Page Header */}
         <div className="mb-8 flex items-center">
-          <Link href="/#about">
-            <a className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]">
-              <ArrowLeft className="mr-2 h-5 w-5" />
-              Back
-            </a>
-          </Link>
+          <a 
+            href="/#about" 
+            className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
+          >
+            <ArrowLeft className="mr-2 h-5 w-5" />
+            Back
+          </a>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">JSS Mahavidyapeetha</h1>
         </div>
         
