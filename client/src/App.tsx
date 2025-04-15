@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -14,6 +14,8 @@ import NewsTicker from "@/components/NewsTicker";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { DarkModeProvider } from "@/lib/DarkModeContext";
+import { AuthProvider } from "@/hooks/use-auth";
+import { ProtectedRoute } from "@/lib/protected-route";
 
 // Loading component
 const PageLoading = () => (
@@ -91,7 +93,37 @@ const createLazyRoute = (path: string) => {
   );
 };
 
-function Router() {
+// AdminRouter - handles admin routes separately with a different layout
+function AdminRouter() {
+  // Load admin components
+  const AdminLogin = lazy(() => import('./pages/admin/Login'));
+  const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
+  
+  return (
+    <Switch>
+      <Route path="/admin/login" component={() => (
+        <Suspense fallback={<PageLoading />}>
+          <AdminLogin />
+        </Suspense>
+      )} />
+      
+      <ProtectedRoute
+        path="/admin/dashboard"
+        component={() => (
+          <Suspense fallback={<PageLoading />}>
+            <AdminDashboard />
+          </Suspense>
+        )}
+        adminOnly
+      />
+      
+      {/* Add more admin routes as needed */}
+    </Switch>
+  );
+}
+
+// MainRouter - handles main website routes
+function MainRouter() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -198,9 +230,25 @@ function Router() {
   );
 }
 
+// Combined Router
+function Router() {
+  const [location] = useLocation();
+  
+  // Check if current path is an admin route
+  const isAdminRoute = location.startsWith('/admin');
+  
+  if (isAdminRoute) {
+    return <AdminRouter />;
+  }
+  
+  return <MainRouter />;
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
+  const [location] = useLocation();
+  const isAdminRoute = location.startsWith('/admin');
 
   useEffect(() => {
     // Ensure splash screen is visible for at least 3 seconds
@@ -220,27 +268,36 @@ function App() {
       window.removeEventListener('load', () => setIsLoading(false));
     };
   }, []);
-
+  
   return (
     <QueryClientProvider client={queryClient}>
-      <DarkModeProvider>
-        {showSplash ? (
-          <SplashScreen />
-        ) : (
-          <>
-            <div className="sticky top-0 z-40 bg-white dark:bg-gray-900 transition-colors duration-300">
-              <Header />
-              <NewsTicker />
-            </div>
-            <main className="dark:bg-gray-900 transition-colors duration-300">
-              <Router />
-            </main>
-            <Footer />
-            <BackToTop />
-          </>
-        )}
-        <Toaster />
-      </DarkModeProvider>
+      <AuthProvider>
+        <DarkModeProvider>
+          {showSplash ? (
+            <SplashScreen />
+          ) : (
+            <>
+              {/* Show header/footer only for main website, not for admin routes */}
+              {!isAdminRoute && (
+                <div className="sticky top-0 z-40 bg-white dark:bg-gray-900 transition-colors duration-300">
+                  <Header />
+                  <NewsTicker />
+                </div>
+              )}
+              <main className="dark:bg-gray-900 transition-colors duration-300">
+                <Router />
+              </main>
+              {!isAdminRoute && (
+                <>
+                  <Footer />
+                  <BackToTop />
+                </>
+              )}
+            </>
+          )}
+          <Toaster />
+        </DarkModeProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

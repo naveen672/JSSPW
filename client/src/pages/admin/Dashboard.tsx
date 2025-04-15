@@ -62,52 +62,28 @@ export default function Dashboard() {
   const { toast } = useToast();
   const [visitorCount, setVisitorCount] = useState<number>(0);
   
-  const { data: facultyData, isLoading: isFacultyLoading } = useQuery({
+  const { data: facultyData, isLoading: isFacultyLoading } = useQuery<any[]>({
     queryKey: ["/api/admin/faculty"],
     retry: false,
-    onError: (error: Error) => {
-      toast({
-        title: "Error loading faculty data",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
+    // Error handling will be managed by queryClient defaults
   });
   
-  const { data: flashNewsData, isLoading: isFlashNewsLoading } = useQuery({
+  const { data: flashNewsData, isLoading: isFlashNewsLoading } = useQuery<any[]>({
     queryKey: ["/api/admin/flash-news"],
     retry: false,
-    onError: (error: Error) => {
-      toast({
-        title: "Error loading flash news",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
+    // Error handling will be managed by queryClient defaults
   });
   
-  const { data: eventsData, isLoading: isEventsLoading } = useQuery({
+  const { data: eventsData, isLoading: isEventsLoading } = useQuery<any[]>({
     queryKey: ["/api/admin/events"],
     retry: false,
-    onError: (error: Error) => {
-      toast({
-        title: "Error loading events",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
+    // Error handling will be managed by queryClient defaults
   });
   
-  const { data: messagesData, isLoading: isMessagesLoading } = useQuery({
+  const { data: messagesData, isLoading: isMessagesLoading } = useQuery<any[]>({
     queryKey: ["/api/admin/contact-messages"],
     retry: false,
-    onError: (error: Error) => {
-      toast({
-        title: "Error loading messages",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
+    // Error handling will be managed by queryClient defaults
   });
   
   useEffect(() => {
