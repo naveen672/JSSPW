@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Architecture = () => {
   return (
-    <div className="bg-white dark:bg-gray-900 py-20">
+    <div className="bg-white dark:bg-gray-900 py-20 [&_p]:!text-[#000000] [&_li]:!text-[#000000] [&_span]:!text-[#000000]">
       <div className="container mx-auto px-6">
         {/* Page Header */}
         <div className="mb-8 flex items-center">
@@ -197,12 +197,12 @@ const Architecture = () => {
               
               <h4 className="mb-4 text-lg font-semibold text-[#0A2463] dark:text-white">Major Equipment</h4>
               <div className="overflow-x-auto">
-                <Table>
+                <Table className="[&_td]:!text-[#000000] dark:[&_td]:!text-gray-300">
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-[100px]">Sl No</TableHead>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Quantity</TableHead>
+                      <TableHead className="w-[100px] !text-[#000000] dark:!text-white">Sl No</TableHead>
+                      <TableHead className="!text-[#000000] dark:!text-white">Name</TableHead>
+                      <TableHead className="!text-[#000000] dark:!text-white">Quantity</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -321,7 +321,7 @@ const Architecture = () => {
                       <div className="flex items-center justify-between rounded-md border p-4">
                         <div className="flex items-center">
                           <FileText className="mr-2 h-5 w-5 text-[#3E92CC]" />
-                          <span>Architecture Syllabus</span>
+                          <span className="!text-[#000000] dark:!text-white">Architecture Syllabus</span>
                         </div>
                         <a href="/architecture-syllabus.pdf" download className="inline-flex items-center">
                           <Button variant="outline" size="sm">
