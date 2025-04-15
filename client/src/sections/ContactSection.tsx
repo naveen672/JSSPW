@@ -55,24 +55,24 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="mx-auto mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[#0A2463] md:text-4xl">Contact Us</h2>
+          <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Contact Us</h2>
           <div className="mx-auto h-1 w-24 bg-[#D8315B]"></div>
-          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C]">
+          <p className="mx-auto mt-6 max-w-3xl text-[#1C1C1C] dark:text-gray-300">
             Have questions? We're here to help. Reach out to us for more information about our programs, campus, or admissions process.
           </p>
         </div>
         
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Contact Form */}
-          <div className="animate-on-scroll rounded-lg bg-[#F3F4F6] p-8 shadow-md">
-            <h3 className="mb-6 text-2xl font-semibold text-[#0A2463]">Send Us a Message</h3>
+          <div className="animate-on-scroll rounded-lg bg-[#F3F4F6] dark:bg-gray-800 p-8 shadow-md">
+            <h3 className="mb-6 text-2xl font-semibold text-[#0A2463] dark:text-white">Send Us a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-6 grid gap-6 md:grid-cols-2">
                 <div>
-                  <label htmlFor="first-name" className="mb-2 block text-sm font-medium text-[#1C1C1C]">First Name *</label>
+                  <label htmlFor="first-name" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">First Name *</label>
                   <input 
                     type="text" 
                     id="first-name"
@@ -84,7 +84,7 @@ const ContactSection = () => {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="last-name" className="mb-2 block text-sm font-medium text-[#1C1C1C]">Last Name *</label>
+                  <label htmlFor="last-name" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Last Name *</label>
                   <input 
                     type="text" 
                     id="last-name"
@@ -98,7 +98,7 @@ const ContactSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#1C1C1C]">Email Address *</label>
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-[#1C1C1C] dark:text-gray-300">Email Address *</label>
                 <input 
                   type="email" 
                   id="email"
