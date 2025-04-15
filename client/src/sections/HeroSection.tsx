@@ -124,24 +124,24 @@ const HeroSection = () => {
       </div>
       
       {/* Hero Stats */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white/90 py-3 md:py-4 backdrop-blur-sm">
+      <div className="absolute bottom-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 py-3 md:py-4 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-2 gap-3 md:gap-6 md:grid-cols-4">
             <div className="text-center">
-              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463]">95%</h4>
-              <p className="text-xs md:text-sm text-[#1C1C1C]">Graduate Placement</p>
+              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463] dark:text-white">95%</h4>
+              <p className="text-xs md:text-sm text-[#1C1C1C] dark:text-gray-300">Graduate Placement</p>
             </div>
             <div className="text-center">
-              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463]">12+</h4>
-              <p className="text-xs md:text-sm text-[#1C1C1C]">Technical Programs</p>
+              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463] dark:text-white">12+</h4>
+              <p className="text-xs md:text-sm text-[#1C1C1C] dark:text-gray-300">Technical Programs</p>
             </div>
             <div className="text-center">
-              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463]">15:1</h4>
-              <p className="text-xs md:text-sm text-[#1C1C1C]">Student-Faculty Ratio</p>
+              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463] dark:text-white">15:1</h4>
+              <p className="text-xs md:text-sm text-[#1C1C1C] dark:text-gray-300">Student-Faculty Ratio</p>
             </div>
             <div className="text-center">
-              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463]">50+</h4>
-              <p className="text-xs md:text-sm text-[#1C1C1C]">Campus Activities</p>
+              <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#0A2463] dark:text-white">50+</h4>
+              <p className="text-xs md:text-sm text-[#1C1C1C] dark:text-gray-300">Campus Activities</p>
             </div>
           </div>
         </div>
