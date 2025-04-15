@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import buildingImg from "../assets/bg1.jpg";
+import labImg from "../assets/bg2.jpg";
 
 const slideImages = [
   {
@@ -12,15 +13,15 @@ const slideImages = [
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    title: "Excellence in Technical Education",
+    url: labImg,
+    title: "State-of-the-Art Computer Labs",
     description: "Our modern facilities and innovative teaching methods prepare students for successful careers in engineering and technology."
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    title: "Building Future Leaders",
-    description: "Developing technical expertise, leadership skills, and confidence in women to excel in their chosen fields."
+    url: buildingImg,
+    title: "JSS Mahavidyapeetha Excellence",
+    description: "Developing technical expertise, leadership skills, and confidence in women to excel in their chosen fields under the guidance of JSS Mahavidyapeetha."
   }
 ];
 
