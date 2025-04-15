@@ -23,7 +23,7 @@ const Architecture = () => {
         {/* Program Overview */}
         <div className="mb-12 rounded-lg bg-white dark:bg-gray-800 p-8 shadow-md">
           <h2 className="mb-6 text-2xl font-bold text-[#0A2463] dark:text-white">Program Overview</h2>
-          <p className="mb-4 text-gray-800 dark:text-gray-300">
+          <p className="mb-4 text-black dark:text-gray-300">
             The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate 
             architectural education at diploma level. We started the diploma program in architecture with the intake of 20 and 
             later the intake was enhanced to 30 to meet the growing demand.
