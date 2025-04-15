@@ -9,13 +9,14 @@ export async function sendContactConfirmationEmail(contactMessage: ContactMessag
     // Log email that would be sent
     console.log('----------------------------------');
     console.log('EMAIL WOULD BE SENT:');
-    console.log(`From: naveeravi.ch@gmail.com`);
+    console.log(`From: naveenravi.ch@gmail.com`);
     console.log(`To: ${contactMessage.email}`);
-    console.log(`Subject: Thank you for contacting JSS Polytechnic For Women`);
+    console.log(`Subject: Thanks for your interest in JSS Polytechnic For Women`);
     console.log(`\nDear ${contactMessage.firstName} ${contactMessage.lastName},\n`);
-    console.log(`Thank you for showing interest in JSS Polytechnic For Women. Our team will get in touch with you shortly regarding your query about "${contactMessage.subject}".\n`);
-    console.log(`We appreciate your interest and look forward to assisting you.\n`);
-    console.log(`Best regards,\nJSS Polytechnic For Women Team`);
+    console.log(`Thank you for showing interest in JSS Polytechnic For Women. Our team will get in touch with you shortly.\n`);
+    console.log(`We've received your message regarding "${contactMessage.subject}" and appreciate you reaching out to us.\n`);
+    console.log(`If you have any urgent questions, please feel free to call our admissions office.\n`);
+    console.log(`Warm regards,\nJSS Polytechnic For Women Team`);
     console.log('----------------------------------');
     
     // Simulate a successful email send
@@ -34,8 +35,8 @@ export async function sendAdminNotificationEmail(contactMessage: ContactMessage)
     // Log email that would be sent to admin
     console.log('----------------------------------');
     console.log('ADMIN NOTIFICATION EMAIL:');
-    console.log(`From: system@jsspolytechnic.ac.in`);
-    console.log(`To: naveeravi.ch@gmail.com`);
+    console.log(`From: naveenravi.ch@gmail.com`);
+    console.log(`To: naveenravi.ch@gmail.com`);
     console.log(`Subject: New Contact Form Submission - ${contactMessage.subject}`);
     console.log(`\nA new contact form has been submitted:\n`);
     console.log(`Name: ${contactMessage.firstName} ${contactMessage.lastName}`);
