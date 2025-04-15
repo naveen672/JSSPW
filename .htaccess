@@ -1,0 +1,49 @@
+# Enable the rewrite engine
+RewriteEngine On
+
+# API endpoints rules
+# First check if the file exists in the API directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ api/$1.php [QSA,L]
+
+# For react-router URLs, redirect to the index.html file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^((?!api/).*)$ build/index.html [QSA,L]
+
+# Enable Cross-Origin Resource Sharing (CORS)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    
+    # Respond to preflight requests
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Deny access to .htaccess
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Deny access to files with sensitive information
+<FilesMatch "^\.env|config\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Set default character set
+AddDefaultCharset UTF-8
+
+# Set the default timezone
+php_value date.timezone "Asia/Kolkata"
+
+# Increase max upload file size (default 2MB)
+php_value upload_max_filesize 10M
+php_value post_max_size 10M

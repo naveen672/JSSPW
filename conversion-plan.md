@@ -1,4 +1,4 @@
-# Full PHP Conversion Plan
+# React Frontend + PHP Backend Conversion Plan
 
 ## Current Structure:
 - React.js frontend (client-side components)
@@ -6,49 +6,52 @@
 - In-memory storage
 
 ## New Structure:
-- Pure PHP frontend (server-side rendering)
-- PHP backend (APIs and server-side logic)
+- **Keep** React.js frontend (client-side components)
+- Replace Node.js with PHP backend (REST API)
 - MySQL database storage
 
-## Steps for Complete PHP Conversion:
-1. Create PHP equivalent of all frontend pages
-2. Move all static assets to PHP-accessible directories
-3. Implement PHP-based routing
-4. Create PHP templates for all pages
-5. Implement PHP-based admin dashboard
-6. Ensure all functionality works without Node.js
+## Steps for PHP Backend Conversion:
+1. Create PHP REST API endpoints to match all existing Node.js Express endpoints
+2. Build frontend React app into static files
+3. Set up PHP to serve the built React app
+4. Configure Hostinger to handle both the PHP API and the React frontend
 
 ## Directory Structure:
 ```
 /
-├── admin/                    # Admin PHP pages
-│   ├── dashboard.php
-│   ├── events.php
-│   ├── faculty.php
-│   ├── flash-news.php
-│   ├── index.php
-│   ├── login.php
-│   └── messages.php
-├── api/                      # API endpoints (already created)
-│   ├── admin/
-│   ├── auth/
-│   ├── includes/
-│   └── public/
-├── assets/                   # Static assets
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── includes/                 # PHP includes and shared components
-│   ├── header.php
-│   ├── footer.php
-│   ├── navbar.php
-│   └── flash-news.php
-├── pages/                    # Main site pages
-│   ├── about.php
-│   ├── admission.php
-│   ├── alumni.php
-│   ├── contact.php
-│   ├── departments.php
-│   └── events.php
-└── index.php                 # Main entry point
+├── api/                      # PHP API endpoints (replacing Node.js)
+│   ├── admin/                # Admin APIs
+│   │   ├── contact-messages.php
+│   │   ├── events.php
+│   │   ├── faculty.php
+│   │   └── flash-news.php
+│   ├── auth/                 # Authentication
+│   │   ├── login.php
+│   │   ├── logout.php
+│   │   └── user.php
+│   ├── includes/             # Shared PHP code
+│   │   ├── auth.php
+│   │   ├── config.php
+│   │   ├── database.php
+│   │   └── email.php
+│   └── public/               # Public APIs
+│       ├── contact.php
+│       ├── events.php
+│       ├── faculty.php
+│       ├── flash-news.php
+│       ├── visitors-count.php
+│       └── visitors-increment.php
+├── build/                    # Built React frontend (static files)
+│   ├── assets/
+│   ├── index.html
+│   └── ...
+└── index.php                 # Entry point (redirects to React app)
 ```
+
+## Key Tasks:
+1. Complete PHP API endpoints that match current Node.js functionality
+2. Build React app to static files
+3. Configure PHP to serve the static React app
+4. Update React API calls to use the new PHP endpoints
+5. Create `.htaccess` for URL routing on Hostinger
+6. Create a deployment guide for Hostinger
