@@ -163,7 +163,7 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-[#0A2463]" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Main Campus</h4>
-                <p className="text-[#1C1C1C]">1234 University Avenue<br />Collegetown, CA 90210<br />United States</p>
+                <p className="text-[#1C1C1C]">8J97+MRP, University Of Mysore Campus<br />Mysuru, Karnataka 570006<br />India</p>
               </div>
               
               <div className="rounded-lg bg-white p-6 shadow-md">
@@ -179,7 +179,7 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-[#0A2463]" />
                 </div>
                 <h4 className="mb-2 text-lg font-semibold text-[#0A2463]">Email</h4>
-                <p className="text-[#1C1C1C]">info@horizoncollege.edu<br />admissions@horizoncollege.edu<br />finaid@horizoncollege.edu</p>
+                <p className="text-[#1C1C1C]">info@jsspolytechnic.ac.in<br />admissions@jsspolytechnic.ac.in<br />principal@jsspolytechnic.ac.in</p>
               </div>
               
               <div className="rounded-lg bg-white p-6 shadow-md">
@@ -191,10 +191,17 @@ const ContactSection = () => {
               </div>
             </div>
             
-            <div className="h-80 w-full overflow-hidden rounded-lg">
-              <div className="flex h-full items-center justify-center bg-[#F3F4F6]">
-                <span className="text-[#1C1C1C]">Interactive Campus Map</span>
-              </div>
+            <div className="h-80 w-full overflow-hidden rounded-lg shadow-md">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.2104043490816!2d76.6366678!3d12.3118722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf701103f9a1f1%3A0xc37fbae2a124da0a!2sJSS%20Polytechnic%20for%20Women!5e0!3m2!1sen!2sin!4v1649675858091!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="JSS Polytechnic for Women Map"
+              ></iframe>
             </div>
           </div>
         </div>
