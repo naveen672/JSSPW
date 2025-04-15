@@ -216,7 +216,7 @@ const Header = () => {
                           <a
                             key={childIndex}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-[#1C1C1C] dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {child.title}
