@@ -98,6 +98,10 @@ function AdminRouter() {
   // Load admin components
   const AdminLogin = lazy(() => import('./pages/admin/Login'));
   const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
+  const FacultyPage = lazy(() => import('./pages/admin/FacultyPage'));
+  const FlashNewsPage = lazy(() => import('./pages/admin/FlashNewsPage'));
+  const MessagesPage = lazy(() => import('./pages/admin/MessagesPage'));
+  const EventsPage = lazy(() => import('./pages/admin/EventsPage'));
   
   return (
     <Switch>
@@ -117,7 +121,45 @@ function AdminRouter() {
         adminOnly
       />
       
-      {/* Add more admin routes as needed */}
+      <ProtectedRoute
+        path="/admin/faculty"
+        component={() => (
+          <Suspense fallback={<PageLoading />}>
+            <FacultyPage />
+          </Suspense>
+        )}
+        adminOnly
+      />
+      
+      <ProtectedRoute
+        path="/admin/flash-news"
+        component={() => (
+          <Suspense fallback={<PageLoading />}>
+            <FlashNewsPage />
+          </Suspense>
+        )}
+        adminOnly
+      />
+      
+      <ProtectedRoute
+        path="/admin/messages"
+        component={() => (
+          <Suspense fallback={<PageLoading />}>
+            <MessagesPage />
+          </Suspense>
+        )}
+        adminOnly
+      />
+      
+      <ProtectedRoute
+        path="/admin/events"
+        component={() => (
+          <Suspense fallback={<PageLoading />}>
+            <EventsPage />
+          </Suspense>
+        )}
+        adminOnly
+      />
     </Switch>
   );
 }

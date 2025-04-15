@@ -112,7 +112,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.put("/api/admin/flash-news/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/flash-news/:id", checkAdmin, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -190,7 +190,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.put("/api/admin/events/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/events/:id", checkAdmin, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -268,7 +268,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.put("/api/admin/faculty/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/faculty/:id", checkAdmin, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -332,12 +332,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Contact message not found" });
       }
 
+      res.json(message);
+    } catch (error) {
+      console.error("Error fetching contact message:", error);
+      res.status(500).json({ message: "Failed to fetch contact message" });
+    }
+  });
+  
+  app.patch("/api/admin/contact-messages/:id/read", checkAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid ID" });
+      }
+
+      const message = await storage.getContactMessage(id);
+      if (!message) {
+        return res.status(404).json({ message: "Contact message not found" });
+      }
+
       // Mark message as read
       const updatedMessage = await storage.markMessageAsRead(id);
       res.json(updatedMessage);
     } catch (error) {
-      console.error("Error fetching contact message:", error);
-      res.status(500).json({ message: "Failed to fetch contact message" });
+      console.error("Error marking message as read:", error);
+      res.status(500).json({ message: "Failed to mark message as read" });
     }
   });
 
