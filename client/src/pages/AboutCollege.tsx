@@ -77,7 +77,7 @@ const AboutCollege = () => {
           <h2 className="mt-8 mb-6 text-2xl font-semibold text-[#0A2463] dark:text-white">Our Vision & Values</h2>
           
           <p className="text-gray-700 dark:text-gray-300">
-            JSS Polytechnic For Women is dedicated to empowering women through quality technical education, fostering innovation, and developing industry-ready professionals. Our vision is to be a premier technical institution that transforms young women into skilled, confident, and socially responsible engineers.
+            JSS Polytechnic for Women is dedicated to empowering women through quality technical education, fostering innovation, and developing industry-ready professionals. Our vision is to be a premier technical institution that transforms young women into skilled, confident, and socially responsible engineers.
           </p>
           
           <p className="text-gray-700 dark:text-gray-300">

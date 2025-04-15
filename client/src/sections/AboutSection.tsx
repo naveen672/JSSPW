@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
-        {/* JSS Polytechnic For Women Section */}
+        {/* JSS Polytechnic for Women Section */}
         <div id="about-college">
           <div className="mx-auto mb-16 text-center">
             <h2 className="mb-4 text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">About JSS Polytechnic for Women</h2>

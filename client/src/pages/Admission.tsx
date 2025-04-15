@@ -101,7 +101,7 @@ const Admission = () => {
         <div className="mb-12 overflow-hidden rounded-lg shadow-lg">
           <img 
             src={buildingImg} 
-            alt="JSS Polytechnic For Women Campus" 
+            alt="JSS Polytechnic for Women Campus" 
             className="h-64 w-full object-cover"
           />
         </div>

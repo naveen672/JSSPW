@@ -9,7 +9,7 @@ const slideImages = [
   {
     id: 1,
     url: buildingImg,
-    title: "Welcome to JSS Polytechnic For Women",
+    title: "Welcome to JSS Polytechnic for Women",
     description: "Empowering women through quality technical education and holistic development in a supportive learning environment."
   },
   {
