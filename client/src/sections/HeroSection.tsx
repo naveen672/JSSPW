@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import buildingImg from "../assets/bg1.jpg";
 
 const slideImages = [
   {
     id: 1,
-    url: "/attached_assets/bg1.jpg",
+    url: buildingImg,
     title: "Welcome to JSS Polytechnic For Women",
     description: "Empowering women through quality technical education and holistic development in a supportive learning environment."
   },
