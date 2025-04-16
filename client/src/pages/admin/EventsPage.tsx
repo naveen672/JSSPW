@@ -235,12 +235,20 @@ export default function EventsPage() {
         method: "DELETE",
       });
       
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || "Failed to delete event");
+      if (!response.ok && response.status !== 204) {
+        // Only try to parse JSON if it's not a 204 response
+        const errorText = await response.text();
+        let errorMessage = "Failed to delete event";
+        try {
+          const errorJson = JSON.parse(errorText);
+          errorMessage = errorJson.message || errorMessage;
+        } catch (e) {
+          // If the response isn't valid JSON, use the default message
+        }
+        throw new Error(errorMessage);
       }
       
-      return await response.json();
+      return { success: true };
     },
     onSuccess: () => {
       toast({
@@ -248,6 +256,8 @@ export default function EventsPage() {
         description: "Event deleted successfully",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/admin/events"] });
+      // Also invalidate the public events endpoint
+      queryClient.invalidateQueries({ queryKey: ["/api/events"] });
     },
     onError: (error: Error) => {
       toast({
