@@ -1,21 +1,46 @@
 import { ContactMessage } from '@shared/schema';
 import nodemailer from 'nodemailer';
 
-// Check if email credentials are available
-const emailUser = process.env.EMAIL_USER;
-const emailPassword = process.env.EMAIL_PASSWORD;
+// Default email settings (these will work in local development without .env file)
+// In a production environment, these would be replaced by environment variables
+const emailUser = process.env.EMAIL_USER || 'naveenravi.ch@gmail.com';
+const emailPassword = process.env.EMAIL_PASSWORD || '';
 
-// Create a transporter object using the default SMTP transport
-const transporter = nodemailer.createTransport({
-  service: 'gmail',  // Using Gmail service
-  auth: {
-    user: emailUser || '',  // Use the environment variable 
-    pass: emailPassword || ''  // Use the environment variable
+// Create a mock transporter for local development that doesn't actually send emails
+// but logs what would be sent
+const createTransporter = () => {
+  // If we're in development mode and don't have a password, use a mock transporter
+  if (!emailPassword && process.env.NODE_ENV === 'development') {
+    return {
+      sendMail: async (mailOptions: any) => {
+        console.log('======= MOCK EMAIL SENDING (DEVELOPMENT MODE) =======');
+        console.log('Email would be sent with the following options:');
+        console.log(JSON.stringify(mailOptions, null, 2));
+        console.log('=====================================================');
+        return { messageId: 'mock-email-id-' + Date.now() };
+      }
+    };
   }
-});
+  
+  // Otherwise, create a real nodemailer transporter
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: emailUser,
+      pass: emailPassword
+    }
+  });
+};
 
-// Function to check if we have valid email configuration
+const transporter = createTransporter();
+
+// Function to check if we have valid email configuration for actual sending
 const hasValidEmailConfig = (): boolean => {
+  // Always return true for development so the flow continues
+  // In production, we'd actually check the credentials
+  if (process.env.NODE_ENV === 'development') {
+    return true;
+  }
   return Boolean(emailUser && emailPassword);
 };
 
