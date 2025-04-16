@@ -106,6 +106,22 @@ If you want to enable actual email sending:
 - Environment variables are pre-configured for local development
 - For production deployment, you would need to set proper environment variables
 
+## Deployment to Netlify
+
+This project includes configuration for deploying to Netlify:
+
+1. Create a new site on Netlify and connect to your Git repository
+2. Add the following environment variables in Netlify site settings:
+   - `SESSION_SECRET` (random secure string)
+   - `EMAIL_USER` (if using email features)
+   - `EMAIL_PASSWORD` (if using email features)
+3. Deploy the site
+
+The deployment process uses:
+- Serverless functions for the backend API
+- Client-side routing redirects for the SPA
+- Custom build process to handle the full-stack architecture
+
 ## Browser Compatibility
 
 Tested and works on:
