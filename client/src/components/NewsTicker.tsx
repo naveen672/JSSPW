@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react";
-import { Bell } from "lucide-react";
+import { Bell, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { FlashNews } from "@shared/schema";
 
 interface NewsItem {
   id: number;
   text: string;
-  link: string;
+  link: string | null;
+  attachmentPath: string | null;
 }
 
 const NewsTicker = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Fetch active flash news from API
+  const { data: newsItems = [], isLoading } = useQuery<FlashNews[]>({
+    queryKey: ["/api/flash-news"],
+    refetchInterval: 60000, // Refetch every minute
+  });
   
   useEffect(() => {
     const checkIfMobile = () => {
@@ -23,13 +32,6 @@ const NewsTicker = () => {
       window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
-  
-  const newsItems: NewsItem[] = [
-    { id: 1, text: "Summer admissions now open for 2025-2026 academic year", link: "/admissions" },
-    { id: 2, text: "⭐ Dr. B.G. Lokesha awarded National Teaching Excellence Medal", link: "/faculty" },
-    { id: 3, text: "New Engineering Building opening September 1st", link: "/campus" },
-    { id: 4, text: "JSS Polytechnic for Women ranks #5 in Best Technical Institutions", link: "/rankings" }
-  ];
 
   const handleMouseEnter = () => {
     setIsPaused(true);
@@ -56,30 +58,36 @@ const NewsTicker = () => {
               onTouchStart={handleMouseEnter}
               onTouchEnd={handleMouseLeave}
             >
-              {newsItems.map((item) => (
-                <a 
-                  key={item.id} 
-                  href={item.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mr-12 cursor-pointer text-white hover:text-[#D8315B] inline-block"
-                >
-                  {item.text}
-                </a>
-              ))}
-              
-              {/* Duplicate items for seamless looping */}
-              {newsItems.map((item) => (
-                <a 
-                  key={`repeat-${item.id}`} 
-                  href={item.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mr-12 cursor-pointer text-white hover:text-[#D8315B] inline-block"
-                >
-                  {item.text}
-                </a>
-              ))}
+              {newsItems.length === 0 ? (
+                <span className="mr-12 text-white inline-block">Welcome to JSS Polytechnic for Women</span>
+              ) : (
+                <>
+                  {newsItems.map((item) => (
+                    <a 
+                      key={item.id} 
+                      href={item.link || item.attachmentPath || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="mr-12 cursor-pointer text-white hover:text-[#D8315B] inline-block"
+                    >
+                      {item.text}
+                    </a>
+                  ))}
+                  
+                  {/* Duplicate items for seamless looping */}
+                  {newsItems.map((item) => (
+                    <a 
+                      key={`repeat-${item.id}`} 
+                      href={item.link || item.attachmentPath || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="mr-12 cursor-pointer text-white hover:text-[#D8315B] inline-block"
+                    >
+                      {item.text}
+                    </a>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </div>
