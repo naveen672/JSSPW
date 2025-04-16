@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/taxonomy/terms/1" />
+<link rel="shortlink" href="/taxonomy/term/1" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="http://jsspwmys.org/misc/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Architecture | jsspwmys.org</title>
+<style type="text/css" media="all">
+@import url("http://jsspwmys.org/modules/system/system.base.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/system/system.menus.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/system/system.messages.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/system/system.theme.css?s5cbgd");
+</style>
+<style type="text/css" media="all">
+@import url("http://jsspwmys.org/modules/comment/comment.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/date/date_api/date.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/field/theme/field.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/node/node.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/search/search.css?s5cbgd");
+@import url("http://jsspwmys.org/modules/user/user.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/views/css/views.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/ckeditor/css/ckeditor.css?s5cbgd");
+</style>
+<style type="text/css" media="all">
+@import url("http://jsspwmys.org/sites/all/modules/colorbox/styles/stockholmsyndrome/colorbox_style.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/ctools/css/ctools.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/panels/css/panels.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/panels/plugins/layouts/flexible/flexible.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/panels/plugins/layouts/twocol/twocol.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/quicktabs/css/quicktabs.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/quicktabs/quicktabs_tabstyles/tabstyles/isocentre/isocentre.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/default/files/ctools/css/1962310b6c35d6d94a5e87a11ce0730c.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/modules/views_ticker/views.ticker.scroller.css?s5cbgd");
+</style>
+<style type="text/css" media="all">
+@import url("http://jsspwmys.org/sites/all/themes/webmate_responsive_theme/style.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/themes/webmate_responsive_theme/usermod.css?s5cbgd");
+@import url("http://jsspwmys.org/sites/all/themes/webmate_responsive_theme/media.css?s5cbgd");
+</style>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js?v=1.7.2"></script>
+<script type="text/javascript" src="http://jsspwmys.org/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="http://jsspwmys.org/misc/drupal.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/jquery_update/replace/ui/external/jquery.cookie.js?v=67fb34f6a866c40d0570"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/jquery_update/replace/misc/jquery.form.min.js?v=2.69"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/dialog/misc/ajax.js?v=7.60"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/jquery_update/js/jquery_update.js?v=0.0.1"></script>
+<script type="text/javascript" src="http://jsspwmys.org/misc/progress.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/libraries/colorbox/jquery.colorbox-min.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/colorbox/js/colorbox.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/colorbox/styles/stockholmsyndrome/colorbox_style.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/views/js/base.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/views/js/ajax_view.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/quicktabs/js/quicktabs.js?s5cbgd"></script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/views_ticker/js/jquery.vticker-min.js?s5cbgd"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function($) { Drupal.behaviors.views_ticker_vTicker_upcoming_events_scroller = { attach: function (context) { $("#views-ticker-vTicker-upcoming_events_scroller", context).vTicker({mousePause: true , speed:500 , pause:1000 , showItems:4 , direction: "up"}); } };})(jQuery);
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/modules/views_ticker/js/jquery.liscroller.js?s5cbgd"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function($) { Drupal.behaviors.views_ticker_liScroll_scroll_view = { attach: function (context) { $("#views-ticker-liScroll-scroll_view", context).liScroll({pauseOnMouse: true, travelocity:0.04, direction: "left"}); } };})(jQuery);
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://jsspwmys.org/sites/all/themes/webmate_responsive_theme/js/custom.js?s5cbgd"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"webmate_responsive_theme","theme_token":"bOwvKDy-pQhHr_b-kGzkWg8JfHJJ9j1udEuzJTvpPsg","jquery_version":"1.7","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.7\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"sites\/all\/modules\/dialog\/misc\/ajax.js":1,"sites\/all\/modules\/jquery_update\/js\/jquery_update.js":1,"misc\/progress.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/stockholmsyndrome\/colorbox_style.js":1,"sites\/all\/modules\/views\/js\/base.js":1,"sites\/all\/modules\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/quicktabs\/js\/quicktabs.js":1,"sites\/all\/modules\/views_ticker\/js\/jquery.vticker-min.js":1,"0":1,"sites\/all\/modules\/views_ticker\/js\/jquery.liscroller.js":1,"1":1,"sites\/all\/themes\/webmate_responsive_theme\/js\/custom.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/colorbox\/styles\/stockholmsyndrome\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/panels\/css\/panels.css":1,"sites\/all\/modules\/panels\/plugins\/layouts\/flexible\/flexible.css":1,"sites\/all\/modules\/panels\/plugins\/layouts\/twocol\/twocol.css":1,"sites\/all\/modules\/quicktabs\/css\/quicktabs.css":1,"sites\/all\/modules\/quicktabs\/quicktabs_tabstyles\/tabstyles\/isocentre\/isocentre.css":1,"public:\/\/ctools\/css\/1962310b6c35d6d94a5e87a11ce0730c.css":1,"sites\/all\/modules\/views_ticker\/views.ticker.scroller.css":1,"sites\/all\/themes\/webmate_responsive_theme\/style.css":1,"sites\/all\/themes\/webmate_responsive_theme\/usermod.css":1,"sites\/all\/themes\/webmate_responsive_theme\/media.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"quicktabs":{"qt_acedemics_qt":{"name":"acedemics_qt","tabs":[{"vid":"programmes_brief","display":"page","args":"%2","use_title":0,"view_path":"taxonomy%2Fterm%2F1","view_dom_id":1,"ajax_args":"1","actual_args":["1"]},{"vid":"facilities","display":"block_facilities","args":"%2","use_title":0,"view_path":"taxonomy%2Fterm%2F1","view_dom_id":2,"ajax_args":"1","actual_args":["1"]},{"bid":"views_delta_facilities-block_faculties","hide_title":1},{"vid":"facilities","display":"block_gallery","args":"%2","use_title":0,"view_path":"taxonomy%2Fterm%2F1","view_dom_id":3,"ajax_args":"1","actual_args":["1"]},{"vid":"facilities","display":"block_activities","args":"%2","use_title":true,"view_path":"taxonomy%2Fterm%2F1","view_dom_id":4,"ajax_args":"1","actual_args":["1"]},{"bid":"views_delta_facilities-block_1","hide_title":1},{"bid":"views_delta_facilities-block_2","hide_title":1},{"vid":"facilities","display":"block_3","args":"%2","use_title":0,"view_path":"taxonomy%2Fterm%2F1","view_dom_id":5,"ajax_args":"1","actual_args":["1"]}],"ajaxPageState":{"jquery_version":"1.7"}}}});
+//--><!]]>
+</script>
+<!--[if IE 8 ]>    <html class="ie8 ielt9"> <![endif]-->
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-taxonomy page-taxonomy-term page-taxonomy-term- page-taxonomy-term-1">
+	<div id="skip-link">
+		<a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+	</div>
+  		
+<div id="header_wrapper">
+  <div id="inner_header_wrapper">
+
+    
+    <div class="region region-user-menu">
+  <div id="block-menu-menu-top-menu" class="block block-menu">
+
+        <h2 >Top Menu</h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="/node/153" title="">Grievances</a></li>
+<li class="leaf"><a href="/node/168" title="">RTI</a></li>
+<li class="last leaf"><a href="/node/14" title="">Contact</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+    
+  </div>
+</div>
+
+
+<header id="header" role="banner">
+
+  <div class="top_left">
+          <div id="logo"><a href="/" title="Home"><img src="http://jsspwmys.org/sites/default/files/main-logo_0_0.png"/></a></div>
+        <h1 id="site-title">
+      <a href="/" title="Home">jsspwmys.org</a>
+      <div id="site-description"></div>
+    </h1>
+  </div>
+
+  <div class="top_right">
+      <div class="region region-contact-number">
+  <div id="block-block-1" class="block block-block">
+
+      
+  <div class="content">
+    <h3 class="rtecenter">JSS MAHAVIDYAPEETHA</h3><br>
+
+<h1 class="rtecenter" style="font-family:cinzel;font-weight:bold;font-size:38px;color:#F47C20;">JSS POLYTECHNIC FOR WOMEN, MYSURU</h1>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </div>
+
+  <div class="clear"></div>
+
+
+
+</header>
+      <div class="menu_wrapper">
+      <nav id="main-menu"  role="navigation">
+        <a class="nav-toggle" href="#">Navigation</a>
+        <div class="menu-navigation-container">
+          <ul class="menu"><li class="first leaf"><a href="/" title="">Home</a></li>
+<li class="expanded"><a href="/about" title="">About Us</a><ul class="menu"><li class="first leaf"><a href="/node/17">JSS Mahavidyapeetha</a></li>
+<li class="leaf"><a href="/node/18">Technical Education under JSSMVP</a></li>
+<li class="last leaf"><a href="/node/19">ABOUT THE COLLEGE</a></li>
+</ul></li>
+<li class="expanded active-trail"><a title="" class="active-trail nolink">Programmes</a><ul class="menu"><li class="first leaf active-trail"><a href="/taxonomy/terms/1" title="" class="active-trail active">Architecture</a></li>
+<li class="leaf"><a href="/taxonomy/terms/4" title="">Apparel Design and Fabrication Technology</a></li>
+<li class="leaf"><a href="/taxonomy/terms/2" title="">Commercial Practice</a></li>
+<li class="leaf"><a href="/taxonomy/terms/3" title="">Computer Science &amp; Engineering</a></li>
+<li class="leaf"><a href="/taxonomy/terms/5" title="">Electronics &amp; Communication Engineering</a></li>
+<li class="leaf"><a href="/taxonomy/terms/6" title="">Electronics instrumentation and Control Engg.</a></li>
+<li class="leaf"><a href="/taxonomy/terms/67" title="">Interior Design</a></li>
+<li class="last leaf"><a href="/taxonomy/terms/68" title="">Information Science</a></li>
+</ul></li>
+<li class="leaf"><a href="/node/5">Admissions</a></li>
+<li class="expanded"><a title="" class="nolink">Supports</a><ul class="menu"><li class="first leaf"><a href="/node/191" title="">III Cell (Placements and Training Cell)</a></li>
+<li class="leaf"><a href="/node/192" title="">Hostel</a></li>
+<li class="leaf"><a href="/node/193" title="">Library</a></li>
+<li class="leaf"><a href="/node/194" title="">NSS</a></li>
+<li class="leaf"><a href="/node/195" title="">NCC</a></li>
+<li class="leaf"><a href="/node/196" title="">ISTE Chapter</a></li>
+<li class="last leaf"><a href="/node/197" title="">Community development through Polytechnic</a></li>
+</ul></li>
+<li class="leaf"><a href="/node/6" title="">Exams</a></li>
+<li class="expanded"><a title="" class="nolink">Circulars</a><ul class="menu"><li class="first leaf"><a href="/circulars/170" title="">Academic Calendar</a></li>
+<li class="leaf"><a href="/circulars/169" title="">Exam</a></li>
+<li class="leaf"><a href="/circulars/279" title="">Scholarship</a></li>
+<li class="leaf"><a href="/circulars/171" title="">III Cell</a></li>
+<li class="leaf"><a href="/circulars/281" title="">NCC</a></li>
+<li class="leaf"><a href="/circulars/280" title="">NSS</a></li>
+<li class="leaf"><a href="/circulars/172" title="">Cultural</a></li>
+<li class="leaf"><a href="/circulars/282" title="">Sports</a></li>
+<li class="leaf"><a href="/circulars/283" title="">Alumni</a></li>
+<li class="last leaf"><a href="/circulars/284" title="">Hostel</a></li>
+</ul></li>
+<li class="last leaf"><a href="/node/221" title="">Alumni</a></li>
+</ul>        </div>
+        <div class="clear"></div>
+      </nav>
+    </div>
+    <div class="banner_wrapper">
+      </div>
+  
+  <div id="container">
+
+      <div class="scroller_wrapper">
+      <div class="region region-scroller">
+  <div id="block-views-scroll-view-block" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-scroll-view view-id-scroll_view view-display-id-block clean-list view-dom-id-7d17ebf661ee140474d884b6b6a39fc6">
+        
+  
+  
+      <div class="view-content">
+      <!-- start scroll -->
+<div class='view view-scroll_view'><div class='view-content view-content-scroll_view'><div><ul id='views-ticker-liScroll-scroll_view'><li class='views-liScroll-item views-liScroll-item-scroll_view'><span class='views-liScroll-tick-field'>  
+  <span class="views-field views-field-body">        <span class="field-content"><p class="rtejustify" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; line-height: 28.8px; font-family: Philosopher, sans-serif;"><strong>Vision</strong>: JSS Polytechnic for women is dedicated to empower women to become equal partners by providing quality technical education and making them realise their self-worth.</p>
+
+<p class="rtejustify" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; line-height: 28.8px; font-family: Philosopher, sans-serif;"><strong>Mission</strong>: To create and foster a progressive learning environment through appropriate technical education, for women from varied economic and social background, to become diploma professional who can cater to the requirements of the present liberalised world at supervisory and managerial levels without foregoing the indigenous cultural values.</p>
+</span>  </span></span></li></ul></div></div></div>
+<!-- end scroll -->
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+  </div>
+    <div class="content-sidebar-wrap">
+
+    <div id="content">
+            
+      
+      <section id="post-content" role="main">
+                                <h1 class="page-title">Architecture</h1>                                        <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+    <div class="panel-flexible panels-flexible-2 clearfix" >
+<div class="panel-flexible-inside panels-flexible-2-inside">
+<div class="panels-flexible-region panels-flexible-region-2-center panels-flexible-region-first panels-flexible-region-last">
+  <div class="inside panels-flexible-region-inside panels-flexible-region-2-center-inside panels-flexible-region-inside-first panels-flexible-region-inside-last">
+<div class="panel-pane pane-block pane-quicktabs-acedemics-qt"  >
+  
+      
+  
+  <div class="pane-content">
+    <div  id="quicktabs-acedemics_qt" class="quicktabs-wrapper quicktabs-style-isocentre"><div class="item-list"><ul class="quicktabs-tabs quicktabs-style-isocentre"><li class="active first"><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=0#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-0" class="active">About</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=1#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-1" class="active">Facilities</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=2#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-2" class="active">Faculty</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=3#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-3" class="active">Gallery</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=4#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-4" class="active">Activities</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=5#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-5" class="active">Contact</a></li>
+<li><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=6#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-6" class="active">Notification</a></li>
+<li class="last"><a href="/taxonomy/terms/1?mag_q=taxonomy/term/1&amp;qt-acedemics_qt=7#qt-acedemics_qt" id="quicktabs-tab-acedemics_qt-7" class="active">Syllabus</a></li>
+</ul></div><div id="quicktabs-container-acedemics_qt" class="quicktabs_main quicktabs-style-isocentre"><div  id="quicktabs-tabpage-acedemics_qt-0" class="quicktabs-tabpage "><div class="view view-programmes-brief view-id-programmes_brief view-display-id-page view-dom-id-10e013a59bdfc6a3e3957aeb1fd33098">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+          <div class="field-content"><p class="rtejustify">The Architecture program was started at JSS Polytechnic for women, Mysore in the academic year 1983-1984 to facilitate the architectural   education at diploma level. We  started  the  diploma  program  in  architecture  with  the  intake  of  20 and later  the  intake  was  enhanced  to  30 meet  the  growing  demand. The  institute  takes  very  special  care  in  selecting  students  for  admission  to  various  academic  programmes  based on  the  merit  with  the  objective  of  providing  better  technical  education. The  programme  focuses  in  training  the  students  for  acquiring  the  skills  on  drafting  and  design  development  of  various  types  of  buildings according  to  user  requirement. During  the  course  of  study , the  students  are  made  to understand  the  design  concepts  adopted  in  ancient  and modern  buildings.</p>
+
+<p><strong>Vision</strong></p>
+
+<p class="rtejustify">To create globally and intellectually competent, professionally skilled, ethically strong, morally Upright, socially responsive, culturally tolerant professionals.</p>
+
+<p><strong>Mission</strong></p>
+
+<ul><li class="rtejustify">Imparting Knowledge with Academic Excellence by incorporating competitive curriculumand to make students excellent Designers and Professionals, so that they chart out their ownpath of success and possess perfection in their endeavors.</li>
+	<li class="rtejustify">Develop professionally skilled and innovative planners, designers, constructors and operators of society’s economic and social engine.</li>
+	<li class="rtejustify">Creating learning environment with technological orientation to maximizeIndividual potential.</li>
+	<li class="rtejustify">To ensure, students of all ability levels are well equipped to meet the contemporary challenges ofArchitectural education, profession and life.</li>
+</ul><p class="rtejustify"><strong>PROGRAMME EDUCATIONAL OBJECTIVES</strong></p>
+
+<table align="left" border="1" cellpadding="0" cellspacing="0" class="rtejustify"><tbody><tr><td style="width:78px;">
+			<p>PEO - 1</p>
+			</td>
+			<td style="width:546px;">
+			<p> To educate students in the fundamental principles of architecture.</p>
+			</td>
+		</tr><tr><td style="width:78px;">
+			<p>PEO - 2  </p>
+			</td>
+			<td style="width:546px;">
+			<p>To challenge students to develop the ability to use architectural principles in</p>
+
+			<p>analyzing and solving problems of practical importance in the built environment</p>
+
+			<p>and society at large.</p>
+			</td>
+		</tr><tr><td style="width:78px;">
+			<p>PEO - 3  </p>
+			</td>
+			<td style="width:546px;">
+			<p>To educate students about the need for lifelong learning and professional development</p>
+
+			<p>after diploma programme.</p>
+			</td>
+		</tr><tr><td style="width:78px;">
+			<p>PEO - 4</p>
+			</td>
+			<td style="width:546px;">
+			<p>Educating students in skills and knowledge required to improve the quality</p>
+
+			<p>of the built environment on both national and international level.</p>
+			</td>
+		</tr></tbody></table><p class="rtejustify"><strong>PROGRAMME  OUTCOMES</strong></p>
+
+<table border="1" cellpadding="0" cellspacing="0" class="rtejustify"><tbody><tr><td style="width:66px;">
+			<p>PO - 1</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Basic and Discipline specific knowledge:</strong></p>
+
+			<p>Apply knowledge of basic mathematics, science and engineering fundamentals and</p>
+
+			<p>engineering specialization to solve the engineering problems.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 2</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Problem analysis:</strong></p>
+
+			<p>Identify and analyse well-defined engineering problems using codified standard methods.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 3</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Design/ development of solutions:</strong></p>
+
+			<p>Design solutions for well-defined technical problems and assist with the design of</p>
+
+			<p>systems components or processes to meet specified needs.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 4</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Engineering Tools, Experimentation and Testing:</strong></p>
+
+			<p>Apply modern engineering tools and appropriate technique to conduct standard tests and</p>
+
+			<p>measurements.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 5</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Engineering practices for society, sustainability and environment:</strong></p>
+
+			<p>Apply appropriate technology in context of society, sustainability, environment and</p>
+
+			<p>ethical practices.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 6</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Project Management:</strong></p>
+
+			<p>Use engineering management principles individually, as a team member or a leader to</p>
+
+			<p>manage projects and effectively communicate about well-defined engineering activities.</p>
+			</td>
+		</tr><tr><td style="width:66px;">
+			<p>PO - 7</p>
+			</td>
+			<td style="width:558px;">
+			<p><strong>Life-long learning:</strong></p>
+
+			<p>Ability to analyse individual needs and engage in updating in the context of technological</p>
+
+			<p>changes.</p>
+			</td>
+		</tr></tbody></table><p> </p>
+</div>    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></div><div  id="quicktabs-tabpage-acedemics_qt-1" class="quicktabs-tabpage quicktabs-hide"><div class="view view-facilities view-id-facilities view-display-id-block_facilities table-faculty view-dom-id-d684256216b85c58944f37e3168fc849">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><p><strong>The total building area is 600 square metres.</strong></p>
+<p><strong>Major Equipments </strong></p>
+<table border="1" cellpadding="1" cellspacing="1" style="width:500px"><tbody><tr><td class="rtecenter"><strong>Sl No</strong></td>
+<td class="rtecenter"><strong>Name</strong></td>
+<td class="rtecenter"><strong>Quantity</strong></td>
+</tr><tr><td class="rtecenter">1</td>
+<td>LCD Projector</td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">2</td>
+<td>Computers </td>
+<td class="rtecenter">35</td>
+</tr><tr><td class="rtecenter">3</td>
+<td>10KV UPS</td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">4</td>
+<td>Nikon D60 Digital Camera</td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">5</td>
+<td>Nikon D750 Camera</td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">6</td>
+<td>Nikon-AC-2S Auto level</td>
+<td class="rtecenter">03</td>
+</tr><tr><td class="rtecenter">7</td>
+<td>Trimble M3DR 5” Total Station </td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">8</td>
+<td>Theodolite</td>
+<td class="rtecenter">06</td>
+</tr><tr><td class="rtecenter">9</td>
+<td>HP Design jet 110+ Plotter</td>
+<td class="rtecenter">01</td>
+</tr><tr><td class="rtecenter">10</td>
+<td>Epson L220 Printer</td>
+<td class="rtecenter">01</td>
+</tr></tbody></table><p> </p>
+</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div></div><div  id="quicktabs-tabpage-acedemics_qt-2" class="quicktabs-tabpage quicktabs-hide"><div id="block-views-facilities-block-faculties" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-facilities view-id-facilities view-display-id-block_faculties table-faculty view-dom-id-67fd619bb4d80ef36725f3833f10e73f">
+            <div class="view-header">
+      <ul class="action-links"><li>
+</li></ul>    </div>
+  
+  
+      <div class="attachment attachment-before">
+      <div class="view view-facilities view-id-facilities view-display-id-block_fhod table-faculty">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last table-borders">
+    <div class="panel-display panel-2col clearfix" >
+  <div class="panel-panel panel-col-first">
+    <div class="inside">  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-title">        <h3 class="field-content">DEVIKA S J</h3>  </div>  
+  <div class="views-field views-field-field-designation">    <span class="views-label views-label-field-designation">Designation: </span>    <span class="field-content">HOD</span>  </div>  
+  <div class="views-field views-field-field-educational-qualification">    <span class="views-label views-label-field-educational-qualification">Educational Qualification: </span>    <span class="field-content">B.Arch</span>  </div>  
+  <div class="views-field views-field-field-area-of-specialization">    <span class="views-label views-label-field-area-of-specialization">Area of Specialization: </span>    <span class="field-content">Architecture &amp; Interiors</span>  </div>  
+  <div class="views-field views-field-field-e-mail">    <span class="views-label views-label-field-e-mail">E-Mail: </span>    <span class="field-content">devikajram@gmail.com</span>  </div></div>
+  </div>
+
+  <div class="panel-panel panel-col-last">
+    <div class="inside">  
+  <div class="views-field views-field-field-photo">        <div class="field-content"><a href="/node/225"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/Devika%20S%20J.jpeg?itok=cAfEnAJf" width="125" height="150" alt="" /></a> <br></div>  </div></div>
+  </div>
+</div>
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div>    </div>
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first table-borders">
+    <div class="panel-display panel-2col clearfix" >
+  <div class="panel-panel panel-col-first">
+    <div class="inside">  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-title">        <h5 class="field-content">ANUSHA G </h5>  </div>  
+  <div class="views-field views-field-field-designation">    <span class="views-label views-label-field-designation">Designation: </span>    <span class="field-content">Lecturer</span>  </div>  
+  <div class="views-field views-field-field-educational-qualification">    <span class="views-label views-label-field-educational-qualification">Educational Qualification: </span>    <span class="field-content">B.Arch</span>  </div>  
+  <div class="views-field views-field-field-area-of-specialization">    <span class="views-label views-label-field-area-of-specialization">Area of Specialization: </span>    <span class="field-content">ARCHITECTURE</span>  </div>  
+  <div class="views-field views-field-field-e-mail">    <span class="views-label views-label-field-e-mail">E-Mail: </span>    <span class="field-content">anuguru29@jsspwmys.org</span>  </div></div>
+  </div>
+
+  <div class="panel-panel panel-col-last">
+    <div class="inside">  
+  <div class="views-field views-field-field-photo">        <div class="field-content"><a href="/node/305"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/Anusha%20G.jpeg?itok=-QPnoyJD" width="125" height="150" alt="" /></a></div>  </div></div>
+  </div>
+</div>
+  </div>
+  <div class="views-row views-row-2 views-row-even table-borders">
+    <div class="panel-display panel-2col clearfix" >
+  <div class="panel-panel panel-col-first">
+    <div class="inside">  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-title">        <h5 class="field-content">William Kadam</h5>  </div>  
+  <div class="views-field views-field-field-designation">    <span class="views-label views-label-field-designation">Designation: </span>    <span class="field-content">Lecturer</span>  </div>  
+  <div class="views-field views-field-field-educational-qualification">    <span class="views-label views-label-field-educational-qualification">Educational Qualification: </span>    <span class="field-content">B. Arch</span>  </div>  
+  <div class="views-field views-field-field-area-of-specialization">    <span class="views-label views-label-field-area-of-specialization">Area of Specialization: </span>    <span class="field-content">Architecture </span>  </div>  
+  <div class="views-field views-field-field-e-mail">    <span class="views-label views-label-field-e-mail">E-Mail: </span>    <span class="field-content">williamkdm@gmail.com</span>  </div></div>
+  </div>
+
+  <div class="panel-panel panel-col-last">
+    <div class="inside">  
+  <div class="views-field views-field-field-photo">        <div class="field-content"><a href="/node/318"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/william%20kadam.jpeg?itok=AV01hggb" width="125" height="150" alt="" /></a></div>  </div></div>
+  </div>
+</div>
+  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last table-borders">
+    <div class="panel-display panel-2col clearfix" >
+  <div class="panel-panel panel-col-first">
+    <div class="inside">  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-title">        <h5 class="field-content">PALLAVI H S </h5>  </div>  
+  <div class="views-field views-field-field-designation">    <span class="views-label views-label-field-designation">Designation: </span>    <span class="field-content">Lecturer</span>  </div>  
+  <div class="views-field views-field-field-educational-qualification">    <span class="views-label views-label-field-educational-qualification">Educational Qualification: </span>    <span class="field-content">B.Arch</span>  </div>  
+  <div class="views-field views-field-field-area-of-specialization">    <span class="views-label views-label-field-area-of-specialization">Area of Specialization: </span>    <span class="field-content">Architecture</span>  </div>  
+  <div class="views-field views-field-field-e-mail">    <span class="views-label views-label-field-e-mail">E-Mail: </span>    <span class="field-content">pallavihs@jsspwmys.org</span>  </div></div>
+  </div>
+
+  <div class="panel-panel panel-col-last">
+    <div class="inside">  
+  <div class="views-field views-field-field-photo">        <div class="field-content"><a href="/node/306"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/Pallavi%20H%20S.jpeg?itok=QT0LCtWP" width="125" height="150" alt="" /></a></div>  </div></div>
+  </div>
+</div>
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div><div  id="quicktabs-tabpage-acedemics_qt-3" class="quicktabs-tabpage quicktabs-hide"><div class="view view-facilities view-id-facilities view-display-id-block_gallery table-faculty view-dom-id-ddd76019f6beae4359f85eebeb9e4cac">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-field-gallery-images">        <div class="field-content"><a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Book%20Exhibition%20organized%20for%20AR%20%26%20ID%20Students.jpeg" title="Book Exhibition oraganized by AR students " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;Book Exhibition oraganized by AR students &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Book%20Exhibition%20organized%20for%20AR%20%26%20ID%20Students.jpeg?itok=1NPcgpTe" width="125" height="150" alt="" title="Book Exhibition oraganized by AR students " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Guest%20Lecture%20for%20AR%20Final%20Year%20stdents%20by%20Ar.%20Bhavana%20Mahadev.jpeg" title="Guest Lecture arranged for Final students " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;Guest Lecture arranged for Final students &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Guest%20Lecture%20for%20AR%20Final%20Year%20stdents%20by%20Ar.%20Bhavana%20Mahadev.jpeg?itok=x50CAIxq" width="125" height="150" alt="" title="Guest Lecture arranged for Final students " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Dept.Student%20Forum%20Launch%20AR.jpeg" title="student forum is lunched by AR " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;student forum is lunched by AR &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Dept.Student%20Forum%20Launch%20AR.jpeg?itok=9jPbbviD" width="125" height="150" alt="" title="student forum is lunched by AR " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Industrial%20Visit%20%40%20vijayanagar%2CMysuru.jpeg" title="Indutrial visit for final students " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;Indutrial visit for final students &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Industrial%20Visit%20%40%20vijayanagar%2CMysuru.jpeg?itok=vIP3g6xG" width="125" height="150" alt="" title="Indutrial visit for final students " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/ISHRAE%20Student%20Chapter%20Installation.jpeg" title="ISHRAE student chapter intslaltion program " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;ISHRAE student chapter intslaltion program &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/ISHRAE%20Student%20Chapter%20Installation.jpeg?itok=ZNJZGoZu" width="125" height="150" alt="" title="ISHRAE student chapter intslaltion program " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Talk%20On%20Career%20Opportunities%20by%20Dept.Alumni.jpeg" title="talk on career opportunities guidenss by alumnis " class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;talk on career opportunities guidenss by alumnis &quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Talk%20On%20Career%20Opportunities%20by%20Dept.Alumni.jpeg?itok=ayr3n92V" width="125" height="150" alt="" title="talk on career opportunities guidenss by alumnis " /></a>&nbsp;<a href="http://jsspwmys.org/sites/default/files/galleriesjsspw/Talk%20on%20Higher%20Education%20Opportunitises%20After%20Diploma.jpeg" title="guest lecture on Higher Education after Diploma" class="colorbox" data-colorbox-gallery="gallery-node-198-0qf6Z18lU-w" data-cbox-img-attrs="{&quot;title&quot;: &quot;guest lecture on Higher Education after Diploma&quot;, &quot;alt&quot;: &quot;&quot;}"><img typeof="foaf:Image" src="http://jsspwmys.org/sites/default/files/styles/faculty/public/galleriesjsspw/Talk%20on%20Higher%20Education%20Opportunitises%20After%20Diploma.jpeg?itok=du7kmkod" width="125" height="150" alt="" title="guest lecture on Higher Education after Diploma" /></a></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div></div><div  id="quicktabs-tabpage-acedemics_qt-4" class="quicktabs-tabpage quicktabs-hide"><div class="view view-facilities view-id-facilities view-display-id-block_activities table-faculty view-dom-id-bcfc2e59206b230c76f77fde891a4868">
+        
+  
+  
+      <div class="view-content">
+      <table  class="views-table cols-0">
+       <tbody>
+          <tr  class="odd views-row-first">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/CURRICULUM%20REVISION%20MEETING%20-%201.pdf" type="application/pdf; length=105331">CURRICULUM REVISION MEETING - 1.pdf</a></span>          </td>
+              </tr>
+          <tr  class="even">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="File" title="application/vnd.openxmlformats-officedocument.wordprocessingml.document" src="/modules/file/icons/x-office-document.png" /> <a href="http://jsspwmys.org/sites/default/files/files/Department%20activity%20-%20AR-2023_new.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document; length=5169841">Department activity - AR-2023_new.docx</a></span>          </td>
+              </tr>
+          <tr  class="odd views-row-last">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/Department%20activity%20-%20AR-2023_compressed.pdf" type="application/pdf; length=958650">Department activity - AR-2023_compressed.pdf</a></span>          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div></div><div  id="quicktabs-tabpage-acedemics_qt-5" class="quicktabs-tabpage quicktabs-hide"><div id="block-views-facilities-block-1" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-facilities view-id-facilities view-display-id-block_1 table-faculty view-dom-id-882b1e67249beb0252e555d3953642d5">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-title">        <span class="field-content"><a href="/node/156">Contacts - Architecture</a></span>  </span>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"><div class="views-field views-field-title" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);">
+<h5 class="field-content" style="line-height: 18.75px;">DEVIKA S J</h5>
+</div>
+
+<div class="views-field views-field-field-designation" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);"><span class="field-content">HOD</span></div>
+
+<div class="views-field views-field-field-designation" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);"><span class="field-content">Ph No. : 8217621733</span></div>
+
+<div class="views-field views-field-field-designation" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);"><span class="views-label views-label-field-e-mail" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);">E-Mail: </span><span class="field-content" style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: 16px; font-family: Philosopher, sans-serif; background-color: rgb(255, 255, 255);">devikajram@gmail.com</span></div>
+</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div><div  id="quicktabs-tabpage-acedemics_qt-6" class="quicktabs-tabpage quicktabs-hide"><div id="block-views-facilities-block-2" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-facilities view-id-facilities view-display-id-block_2 table-faculty view-dom-id-66b4a9898b6770a261e68679b1b5af79">
+        
+  
+  
+      <div class="view-content">
+      <table  class="views-table cols-0">
+       <tbody>
+          <tr  class="odd views-row-first">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/AR-1st%263rd%20sem%20-%20IA%20TT.pdf" type="application/pdf; length=618035" title="AR-1st&amp;amp;3rd sem - IA TT.pdf">Time Table --1st Sem and 3rd Sem</a></span>          </td>
+              </tr>
+          <tr  class="even">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/AR-5th%20Sem%20IA%20TT.pdf" type="application/pdf; length=390653" title="AR-5th Sem IA TT.pdf">Time Table --5th Sem </a></span>          </td>
+              </tr>
+          <tr  class="odd views-row-last">
+                  <td  class="views-field views-field-field-activity-date">
+                      </td>
+                  <td  class="views-field views-field-field-upload">
+            <span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/AR-MTT.pdf" type="application/pdf; length=496665" title="AR-MTT.pdf">Master Tme Table--1st ,3rd and 5th sem </a></span>          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div><div  id="quicktabs-tabpage-acedemics_qt-7" class="quicktabs-tabpage quicktabs-hide"><div class="view view-facilities view-id-facilities view-display-id-block_3 table-faculty view-dom-id-ff80a21c2d5610d8b28029478be10534">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-body">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-department-syllabus">        <div class="field-content"><a class='downbtn' href='http://jsspwmys.org/sites/default/files/syllabus/ARCHITECTURE%20SYLLABUS.pdf'>Download Syllabus for Architecture</a></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <hr>    </div>
+  
+  
+</div></div></div></div>  </div>
+
+  
+  </div>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+      </section> <!-- /#main -->
+    </div>
+  
+      
+    </div>
+
+          <aside id="sidebar-second" role="complementary">
+        <div class="region region-sidebar-second">
+  <div id="block-menu-menu-side-bar-menu" class="block block-menu">
+
+      
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="/main-gallery" title="">Gallery</a></li>
+<li class="leaf"><a href="/node/166" title="">Audited Statements</a></li>
+<li class="leaf"><a href="/toppers-list/173" title="">Toppers List</a></li>
+<li class="leaf"><a href="/node/261" title="">Upcoming Events</a></li>
+<li class="last leaf"><a href="/node/295" title="">E-Magazine</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-upcoming-events-scroller-block" class="block block-views">
+
+        <h2 >Upcoming Events</h2>
+    
+  <div class="content">
+    <div class="view view-upcoming-events-scroller view-id-upcoming_events_scroller view-display-id-block clean-list view-dom-id-699e60a943775a20953472c32755fa4c">
+        
+  
+  
+      <div class="view-content">
+      <!-- start scroll -->
+<div class='view view-upcoming_events_scroller'><div class='view-content view-content-upcoming_events_scroller'><div id='views-ticker-vTicker-upcoming_events_scroller'><ul id='views-ticker-vTicker-list-upcoming_events_scroller'><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/pdf-m10/ADMISSION%20HELP%20DESK-pdf.pdf" type="application/pdf; length=267569" title="ADMISSION HELP DESK-pdf.pdf">Admission Helpdesk</a></span></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="File" title="application/vnd.openxmlformats-officedocument.wordprocessingml.document" src="/modules/file/icons/x-office-document.png" /> <a href="http://jsspwmys.org/sites/default/files/pdf-m10/admission%20flyer.docx" type="application/vnd.openxmlformats-officedocument.wordprocessingml.document; length=216343" title="admission flyer.docx">Admission -2024-25</a></span></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/pdf-m10/ADMISSION%20HELP%20DESK.docx_0.pdf" type="application/pdf; length=50136" title="ADMISSION HELP DESK.docx.pdf">Admission Help Desk </a></span></div>  </div></span></li><li class='views-vTicker-item views-vTicker-item-upcoming_events_scroller'><span class='views-vTicker-tick-field'>  
+  <div class="views-field views-field-field-activity-date">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/pdf-m10/Advertisement%20-%20Apprenticeship%20fair%20-%20JSSPW%2C%20Mysuru.pdf" type="application/pdf; length=279814">Advertisement - Apprenticeship fair - JSSPW, Mysuru.pdf</a></span></div>  </div></span></li></ul></div></div></div>
+<!-- end scroll -->
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-views-aicte-block-block" class="block block-views">
+
+      
+  <div class="content">
+    <div class="view view-aicte-block view-id-aicte_block view-display-id-block view-dom-id-ebc4b769ab13e84eecc25d39e0a80672">
+            <div class="view-header">
+      <h2>More Information</h2>    </div>
+  
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/GoverningCouncilOfJSSPW.pdf" type="application/pdf; length=160004" title="GoverningCouncilOfJSSPW.pdf">Governing Council of JSSPW</a></span></div>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-field-upload">        <div class="field-content"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="http://jsspwmys.org/sites/default/files/files/AICTE-EoA-2019-20%20to%202024-25.pdf" type="application/pdf; length=1677907" title="AICTE-EoA-2019-20 to 2024-25.pdf">AICTE-EoA 2019-20 to 2024-25</a></span></div>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-field-upload">        <div class="field-content"></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+      </aside>  <!-- /#sidebar-first -->
+    
+
+      
+</div>
+
+<!-- <div class="footer-wrapper">
+  
+</div> -->
+
+<div id="footer">
+  
+  <div class="footer_credit">
+    <div class="footer_inner_credit">
+           <div id="foot">
+        <div class="region region-footer">
+  <div id="block-visitors-0" class="block block-visitors">
+
+      
+  <div class="content">
+    <div class="item-list"><ul><li class="first last">Total Visitors: 494348</li>
+</ul></div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+      </div>
+         
+    <div id="copyright">
+     <p class="copyright">Copyright &copy; 2025, jsspwmys.org </p> <p class="credits"> Developed by  <a href="http://www.cosmiccomputer.co.in">cosmiccomputer.co.in</a></p>
+    <div class="clear"></div>
+    </div>
+  </div>
+  </div>
+</div>
+	 <!-- /.region -->
+</body>
+</html>
