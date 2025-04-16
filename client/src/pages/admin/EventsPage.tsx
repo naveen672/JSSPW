@@ -78,7 +78,8 @@ const eventSchema = z.object({
   date: z.date({
     required_error: "Please select a date for the event",
   }),
-  image: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
+  time: z.string().optional(),
+  image: z.string().optional().or(z.instanceof(File)),
   active: z.boolean().default(true),
 });
 
@@ -103,6 +104,7 @@ export default function EventsPage() {
       description: "",
       location: "",
       image: "",
+      time: "",
       active: true,
     },
   });

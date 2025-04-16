@@ -44,7 +44,9 @@ export const insertContactMessageSchema = createInsertSchema(contactMessages).pi
 export const flashNews = pgTable("flash_news", {
   id: serial("id").primaryKey(),
   text: text("text").notNull(),
-  link: text("link").notNull(),
+  link: text("link"),
+  attachmentType: text("attachment_type"),
+  attachmentPath: text("attachment_path"),
   active: boolean("active").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -52,6 +54,8 @@ export const flashNews = pgTable("flash_news", {
 export const insertFlashNewsSchema = createInsertSchema(flashNews).pick({
   text: true,
   link: true,
+  attachmentType: true,
+  attachmentPath: true,
   active: true,
 });
 
@@ -60,9 +64,9 @@ export const events = pgTable("events", {
   title: text("title").notNull(),
   description: text("description").notNull(),
   date: text("date").notNull(),
-  time: text("time").notNull(),
+  time: text("time"),
   location: text("location").notNull(),
-  image: text("image").notNull(),
+  image: text("image"),
   active: boolean("active").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

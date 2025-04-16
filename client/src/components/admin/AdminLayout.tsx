@@ -29,7 +29,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import smallLogo from "@assets/smalllogo1.png";
+import smallLogo from "@assets/logo_jss.jpeg";
 
 type NavItemProps = {
   href: string;
