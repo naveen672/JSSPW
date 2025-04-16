@@ -71,7 +71,7 @@ const facultySchema = z.object({
   designation: z.string().min(3, "Position must be at least 3 characters"),
   department: z.string().min(3, "Department must be at least 3 characters"),
   qualification: z.string().min(3, "Qualification must be at least 3 characters"),
-  image: z.string().url("Must be a valid URL").or(z.string().length(0).optional()),
+  image: z.any().optional(), // Allow File object or URL string
   profile: z.string().optional(),
   email: z.string().email("Must be a valid email").optional(),
   experience: z.string().optional(),
@@ -136,12 +136,28 @@ export default function FacultyPage() {
   // Create mutation
   const createMutation = useMutation({
     mutationFn: async (data: FacultyFormValues) => {
+      const formData = new FormData();
+      
+      // Append all text fields
+      formData.append("name", data.name);
+      formData.append("designation", data.designation);
+      formData.append("department", data.department);
+      formData.append("qualification", data.qualification);
+      
+      if (data.profile) formData.append("profile", data.profile);
+      if (data.email) formData.append("email", data.email);
+      if (data.experience) formData.append("experience", data.experience);
+      
+      // Append image file if it exists
+      if (data.image instanceof File) {
+        formData.append("image", data.image);
+      } else if (typeof data.image === "string" && data.image) {
+        formData.append("imageUrl", data.image);
+      }
+      
       const response = await fetch("/api/admin/faculty", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {
@@ -172,12 +188,28 @@ export default function FacultyPage() {
   // Update mutation
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number, data: FacultyFormValues }) => {
+      const formData = new FormData();
+      
+      // Append all text fields
+      formData.append("name", data.name);
+      formData.append("designation", data.designation);
+      formData.append("department", data.department);
+      formData.append("qualification", data.qualification);
+      
+      if (data.profile) formData.append("profile", data.profile);
+      if (data.email) formData.append("email", data.email);
+      if (data.experience) formData.append("experience", data.experience);
+      
+      // Append image file if it exists
+      if (data.image instanceof File) {
+        formData.append("image", data.image);
+      } else if (typeof data.image === "string" && data.image) {
+        formData.append("imageUrl", data.image);
+      }
+      
       const response = await fetch(`/api/admin/faculty/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {
@@ -358,14 +390,35 @@ export default function FacultyPage() {
       <FormField
         control={form.control}
         name="image"
-        render={({ field }) => (
+        render={({ field: { value, onChange, ...field } }) => (
           <FormItem>
-            <FormLabel>Image URL (Optional)</FormLabel>
+            <FormLabel>Profile Image (Optional)</FormLabel>
             <FormControl>
-              <Input placeholder="https://example.com/image.jpg" {...field} />
+              <div className="flex flex-col gap-2">
+                <Input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      onChange(file);
+                    }
+                  }}
+                  {...field}
+                />
+                {formType === "edit" && typeof value === "string" && value && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <p className="text-sm text-muted-foreground">Current image:</p>
+                    <Avatar>
+                      <AvatarImage src={value} alt="Current profile" />
+                      <AvatarFallback>IMG</AvatarFallback>
+                    </Avatar>
+                  </div>
+                )}
+              </div>
             </FormControl>
             <FormDescription>
-              Link to faculty member's profile photo
+              Upload a profile photo for the faculty member
             </FormDescription>
             <FormMessage />
           </FormItem>
