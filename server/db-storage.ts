@@ -204,7 +204,16 @@ export class DatabaseStorage implements IStorage {
   }
   
   async createEvent(event: InsertEvent): Promise<Event> {
-    const [newEvent] = await db.insert(events).values(event).returning();
+    const eventToInsert = {
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      time: event.time ?? null,
+      location: event.location,
+      image: event.image ?? null,
+      active: event.active ?? true
+    };
+    const [newEvent] = await db.insert(events).values(eventToInsert).returning();
     return newEvent;
   }
   

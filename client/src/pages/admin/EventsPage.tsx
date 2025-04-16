@@ -125,12 +125,29 @@ export default function EventsPage() {
   // Create mutation
   const createMutation = useMutation({
     mutationFn: async (data: EventFormValues) => {
+      // Create form data for file uploads
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("location", data.location);
+      formData.append("date", data.date.toISOString());
+      formData.append("active", String(data.active));
+      
+      if (data.time) {
+        formData.append("time", data.time);
+      }
+      
+      if (data.image) {
+        if (data.image instanceof File) {
+          formData.append("image", data.image);
+        } else if (typeof data.image === 'string') {
+          formData.append("imageUrl", data.image);
+        }
+      }
+      
       const response = await fetch("/api/admin/events", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {
@@ -400,14 +417,36 @@ export default function EventsPage() {
                   <FormField
                     control={createForm.control}
                     name="image"
-                    render={({ field }) => (
+                    render={({ field: { value, onChange, ...field } }) => (
                       <FormItem>
-                        <FormLabel>Image URL (Optional)</FormLabel>
+                        <FormLabel>Event Image (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="https://example.com/image.jpg" {...field} />
+                          <div className="flex flex-col gap-2">
+                            <Input 
+                              type="file" 
+                              accept="image/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  onChange(file);
+                                }
+                              }}
+                              {...field}
+                            />
+                            {typeof value === 'string' && value && (
+                              <div className="mt-2">
+                                <p className="text-sm text-muted-foreground mb-1">Current image:</p>
+                                <img 
+                                  src={value} 
+                                  alt="Event preview" 
+                                  className="h-20 w-auto object-cover rounded-md border"
+                                />
+                              </div>
+                            )}
+                          </div>
                         </FormControl>
                         <FormDescription>
-                          Image to display with the event
+                          Upload an image for the event (JPG, PNG, GIF)
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -689,14 +728,36 @@ export default function EventsPage() {
               <FormField
                 control={editForm.control}
                 name="image"
-                render={({ field }) => (
+                render={({ field: { value, onChange, ...field } }) => (
                   <FormItem>
-                    <FormLabel>Image URL (Optional)</FormLabel>
+                    <FormLabel>Event Image (Optional)</FormLabel>
                     <FormControl>
-                      <Input placeholder="https://example.com/image.jpg" {...field} />
+                      <div className="flex flex-col gap-2">
+                        <Input 
+                          type="file" 
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              onChange(file);
+                            }
+                          }}
+                          {...field}
+                        />
+                        {typeof value === 'string' && value && (
+                          <div className="mt-2">
+                            <p className="text-sm text-muted-foreground mb-1">Current image:</p>
+                            <img 
+                              src={value} 
+                              alt="Event preview" 
+                              className="h-20 w-auto object-cover rounded-md border"
+                            />
+                          </div>
+                        )}
+                      </div>
                     </FormControl>
                     <FormDescription>
-                      Image to display with the event
+                      Upload a new image or keep the existing one
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
