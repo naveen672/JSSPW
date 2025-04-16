@@ -11,9 +11,13 @@ import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 import { sendContactConfirmationEmail, sendAdminNotificationEmail } from "./emailService";
 import { setupAuth } from "./auth";
+import { setupHealthEndpoint } from "./health";
 import bcrypt from "bcrypt";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Setup health endpoint for Render
+  setupHealthEndpoint(app);
+  
   // Setup authentication
   const { checkAdmin } = setupAuth(app);
 
