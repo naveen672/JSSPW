@@ -1,9 +1,33 @@
-import { Code, Cpu, LineChart, Building, Wrench, CircuitBoard, ArrowRight, Check } from "lucide-react";
+import { Code, Cpu, LineChart, Building, Wrench, CircuitBoard, ArrowRight, Check, Shirt, PencilRuler } from "lucide-react";
 import { useLocation } from "wouter";
 
 const programData = [
   {
     id: 1,
+    icon: <Building className="text-3xl" />,
+    title: "Architecture",
+    description: "Programs focused on architectural design, drafting, construction techniques, and building information modeling.",
+    features: ["3-year Diploma Program", "Design Studios", "Field Work & Site Visits"],
+    link: "/programs/architecture"
+  },
+  {
+    id: 2,
+    icon: <Shirt className="text-3xl" />,
+    title: "Apparel Design and Fabrication Technology",
+    description: "Comprehensive training in garment design, pattern making, textile technology, and fashion merchandising.",
+    features: ["3-year Diploma Program", "Fashion Studios", "Industry Collaborations"],
+    link: "/programs/apparel-design"
+  },
+  {
+    id: 3,
+    icon: <Wrench className="text-3xl" />,
+    title: "Commercial Practice",
+    description: "Training in business principles, office procedures, accounting, and commercial management practices.",
+    features: ["3-year Diploma Program", "Industry Internships", "Practical Training"],
+    link: "/programs/commercial-practice"
+  },
+  {
+    id: 4,
     icon: <Code className="text-3xl" />,
     title: "Computer Science & Engineering",
     description: "Cutting-edge curriculum covering programming, software development, database management, and networking.",
@@ -11,44 +35,36 @@ const programData = [
     link: "/programs/computer-science"
   },
   {
-    id: 2,
+    id: 5,
     icon: <Cpu className="text-3xl" />,
-    title: "Electronics & Communication",
+    title: "Electronics & Communication Engineering",
     description: "Comprehensive training in electronic circuits, communication systems, embedded systems, and signal processing.",
     features: ["3-year Diploma Program", "Modern Electronics Labs", "Industry Projects"],
     link: "/programs/electronics-communication"
   },
   {
-    id: 3,
+    id: 6,
     icon: <CircuitBoard className="text-3xl" />,
-    title: "Electrical & Electronics",
-    description: "Programs covering electrical machines, power systems, control systems, and electronics fundamentals.",
-    features: ["3-year Diploma Program", "Practical Training", "Industry Visits"],
+    title: "Electronics Instrumentation and Control ENGG",
+    description: "Programs covering instrumentation systems, process control, automation, and industrial measurements.",
+    features: ["3-year Diploma Program", "Instrumentation Labs", "Industry Visits"],
     link: "/programs/electronics-instrumentation"
   },
   {
-    id: 4,
+    id: 7,
+    icon: <PencilRuler className="text-3xl" />,
+    title: "Interior Design",
+    description: "Training in interior space planning, furniture design, materials, color theory, and lighting design.",
+    features: ["3-year Diploma Program", "Design Studios", "Portfolio Development"],
+    link: "/programs/interior-design"
+  },
+  {
+    id: 8,
     icon: <LineChart className="text-3xl" />,
-    title: "Information Science & Technology",
+    title: "Information Science",
     description: "Studies focused on information systems, data science, web development, and IT infrastructure.",
     features: ["3-year Diploma Program", "Software Project Experience", "Industry Internships"],
     link: "/programs/information-science"
-  },
-  {
-    id: 5,
-    icon: <Building className="text-3xl" />,
-    title: "Civil Engineering",
-    description: "Programs in structural design, construction management, surveying, and infrastructure development.",
-    features: ["3-year Diploma Program", "Field Work & Surveying", "Design Projects"],
-    link: "/programs/architecture"
-  },
-  {
-    id: 6,
-    icon: <Wrench className="text-3xl" />,
-    title: "Mechanical Engineering",
-    description: "Training in mechanical design, manufacturing processes, thermal engineering, and materials science.",
-    features: ["3-year Diploma Program", "Workshop Practice", "CAD/CAM Training"],
-    link: "/programs/commercial-practice"
   }
 ];
 
@@ -66,7 +82,7 @@ const ProgramsSection = () => {
           </p>
         </div>
         
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {programData.map((program) => (
             <div key={program.id} className="animate-on-scroll group rounded-lg bg-white p-6 shadow-md transition-all hover:shadow-lg hover:-translate-y-1">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0A2463]/10 text-[#0A2463] transition-all group-hover:bg-[#0A2463] group-hover:text-white">
