@@ -20,16 +20,33 @@ A comprehensive website for JSS Polytechnic for Women featuring public-facing co
    npm install
    ```
 
-2. **Start the Website (Windows Users)**
+2. **Development Mode (Windows Users)**
    ```
    start-windows.bat
    ```
    
+   Or if using PowerShell:
+   ```
+   .\start-windows.ps1
+   ```
+   
    This will start both the server and client on http://localhost:5000
+
+3. **Production Mode (Windows Users)**
+   ```
+   start-production.bat
+   ```
+   
+   Or if using PowerShell:
+   ```
+   .\start-production.ps1
+   ```
+   
+   This will build and start the optimized production version
 
 ## Alternative Start Methods
 
-If the batch file doesn't work, try:
+If the batch files don't work, try:
 
 ```
 npm install -g cross-env
@@ -40,6 +57,13 @@ Or using PowerShell:
 ```
 $env:NODE_ENV="development"
 npx tsx server/index.ts
+```
+
+For production without the scripts:
+```
+npm run build
+$env:NODE_ENV="production"
+node dist/index.js
 ```
 
 ## Admin Access
