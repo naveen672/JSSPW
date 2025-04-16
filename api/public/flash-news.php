@@ -1,51 +1,39 @@
 <?php
-// Set headers
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET');
-header('Access-Control-Allow-Headers: Content-Type');
 
-// Handle preflight request (OPTIONS method)
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
+// Include database connection
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/database.php';
 
-// Check if request method is GET
-if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-    http_response_code(405); // Method Not Allowed
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
-
-// Include necessary files
-require_once '../includes/database.php';
-
-// Get database connection
+// Create database connection
 $db = new Database();
 $conn = $db->getConnection();
 
-// Build query for active flash news only
-$query = "SELECT id, text, link 
-          FROM flash_news 
-          WHERE active = 1
-          ORDER BY createdAt DESC";
-
-// Execute query
-$result = $conn->query($query);
-
-if ($result) {
-    $flashNewsList = [];
-    
-    while ($row = $result->fetch_assoc()) {
-        $flashNewsList[] = $row;
+// Handle GET request to get active flash news
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    try {
+        if ($db->isSqlite()) {
+            // Get active flash news
+            $stmt = $conn->prepare("SELECT * FROM flash_news WHERE active = 1 ORDER BY createdAt DESC");
+            $result = $stmt->execute();
+            
+            $news = [];
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                $news[] = $row;
+            }
+        } else {
+            // MySQL
+            $result = $conn->query("SELECT * FROM flash_news WHERE active = 1 ORDER BY createdAt DESC");
+            
+            $news = [];
+            while ($row = $result->fetch_assoc()) {
+                $news[] = $row;
+            }
+        }
+        
+        echo json_encode(['news' => $news]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to get flash news: ' . $e->getMessage()]);
     }
-    
-    // Return flash news list
-    http_response_code(200);
-    echo json_encode($flashNewsList);
-} else {
-    // Return error
-    http_response_code(500); // Internal Server Error
-    echo json_encode(['error' => 'Failed to get flash news: ' . $conn->error]);
 }

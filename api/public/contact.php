@@ -1,84 +1,83 @@
 <?php
-// Set headers
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
 
-// Handle preflight request (OPTIONS method)
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
+// Include database connection and email utilities
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/database.php';
+require_once __DIR__ . '/../includes/email.php';
 
-// Check if request method is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405); // Method Not Allowed
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
-
-// Include necessary files
-require_once '../includes/database.php';
-require_once '../includes/email.php';
-
-// Get JSON data from request body
-$data = json_decode(file_get_contents('php://input'), true);
-
-// Validate input data
-if (!$data || !isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
-    http_response_code(400); // Bad Request
-    echo json_encode(['error' => 'Invalid request data']);
-    exit;
-}
-
-// Sanitize inputs
-$name = filter_var(trim($data['name']), FILTER_SANITIZE_STRING);
-$email = filter_var(trim($data['email']), FILTER_SANITIZE_EMAIL);
-$phone = isset($data['phone']) ? filter_var(trim($data['phone']), FILTER_SANITIZE_STRING) : '';
-$message = filter_var(trim($data['message']), FILTER_SANITIZE_STRING);
-
-// Further validate email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400); // Bad Request
-    echo json_encode(['error' => 'Invalid email format']);
-    exit;
-}
-
-// Get database connection
+// Create database connection
 $db = new Database();
 $conn = $db->getConnection();
 
-// Insert contact message into database
-$stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, message) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $name, $email, $phone, $message);
-
-if ($stmt->execute()) {
-    $id = $stmt->insert_id;
+// Handle POST request to submit a contact message
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get JSON input
+    $input = json_decode(file_get_contents('php://input'), true);
     
-    // Create contact message object for email
-    $contactMessage = [
-        'id' => $id,
-        'name' => $name,
-        'email' => $email,
-        'phone' => $phone,
-        'message' => $message,
-        'createdAt' => date('Y-m-d H:i:s')
-    ];
+    // Validate required fields
+    if (!isset($input['name']) || !isset($input['email']) || !isset($input['message'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Name, email, and message are required']);
+        exit;
+    }
     
-    // Send confirmation email to user
-    sendContactConfirmationEmail($contactMessage);
+    // Extract contact data
+    $name = $input['name'];
+    $email = $input['email'];
+    $phone = isset($input['phone']) ? $input['phone'] : '';
+    $message = $input['message'];
     
-    // Send notification email to admin
-    sendAdminNotificationEmail($contactMessage);
-    
-    // Return success response
-    http_response_code(201); // Created
-    echo json_encode(['success' => true, 'message' => 'Your message has been sent successfully.']);
-} else {
-    // Return error
-    http_response_code(500); // Internal Server Error
-    echo json_encode(['error' => 'Failed to save contact message: ' . $stmt->error]);
+    try {
+        if ($db->isSqlite()) {
+            // Insert contact message in SQLite
+            $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, message, isRead) VALUES (:name, :email, :phone, :message, 0)");
+            $stmt->bindValue(':name', $name, SQLITE3_TEXT);
+            $stmt->bindValue(':email', $email, SQLITE3_TEXT);
+            $stmt->bindValue(':phone', $phone, SQLITE3_TEXT);
+            $stmt->bindValue(':message', $message, SQLITE3_TEXT);
+            $result = $stmt->execute();
+            
+            // Get the inserted message ID
+            $messageId = $conn->lastInsertRowID();
+            
+            // Get the message data
+            $stmt = $conn->prepare("SELECT * FROM contact_messages WHERE id = :id");
+            $stmt->bindValue(':id', $messageId, SQLITE3_INTEGER);
+            $result = $stmt->execute();
+            $contactMessage = $result->fetchArray(SQLITE3_ASSOC);
+        } else {
+            // Insert contact message in MySQL
+            $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, message, isRead) VALUES (?, ?, ?, ?, 0)");
+            $stmt->bind_param("ssss", $name, $email, $phone, $message);
+            $stmt->execute();
+            $messageId = $stmt->insert_id;
+            $stmt->close();
+            
+            // Get the message data
+            $stmt = $conn->prepare("SELECT * FROM contact_messages WHERE id = ?");
+            $stmt->bind_param("i", $messageId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $contactMessage = $result->fetch_assoc();
+            $stmt->close();
+        }
+        
+        // Send confirmation email
+        $emailService = new EmailService();
+        $emailService->sendContactConfirmation($contactMessage);
+        
+        // Send admin notification
+        $emailService->sendAdminNotification($contactMessage);
+        
+        // Return success response
+        echo json_encode([
+            'success' => true,
+            'message' => 'Your message has been sent successfully. We will get back to you soon.',
+            'contactId' => $messageId
+        ]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to submit contact message: ' . $e->getMessage()]);
+    }
 }
-
-$stmt->close();

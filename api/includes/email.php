@@ -1,85 +1,129 @@
 <?php
 /**
- * Email Utility Functions
+ * Email Service for sending emails
  */
 
-// Include config file
-require_once 'config.php';
-
-/**
- * Send confirmation email to user when they submit contact form
- * 
- * @param array $contactMessage Contact message data
- * @return bool True if email sent successfully, false otherwise
- */
-function sendContactConfirmationEmail($contactMessage) {
-    $to = $contactMessage['email'];
-    $subject = "Thank you for contacting " . SITE_NAME;
-    $from = EMAIL_FROM;
+class EmailService {
+    private $fromEmail;
+    private $siteName;
+    private $adminEmail;
     
-    // Headers
-    $headers = "From: " . SITE_NAME . " <" . $from . ">\r\n";
-    $headers .= "Reply-To: " . ADMIN_EMAIL . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-    
-    // Message body
-    $body = "<html><body>";
-    $body .= "<h2>Thank you for contacting us, " . htmlspecialchars($contactMessage['name']) . "!</h2>";
-    $body .= "<p>We have received your message and will get back to you as soon as possible.</p>";
-    $body .= "<p><strong>Your message details:</strong></p>";
-    $body .= "<p><strong>Name:</strong> " . htmlspecialchars($contactMessage['name']) . "</p>";
-    $body .= "<p><strong>Email:</strong> " . htmlspecialchars($contactMessage['email']) . "</p>";
-    
-    if (!empty($contactMessage['phone'])) {
-        $body .= "<p><strong>Phone:</strong> " . htmlspecialchars($contactMessage['phone']) . "</p>";
+    /**
+     * Constructor - initializes email settings
+     */
+    public function __construct() {
+        $this->fromEmail = EMAIL_FROM;
+        $this->siteName = SITE_NAME;
+        $this->adminEmail = ADMIN_EMAIL;
     }
     
-    $body .= "<p><strong>Message:</strong><br>" . nl2br(htmlspecialchars($contactMessage['message'])) . "</p>";
-    $body .= "<p><strong>Sent on:</strong> " . date('F j, Y, g:i a', strtotime($contactMessage['createdAt'])) . "</p>";
-    $body .= "<hr>";
-    $body .= "<p>This is an automated message from the " . SITE_NAME . " website.</p>";
-    $body .= "</body></html>";
-    
-    // Send email
-    return mail($to, $subject, $body, $headers);
-}
-
-/**
- * Send notification email to admin when a new contact form is submitted
- * 
- * @param array $contactMessage Contact message data
- * @return bool True if email sent successfully, false otherwise
- */
-function sendAdminNotificationEmail($contactMessage) {
-    $to = ADMIN_EMAIL;
-    $subject = "New Contact Form Submission - " . SITE_NAME;
-    $from = EMAIL_FROM;
-    
-    // Headers
-    $headers = "From: " . SITE_NAME . " Website <" . $from . ">\r\n";
-    $headers .= "Reply-To: " . $contactMessage['email'] . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-    
-    // Message body
-    $body = "<html><body>";
-    $body .= "<h2>New Contact Form Submission</h2>";
-    $body .= "<p>A new message has been submitted through the contact form on the " . SITE_NAME . " website.</p>";
-    $body .= "<p><strong>Contact details:</strong></p>";
-    $body .= "<p><strong>Name:</strong> " . htmlspecialchars($contactMessage['name']) . "</p>";
-    $body .= "<p><strong>Email:</strong> " . htmlspecialchars($contactMessage['email']) . "</p>";
-    
-    if (!empty($contactMessage['phone'])) {
-        $body .= "<p><strong>Phone:</strong> " . htmlspecialchars($contactMessage['phone']) . "</p>";
+    /**
+     * Send contact confirmation email to user
+     */
+    public function sendContactConfirmation($contactMessage) {
+        $to = $contactMessage['email'];
+        $subject = "{$this->siteName} - Thank you for your message";
+        
+        $message = "
+        <html>
+        <head>
+            <title>Thank you for contacting {$this->siteName}</title>
+        </head>
+        <body>
+            <h2>Thank you for contacting {$this->siteName}</h2>
+            <p>Dear {$contactMessage['name']},</p>
+            <p>We have received your message and will get back to you as soon as possible.</p>
+            <p>Here's a copy of your message:</p>
+            <div style='background-color: #f5f5f5; padding: 15px; border-radius: 5px;'>
+                <p>{$contactMessage['message']}</p>
+            </div>
+            <p>Best regards,<br>The {$this->siteName} Team</p>
+        </body>
+        </html>
+        ";
+        
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: {$this->siteName} <{$this->fromEmail}>" . "\r\n";
+        
+        // For development, just log the email
+        if (defined('DISPLAY_ERRORS') && DISPLAY_ERRORS) {
+            error_log("Contact Confirmation Email would be sent to: $to");
+            error_log("Subject: $subject");
+            error_log("Message: $message");
+            error_log("Headers: $headers");
+            return true;
+        }
+        
+        // Send email
+        return mail($to, $subject, $message, $headers);
     }
     
-    $body .= "<p><strong>Message:</strong><br>" . nl2br(htmlspecialchars($contactMessage['message'])) . "</p>";
-    $body .= "<p><strong>Sent on:</strong> " . date('F j, Y, g:i a', strtotime($contactMessage['createdAt'])) . "</p>";
-    $body .= "<hr>";
-    $body .= "<p>You can respond directly to this email to reply to the sender.</p>";
-    $body .= "</body></html>";
-    
-    // Send email
-    return mail($to, $subject, $body, $headers);
+    /**
+     * Send notification email to admin
+     */
+    public function sendAdminNotification($contactMessage) {
+        $to = $this->adminEmail;
+        $subject = "New Contact Message - {$this->siteName}";
+        
+        $message = "
+        <html>
+        <head>
+            <title>New Contact Message</title>
+        </head>
+        <body>
+            <h2>New Contact Message Received</h2>
+            <p>A new contact message has been submitted on the {$this->siteName} website.</p>
+            <table style='border-collapse: collapse; width: 100%;'>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;'>Name</th>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{$contactMessage['name']}</td>
+                </tr>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;'>Email</th>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{$contactMessage['email']}</td>
+                </tr>";
+                
+        if (!empty($contactMessage['phone'])) {
+            $message .= "
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;'>Phone</th>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{$contactMessage['phone']}</td>
+                </tr>";
+        }
+        
+        $message .= "
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;'>Message</th>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{$contactMessage['message']}</td>
+                </tr>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2;'>Date/Time</th>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>{$contactMessage['createdAt']}</td>
+                </tr>
+            </table>
+            <p>You can respond directly to this email to reply to the sender.</p>
+        </body>
+        </html>
+        ";
+        
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: {$this->siteName} Website <{$this->fromEmail}>" . "\r\n";
+        $headers .= "Reply-To: {$contactMessage['email']}" . "\r\n";
+        
+        // For development, just log the email
+        if (defined('DISPLAY_ERRORS') && DISPLAY_ERRORS) {
+            error_log("Admin Notification Email would be sent to: $to");
+            error_log("Subject: $subject");
+            error_log("Message: $message");
+            error_log("Headers: $headers");
+            return true;
+        }
+        
+        // Send email
+        return mail($to, $subject, $message, $headers);
+    }
 }
