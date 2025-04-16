@@ -178,12 +178,29 @@ export default function EventsPage() {
   // Update mutation
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number, data: EventFormValues }) => {
+      // Create form data for file uploads
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("location", data.location);
+      formData.append("date", data.date.toISOString());
+      formData.append("active", String(data.active));
+      
+      if (data.time) {
+        formData.append("time", data.time);
+      }
+      
+      if (data.image) {
+        if (data.image instanceof File) {
+          formData.append("image", data.image);
+        } else if (typeof data.image === 'string') {
+          formData.append("imageUrl", data.image);
+        }
+      }
+      
       const response = await fetch(`/api/admin/events/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {

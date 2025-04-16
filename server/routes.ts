@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
@@ -12,6 +12,61 @@ import { fromZodError } from "zod-validation-error";
 import { sendContactConfirmationEmail, sendAdminNotificationEmail } from "./emailService";
 import { setupAuth } from "./auth";
 import bcrypt from "bcrypt";
+import multer from "multer";
+import { v4 as uuidv4 } from "uuid";
+import path from "path";
+import fs from "fs";
+
+// Configure multer storage
+const storage_config = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadDir = path.join(__dirname, '../public/uploads');
+    // Create directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    // Generate unique filename
+    const uniqueSuffix = uuidv4();
+    const extension = path.extname(file.originalname);
+    cb(null, uniqueSuffix + extension);
+  }
+});
+
+// Define file filter for uploads
+const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  // Allow images for general uploads
+  if (file.fieldname === 'image') {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only images are allowed.'));
+    }
+  }
+  // Allow PDFs for attachments
+  else if (file.fieldname === 'attachment') {
+    if (file.mimetype === 'application/pdf') {
+      cb(null, true);
+    } else {
+      cb(new Error('Invalid file type. Only PDFs are allowed for attachments.'));
+    }
+  } 
+  // Reject all other files
+  else {
+    cb(null, false);
+  }
+};
+
+// Create multer instance
+const upload = multer({ 
+  storage: storage_config,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024 // 5MB file size limit
+  }
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
