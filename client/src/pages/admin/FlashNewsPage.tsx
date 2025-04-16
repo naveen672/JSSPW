@@ -64,6 +64,7 @@ const flashNewsSchema = z.object({
   text: z.string().min(5, "News text must be at least 5 characters long").max(200, "News text must be less than 200 characters"),
   link: z.string().url("Must be a valid URL").or(z.string().length(0)),
   active: z.boolean().default(true),
+  attachment: z.any().optional(), // File upload or string path
 });
 
 type FlashNewsFormValues = z.infer<typeof flashNewsSchema>;
@@ -102,12 +103,26 @@ export default function FlashNewsPage() {
   // Create mutation
   const createMutation = useMutation({
     mutationFn: async (data: FlashNewsFormValues) => {
+      // Create form data for file uploads
+      const formData = new FormData();
+      formData.append("text", data.text);
+      formData.append("active", String(data.active));
+      
+      if (data.link) {
+        formData.append("link", data.link);
+      }
+      
+      if (data.attachment) {
+        if (data.attachment instanceof File) {
+          formData.append("attachment", data.attachment);
+        } else if (typeof data.attachment === 'string') {
+          formData.append("attachmentPath", data.attachment);
+        }
+      }
+      
       const response = await fetch("/api/admin/flash-news", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {
@@ -138,12 +153,26 @@ export default function FlashNewsPage() {
   // Update mutation
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number, data: FlashNewsFormValues }) => {
+      // Create form data for file uploads
+      const formData = new FormData();
+      formData.append("text", data.text);
+      formData.append("active", String(data.active));
+      
+      if (data.link) {
+        formData.append("link", data.link);
+      }
+      
+      if (data.attachment) {
+        if (data.attachment instanceof File) {
+          formData.append("attachment", data.attachment);
+        } else if (typeof data.attachment === 'string') {
+          formData.append("attachmentPath", data.attachment);
+        }
+      }
+      
       const response = await fetch(`/api/admin/flash-news/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
       
       if (!response.ok) {
@@ -220,6 +249,7 @@ export default function FlashNewsPage() {
       text: flashNews.text,
       link: flashNews.link || "",
       active: flashNews.active,
+      attachment: flashNews.attachmentPath || "",
     });
     setIsEditDialogOpen(true);
   };
@@ -301,6 +331,33 @@ export default function FlashNewsPage() {
                   
                   <FormField
                     control={createForm.control}
+                    name="attachment"
+                    render={({ field: { value, onChange, ...field } }) => (
+                      <FormItem>
+                        <FormLabel>Attachment (Optional)</FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="file" 
+                            accept="application/pdf"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) {
+                                onChange(file);
+                              }
+                            }}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Upload a PDF file to attach to the announcement
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={createForm.control}
                     name="active"
                     render={({ field }) => (
                       <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
@@ -362,6 +419,7 @@ export default function FlashNewsPage() {
                   <TableRow>
                     <TableHead>Text</TableHead>
                     <TableHead>Link</TableHead>
+                    <TableHead>Attachment</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
@@ -369,7 +427,7 @@ export default function FlashNewsPage() {
                 <TableBody>
                   {flashNewsData?.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={4} className="text-center py-8 text-muted-foreground">
+                      <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
                         <Bell className="h-8 w-8 mx-auto mb-2 opacity-20" />
                         <p>No flash news found. Create your first announcement.</p>
                       </TableCell>
@@ -392,6 +450,20 @@ export default function FlashNewsPage() {
                             </a>
                           ) : (
                             <span className="text-muted-foreground">No link</span>
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          {news.attachmentPath ? (
+                            <a 
+                              href={news.attachmentPath}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                            >
+                              <span>View PDF</span>
+                            </a>
+                          ) : (
+                            <span className="text-muted-foreground">No attachment</span>
                           )}
                         </TableCell>
                         <TableCell>
@@ -495,6 +567,48 @@ export default function FlashNewsPage() {
                     </FormControl>
                     <FormDescription>
                       URL to direct visitors when they click the announcement
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={editForm.control}
+                name="attachment"
+                render={({ field: { value, onChange, ...field } }) => (
+                  <FormItem>
+                    <FormLabel>Attachment (Optional)</FormLabel>
+                    <FormControl>
+                      <div className="flex flex-col gap-2">
+                        <Input 
+                          type="file" 
+                          accept="application/pdf"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              onChange(file);
+                            }
+                          }}
+                          {...field}
+                        />
+                        {selectedFlashNews?.attachmentPath && (
+                          <div className="mt-2">
+                            <p className="text-sm text-muted-foreground mb-1">Current attachment:</p>
+                            <a 
+                              href={selectedFlashNews.attachmentPath}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 text-sm"
+                            >
+                              <span>View current PDF</span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormDescription>
+                      Upload a new PDF file or keep the existing one
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
