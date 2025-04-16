@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Loader2, LockKeyhole } from "lucide-react";
-import smallLogo from "@assets/smalllogo1.png";
+import jssLogo from "@assets/logo_jss.jpeg";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -71,7 +71,7 @@ export default function AdminLogin() {
           <Card className="w-full max-w-md">
             <CardHeader className="space-y-1">
               <div className="flex items-center justify-center mb-4">
-                <img src={smallLogo} alt="JSS Logo" className="h-12 mr-3" />
+                <img src={jssLogo} alt="JSS Logo" className="h-16 object-contain" />
               </div>
               <CardTitle className="text-2xl text-center">Admin Login</CardTitle>
               <CardDescription className="text-center">
