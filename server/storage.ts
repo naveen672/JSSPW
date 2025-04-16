@@ -217,9 +217,12 @@ export class MemStorage implements IStorage {
     // Ensure active is defined
     const active = news.active ?? true;
     const flashNews: FlashNews = {
-      ...news,
-      active,
       id,
+      text: news.text,
+      link: news.link ?? null,
+      attachmentType: news.attachmentType ?? null,
+      attachmentPath: news.attachmentPath ?? null,
+      active,
       createdAt: new Date()
     };
     this.flashNews.set(id, flashNews);
@@ -261,9 +264,14 @@ export class MemStorage implements IStorage {
     // Ensure active is defined
     const active = event.active ?? true;
     const newEvent: Event = {
-      ...event,
-      active,
       id,
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      time: event.time ?? null,
+      location: event.location,
+      image: event.image ?? null,
+      active,
       createdAt: new Date()
     };
     this.events.set(id, newEvent);

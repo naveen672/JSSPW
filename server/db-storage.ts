@@ -166,7 +166,14 @@ export class DatabaseStorage implements IStorage {
   }
   
   async createFlashNews(news: InsertFlashNews): Promise<FlashNews> {
-    const [flashNewsItem] = await db.insert(flashNews).values(news).returning();
+    const newsToInsert = {
+      text: news.text,
+      link: news.link ?? null,
+      attachmentType: news.attachmentType ?? null,
+      attachmentPath: news.attachmentPath ?? null,
+      active: news.active ?? true
+    };
+    const [flashNewsItem] = await db.insert(flashNews).values(newsToInsert).returning();
     return flashNewsItem;
   }
   

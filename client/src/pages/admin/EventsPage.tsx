@@ -117,6 +117,7 @@ export default function EventsPage() {
       description: "",
       location: "",
       image: "",
+      time: "",
       active: true,
     },
   });
@@ -243,6 +244,7 @@ export default function EventsPage() {
       description: event.description,
       location: event.location,
       date: new Date(event.date),
+      time: event.time || "",
       image: event.image || "",
       active: event.active,
     });
@@ -359,6 +361,23 @@ export default function EventsPage() {
                       )}
                     />
                   </div>
+                  
+                  <FormField
+                    control={createForm.control}
+                    name="time"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Event Time (Optional)</FormLabel>
+                        <FormControl>
+                          <Input placeholder="10:00 AM" {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          Time of the event (e.g., 10:00 AM)
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   
                   <FormField
                     control={createForm.control}
@@ -631,6 +650,23 @@ export default function EventsPage() {
                   )}
                 />
               </div>
+              
+              <FormField
+                control={editForm.control}
+                name="time"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Event Time (Optional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="10:00 AM" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Time of the event (e.g., 10:00 AM)
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               
               <FormField
                 control={editForm.control}
