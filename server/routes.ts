@@ -1,4 +1,4 @@
-import type { Express, Request } from "express";
+import express, { type Express, type Request } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
@@ -16,11 +16,16 @@ import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from 'url';
+
+// Get current directory in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configure multer storage
 const storage_config = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../public/uploads');
+    const uploadDir = path.join(__dirname, '../client/public/uploads');
     // Create directory if it doesn't exist
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
@@ -71,6 +76,9 @@ const upload = multer({
 export async function registerRoutes(app: Express): Promise<Server> {
   // Setup authentication
   const { checkAdmin } = setupAuth(app);
+  
+  // Serve uploaded files
+  app.use('/uploads', express.static(path.join(__dirname, '../client/public/uploads')));
 
   // Visitor counter endpoints
   app.get("/api/visitors/count", async (req, res) => {
@@ -151,10 +159,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/admin/flash-news", checkAdmin, async (req, res) => {
+  app.post("/api/admin/flash-news", checkAdmin, upload.single('attachment'), async (req, res) => {
     try {
-      const newsData = insertFlashNewsSchema.parse(req.body);
-      const news = await storage.createFlashNews(newsData);
+      // Extract data from form fields
+      const { text, link, active } = req.body;
+      
+      // Create flash news data object
+      const newsData = {
+        text,
+        link: link || null,
+        active: active === 'true' ? true : false,
+        attachmentType: null as string | null,
+        attachmentPath: null as string | null
+      };
+      
+      // Handle uploaded attachment file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        newsData.attachmentPath = uploadPath;
+        newsData.attachmentType = req.file.mimetype;
+      }
+      
+      // Validate news data
+      const validatedData = insertFlashNewsSchema.parse(newsData);
+      
+      // Create flash news in database
+      const news = await storage.createFlashNews(validatedData);
+      
       res.status(201).json(news);
     } catch (error) {
       if (error instanceof ZodError) {
@@ -167,7 +199,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.patch("/api/admin/flash-news/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/flash-news/:id", checkAdmin, upload.single('attachment'), async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -179,7 +211,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Flash news not found" });
       }
 
-      const newsData = req.body;
+      // Extract data from form fields
+      const { text, link, active } = req.body;
+      
+      // Create news data object
+      const newsData: any = {};
+      
+      // Only include fields that were provided in the form
+      if (text !== undefined) newsData.text = text;
+      if (link !== undefined) newsData.link = link || null;
+      if (active !== undefined) newsData.active = active === 'true' ? true : false;
+      
+      // Handle uploaded attachment file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        newsData.attachmentPath = uploadPath;
+        newsData.attachmentType = req.file.mimetype;
+      } else if (req.body.attachmentPath) {
+        // Use provided attachment path if no file uploaded
+        newsData.attachmentPath = req.body.attachmentPath;
+        if (req.body.attachmentType) {
+          newsData.attachmentType = req.body.attachmentType;
+        }
+      }
+      
       const updatedNews = await storage.updateFlashNews(id, newsData);
       res.json(updatedNews);
     } catch (error) {
@@ -229,10 +285,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/admin/events", checkAdmin, async (req, res) => {
+  app.post("/api/admin/events", checkAdmin, upload.single('image'), async (req, res) => {
     try {
-      const eventData = insertEventSchema.parse(req.body);
-      const event = await storage.createEvent(eventData);
+      // Extract data from form fields
+      const { title, description, location, date, time, active } = req.body;
+      
+      // Create event data object
+      const eventData = {
+        title,
+        description,
+        location,
+        date,
+        time: time || null,
+        active: active === 'true' ? true : false,
+        image: null as string | null
+      };
+      
+      // Handle uploaded image file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        eventData.image = uploadPath;
+      } else if (req.body.imageUrl) {
+        // Use provided image URL if no file uploaded
+        eventData.image = req.body.imageUrl;
+      }
+      
+      // Validate event data
+      const validatedData = insertEventSchema.parse(eventData);
+      
+      // Create event in database
+      const event = await storage.createEvent(validatedData);
+      
       res.status(201).json(event);
     } catch (error) {
       if (error instanceof ZodError) {
@@ -245,7 +329,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.patch("/api/admin/events/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/events/:id", checkAdmin, upload.single('image'), async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -257,7 +341,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Event not found" });
       }
 
-      const eventData = req.body;
+      // Extract data from form fields
+      const { title, description, location, date, time, active } = req.body;
+      
+      // Create event data object
+      const eventData: any = {};
+      
+      // Only include fields that were provided in the form
+      if (title !== undefined) eventData.title = title;
+      if (description !== undefined) eventData.description = description;
+      if (location !== undefined) eventData.location = location;
+      if (date !== undefined) eventData.date = date;
+      if (time !== undefined) eventData.time = time || null;
+      if (active !== undefined) eventData.active = active === 'true' ? true : false;
+      
+      // Handle uploaded image file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        eventData.image = uploadPath;
+      } else if (req.body.imageUrl) {
+        // Use provided image URL if no file uploaded
+        eventData.image = req.body.imageUrl;
+      }
+      
       const updatedEvent = await storage.updateEvent(id, eventData);
       res.json(updatedEvent);
     } catch (error) {
@@ -307,10 +414,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/admin/faculty", checkAdmin, async (req, res) => {
+  app.post("/api/admin/faculty", checkAdmin, upload.single('image'), async (req, res) => {
     try {
-      const facultyData = insertFacultySchema.parse(req.body);
-      const faculty = await storage.createFaculty(facultyData);
+      // Extract data from form fields
+      const { name, position, department, email, phone, qualification, description } = req.body;
+      
+      // Create faculty data object
+      const facultyData = {
+        name,
+        position,
+        department,
+        email: email || null,
+        phone: phone || null,
+        qualification: qualification || null,
+        description: description || null,
+        image: null as string | null
+      };
+      
+      // Handle uploaded image file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        facultyData.image = uploadPath;
+      } else if (req.body.imageUrl) {
+        // Use provided image URL if no file uploaded
+        facultyData.image = req.body.imageUrl;
+      }
+      
+      // Validate faculty data
+      const validatedData = insertFacultySchema.parse(facultyData);
+      
+      // Create faculty in database
+      const faculty = await storage.createFaculty(validatedData);
+      
       res.status(201).json(faculty);
     } catch (error) {
       if (error instanceof ZodError) {
@@ -323,7 +459,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.patch("/api/admin/faculty/:id", checkAdmin, async (req, res) => {
+  app.patch("/api/admin/faculty/:id", checkAdmin, upload.single('image'), async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
@@ -335,7 +471,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Faculty not found" });
       }
 
-      const facultyData = req.body;
+      // Extract data from form fields
+      const { name, position, department, email, phone, qualification, description } = req.body;
+      
+      // Create faculty data object
+      const facultyData: any = {};
+      
+      // Only include fields that were provided in the form
+      if (name !== undefined) facultyData.name = name;
+      if (position !== undefined) facultyData.position = position;
+      if (department !== undefined) facultyData.department = department;
+      if (email !== undefined) facultyData.email = email || null;
+      if (phone !== undefined) facultyData.phone = phone || null;
+      if (qualification !== undefined) facultyData.qualification = qualification || null;
+      if (description !== undefined) facultyData.description = description || null;
+      
+      // Handle uploaded image file
+      if (req.file) {
+        // Generate URL for the uploaded file
+        const uploadPath = `/uploads/${req.file.filename}`;
+        facultyData.image = uploadPath;
+      } else if (req.body.imageUrl) {
+        // Use provided image URL if no file uploaded
+        facultyData.image = req.body.imageUrl;
+      }
+      
       const updatedFaculty = await storage.updateFaculty(id, facultyData);
       res.json(updatedFaculty);
     } catch (error) {
