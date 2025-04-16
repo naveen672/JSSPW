@@ -1,54 +1,35 @@
 <?php
-// Set headers
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
 
-// Handle preflight request (OPTIONS method)
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
+// Include auth utilities
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/database.php';
+require_once __DIR__ . '/../includes/auth.php';
 
-// Check if request method is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405); // Method Not Allowed
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
+// Create auth handler
+$auth = new Auth();
 
-// Include necessary files
-require_once '../includes/auth.php';
-require_once '../includes/database.php';
-
-// Get JSON data from request body
-$data = json_decode(file_get_contents('php://input'), true);
-
-// Validate input data
-if (!$data || !isset($data['username']) || !isset($data['password'])) {
-    http_response_code(400); // Bad Request
-    echo json_encode(['error' => 'Invalid request data']);
-    exit;
-}
-
-// Attempt to authenticate
-$user = $auth->authenticate($data['username'], $data['password']);
-
-if ($user) {
-    // Start session if not already started
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
+// Handle login request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get JSON input
+    $input = json_decode(file_get_contents('php://input'), true);
+    
+    if (!isset($input['username']) || !isset($input['password'])) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Username and password are required']);
+        exit;
     }
     
-    // Set user in session
-    $_SESSION['user'] = $user;
+    $username = $input['username'];
+    $password = $input['password'];
     
-    // Return user data
-    http_response_code(200);
-    echo json_encode(['user' => $user]);
-} else {
-    // Authentication failed
-    http_response_code(401); // Unauthorized
-    echo json_encode(['error' => 'Invalid username or password']);
+    // Attempt login
+    $result = $auth->login($username, $password);
+    
+    if ($result['success']) {
+        echo json_encode(['user' => $result['user']]);
+    } else {
+        http_response_code(401);
+        echo json_encode(['error' => $result['message']]);
+    }
 }

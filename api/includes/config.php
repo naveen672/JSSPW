@@ -14,7 +14,7 @@ define('DB_PASSWORD', ''); // Change this for production
 define('DB_NAME', 'jsspw_db');
 
 // Site Configuration
-define('SITE_URL', 'http://localhost:5000'); // Change this for production
+define('SITE_URL', 'http://localhost:5001'); // Change this for production
 define('SITE_NAME', 'JSS Polytechnic for Women');
 define('ADMIN_EMAIL', 'admin@jsspwmys.org'); // Change this for production
 define('EMAIL_FROM', 'naveenravi.ch@gmail.com');

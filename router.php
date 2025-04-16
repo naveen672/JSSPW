@@ -16,18 +16,36 @@ if (strpos($url_path, '/api/') === 0) {
     $api_path = substr($url_path, 5);
     
     // Map API routes to PHP files
-    $file_path = __DIR__ . '/api/' . $api_path . '.php';
+    $file_path = __DIR__ . '/api/' . $api_path;
     
+    // First try direct file match
     if (file_exists($file_path)) {
-        // API file exists, include it to process the request
         include $file_path;
         return true;
-    } else {
-        // API endpoint not found
-        header('HTTP/1.1 404 Not Found');
-        echo json_encode(['error' => 'API endpoint not found']);
+    } 
+    // Then try with .php extension
+    else if (file_exists($file_path . '.php')) {
+        include $file_path . '.php';
+        return true;
+    } 
+    // Special case for auth/login endpoint
+    else if ($api_path === 'auth/login') {
+        include __DIR__ . '/api/auth/login.php';
         return true;
     }
+    // Special case for other auth endpoints
+    else if (strpos($api_path, 'auth/') === 0) {
+        $auth_path = substr($api_path, 5);
+        if (file_exists(__DIR__ . '/api/auth/' . $auth_path . '.php')) {
+            include __DIR__ . '/api/auth/' . $auth_path . '.php';
+            return true;
+        }
+    }
+    // API endpoint not found
+    header('HTTP/1.1 404 Not Found');
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'API endpoint not found: ' . $api_path]);
+    return true;
 }
 
 // Handle static files (CSS, JS, images)

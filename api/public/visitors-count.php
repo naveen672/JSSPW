@@ -1,46 +1,100 @@
 <?php
-// Set headers
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET');
-header('Access-Control-Allow-Headers: Content-Type');
 
-// Handle preflight request (OPTIONS method)
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
+// Include database connection
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/database.php';
 
-// Check if request method is GET
-if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-    http_response_code(405); // Method Not Allowed
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
-
-// Include necessary files
-require_once '../includes/database.php';
-
-// Get database connection
+// Create database connection
 $db = new Database();
 $conn = $db->getConnection();
 
-// Get visitor count from database
-$query = "SELECT visitorsCount FROM site_stats WHERE id = 1";
-$result = $conn->query($query);
+// Handle GET request to get visitor count
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    try {
+        if ($db->isSqlite()) {
+            // Check if stats record exists
+            $result = $conn->query("SELECT COUNT(*) as count FROM site_stats");
+            $row = $result->fetchArray(SQLITE3_ASSOC);
+            
+            if ($row['count'] == 0) {
+                // Insert initial record
+                $conn->exec("INSERT INTO site_stats (visitorsCount) VALUES (0)");
+            }
+            
+            // Get visitor count
+            $result = $conn->query("SELECT visitorsCount FROM site_stats LIMIT 1");
+            $row = $result->fetchArray(SQLITE3_ASSOC);
+            $count = $row['visitorsCount'];
+        } else {
+            // MySQL
+            // Check if stats record exists
+            $result = $conn->query("SELECT COUNT(*) as count FROM site_stats");
+            $row = $result->fetch_assoc();
+            
+            if ($row['count'] == 0) {
+                // Insert initial record
+                $conn->query("INSERT INTO site_stats (visitorsCount) VALUES (0)");
+            }
+            
+            // Get visitor count
+            $result = $conn->query("SELECT visitorsCount FROM site_stats LIMIT 1");
+            $row = $result->fetch_assoc();
+            $count = $row['visitorsCount'];
+        }
+        
+        echo json_encode(['count' => (int)$count]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to get visitor count: ' . $e->getMessage()]);
+    }
+}
 
-if ($result && $result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $count = (int)$row['visitorsCount'];
-    
-    // Return visitor count
-    http_response_code(200);
-    echo json_encode(['count' => $count]);
-} else {
-    // If no record exists, create one with count = 0
-    $conn->query("INSERT INTO site_stats (id, visitorsCount) VALUES (1, 0)");
-    
-    // Return initial count
-    http_response_code(200);
-    echo json_encode(['count' => 0]);
+// Handle POST request to increment visitor count
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        if ($db->isSqlite()) {
+            // Check if stats record exists
+            $result = $conn->query("SELECT COUNT(*) as count FROM site_stats");
+            $row = $result->fetchArray(SQLITE3_ASSOC);
+            
+            if ($row['count'] == 0) {
+                // Insert initial record
+                $conn->exec("INSERT INTO site_stats (visitorsCount) VALUES (1)");
+                $count = 1;
+            } else {
+                // Increment visitor count
+                $conn->exec("UPDATE site_stats SET visitorsCount = visitorsCount + 1, lastUpdated = CURRENT_TIMESTAMP");
+                
+                // Get new count
+                $result = $conn->query("SELECT visitorsCount FROM site_stats LIMIT 1");
+                $row = $result->fetchArray(SQLITE3_ASSOC);
+                $count = $row['visitorsCount'];
+            }
+        } else {
+            // MySQL
+            // Check if stats record exists
+            $result = $conn->query("SELECT COUNT(*) as count FROM site_stats");
+            $row = $result->fetch_assoc();
+            
+            if ($row['count'] == 0) {
+                // Insert initial record
+                $conn->query("INSERT INTO site_stats (visitorsCount) VALUES (1)");
+                $count = 1;
+            } else {
+                // Increment visitor count
+                $conn->query("UPDATE site_stats SET visitorsCount = visitorsCount + 1");
+                
+                // Get new count
+                $result = $conn->query("SELECT visitorsCount FROM site_stats LIMIT 1");
+                $row = $result->fetch_assoc();
+                $count = $row['visitorsCount'];
+            }
+        }
+        
+        echo json_encode(['count' => (int)$count]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to increment visitor count: ' . $e->getMessage()]);
+    }
 }
