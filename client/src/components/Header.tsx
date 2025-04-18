@@ -154,9 +154,23 @@ const Header = () => {
               className="h-10 mr-3 cursor-pointer"
               onClick={() => navigate("/")}
             />
-            <div>
+            <div className="flex flex-col">
               <div className="text-xs text-gray-600 dark:text-gray-400">JSS Mahavidyapeetha</div>
               <div className="text-base font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</div>
+            </div>
+            
+            {/* Accreditation Logo */}
+            <div className="hidden md:flex items-center ml-3 pl-3 border-l border-gray-300 dark:border-gray-700">
+              <a href="/#accreditations" className="flex items-center group">
+                <img 
+                  src="./smalllogo1.png" 
+                  alt="AICTE Approved" 
+                  className="h-7 w-auto" 
+                />
+                <span className="ml-2 text-xs text-gray-600 dark:text-gray-400 hidden lg:inline-block">
+                  AICTE Approved
+                </span>
+              </a>
             </div>
           </div>
           
