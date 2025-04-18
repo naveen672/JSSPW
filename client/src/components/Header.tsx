@@ -11,7 +11,7 @@ const navItems = [
     children: []
   },
   {
-    title: "ABOUT US",
+    title: "ABOUT",
     href: "#about",
     children: [
       { title: "JSS MAHAVIDYAPEETHA", href: "/jss-mahavidyapeetha" },
