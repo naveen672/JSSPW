@@ -200,7 +200,7 @@ const Header = () => {
 
           {/* Desktop Navigation Menu */}
           <nav className="hidden lg:flex">
-            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-4">
+            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-1 xl:space-x-3 text-xs sm:text-sm md:text-base flex-wrap">
               {navItems.map((item, index) => (
                 <li key={index} className="relative">
                   <div
@@ -209,11 +209,11 @@ const Header = () => {
                   >
                     <a 
                       href={item.children.length > 0 ? "#" : item.href}
-                      className={`flex items-center py-6 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
+                      className={`flex items-center py-6 px-1 md:px-2 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
                         index === 0 ? "text-[#0A2463] dark:text-white" : ""
                       } ${
                         activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
-                      } hover:border-[#D8315B] transition-all duration-200`}
+                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap`}
                       onClick={(e) => {
                         if (item.children.length > 0) {
                           e.preventDefault();
@@ -224,10 +224,10 @@ const Header = () => {
                         }
                       }}
                     >
-                      {item.title}
+                      <span className="text-[0.8rem] xl:text-sm">{item.title}</span>
                       {item.children.length > 0 && (
                         <ChevronDown 
-                          className={`ml-1 h-4 w-4 transition-transform ${
+                          className={`ml-1 h-3 w-3 transition-transform ${
                             activeDropdown === index ? "rotate-180" : ""
                           }`} 
                         />
