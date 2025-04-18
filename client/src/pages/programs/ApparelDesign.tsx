@@ -13,11 +13,30 @@ type TabType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | '
 const ApparelDesign = () => {
   const [activeTab, setActiveTab] = useState<TabType>('about');
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    // About tab sections
     intro: true,
     vision: false,
     mission: false,
     outcomes: false,
-    objectives: false
+    objectives: false,
+    
+    // Facilities tab sections
+    overview: true,
+    sewingEquipment: false,
+    computerLab: false,
+    textileLab: false,
+    additionalFacilities: false,
+    
+    // Gallery tab sections
+    sewing: false,
+    designs: false,
+    events: false,
+    
+    // Activities tab sections
+    fashionShow: false,
+    workshops: false,
+    industryVisits: false,
+    seminars: false
   });
   
   const toggleSection = (section: string) => {
@@ -353,51 +372,338 @@ const ApparelDesign = () => {
           {/* Facilities Tab */}
           {activeTab === 'facilities' && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Facilities</h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6"><strong>Building area:</strong> 600 Square Meters</p>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Major Equipments</h3>
+              {/* Overview Section */}
+              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                <button 
+                  onClick={() => toggleSection('overview')}
+                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <div className="p-2 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-4">
+                      <Building className="h-6 w-6 text-[#0A2463] dark:text-[#3E92CC]" />
+                    </div>
+                    <h2 className="text-xl font-bold text-[#0A2463] dark:text-white">Facilities Overview</h2>
+                  </div>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${expandedSections.overview ? 'bg-[#D8315B]/10 rotate-45' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                    {expandedSections.overview ? (
+                      <Minus className="h-5 w-5 text-[#D8315B]" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC]" />
+                    )}
+                  </div>
+                </button>
                 
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Sewing & Embroidery</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Power Operated Sewing machine - 15 No.</li>
-                      <li>Power Operated Embroidery Machine - 5 No.</li>
-                    </ul>
+                {expandedSections.overview && (
+                  <div className="p-5 pt-0 border-t border-gray-100 dark:border-gray-700 animate-slideDown">
+                    <div className="pl-14">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2.5 bg-[#3E92CC]/10 dark:bg-[#3E92CC]/30 rounded-full mr-4">
+                          <Building className="h-5 w-5 text-[#3E92CC]" />
+                        </div>
+                        <p className="text-gray-700 dark:text-gray-300 font-medium">
+                          <span className="font-semibold">Building area:</span> 600 Square Meters
+                        </p>
+                      </div>
+                      
+                      <p className="text-gray-700 dark:text-gray-300 mb-4">
+                        The Apparel Design department has state-of-the-art facilities to support students in learning practical skills and develop their creative potential. Our campus provides a modern and supportive environment for hands-on learning experiences.
+                      </p>
+                      
+                      <div className="mt-6 grid grid-cols-2 gap-4">
+                        <div className="col-span-2 md:col-span-1 bg-[#0A2463]/5 dark:bg-[#0A2463]/10 rounded-lg p-4">
+                          <div className="flex items-center mb-2">
+                            <Users className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC] mr-2" />
+                            <span className="font-medium text-[#0A2463] dark:text-white">Student Capacity</span>
+                          </div>
+                          <p className="text-gray-700 dark:text-gray-300 pl-7">60 students per batch</p>
+                        </div>
+                        
+                        <div className="col-span-2 md:col-span-1 bg-[#D8315B]/5 dark:bg-[#D8315B]/10 rounded-lg p-4">
+                          <div className="flex items-center mb-2">
+                            <Calendar className="h-5 w-5 text-[#D8315B] mr-2" />
+                            <span className="font-medium text-[#0A2463] dark:text-white">Operating Hours</span>
+                          </div>
+                          <p className="text-gray-700 dark:text-gray-300 pl-7">Mon-Sat: 8:30 AM - 5:30 PM</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Computer Lab</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>High-end configuration Computer Systems - 30 No.</li>
-                      <li>Garment CAD, Fashion & Textile CAD software</li>
-                      <li>Inkjet printer</li>
-                      <li>Internet facility</li>
-                    </ul>
+                )}
+              </div>
+              
+              {/* Sewing & Embroidery Section */}
+              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                <button 
+                  onClick={() => toggleSection('sewingEquipment')}
+                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <div className="p-2 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-4">
+                      <Scissors className="h-6 w-6 text-[#D8315B]" />
+                    </div>
+                    <h2 className="text-xl font-bold text-[#0A2463] dark:text-white">Sewing & Embroidery Lab</h2>
                   </div>
-                  
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Textile Science Lab</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Yarn Twist Tester - 01 no.</li>
-                      <li>Micro Vision - 01 no.</li>
-                      <li>Crock-o-Meter - 01 no.</li>
-                      <li>Prespirometer - 01 no.</li>
-                      <li>Water Bath - 02 no.</li>
-                      <li>Beesley Balance - 01 no.</li>
-                    </ul>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${expandedSections.sewingEquipment ? 'bg-[#D8315B]/10 rotate-45' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                    {expandedSections.sewingEquipment ? (
+                      <Minus className="h-5 w-5 text-[#D8315B]" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC]" />
+                    )}
                   </div>
-                  
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Additional Facilities</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Apparel Manufacturing Studio equipped with Power Operated & High Speed sewing Machines</li>
-                      <li>Departmental library with latest Magazines & Journals subscribed for the benefit of both staff & students</li>
-                    </ul>
+                </button>
+                
+                {expandedSections.sewingEquipment && (
+                  <div className="p-5 pt-0 border-t border-gray-100 dark:border-gray-700 animate-slideDown">
+                    <div className="pl-14">
+                      <div className="bg-gradient-to-r from-[#0A2463]/5 to-[#D8315B]/5 dark:from-[#0A2463]/10 dark:to-[#D8315B]/10 rounded-lg p-5 mb-4">
+                        <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3 flex items-center">
+                          <Scissors className="h-5 w-5 text-[#D8315B] mr-2" />
+                          Sewing & Embroidery Equipment
+                        </h4>
+                        <ul className="space-y-3 pl-7">
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#3E92CC]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#3E92CC]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">Power Operated Sewing machine - 15 No.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#3E92CC]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#3E92CC]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">Power Operated Embroidery Machine - 5 No.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#3E92CC]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#3E92CC]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">High-Speed Industrial Sewing Machines - 8 No.</span>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <p className="text-gray-700 dark:text-gray-300">
+                        Our sewing lab provides students with hands-on experience using professional-grade equipment used in the fashion industry. Students learn various stitching techniques, pattern cutting, and embroidery skills essential for their future careers.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
+              </div>
+              
+              {/* Computer Lab Section */}
+              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                <button 
+                  onClick={() => toggleSection('computerLab')}
+                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <div className="p-2 bg-[#3E92CC]/10 dark:bg-[#3E92CC]/30 rounded-full mr-4">
+                      <Cpu className="h-6 w-6 text-[#3E92CC]" />
+                    </div>
+                    <h2 className="text-xl font-bold text-[#0A2463] dark:text-white">Computer Lab</h2>
+                  </div>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${expandedSections.computerLab ? 'bg-[#D8315B]/10 rotate-45' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                    {expandedSections.computerLab ? (
+                      <Minus className="h-5 w-5 text-[#D8315B]" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC]" />
+                    )}
+                  </div>
+                </button>
+                
+                {expandedSections.computerLab && (
+                  <div className="p-5 pt-0 border-t border-gray-100 dark:border-gray-700 animate-slideDown">
+                    <div className="pl-14">
+                      <div className="bg-gradient-to-r from-[#3E92CC]/5 to-[#0A2463]/5 dark:from-[#3E92CC]/10 dark:to-[#0A2463]/10 rounded-lg p-5 mb-4">
+                        <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3 flex items-center">
+                          <Cpu className="h-5 w-5 text-[#3E92CC] mr-2" />
+                          Computer Lab Equipment
+                        </h4>
+                        <ul className="space-y-3 pl-7">
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#0A2463]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#0A2463]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">High-end configuration Computer Systems - 30 No.</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#0A2463]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#0A2463]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">Garment CAD Software</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#0A2463]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#0A2463]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">Fashion & Textile CAD Software</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#0A2463]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#0A2463]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">Inkjet printer</span>
+                          </li>
+                          <li className="flex items-start">
+                            <div className="h-5 w-5 rounded-full bg-[#0A2463]/20 flex items-center justify-center mt-0.5 mr-3">
+                              <div className="h-2 w-2 rounded-full bg-[#0A2463]"></div>
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300">High-speed Internet facility</span>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <p className="text-gray-700 dark:text-gray-300">
+                        Our modern computer lab is equipped with industry-standard CAD software that enables students to digitally design garments, create patterns, and develop textile designs. This training is essential for students to remain competitive in the digital era of fashion design.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Textile Science Lab Section */}
+              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                <button 
+                  onClick={() => toggleSection('textileLab')}
+                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <div className="p-2 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-4">
+                      <PenTool className="h-6 w-6 text-[#0A2463] dark:text-[#3E92CC]" />
+                    </div>
+                    <h2 className="text-xl font-bold text-[#0A2463] dark:text-white">Textile Science Lab</h2>
+                  </div>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${expandedSections.textileLab ? 'bg-[#D8315B]/10 rotate-45' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                    {expandedSections.textileLab ? (
+                      <Minus className="h-5 w-5 text-[#D8315B]" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC]" />
+                    )}
+                  </div>
+                </button>
+                
+                {expandedSections.textileLab && (
+                  <div className="p-5 pt-0 border-t border-gray-100 dark:border-gray-700 animate-slideDown">
+                    <div className="pl-14">
+                      <div className="bg-gradient-to-r from-[#0A2463]/5 to-[#3E92CC]/5 dark:from-[#0A2463]/10 dark:to-[#3E92CC]/10 rounded-lg p-5 mb-4">
+                        <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3 flex items-center">
+                          <PenTool className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC] mr-2" />
+                          Textile Science Lab Equipment
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-7">
+                          <ul className="space-y-3">
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Yarn Twist Tester - 01 no.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Micro Vision - 01 no.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Crock-o-Meter - 01 no.</span>
+                            </li>
+                          </ul>
+                          <ul className="space-y-3">
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Prespirometer - 01 no.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Water Bath - 02 no.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <div className="h-5 w-5 rounded-full bg-[#D8315B]/20 flex items-center justify-center mt-0.5 mr-3">
+                                <div className="h-2 w-2 rounded-full bg-[#D8315B]"></div>
+                              </div>
+                              <span className="text-gray-700 dark:text-gray-300">Beesley Balance - 01 no.</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-700 dark:text-gray-300">
+                        The Textile Science Lab provides students with the opportunity to understand fabric properties, test materials, and explore various textile techniques. This knowledge is crucial for designing garments with appropriate materials and ensuring quality production.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Additional Facilities Section */}
+              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                <button 
+                  onClick={() => toggleSection('additionalFacilities')}
+                  className="w-full flex items-center justify-between p-5 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <div className="p-2 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-4">
+                      <Palette className="h-6 w-6 text-[#D8315B]" />
+                    </div>
+                    <h2 className="text-xl font-bold text-[#0A2463] dark:text-white">Additional Facilities</h2>
+                  </div>
+                  <div className={`p-2 rounded-full transition-all duration-300 ${expandedSections.additionalFacilities ? 'bg-[#D8315B]/10 rotate-45' : 'bg-gray-100 dark:bg-gray-700'}`}>
+                    {expandedSections.additionalFacilities ? (
+                      <Minus className="h-5 w-5 text-[#D8315B]" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-[#0A2463] dark:text-[#3E92CC]" />
+                    )}
+                  </div>
+                </button>
+                
+                {expandedSections.additionalFacilities && (
+                  <div className="p-5 pt-0 border-t border-gray-100 dark:border-gray-700 animate-slideDown">
+                    <div className="pl-14">
+                      <div className="flex flex-col space-y-4">
+                        <div className="p-4 bg-gradient-to-r from-[#D8315B]/5 to-white dark:from-[#D8315B]/10 dark:to-transparent rounded-lg flex items-start">
+                          <div className="p-2 bg-white dark:bg-gray-700 rounded-full mr-3 shadow-md">
+                            <Scissors className="h-5 w-5 text-[#D8315B]" />
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-[#0A2463] dark:text-white">Apparel Manufacturing Studio</h5>
+                            <p className="text-gray-700 dark:text-gray-300">Equipped with Power Operated & High Speed sewing Machines for production training</p>
+                          </div>
+                        </div>
+                        
+                        <div className="p-4 bg-gradient-to-r from-[#3E92CC]/5 to-white dark:from-[#3E92CC]/10 dark:to-transparent rounded-lg flex items-start">
+                          <div className="p-2 bg-white dark:bg-gray-700 rounded-full mr-3 shadow-md">
+                            <BookOpen className="h-5 w-5 text-[#3E92CC]" />
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-[#0A2463] dark:text-white">Departmental Library</h5>
+                            <p className="text-gray-700 dark:text-gray-300">Latest Magazines & Journals subscribed for the benefit of both staff & students</p>
+                          </div>
+                        </div>
+                        
+                        <div className="p-4 bg-gradient-to-r from-[#0A2463]/5 to-white dark:from-[#0A2463]/10 dark:to-transparent rounded-lg flex items-start">
+                          <div className="p-2 bg-white dark:bg-gray-700 rounded-full mr-3 shadow-md">
+                            <PenTool className="h-5 w-5 text-[#0A2463]" />
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-[#0A2463] dark:text-white">Design Studio</h5>
+                            <p className="text-gray-700 dark:text-gray-300">Creative space with drafting tables, materials, and supplies for fashion design projects</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <p className="text-gray-700 dark:text-gray-300 mt-4">
+                        These additional facilities enhance the learning experience by providing specialized environments for practical work and research. Students can access resources that help them excel in both academic and creative aspects of apparel design.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
