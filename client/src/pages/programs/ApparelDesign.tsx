@@ -1,4 +1,4 @@
-import { ArrowLeft, Download, Phone, Mail, User, BookOpen, Building, Image, CalendarClock, FileText } from "lucide-react";
+import { ArrowLeft, Download, Phone, Mail, User, BookOpen, Building, Image, CalendarClock, FileText, Calendar, Users, Briefcase } from "lucide-react";
 import { useState } from "react";
 import buildingImg from "../../assets/bg2.jpg";
 import facultyImg from "../../assets/prin.jpg";
@@ -10,100 +10,128 @@ const ApparelDesign = () => {
   const [activeTab, setActiveTab] = useState<TabType>('about');
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-20">
-      <div className="container mx-auto px-6">
-        {/* Page Header */}
-        <div className="mb-8 flex items-center">
+    <div className="bg-white dark:bg-gray-900">
+      {/* Hero Section with Parallax Effect */}
+      <div className="relative h-[60vh] overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: `url(${buildingImg})`,
+            transform: 'translateZ(0)',
+            backgroundAttachment: 'fixed'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-6 h-full flex flex-col justify-end pb-10 relative z-10">
           <a 
             href="/#programs" 
-            className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
+            className="mb-4 inline-flex items-center text-white hover:text-[#D8315B] transition-colors"
           >
             <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
+            Back to Programs
           </a>
-          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Apparel Design and Fabrication Technology</h1>
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              <span className="inline-block relative">
+                Apparel Design 
+                <div className="absolute w-full h-1 bg-[#D8315B] bottom-0 left-0 transform -translate-y-2"></div>
+              </span>
+              <br />
+              <span className="text-[#3E92CC]">& Fabrication Technology</span>
+            </h1>
+            <p className="text-lg text-gray-200">Where creativity meets craftsmanship in fashion</p>
+          </div>
         </div>
-        
-        {/* Featured Image */}
-        <div className="mb-10 overflow-hidden rounded-lg shadow-lg">
-          <img 
-            src={buildingImg} 
-            alt="Apparel Design Department" 
-            className="h-full w-full object-cover"
-          />
+      </div>
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        {/* Floating Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -mt-20 mb-16">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 transform transition-transform hover:scale-105">
+            <div className="flex items-center mb-4">
+              <div className="p-3 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-4">
+                <Calendar className="h-6 w-6 text-[#0A2463] dark:text-[#3E92CC]" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-white">Since 1984</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Established Excellence</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 transform transition-transform hover:scale-105">
+            <div className="flex items-center mb-4">
+              <div className="p-3 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-4">
+                <Users className="h-6 w-6 text-[#D8315B]" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-white">Expert Faculty</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Industry Veterans</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 transform transition-transform hover:scale-105">
+            <div className="flex items-center mb-4">
+              <div className="p-3 bg-[#3E92CC]/10 dark:bg-[#3E92CC]/30 rounded-full mr-4">
+                <Briefcase className="h-6 w-6 text-[#3E92CC]" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900 dark:text-white">100% Placement</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Career Opportunities</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Tabs navigation */}
-        <div className="mb-8 overflow-x-auto">
-          <div className="flex space-x-2 border-b">
-            <button 
-              onClick={() => setActiveTab('about')}
-              className={`px-4 py-2 font-medium ${activeTab === 'about' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <BookOpen className="mr-2 h-4 w-4" />
-                About
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('facilities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'facilities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Building className="mr-2 h-4 w-4" />
-                Facilities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('faculty')}
-              className={`px-4 py-2 font-medium ${activeTab === 'faculty' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <User className="mr-2 h-4 w-4" />
-                Faculty
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('gallery')}
-              className={`px-4 py-2 font-medium ${activeTab === 'gallery' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Image className="mr-2 h-4 w-4" />
-                Gallery
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('activities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'activities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <CalendarClock className="mr-2 h-4 w-4" />
-                Activities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('contact')}
-              className={`px-4 py-2 font-medium ${activeTab === 'contact' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Phone className="mr-2 h-4 w-4" />
-                Contact
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('syllabus')}
-              className={`px-4 py-2 font-medium ${activeTab === 'syllabus' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <FileText className="mr-2 h-4 w-4" />
-                Syllabus
-              </span>
-            </button>
+        {/* Animated tab navigation */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mx-auto max-w-4xl">
+            {[
+              { id: 'about', icon: BookOpen, label: 'About' },
+              { id: 'facilities', icon: Building, label: 'Facilities' },
+              { id: 'faculty', icon: User, label: 'Faculty' },
+              { id: 'gallery', icon: Image, label: 'Gallery' },
+              { id: 'activities', icon: CalendarClock, label: 'Activities' },
+              { id: 'contact', icon: Phone, label: 'Contact' },
+              { id: 'syllabus', icon: FileText, label: 'Syllabus' }
+            ].map(tab => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as TabType)}
+                  className={`relative group flex flex-col items-center p-4 rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? 'bg-[#0A2463] text-white transform scale-105 shadow-lg'
+                      : 'bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                  }`}
+                >
+                  <div className={`p-3 rounded-full mb-2 transition-colors duration-300 ${
+                    isActive 
+                      ? 'bg-[#3E92CC]/20' 
+                      : 'bg-gray-100 dark:bg-gray-700 group-hover:bg-[#0A2463]/10 dark:group-hover:bg-[#3E92CC]/20'
+                  }`}>
+                    <Icon className={`h-6 w-6 ${
+                      isActive 
+                        ? 'text-white' 
+                        : 'text-[#0A2463] dark:text-[#3E92CC] group-hover:text-[#D8315B]'
+                    }`} />
+                  </div>
+                  <span className="text-sm font-medium">{tab.label}</span>
+                  {isActive && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-6 rotate-45 bg-white dark:bg-gray-800 border-t border-l border-gray-200 dark:border-gray-700"></div>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
         
-        {/* Tab content */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        {/* Tab content with animation */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 relative overflow-hidden">
           {/* About Tab */}
           {activeTab === 'about' && (
             <div className="space-y-6">
@@ -233,55 +261,171 @@ const ApparelDesign = () => {
 
           {/* Faculty Tab */}
           {activeTab === 'faculty' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Faculty</h2>
+            <div className="space-y-8">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white">Our Expert Faculty</h2>
+                <div className="flex items-center space-x-2 text-sm">
+                  <span className="flex items-center text-gray-500 dark:text-gray-400">
+                    <Users className="w-4 h-4 mr-1" />
+                    <span>3 Faculty Members</span>
+                  </span>
+                </div>
+              </div>
               
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Meera V" className="h-32 w-32 rounded-full object-cover" />
+              <div className="grid gap-8 md:grid-cols-3">
+                {/* Faculty Card 1 - Department Head */}
+                <div className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2463]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={facultyImg} 
+                      alt="Meera V" 
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pt-10">
+                      <h3 className="text-xl font-semibold text-white">Meera V</h3>
+                      <div className="flex items-center text-[#D8315B] font-medium">
+                        <span className="bg-white/20 px-2 py-0.5 rounded text-sm backdrop-blur-sm">Head of Department</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Meera V</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> Dip in CDDM, MA</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Pattern Illustration Apparel CAD Embellishment</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:meera5871@gmail.com" className="text-[#3E92CC] hover:underline">meera5871@gmail.com</a>
-                    </p>
+                  
+                  <div className="p-5">
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-3">
+                          <BookOpen className="h-4 w-4 text-[#0A2463] dark:text-[#3E92CC]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Qualification</p>
+                          <p className="text-sm text-gray-900 dark:text-white">Dip in CDDM, MA</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-3">
+                          <Briefcase className="h-4 w-4 text-[#D8315B]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Specialization</p>
+                          <p className="text-sm text-gray-900 dark:text-white">Pattern Illustration, Apparel CAD</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-5 pt-5 border-t border-gray-200 dark:border-gray-700">
+                      <a 
+                        href="mailto:meera5871@gmail.com" 
+                        className="flex items-center justify-center w-full py-2 px-4 bg-[#0A2463] hover:bg-[#0A2463]/90 text-white rounded-md transition-colors"
+                      >
+                        <Mail className="w-4 h-4 mr-2" />
+                        Contact Faculty
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Roopashree" className="h-32 w-32 rounded-full object-cover" />
+                
+                {/* Faculty Card 2 */}
+                <div className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2463]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={facultyImg} 
+                      alt="Roopashree" 
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pt-10">
+                      <h3 className="text-xl font-semibold text-white">Roopashree</h3>
+                      <div className="flex items-center text-[#D8315B] font-medium">
+                        <span className="bg-white/20 px-2 py-0.5 rounded text-sm backdrop-blur-sm">Lecturer</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Roopashree</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> M. Sc-ATM, B. Sc FAD, Dip in ADFT</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Technical textiles</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:roopahsk9@gmail.com" className="text-[#3E92CC] hover:underline">roopahsk9@gmail.com</a>
-                    </p>
+                  
+                  <div className="p-5">
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-3">
+                          <BookOpen className="h-4 w-4 text-[#0A2463] dark:text-[#3E92CC]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Qualification</p>
+                          <p className="text-sm text-gray-900 dark:text-white">M.Sc-ATM, B.Sc FAD, Dip in ADFT</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-3">
+                          <Briefcase className="h-4 w-4 text-[#D8315B]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Specialization</p>
+                          <p className="text-sm text-gray-900 dark:text-white">Technical textiles</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-5 pt-5 border-t border-gray-200 dark:border-gray-700">
+                      <a 
+                        href="mailto:roopahsk9@gmail.com" 
+                        className="flex items-center justify-center w-full py-2 px-4 bg-[#0A2463] hover:bg-[#0A2463]/90 text-white rounded-md transition-colors"
+                      >
+                        <Mail className="w-4 h-4 mr-2" />
+                        Contact Faculty
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Deepika T H" className="h-32 w-32 rounded-full object-cover" />
+                
+                {/* Faculty Card 3 */}
+                <div className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2463]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={facultyImg} 
+                      alt="Deepika T H" 
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pt-10">
+                      <h3 className="text-xl font-semibold text-white">Deepika T H</h3>
+                      <div className="flex items-center text-[#D8315B] font-medium">
+                        <span className="bg-white/20 px-2 py-0.5 rounded text-sm backdrop-blur-sm">Lecturer</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Deepika T H</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> MSc-FT</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Art and craft pattern making</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:deepikasathist@gmail.com" className="text-[#3E92CC] hover:underline">deepikasathist@gmail.com</a>
-                    </p>
+                  
+                  <div className="p-5">
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#0A2463]/10 dark:bg-[#0A2463]/30 rounded-full mr-3">
+                          <BookOpen className="h-4 w-4 text-[#0A2463] dark:text-[#3E92CC]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Qualification</p>
+                          <p className="text-sm text-gray-900 dark:text-white">MSc-FT</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="p-1.5 bg-[#D8315B]/10 dark:bg-[#D8315B]/30 rounded-full mr-3">
+                          <Briefcase className="h-4 w-4 text-[#D8315B]" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">Specialization</p>
+                          <p className="text-sm text-gray-900 dark:text-white">Art and craft pattern making</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-5 pt-5 border-t border-gray-200 dark:border-gray-700">
+                      <a 
+                        href="mailto:deepikasathist@gmail.com" 
+                        className="flex items-center justify-center w-full py-2 px-4 bg-[#0A2463] hover:bg-[#0A2463]/90 text-white rounded-md transition-colors"
+                      >
+                        <Mail className="w-4 h-4 mr-2" />
+                        Contact Faculty
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
