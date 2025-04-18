@@ -3,6 +3,12 @@ import { useLocation } from "wouter";
 import { Menu, ChevronDown } from "lucide-react";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
+// Default CSS classes for navigation items
+const NAV_LINK_CLASSES = "px-3 py-2 font-medium transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
+const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white";
+const NAV_DROPDOWN_TRIGGER_CLASSES = "flex items-center gap-1";
+const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700";
+
 // Navigation structure
 const navItems = [
   {
@@ -137,121 +143,119 @@ const Header = () => {
   };
 
   return (
-    <header 
-      className={`sticky top-0 z-50 bg-white dark:bg-gray-900 transition-all duration-300 ${
-        isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
-      }`}
-    >
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-wrap items-center justify-between py-4 lg:py-0">
-          {/* Logo and Accreditation */}
-          <div className="flex items-center shrink-0">
-            <div 
-              className="flex items-center cursor-pointer" 
+    <header className="bg-white dark:bg-gray-900 shadow-md py-2 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Logo area */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <img 
+              src="/logo_jss.jpeg" 
+              alt="JSS Logo" 
+              className="h-10 mr-3 cursor-pointer"
               onClick={() => navigate("/")}
-            >
-              <img 
-                src="/logo_jss.jpeg" 
-                alt="JSS Polytechnic Logo" 
-                className="mr-2 h-10 w-auto object-contain"
-              />
-              <div className="flex flex-col">
-                <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
-                <span className="text-base font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</span>
-              </div>
-            </div>
-            
-            {/* Accreditation Logos (visible only on larger screens) */}
-            <div className="hidden xl:flex items-center ml-2 pl-2 border-l border-gray-300 dark:border-gray-700">
-              <a href="/#accreditations" className="flex items-center group">
-                <img 
-                  src="./NAACAlogo-1.png" 
-                  alt="NAAC A+ Accredited" 
-                  className="h-6 w-auto object-contain mr-1" 
-                />
-                <img 
-                  src="./smalllogo2.png" 
-                  alt="NBA Accredited" 
-                  className="h-6 w-auto object-contain mr-1" 
-                />
-                <img 
-                  src="./smalllogo1.png" 
-                  alt="AICTE Approved" 
-                  className="h-6 w-auto object-contain" 
-                />
-                <span className="ml-1 text-xs text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  View Accreditations
-                </span>
-              </a>
+            />
+            <div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">JSS Mahavidyapeetha</div>
+              <div className="text-base font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</div>
             </div>
           </div>
-
-          {/* Mobile Menu Button and Dark Mode Toggle */}
+          
+          {/* Desktop navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item, index) => (
+              <div key={index} className="relative" ref={(el) => (dropdownRefs.current[index] = el)}>
+                {item.children.length > 0 ? (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(index)}
+                      className={`${NAV_LINK_CLASSES} ${index === 0 ? NAV_LINK_ACTIVE_CLASSES : ""} ${NAV_DROPDOWN_TRIGGER_CLASSES}`}
+                    >
+                      {item.title}
+                      <ChevronDown 
+                        className={`w-4 h-4 transition-transform ${activeDropdown === index ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                    {activeDropdown === index && (
+                      <div className="absolute left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded shadow-lg z-10">
+                        {item.children.map((child, childIndex) => (
+                          <a
+                            key={childIndex}
+                            href={child.href}
+                            className={`${NAV_DROPDOWN_ITEM_CLASSES}`}
+                            onClick={(e) => {
+                              if (child.href.startsWith('/')) {
+                                e.preventDefault();
+                                setActiveDropdown(null);
+                                navigate(child.href);
+                              }
+                            }}
+                          >
+                            {child.title}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    className={`${NAV_LINK_CLASSES} ${index === 0 ? NAV_LINK_ACTIVE_CLASSES : ""}`}
+                    onClick={(e) => {
+                      if (item.href.startsWith('/')) {
+                        e.preventDefault();
+                        navigate(item.href);
+                      }
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                )}
+              </div>
+            ))}
+            <DarkModeToggle />
+          </div>
+          
+          {/* Mobile menu button */}
           <div className="lg:hidden flex items-center">
             <DarkModeToggle />
             <button 
-              className="ml-4 text-gray-800 focus:outline-none dark:text-gray-200"
               onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
+              className="ml-2 p-2 rounded-md text-gray-700 dark:text-gray-200"
             >
               <Menu className="h-6 w-6" />
             </button>
           </div>
-
-          {/* Desktop Navigation Menu and Dark Mode Toggle */}
-          <div className="hidden lg:flex flex-1 items-center justify-end">
-            <nav className="mr-4">
-              <ul className="flex justify-center items-center gap-6 xl:gap-8">
-                {navItems.map((item, index) => (
-                  <li key={index} className="relative">
-                    <div
-                      ref={(el) => (dropdownRefs.current[index] = el)}
-                      className="relative"
-                    >
-                      <a 
-                        href={item.children.length > 0 ? "#" : item.href}
-                        className={`flex items-center py-6 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
-                          index === 0 ? "text-[#0A2463] dark:text-white" : ""
-                        } ${
-                          activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
-                        } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-sm`}
-                        onClick={(e) => {
-                          if (item.children.length > 0) {
-                            e.preventDefault();
-                            toggleDropdown(index);
-                          } else if (item.href.startsWith('/')) {
-                            e.preventDefault();
-                            navigate(item.href);
-                          }
-                        }}
+        </div>
+        
+        {/* Mobile navigation menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <nav className="grid gap-y-1">
+              {navItems.map((item, index) => (
+                <div key={index}>
+                  {item.children.length > 0 ? (
+                    <>
+                      <button
+                        onClick={() => toggleMobileDropdown(index)}
+                        className="flex items-center justify-between w-full py-2 px-4 text-left"
                       >
-                        <span className="px-1">{item.title}</span>
-                        {item.children.length > 0 && (
-                          <ChevronDown 
-                            className={`ml-1 h-4 w-4 transition-transform ${
-                              activeDropdown === index ? "rotate-180" : ""
-                            }`} 
-                          />
-                        )}
-                      </a>
+                        <span className="font-medium">{item.title}</span>
+                        <ChevronDown 
+                          className={`w-5 h-5 transition-transform ${mobileOpenDropdowns.has(index) ? 'rotate-180' : ''}`}
+                        />
+                      </button>
                       
-                      {/* Dropdown Menu */}
-                      {item.children.length > 0 && (
-                        <div 
-                          className={`absolute left-0 z-10 mt-1 w-auto min-w-[200px] max-w-[300px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
-                            activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
-                          }`}
-                        >
+                      {mobileOpenDropdowns.has(index) && (
+                        <div className="pl-4 pr-2 py-1 space-y-1">
                           {item.children.map((child, childIndex) => (
                             <a
                               key={childIndex}
                               href={child.href}
-                              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
+                              className="block py-2 px-4 text-sm"
                               onClick={(e) => {
-                                setActiveDropdown(null);
-                                // If it's an external page (not a hash link), use navigate
                                 if (child.href.startsWith('/')) {
                                   e.preventDefault();
+                                  closeMobileMenu();
                                   navigate(child.href);
                                 }
                               }}
@@ -261,77 +265,27 @@ const Header = () => {
                           ))}
                         </div>
                       )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <DarkModeToggle />
-          </div>
-        </div>
-
-        {/* Mobile Menu (Toggleable) */}
-        <div className={`border-t-2 dark:border-gray-700 py-4 px-6 lg:hidden ${isMobileMenuOpen ? "block" : "hidden"} max-h-[calc(100vh-80px)] overflow-y-auto absolute left-0 right-0 top-[calc(100%)] bg-white dark:bg-gray-900 shadow-lg`}>
-          <ul className="space-y-4 pb-12">
-            {navItems.map((item, index) => (
-              <li key={index}>
-                <div>
-                  <a 
-                    href={item.children.length > 0 ? "#" : item.href}
-                    onClick={(e) => {
-                      if (item.children.length > 0) {
-                        e.preventDefault();
-                        toggleMobileDropdown(index);
-                      } else {
-                        closeMobileMenu();
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="block py-2 px-4 font-medium"
+                      onClick={(e) => {
                         if (item.href.startsWith('/')) {
                           e.preventDefault();
+                          closeMobileMenu();
                           navigate(item.href);
                         }
-                      }
-                    }}
-                    className={`flex items-center justify-between font-medium ${
-                      index === 0 ? "text-[#0A2463] dark:text-white" : "text-gray-700 dark:text-gray-200"
-                    } hover:text-[#D8315B] dark:hover:text-[#D8315B]`}
-                  >
-                    <span>{item.title}</span>
-                    {item.children.length > 0 && (
-                      <ChevronDown 
-                        className={`ml-1 h-4 w-4 transition-transform ${
-                          mobileOpenDropdowns.has(index) ? "rotate-180" : ""
-                        }`} 
-                      />
-                    )}
-                  </a>
-                  
-                  {/* Mobile Submenu */}
-                  {item.children.length > 0 && mobileOpenDropdowns.has(index) && (
-                    <div className="mt-2 space-y-2 pl-4">
-                      {item.children.map((child, childIndex) => (
-                        <a
-                          key={childIndex}
-                          href={child.href}
-                          className="block py-1 text-sm text-gray-700 dark:text-gray-300 hover:text-[#D8315B] dark:hover:text-[#D8315B]"
-                          onClick={(e) => {
-                            closeMobileMenu();
-                            // If it's an external page (not a hash link), use navigate
-                            if (child.href.startsWith('/')) {
-                              e.preventDefault();
-                              navigate(child.href);
-                            }
-                          }}
-                        >
-                          {child.title}
-                        </a>
-                      ))}
-                    </div>
+                      }}
+                    >
+                      {item.title}
+                    </a>
                   )}
                 </div>
-              </li>
-            ))}
-
-          </ul>
-        </div>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
