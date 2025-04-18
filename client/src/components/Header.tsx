@@ -142,7 +142,7 @@ const Header = () => {
         isScrolled ? "py-2 shadow-lg" : "py-4 shadow-md"
       }`}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between py-4 lg:py-0">
           {/* Logo and Accreditation */}
           <div className="flex items-center shrink-0">
@@ -200,7 +200,7 @@ const Header = () => {
 
           {/* Desktop Navigation Menu */}
           <nav className="hidden lg:flex justify-end flex-1 overflow-x-auto">
-            <ul className="flex items-center space-y-0 space-x-1 xl:space-x-2 text-xs sm:text-sm md:text-base">
+            <ul className="flex items-center space-y-0 space-x-3 xl:space-x-5">
               {navItems.map((item, index) => (
                 <li key={index} className="relative">
                   <div
@@ -209,11 +209,11 @@ const Header = () => {
                   >
                     <a 
                       href={item.children.length > 0 ? "#" : item.href}
-                      className={`flex items-center py-6 px-1 md:px-2 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
+                      className={`flex items-center py-6 px-2 md:px-3 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
                         index === 0 ? "text-[#0A2463] dark:text-white" : ""
                       } ${
                         activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
-                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-[10px] sm:text-[11px] md:text-xs`}
+                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-[13px] md:text-sm`}
                       onClick={(e) => {
                         if (item.children.length > 0) {
                           e.preventDefault();
@@ -227,7 +227,7 @@ const Header = () => {
                       <span>{item.title}</span>
                       {item.children.length > 0 && (
                         <ChevronDown 
-                          className={`ml-0.5 h-3 w-3 transition-transform ${
+                          className={`ml-1 h-4 w-4 transition-transform ${
                             activeDropdown === index ? "rotate-180" : ""
                           }`} 
                         />
@@ -245,7 +245,7 @@ const Header = () => {
                           <a
                             key={childIndex}
                             href={child.href}
-                            className="block px-4 py-2 text-xs text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
                             onClick={(e) => {
                               setActiveDropdown(null);
                               // If it's an external page (not a hash link), use navigate
