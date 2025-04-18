@@ -143,7 +143,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex items-center justify-between py-4 lg:py-0">
+        <div className="flex flex-wrap items-center justify-between py-4 lg:py-0">
           {/* Logo and Accreditation */}
           <div className="flex items-center shrink-0">
             <div 
@@ -187,10 +187,10 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button and Dark Mode Toggle */}
-          <div className="flex items-center space-x-4">
+          <div className="lg:hidden flex items-center">
             <DarkModeToggle />
             <button 
-              className="text-gray-800 focus:outline-none lg:hidden dark:text-gray-200"
+              className="ml-4 text-gray-800 focus:outline-none dark:text-gray-200"
               onClick={toggleMobileMenu}
               aria-label="Toggle menu"
             >
@@ -198,73 +198,76 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Desktop Navigation Menu */}
-          <nav className="hidden lg:flex justify-end flex-1 overflow-x-auto">
-            <ul className="flex items-center space-y-0 space-x-3 xl:space-x-5">
-              {navItems.map((item, index) => (
-                <li key={index} className="relative">
-                  <div
-                    ref={(el) => (dropdownRefs.current[index] = el)}
-                    className="relative"
-                  >
-                    <a 
-                      href={item.children.length > 0 ? "#" : item.href}
-                      className={`flex items-center py-6 px-2 md:px-3 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
-                        index === 0 ? "text-[#0A2463] dark:text-white" : ""
-                      } ${
-                        activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
-                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-[13px] md:text-sm`}
-                      onClick={(e) => {
-                        if (item.children.length > 0) {
-                          e.preventDefault();
-                          toggleDropdown(index);
-                        } else if (item.href.startsWith('/')) {
-                          e.preventDefault();
-                          navigate(item.href);
-                        }
-                      }}
+          {/* Desktop Navigation Menu and Dark Mode Toggle */}
+          <div className="hidden lg:flex flex-1 items-center justify-end">
+            <nav className="mr-4">
+              <ul className="flex justify-center items-center gap-6 xl:gap-8">
+                {navItems.map((item, index) => (
+                  <li key={index} className="relative">
+                    <div
+                      ref={(el) => (dropdownRefs.current[index] = el)}
+                      className="relative"
                     >
-                      <span>{item.title}</span>
-                      {item.children.length > 0 && (
-                        <ChevronDown 
-                          className={`ml-1 h-4 w-4 transition-transform ${
-                            activeDropdown === index ? "rotate-180" : ""
-                          }`} 
-                        />
-                      )}
-                    </a>
-                    
-                    {/* Dropdown Menu */}
-                    {item.children.length > 0 && (
-                      <div 
-                        className={`absolute left-0 z-10 mt-1 w-auto min-w-[200px] max-w-[300px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
-                          activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
-                        }`}
+                      <a 
+                        href={item.children.length > 0 ? "#" : item.href}
+                        className={`flex items-center py-6 font-medium text-gray-700 dark:text-gray-200 border-b-2 ${
+                          index === 0 ? "text-[#0A2463] dark:text-white" : ""
+                        } ${
+                          activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
+                        } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-sm`}
+                        onClick={(e) => {
+                          if (item.children.length > 0) {
+                            e.preventDefault();
+                            toggleDropdown(index);
+                          } else if (item.href.startsWith('/')) {
+                            e.preventDefault();
+                            navigate(item.href);
+                          }
+                        }}
                       >
-                        {item.children.map((child, childIndex) => (
-                          <a
-                            key={childIndex}
-                            href={child.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
-                            onClick={(e) => {
-                              setActiveDropdown(null);
-                              // If it's an external page (not a hash link), use navigate
-                              if (child.href.startsWith('/')) {
-                                e.preventDefault();
-                                navigate(child.href);
-                              }
-                            }}
-                          >
-                            {child.title}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                        <span className="px-1">{item.title}</span>
+                        {item.children.length > 0 && (
+                          <ChevronDown 
+                            className={`ml-1 h-4 w-4 transition-transform ${
+                              activeDropdown === index ? "rotate-180" : ""
+                            }`} 
+                          />
+                        )}
+                      </a>
+                      
+                      {/* Dropdown Menu */}
+                      {item.children.length > 0 && (
+                        <div 
+                          className={`absolute left-0 z-10 mt-1 w-auto min-w-[200px] max-w-[300px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
+                            activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
+                          }`}
+                        >
+                          {item.children.map((child, childIndex) => (
+                            <a
+                              key={childIndex}
+                              href={child.href}
+                              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
+                              onClick={(e) => {
+                                setActiveDropdown(null);
+                                // If it's an external page (not a hash link), use navigate
+                                if (child.href.startsWith('/')) {
+                                  e.preventDefault();
+                                  navigate(child.href);
+                                }
+                              }}
+                            >
+                              {child.title}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <DarkModeToggle />
+          </div>
         </div>
 
         {/* Mobile Menu (Toggleable) */}
