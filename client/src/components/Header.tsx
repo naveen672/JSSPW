@@ -145,7 +145,7 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between py-4 lg:py-0">
           {/* Logo and Accreditation */}
-          <div className="flex items-center">
+          <div className="flex items-center shrink-0">
             <div 
               className="flex items-center cursor-pointer" 
               onClick={() => navigate("/")}
@@ -153,33 +153,33 @@ const Header = () => {
               <img 
                 src="/logo_jss.jpeg" 
                 alt="JSS Polytechnic Logo" 
-                className="mr-3 h-12 w-auto object-contain"
+                className="mr-2 h-10 w-auto object-contain"
               />
               <div className="flex flex-col">
-                <span className="text-sm text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
-                <span className="text-xl font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</span>
+                <span className="text-xs text-[#0A2463]/80 dark:text-gray-400">JSS Mahavidyapeetha</span>
+                <span className="text-base font-bold text-[#0A2463] dark:text-white">JSS Polytechnic for Women</span>
               </div>
             </div>
             
             {/* Accreditation Logos (visible only on larger screens) */}
-            <div className="hidden md:flex items-center ml-4 pl-4 border-l border-gray-300 dark:border-gray-700">
+            <div className="hidden xl:flex items-center ml-2 pl-2 border-l border-gray-300 dark:border-gray-700">
               <a href="/#accreditations" className="flex items-center group">
                 <img 
                   src="./NAACAlogo-1.png" 
                   alt="NAAC A+ Accredited" 
-                  className="h-8 w-auto object-contain mr-2" 
+                  className="h-6 w-auto object-contain mr-1" 
                 />
                 <img 
                   src="./smalllogo2.png" 
                   alt="NBA Accredited" 
-                  className="h-8 w-auto object-contain mr-2" 
+                  className="h-6 w-auto object-contain mr-1" 
                 />
                 <img 
                   src="./smalllogo1.png" 
                   alt="AICTE Approved" 
-                  className="h-8 w-auto object-contain" 
+                  className="h-6 w-auto object-contain" 
                 />
-                <span className="ml-2 text-xs text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="ml-1 text-xs text-gray-600 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   View Accreditations
                 </span>
               </a>
@@ -199,8 +199,8 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation Menu */}
-          <nav className="hidden lg:flex">
-            <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-y-0 lg:space-x-1 xl:space-x-3 text-xs sm:text-sm md:text-base flex-wrap">
+          <nav className="hidden lg:flex justify-end flex-1 overflow-x-auto">
+            <ul className="flex items-center space-y-0 space-x-1 xl:space-x-2 text-xs sm:text-sm md:text-base">
               {navItems.map((item, index) => (
                 <li key={index} className="relative">
                   <div
@@ -213,7 +213,7 @@ const Header = () => {
                         index === 0 ? "text-[#0A2463] dark:text-white" : ""
                       } ${
                         activeDropdown === index ? "border-[#D8315B]" : "border-transparent"
-                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap`}
+                      } hover:border-[#D8315B] transition-all duration-200 whitespace-nowrap text-[10px] sm:text-[11px] md:text-xs`}
                       onClick={(e) => {
                         if (item.children.length > 0) {
                           e.preventDefault();
@@ -224,10 +224,10 @@ const Header = () => {
                         }
                       }}
                     >
-                      <span className="text-[0.8rem] xl:text-sm">{item.title}</span>
+                      <span>{item.title}</span>
                       {item.children.length > 0 && (
                         <ChevronDown 
-                          className={`ml-1 h-3 w-3 transition-transform ${
+                          className={`ml-0.5 h-3 w-3 transition-transform ${
                             activeDropdown === index ? "rotate-180" : ""
                           }`} 
                         />
@@ -237,7 +237,7 @@ const Header = () => {
                     {/* Dropdown Menu */}
                     {item.children.length > 0 && (
                       <div 
-                        className={`absolute left-0 z-10 mt-1 min-w-[250px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
+                        className={`absolute left-0 z-10 mt-1 w-auto min-w-[200px] max-w-[300px] rounded-md bg-white dark:bg-gray-800 py-2 shadow-lg transition-all ${
                           activeDropdown === index ? "visible opacity-100" : "invisible opacity-0"
                         }`}
                       >
@@ -245,7 +245,7 @@ const Header = () => {
                           <a
                             key={childIndex}
                             href={child.href}
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white"
+                            className="block px-4 py-2 text-xs text-gray-700 dark:text-gray-200 hover:bg-[#0A2463]/5 dark:hover:bg-gray-700 hover:text-[#0A2463] dark:hover:text-white overflow-hidden text-ellipsis"
                             onClick={(e) => {
                               setActiveDropdown(null);
                               // If it's an external page (not a hash link), use navigate
