@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { ArrowLeft, Download, Mail, Plus, Minus } from 'lucide-react';
-import facultyImg from '@assets/dhananjaya.jpg';
-import buildingImg from '@assets/bg1.jpg';
 
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
@@ -37,6 +35,14 @@ const InformationScience = () => {
             </a>
           </div>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Information Science and Technology</h1>
+          
+          {/* Department photo below title */}
+          <div className="mt-6 overflow-hidden rounded-lg shadow-md">
+            <img src="/images/department-ist.jpg" alt="Information Science and Technology Department" className="w-full object-cover" />
+            <div className="p-3 bg-gray-50 dark:bg-gray-800">
+              <p className="text-lg text-[#0A2463] dark:text-white">Information Science and Technology Department Students and Faculty</p>
+            </div>
+          </div>
         </div>
         
         {/* Collapsible Sections */}
@@ -212,7 +218,7 @@ const InformationScience = () => {
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                      <img src="/images/faculty/tejaswini.jpg" alt="Tejaswini R.G." className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Tejaswini R.G.</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD</p>
@@ -228,7 +234,7 @@ const InformationScience = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                      <img src="/images/faculty/nandashree.jpg" alt="Nandashree H M" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nandashree H M</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -244,7 +250,7 @@ const InformationScience = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                      <img src="/images/faculty/asha.jpg" alt="Asha L" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Asha L</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -260,7 +266,7 @@ const InformationScience = () => {
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                      <img src="/images/faculty/nayana.jpg" alt="Nayana K G" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nayana K G</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -305,13 +311,13 @@ const InformationScience = () => {
                   
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src={buildingImg} alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/images/lab-ist.jpg" alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src={buildingImg} alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/images/project-ist.jpg" alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src={buildingImg} alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/images/computer-lab.jpg" alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
