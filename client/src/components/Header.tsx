@@ -4,10 +4,10 @@ import { Menu, ChevronDown } from "lucide-react";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
 // Default CSS classes for navigation items
-const NAV_LINK_CLASSES = "px-2 py-2 text-[13px] font-medium transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
-const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white font-semibold";
+const NAV_LINK_CLASSES = "px-3 py-2 text-[16px] font-bold transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
+const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white font-extrabold";
 const NAV_DROPDOWN_TRIGGER_CLASSES = "flex items-center gap-1 whitespace-nowrap";
-const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0";
+const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-[14px] font-medium hover:bg-blue-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0";
 
 // Navigation structure
 const navItems = [

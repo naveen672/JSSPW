@@ -13,6 +13,7 @@ import Header from "@/components/Header";
 import NewsTicker from "@/components/NewsTicker";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import DarkModeToggle from "@/components/DarkModeToggle";
 import { DarkModeProvider } from "@/lib/DarkModeContext";
 import { AuthProvider } from "@/hooks/use-auth";
 import { ProtectedRoute } from "@/lib/protected-route";
@@ -333,6 +334,7 @@ function App() {
                 <>
                   <Footer />
                   <BackToTop />
+                  <DarkModeToggle />
                 </>
               )}
             </>
