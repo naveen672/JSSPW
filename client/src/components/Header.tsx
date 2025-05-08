@@ -15,20 +15,20 @@ const navItems = [
     title: "HOME",
     href: "/",
     children: [
-      { title: "About JSSMVP", href: "/home/about-jssmvp" },
-      { title: "Technical Education under JSSMVP", href: "/home/technical-education" },
-      { title: "About JSSPW", href: "/home/about-jsspw" },
-      { title: "Vision, Mission", href: "/home/vision-mission" },
-      { title: "Messages", href: "/home/messages" },
-      { title: "Administration", href: "/home/administration" }
+      { title: "About JSSMVP", href: "/jss-mahavidyapeetha" },
+      { title: "Technical Education under JSSMVP", href: "/technical-education" },
+      { title: "About JSSPW", href: "/about-college" },
+      { title: "Vision, Mission", href: "/" },
+      { title: "Messages", href: "/" },
+      { title: "Administration", href: "/" }
     ]
   },
   {
     title: "ADMISSION",
     href: "/admission",
     children: [
-      { title: "Diploma Programs", href: "/admission/diploma-programs" },
-      { title: "Admission Help Desk/Contact", href: "/admission/help-desk" }
+      { title: "Diploma Programs", href: "/admission" },
+      { title: "Admission Help Desk/Contact", href: "/admission" }
     ]
   },
   {
@@ -41,18 +41,16 @@ const navItems = [
       { title: "Computer Science & Engineering", href: "/programs/computer-science" },
       { title: "Electronics & Communication Engineering", href: "/programs/electronics-communication" },
       { title: "Electronics Instrumentation and Control Engg.", href: "/programs/electronics-instrumentation" },
-      { title: "Interior Decoration", href: "/programs/interior-decoration" },
-      { title: "Information Science and Technology", href: "/programs/information-science" }
+      { title: "Interior Design", href: "/programs/interior-design" },
+      { title: "Information Science", href: "/programs/information-science" }
     ]
   },
   {
     title: "FACILITIES",
-    href: "/facilities",
+    href: "#facilities",
     children: [
-      { title: "Hostel", href: "/facilities/hostel" },
-      { title: "Peripheral OPD", href: "/facilities/peripheral-opd" },
-      { title: "Sports", href: "/facilities/sports" },
-      { title: "Library", href: "/facilities/library" }
+      { title: "Hostel", href: "/supports/hostel" },
+      { title: "Library", href: "/supports/library" }
     ]
   },
   {
@@ -62,7 +60,8 @@ const navItems = [
       { title: "III Cell", href: "/supports/iii-cell" },
       { title: "ISTE Chapter", href: "/supports/iste-chapter" },
       { title: "NSS", href: "/supports/nss" },
-      { title: "NCC", href: "/supports/ncc" }
+      { title: "NCC", href: "/supports/ncc" },
+      { title: "Community Development", href: "/supports/community-development" }
     ]
   },
   {
