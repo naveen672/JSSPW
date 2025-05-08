@@ -5,9 +5,9 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 
 // Default CSS classes for navigation items
 const NAV_LINK_CLASSES = "px-2 py-2 text-[13px] font-medium transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
-const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white";
+const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white font-semibold";
 const NAV_DROPDOWN_TRIGGER_CLASSES = "flex items-center gap-1 whitespace-nowrap";
-const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700";
+const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0";
 
 // Navigation structure
 const navItems = [
@@ -227,12 +227,12 @@ const Header = () => {
                       />
                     </button>
                     {activeDropdown === index && (
-                      <div className="absolute left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded shadow-lg z-10">
+                      <div className="absolute left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded border border-gray-200 shadow-lg z-10">
                         {item.children.map((child, childIndex) => (
                           <a
                             key={childIndex}
                             href={child.href}
-                            className={`${NAV_DROPDOWN_ITEM_CLASSES}`}
+                            className={`${NAV_DROPDOWN_ITEM_CLASSES} text-gray-800 dark:text-gray-200`}
                             onClick={(e) => {
                               if (child.href.startsWith('/')) {
                                 e.preventDefault();
@@ -280,29 +280,29 @@ const Header = () => {
         
         {/* Mobile navigation menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
-            <nav className="grid gap-y-1">
+          <div className="lg:hidden mt-2 pt-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+            <nav className="grid gap-y-0.5">
               {navItems.map((item, index) => (
                 <div key={index}>
                   {item.children.length > 0 ? (
                     <>
                       <button
                         onClick={() => toggleMobileDropdown(index)}
-                        className="flex items-center justify-between w-full py-2 px-4 text-left"
+                        className="flex items-center justify-between w-full py-2 px-4 text-left font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
                       >
-                        <span className="font-medium">{item.title}</span>
+                        <span>{item.title}</span>
                         <ChevronDown 
-                          className={`w-5 h-5 transition-transform ${mobileOpenDropdowns.has(index) ? 'rotate-180' : ''}`}
+                          className={`w-4 h-4 transition-transform ${mobileOpenDropdowns.has(index) ? 'rotate-180' : ''}`}
                         />
                       </button>
                       
                       {mobileOpenDropdowns.has(index) && (
-                        <div className="pl-4 pr-2 py-1 space-y-1">
+                        <div className="bg-gray-50 dark:bg-gray-800 border-y border-gray-100 dark:border-gray-700">
                           {item.children.map((child, childIndex) => (
                             <a
                               key={childIndex}
                               href={child.href}
-                              className="block py-2 px-4 text-sm"
+                              className="block py-2 px-6 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0"
                               onClick={(e) => {
                                 if (child.href.startsWith('/')) {
                                   e.preventDefault();
@@ -320,7 +320,7 @@ const Header = () => {
                   ) : (
                     <a
                       href={item.href}
-                      className="block py-2 px-4 font-medium"
+                      className="block py-2 px-4 font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
                       onClick={(e) => {
                         if (item.href.startsWith('/')) {
                           e.preventDefault();
