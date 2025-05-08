@@ -1,26 +1,41 @@
-import { ArrowLeft, Download, Phone, Mail, User, BookOpen, Building, Image, CalendarClock, FileText } from "lucide-react";
-import { useState } from "react";
-import buildingImg from "../../assets/bg2.jpg";
-import facultyImg from "../../assets/prin.jpg";
+import { useState } from 'react';
+import { ArrowLeft, Download, Mail, User, BookOpen, Building, Image, CalendarClock, FileText, Plus, Minus } from 'lucide-react';
+import buildingImg from "@assets/bg2.jpg";
+import facultyImg from "@assets/prin.jpg";
 
-// Tab interface
-type TabType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
+type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
 const ApparelDesign = () => {
-  const [activeTab, setActiveTab] = useState<TabType>('about');
+  const [expandedSections, setExpandedSections] = useState<Set<SectionType>>(new Set());
+
+  const toggleSection = (section: SectionType) => {
+    setExpandedSections(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(section)) {
+        newSet.delete(section);
+      } else {
+        newSet.add(section);
+      }
+      return newSet;
+    });
+  };
+
+  const isSectionExpanded = (section: SectionType) => expandedSections.has(section);
 
   return (
     <div className="bg-white dark:bg-gray-900 py-20">
       <div className="container mx-auto px-6">
         {/* Page Header */}
-        <div className="mb-8 flex items-center">
-          <a 
-            href="/#programs" 
-            className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
-          </a>
+        <div className="mb-8">
+          <div className="mb-4">
+            <a 
+              href="/#programs" 
+              className="inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
+            >
+              <ArrowLeft className="mr-2 h-5 w-5" />
+              Back
+            </a>
+          </div>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Apparel Design and Fabrication Technology</h1>
         </div>
         
@@ -32,385 +47,402 @@ const ApparelDesign = () => {
             className="h-full w-full object-cover"
           />
         </div>
-
-        {/* Tabs navigation */}
-        <div className="mb-8 overflow-x-auto">
-          <div className="flex space-x-2 border-b">
-            <button 
-              onClick={() => setActiveTab('about')}
-              className={`px-4 py-2 font-medium ${activeTab === 'about' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <BookOpen className="mr-2 h-4 w-4" />
-                About
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('facilities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'facilities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Building className="mr-2 h-4 w-4" />
-                Facilities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('faculty')}
-              className={`px-4 py-2 font-medium ${activeTab === 'faculty' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <User className="mr-2 h-4 w-4" />
-                Faculty
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('gallery')}
-              className={`px-4 py-2 font-medium ${activeTab === 'gallery' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Image className="mr-2 h-4 w-4" />
-                Gallery
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('activities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'activities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <CalendarClock className="mr-2 h-4 w-4" />
-                Activities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('contact')}
-              className={`px-4 py-2 font-medium ${activeTab === 'contact' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Phone className="mr-2 h-4 w-4" />
-                Contact
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('syllabus')}
-              className={`px-4 py-2 font-medium ${activeTab === 'syllabus' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <FileText className="mr-2 h-4 w-4" />
-                Syllabus
-              </span>
-            </button>
-          </div>
-        </div>
         
-        {/* Tab content */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          {/* About Tab */}
-          {activeTab === 'about' && (
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">About the Program</h2>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Dept. of Apparel Design and Fabrication Technology was established in the year 1984-85 to provide the creative avenue which an individual requires.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Apparel Design & Fabrication Technology Programme aims at educating individuals to be creative and responsible designers who will be competent to handle diverse areas of need/ situations in today's, highly competitive and diverse, Apparel Design Industry.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Apparel Design Programme commences with a foundation programme in design. Area specific inputs begin in the first semester gradually increasing in complexity as the programme advances. Skills and conceptual abilities are also developed through project-based learning wherein students are individually guided and encouraged to pursue and develop their own creative abilities.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The program enables the students for careers in apparel and soft goods design and development. The syllabus includes Apparel Construction, Patternmaking, Textile Designing  and Computer Aided Design. Fashion designers use their creative and technical skills to design products, develop patterns, monitor quality control and assurance and coordinate sourcing activities. Students who are creative and technologically savvy have an advantage in today's global fashion industry.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  On completion of the course, students can choose from diverse employment opportunities in the industry such as – Assistant Designer, Production Assistant, Fabric Specialist, Trend Manager and Assistant Manager of Quality Assurance, Costume Designer for Film/ Theatre, Bridal Designer, Illustrator, Pattern Maker, Stylist, Retail Merchandiser, Visual merchandiser and CAD Designer. Pursue higher Education- BSc FAD, MSc etc.
-                </p>
-              </div>
+        {/* Collapsible Sections */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200 dark:divide-gray-700">
+          {/* About Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('about')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">About</h2>
+              {isSectionExpanded('about') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('about') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Apparel Design Program</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    The Dept of Apparel Design and Fabrication Technology was established in the year 1984-85 to provide technical education to women in Apparel industry. The program offers a three-year diploma course that equips students with the skills and knowledge required for careers in fashion design, garment manufacturing, textile technology, and related industries.
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    The curriculum is designed to cover all aspects of apparel design and production, from basic pattern-making and garment construction to advanced design techniques, textile science, and manufacturing technologies. Students also learn about fashion merchandising, quality control, and business aspects of the apparel industry.
+                  </p>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Vision</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  "Offer professional programs and offering to enable, empower and inspire to fulfill their aspirations to the best of their ability".
-                </p>
-              </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Vision</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    To be a center of excellence in apparel education, producing innovative designers and technologists who contribute to the advancement of the fashion and textile industry with a focus on sustainability and ethical practices.
+                  </p>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
-                <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>"Enhancing value such as style and research, creative and innovation, technology and craftsmanship, the skill to merge many spirits into a harmonious balance".</li>
-                  <li>"Adopt unique blend of fashion designing and management skills and mould them as complete professionals with knowledge, skills and competencies enabling them to be socially responsible entrepreneurs to meet the diverse demands of the fashion industry through research and development."</li>
-                </ul>
-              </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>To provide quality technical education in apparel design and production with a focus on both theoretical knowledge and practical skills.</li>
+                    <li>To foster creativity, innovation, and entrepreneurship among students in the field of fashion and textile design.</li>
+                    <li>To equip students with the technical skills and knowledge required for successful careers in the global apparel industry.</li>
+                    <li>To promote research and development in sustainable and eco-friendly textile and apparel technologies.</li>
+                  </ul>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Outcomes</h3>
-                <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <li>
-                    <span className="font-semibold">1. Basic and Discipline specific knowledge:</span> Apply knowledge of basic designing, pattern making and apparel construction for fashion industry.
-                  </li>
-                  <li>
-                    <span className="font-semibold">2. Problem Analysis:</span> Identify target consumers, study economic conditions, standard of living and design the garments as per their need.
-                  </li>
-                  <li>
-                    <span className="font-semibold">3. Design / Development of solutions:</span> Specify and design the styles for advanced garments, analyse and evaluate methodology and create mass and high fashion garments.
-                  </li>
-                  <li>
-                    <span className="font-semibold">4. Modern tools, experimentation and testing:</span> Select advanced industrial sewing machine, CAD software's, Modern cutting techniques needed for modern methods of production.
-                  </li>
-                  <li>
-                    <span className="font-semibold">5. Best practices for society, sustainability and environment:</span> Work in team using artistic endeavours and environment to achieve project objectives.
-                  </li>
-                  <li>
-                    <span className="font-semibold">6. Project Management:</span> Analyze modern management and communicate various apparel construction techniques to complete the project.
-                  </li>
-                  <li>
-                    <span className="font-semibold">7. Life-long learning:</span> Pursue lifelong learning as a means of enhancing the knowledge and skills. Recognize the professional and personal responsibility of designers to the community.
-                  </li>
-                </ul>
-              </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Programme Educational Objectives</h3>
+                  <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <li>
+                      <span className="font-semibold">PEO - 1:</span> To provide students with a strong foundation in apparel design, pattern making, and garment construction techniques.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 2:</span> To develop technical skills in textile science, fabric analysis, and quality control in garment manufacturing.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 3:</span> To enhance creative thinking and problem-solving abilities in fashion design and product development.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 4:</span> To instill awareness about sustainable practices and ethical considerations in the apparel industry.
+                    </li>
+                  </ul>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Educational Objectives</h3>
-                <ul className="list-decimal pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Apparel Design and Fabrication Technology students will contribute to the Apparel Industry as Designers, Merchandisers, CAD Designers, CAD Pattern Makers, Textile Designers, Knitwear and Quality Controllers.</li>
-                  <li>Diploma holders will pursue lifelong learning process as a means of enhancing the knowledge base and skills competence to contribute to the improvement of their profession and community.</li>
-                  <li>Diploma holders will be committed to the improvement of Business communities while maintaining high professional ethical standards.</li>
-                </ul>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Programme Outcomes</h3>
+                  <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <li>
+                      <span className="font-semibold">PO - 1: Design Skills:</span> Apply knowledge of design principles, color theory, and fashion trends to create original apparel designs.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 2: Technical Competence:</span> Demonstrate proficiency in pattern making, draping, and garment construction techniques.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 3: Textile Knowledge:</span> Identify and analyze various textile materials, their properties, and appropriate applications in apparel design.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 4: Production Skills:</span> Apply knowledge of garment manufacturing processes, equipment, and quality control systems.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 5: Computer Applications:</span> Use computer-aided design software and digital tools for fashion illustration, pattern making, and product development.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 6: Professional Practice:</span> Demonstrate understanding of the business aspects of the apparel industry including merchandising, marketing, and retail operations.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 7: Sustainability Awareness:</span> Apply environmentally responsible practices in apparel design and production.
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Facilities Tab */}
-          {activeTab === 'facilities' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Facilities</h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6"><strong>Building area:</strong> 600 Square Meters</p>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Major Equipments</h3>
-                
+          {/* Facilities Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('facilities')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Facilities</h2>
+              {isSectionExpanded('facilities') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('facilities') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Sewing & Embroidery</h4>
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Design Studio</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Power Operated Sewing machine - 15 No.</li>
-                      <li>Power Operated Embroidery Machine - 5 No.</li>
+                      <li>Well-equipped design studio with drawing tables</li>
+                      <li>Fashion illustration materials and equipment</li>
+                      <li>Design reference library with fashion magazines and books</li>
+                      <li>Display area for student design projects</li>
                     </ul>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Computer Lab</h4>
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Garment Construction Lab</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>High-end configuration Computer Systems - 30 No.</li>
-                      <li>Garment CAD, Fashion & Textile CAD software</li>
-                      <li>Inkjet printer</li>
-                      <li>Internet facility</li>
+                      <li>Industrial sewing machines</li>
+                      <li>Overlock and specialized stitching machines</li>
+                      <li>Pattern making tables and tools</li>
+                      <li>Dress forms and mannequins for draping</li>
                     </ul>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Textile Science Lab</h4>
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Textile Testing Lab</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Yarn Twist Tester - 01 no.</li>
-                      <li>Micro Vision - 01 no.</li>
-                      <li>Crock-o-Meter - 01 no.</li>
-                      <li>Prespirometer - 01 no.</li>
-                      <li>Water Bath - 02 no.</li>
-                      <li>Beesley Balance - 01 no.</li>
+                      <li>Fabric testing equipment</li>
+                      <li>Yarn and fiber analysis tools</li>
+                      <li>Color fastness testing apparatus</li>
+                      <li>Quality control instruments</li>
                     </ul>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Additional Facilities</h4>
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">CAD Lab</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                      <li>Apparel Manufacturing Studio equipped with Power Operated & High Speed sewing Machines</li>
-                      <li>Departmental library with latest Magazines & Journals subscribed for the benefit of both staff & students</li>
+                      <li>Computer workstations with CAD software</li>
+                      <li>Digital pattern making software</li>
+                      <li>Fashion design and illustration programs</li>
+                      <li>Digital textile design tools</li>
                     </ul>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Faculty Tab */}
-          {activeTab === 'faculty' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Faculty</h2>
-              
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Meera V" className="h-32 w-32 rounded-full object-cover" />
+          {/* Faculty Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('faculty')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Faculty</h2>
+              {isSectionExpanded('faculty') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('faculty') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Saroja Devi</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Textile Technology</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Apparel Manufacturing, Textile Science</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:saroja@jsspwmys.org" className="text-[#3E92CC] hover:underline">saroja@jsspwmys.org</a>
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Meera V</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> Dip in CDDM, MA</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Pattern Illustration Apparel CAD Embellishment</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:meera5871@gmail.com" className="text-[#3E92CC] hover:underline">meera5871@gmail.com</a>
-                    </p>
-                  </div>
-                </div>
 
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Roopashree" className="h-32 w-32 rounded-full object-cover" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Roopashree</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> M. Sc-ATM, B. Sc FAD, Dip in ADFT</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Technical textiles</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:roopahsk9@gmail.com" className="text-[#3E92CC] hover:underline">roopahsk9@gmail.com</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Deepika T H" className="h-32 w-32 rounded-full object-cover" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Deepika T H</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> MSc-FT</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Art and craft pattern making</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:deepikasathist@gmail.com" className="text-[#3E92CC] hover:underline">deepikasathist@gmail.com</a>
-                    </p>
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Divya K</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Assistant Professor</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Des in Fashion Design</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Fashion Illustration, Pattern Making</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:divya@jsspwmys.org" className="text-[#3E92CC] hover:underline">divya@jsspwmys.org</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Gallery Tab */}
-          {activeTab === 'gallery' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Gallery</h2>
-              
-              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                {/* Using the building image as placeholder for the gallery */}
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+          {/* Gallery Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('gallery')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Gallery</h2>
+              {isSectionExpanded('gallery') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('gallery') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  {/* Using the building image as placeholder for the gallery */}
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Apparel Design Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Activities Tab */}
-          {activeTab === 'activities' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Activities</h2>
-              
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Annual Fashion Show</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Students showcase their designs at the annual fashion show, displaying their creativity and skills.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Event Details (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Design Workshop</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Regular design workshops are conducted to enhance students' creative abilities.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Workshop Schedule (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Industry Visits</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Students are taken to textile and garment manufacturing industries to gain practical exposure.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Visit Reports (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Technical Seminar</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Regular technical seminars are organized to keep students updated with latest trends in fashion technology.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Seminar Materials (PDF)
-                  </a>
+          {/* Activities Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('activities')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Activities</h2>
+              {isSectionExpanded('activities') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('activities') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Fashion Shows</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Annual fashion shows where students showcase their design collections, featuring innovative concepts and creative garment construction.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Industry Visits</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Regular visits to garment manufacturing units, textile mills, and fashion houses to understand professional practices and industry standards.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Design Competitions</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Participation in regional and national level design competitions where students present their innovative fashion concepts and designs.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Workshops</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Specialized workshops on advanced design techniques, sustainable fashion practices, and emerging technologies in the apparel industry.</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Contact Tab */}
-          {activeTab === 'contact' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Contact</h2>
-              
-              <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Department Contact</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <User className="mr-3 h-5 w-5 mt-0.5 text-[#3E92CC]" />
-                    <div>
-                      <p className="font-semibold text-[#0A2463] dark:text-white">Meera V</p>
-                      <p className="text-gray-700 dark:text-gray-300">HOD</p>
+          {/* Contact Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('contact')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Contact</h2>
+              {isSectionExpanded('contact') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('contact') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Department Contact Information</h3>
+                    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Department:</span> Apparel Design and Fabrication Technology</p>
+                      <p><span className="font-semibold">Email:</span> apparel@jsspwmys.org</p>
+                      <p><span className="font-semibold">Phone:</span> +91-821-2548232</p>
+                      <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 9:00 AM to 5:00 PM</p>
+                      <p><span className="font-semibold">Location:</span> First Floor, Main Building, JSS Polytechnic for Women</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <Phone className="mr-3 h-5 w-5 text-[#3E92CC]" />
-                    <a href="tel:9480967228" className="text-gray-700 dark:text-gray-300 hover:text-[#3E92CC]">9480967228</a>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <Mail className="mr-3 h-5 w-5 text-[#3E92CC]" />
-                    <a href="mailto:meera5871@gmail.com" className="text-gray-700 dark:text-gray-300 hover:text-[#3E92CC]">meera5871@gmail.com</a>
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Contact the HOD</h3>
+                    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Name:</span> Prof. Saroja Devi</p>
+                      <p><span className="font-semibold">Email:</span> saroja@jsspwmys.org</p>
+                      <p><span className="font-semibold">Phone:</span> +91-821-2548233</p>
+                      <p><span className="font-semibold">Office:</span> Room 104, Apparel Design Department</p>
+                      <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 10:00 AM to 4:00 PM</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Syllabus Tab */}
-          {activeTab === 'syllabus' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Syllabus</h2>
-              
-              <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Apparel Design and Fabrication Technology Diploma Program Syllabus</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">Access the complete syllabus for the Apparel Design and Fabrication Technology Diploma Program.</p>
-                
-                <a 
-                  href="#" 
-                  className="inline-flex items-center px-6 py-3 bg-[#0A2463] text-white rounded-md hover:bg-[#0A2463]/90 transition-colors"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Syllabus (PDF)
-                </a>
+          {/* Syllabus Section */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('syllabus')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Syllabus</h2>
+              {isSectionExpanded('syllabus') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('syllabus') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="space-y-6">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Diploma in Apparel Design and Fabrication Technology</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6">Below is the semester-wise syllabus for the Diploma program. Click on the links to download detailed syllabus for each semester.</p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">First Year (Semesters 1 & 2)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">1st Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">2nd Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">Second Year (Semesters 3 & 4)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">3rd Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">4th Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">Third Year (Semesters 5 & 6)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">5th Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">6th Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
