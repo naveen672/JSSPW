@@ -1,26 +1,41 @@
-import { ArrowLeft, Download, Phone, Mail, User, BookOpen, Building, Image, CalendarClock, FileText } from "lucide-react";
-import { useState } from "react";
-import buildingImg from "../../assets/bg1.jpg";
-import facultyImg from "../../assets/prin.jpg";
+import { useState } from 'react';
+import { ArrowLeft, Download, Mail, User, BookOpen, Building, Image, CalendarClock, FileText, Plus, Minus } from 'lucide-react';
+import buildingImg from "@assets/bg1.jpg";
+import facultyImg from "@assets/prin.jpg";
 
-// Tab interface
-type TabType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
+type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
 const ComputerScience = () => {
-  const [activeTab, setActiveTab] = useState<TabType>('about');
+  const [expandedSections, setExpandedSections] = useState<Set<SectionType>>(new Set());
+
+  const toggleSection = (section: SectionType) => {
+    setExpandedSections(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(section)) {
+        newSet.delete(section);
+      } else {
+        newSet.add(section);
+      }
+      return newSet;
+    });
+  };
+
+  const isSectionExpanded = (section: SectionType) => expandedSections.has(section);
 
   return (
     <div className="bg-white dark:bg-gray-900 py-20">
       <div className="container mx-auto px-6">
         {/* Page Header */}
-        <div className="mb-8 flex items-center">
-          <a 
-            href="/#programs" 
-            className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
-          </a>
+        <div className="mb-8">
+          <div className="mb-4">
+            <a 
+              href="/#programs" 
+              className="inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
+            >
+              <ArrowLeft className="mr-2 h-5 w-5" />
+              Back
+            </a>
+          </div>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Computer Science & Engineering</h1>
         </div>
         
@@ -32,387 +47,419 @@ const ComputerScience = () => {
             className="h-full w-full object-cover"
           />
         </div>
-
-        {/* Tabs navigation */}
-        <div className="mb-8 overflow-x-auto">
-          <div className="flex space-x-2 border-b">
-            <button 
-              onClick={() => setActiveTab('about')}
-              className={`px-4 py-2 font-medium ${activeTab === 'about' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <BookOpen className="mr-2 h-4 w-4" />
-                About
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('facilities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'facilities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Building className="mr-2 h-4 w-4" />
-                Facilities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('faculty')}
-              className={`px-4 py-2 font-medium ${activeTab === 'faculty' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <User className="mr-2 h-4 w-4" />
-                Faculty
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('gallery')}
-              className={`px-4 py-2 font-medium ${activeTab === 'gallery' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Image className="mr-2 h-4 w-4" />
-                Gallery
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('activities')}
-              className={`px-4 py-2 font-medium ${activeTab === 'activities' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <CalendarClock className="mr-2 h-4 w-4" />
-                Activities
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('contact')}
-              className={`px-4 py-2 font-medium ${activeTab === 'contact' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <Phone className="mr-2 h-4 w-4" />
-                Contact
-              </span>
-            </button>
-            <button 
-              onClick={() => setActiveTab('syllabus')}
-              className={`px-4 py-2 font-medium ${activeTab === 'syllabus' ? 'border-b-2 border-[#D8315B] text-[#0A2463] dark:text-white' : 'text-gray-500 dark:text-gray-400 hover:text-[#0A2463] dark:hover:text-gray-300'}`}
-            >
-              <span className="flex items-center">
-                <FileText className="mr-2 h-4 w-4" />
-                Syllabus
-              </span>
-            </button>
-          </div>
-        </div>
         
-        {/* Tab content */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          {/* About Tab */}
-          {activeTab === 'about' && (
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">About the Computer Science Program</h2>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The department comprises of qualified and experienced teaching staff, who are committed to excellence and have brought creative and innovative methods in teaching. Department also has experienced and motivated technical staff who impart the requisite knowledge and technical skills to the students.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The department has well equipped laboratories housing state of the art computer systems with latest configuration and peripherals.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  The Internet facility at 50 mbps has been provided for the students to access information. Besides imparting theoretical knowledge, lot of effort is put in for hands-on training. Students get individual attention and counseling for their personality development.
-                </p>
-              </div>
+        {/* Collapsible Sections */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200 dark:divide-gray-700">
+          {/* About Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('about')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">About</h2>
+              {isSectionExpanded('about') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('about') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Computer Science & Engineering Department</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    The Department of Computer Science & Engineering was established in the year 1985 with an intake of 25 students. Currently, the intake capacity has increased to 60 students. The department provides comprehensive education in computer science fundamentals, programming languages, database management, networking, software engineering, and emerging technologies.
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    Our curriculum blends theoretical knowledge with practical labs and projects to prepare students for successful careers in the IT industry. We emphasize problem-solving skills, analytical thinking, and hands-on experience with contemporary technologies used in the industry.
+                  </p>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Vision</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  To foster innovation and excellence in computer science education, producing skilled professionals who contribute to technological advancements and societal progress.
-                </p>
-              </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Vision</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    To empower young women to become technically competent, globally competitive, ethically strong computer science professionals who contribute to the advancement of society and industry.
+                  </p>
+                </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
-                <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>Providing high-quality education in computer science that meets industry standards and future needs.</li>
-                  <li>Developing technical and problem-solving skills through hands-on training and practical projects.</li>
-                  <li>Fostering innovation and creativity in software development and computing solutions.</li>
-                  <li>Encouraging ethical practices and social responsibility in the application of technology.</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Educational Objectives</h3>
-                <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <li>
-                    <span className="font-semibold">PEO - 1:</span> To provide a strong foundation in computer science fundamentals and programming.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PEO - 2:</span> To develop proficiency in software development and problem-solving skills.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PEO - 3:</span> To cultivate innovative thinking and adaptability to emerging technologies.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PEO - 4:</span> To instill professional ethics and teamwork essential for a successful career in IT.
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Outcomes</h3>
-                <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <li>
-                    <span className="font-semibold">PO - 1: Computing Knowledge:</span> Apply knowledge of computing principles to solve technical problems.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 2: Problem Analysis:</span> Identify and analyze complex computing problems with appropriate solution techniques.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 3: Design/Development:</span> Design and develop software solutions for specific requirements.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 4: Modern Tools:</span> Use modern programming languages, frameworks, and development environments.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 5: Professional Ethics:</span> Understand and apply ethical principles in the computing profession.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 6: Teamwork:</span> Function effectively in diverse teams and collaborative environments.
-                  </li>
-                  <li>
-                    <span className="font-semibold">PO - 7: Life-long learning:</span> Engage in continuous learning to adapt to evolving technologies and computing paradigms.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {/* Facilities Tab */}
-          {activeTab === 'facilities' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Facilities</h2>
-              
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Programming Lab</h4>
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
                   <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                    <li>60 high-configuration computers with latest hardware</li>
-                    <li>Development environments for C, C++, Java, Python</li>
-                    <li>High-speed internet connectivity</li>
-                    <li>LCD projector for demonstrations</li>
+                    <li>To provide quality technical education in computer science with emphasis on practical skills and theoretical foundations.</li>
+                    <li>To foster a learning environment that encourages innovation, critical thinking, and problem-solving abilities.</li>
+                    <li>To develop professionals who can adapt to rapidly evolving technology landscapes.</li>
+                    <li>To instill ethical values and social responsibility among students.</li>
+                    <li>To establish strong industry connections for enhancing employability and exposure to real-world challenges.</li>
                   </ul>
                 </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Web Development Lab</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                    <li>Advanced web development tools and frameworks</li>
-                    <li>Frontend and backend development environments</li>
-                    <li>Web servers and testing environments</li>
-                    <li>UI/UX design tools and resources</li>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Programme Educational Objectives</h3>
+                  <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <li>
+                      <span className="font-semibold">PEO - 1:</span> To provide students with strong foundation in computer science fundamentals and programming skills.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 2:</span> To develop technical competence in designing and implementing software solutions for real-world problems.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 3:</span> To equip students with professional skills required for successful careers in the IT industry or higher education.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PEO - 4:</span> To nurture innovation, teamwork, and ethical practices in computing.
+                    </li>
                   </ul>
                 </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Networking Lab</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                    <li>Routers, switches, and networking equipment</li>
-                    <li>Network simulation software</li>
-                    <li>Security and penetration testing tools</li>
-                    <li>Server administration environments</li>
-                  </ul>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Project Lab</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                    <li>Dedicated space for student projects</li>
-                    <li>IoT devices and components</li>
-                    <li>Version control systems</li>
-                    <li>Collaboration and project management tools</li>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Programme Outcomes</h3>
+                  <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+                    <li>
+                      <span className="font-semibold">PO - 1: Programming Skills:</span> Ability to design and develop computer programs for solving complex problems.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 2: Problem Analysis:</span> Ability to analyze problems and identify computing requirements appropriate to their solutions.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 3: Design/Development of Solutions:</span> Ability to design and develop software systems that meet specified needs.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 4: Modern Tool Usage:</span> Ability to use modern computing tools and techniques necessary for computing practice.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 5: Computing Ethics:</span> Understanding of professional and ethical responsibilities in computing.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 6: Teamwork and Project Management:</span> Ability to work as a team member or leader to manage projects and communicate effectively.
+                    </li>
+                    <li>
+                      <span className="font-semibold">PO - 7: Lifelong Learning:</span> Recognition of the need for and ability to engage in lifelong learning in the context of technological changes.
+                    </li>
                   </ul>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Faculty Tab */}
-          {activeTab === 'faculty' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Faculty</h2>
-              
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+          {/* Facilities Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('facilities')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Facilities</h2>
+              {isSectionExpanded('facilities') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('facilities') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Computer Labs</h4>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>3 fully equipped computer laboratories with 60 systems</li>
+                      <li>High-speed internet connectivity</li>
+                      <li>Latest hardware and software configurations</li>
+                      <li>Regular upgrades to maintain industry standards</li>
+                    </ul>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Dr. Suresh Kumar</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> Ph.D. in Computer Science</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Machine Learning, AI</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:suresh@jsspwmys.org" className="text-[#3E92CC] hover:underline">suresh@jsspwmys.org</a>
-                    </p>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Software & Programming Tools</h4>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>Programming environments for C, C++, Java, Python</li>
+                      <li>Database systems (MySQL, PostgreSQL, Oracle)</li>
+                      <li>Web development tools and frameworks</li>
+                      <li>Development IDEs and text editors</li>
+                    </ul>
                   </div>
-                </div>
-
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Networking Lab</h4>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>Networking equipment for practical training</li>
+                      <li>Routers, switches, and network simulation tools</li>
+                      <li>Network security tools and firewalls</li>
+                      <li>Wireshark and other network analysis software</li>
+                    </ul>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Anita Desai</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Associate Professor</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Computer Science</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Database Systems, Web Technologies</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:anita@jsspwmys.org" className="text-[#3E92CC] hover:underline">anita@jsspwmys.org</a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <div className="mb-4 flex justify-center">
-                    <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Ramesh Nair</h3>
-                  <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Assistant Professor</p>
-                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Computer Engineering</p>
-                    <p><span className="font-semibold">Area of Specialization:</span> Computer Networks, Cybersecurity</p>
-                    <p className="flex items-center">
-                      <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                      <a href="mailto:ramesh@jsspwmys.org" className="text-[#3E92CC] hover:underline">ramesh@jsspwmys.org</a>
-                    </p>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white mb-3">Digital Learning Resources</h4>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>Digital library with e-books and journals</li>
+                      <li>Video tutorials and online learning materials</li>
+                      <li>Access to programming and development forums</li>
+                      <li>Industry certifications preparation resources</li>
+                    </ul>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Gallery Tab */}
-          {activeTab === 'gallery' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Gallery</h2>
-              
-              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                {/* Using the building image as placeholder for the gallery */}
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <img src={buildingImg} alt="Computer Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+          {/* Faculty Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('faculty')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Faculty</h2>
+              {isSectionExpanded('faculty') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('faculty') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Anitha K</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Computer Science</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Database Systems, Software Engineering</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:anitha@jsspwmys.org" className="text-[#3E92CC] hover:underline">anitha@jsspwmys.org</a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Deepa R</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Assistant Professor</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Computer Networks</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Networking, Cybersecurity</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:deepa@jsspwmys.org" className="text-[#3E92CC] hover:underline">deepa@jsspwmys.org</a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Ramesh S</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Assistant Professor</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> M.E in Software Engineering</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Programming Languages, Algorithms</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:ramesh@jsspwmys.org" className="text-[#3E92CC] hover:underline">ramesh@jsspwmys.org</a>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Activities Tab */}
-          {activeTab === 'activities' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Activities</h2>
-              
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Coding Competitions</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Regular coding contests and hackathons to enhance programming skills and problem-solving abilities.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Competition Details (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Technical Workshops</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Hands-on workshops on emerging technologies like AI, cloud computing, and blockchain.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Workshop Schedule (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Industry Visits</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Regular visits to IT companies and tech parks to gain practical insights into the industry.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Visit Reports (PDF)
-                  </a>
-                </div>
-                
-                <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Project Exhibitions</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">Annual exhibitions showcasing student projects and innovations in computer science.</p>
-                  <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Exhibition Brochure (PDF)
-                  </a>
+          {/* Gallery Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('gallery')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Gallery</h2>
+              {isSectionExpanded('gallery') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('gallery') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  {/* Using the building image as placeholder for the gallery */}
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Programming Competition" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={buildingImg} alt="Industry Visit" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Contact Tab */}
-          {activeTab === 'contact' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Contact</h2>
-              
-              <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Department Contact</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <User className="mr-3 h-5 w-5 mt-0.5 text-[#3E92CC]" />
-                    <div>
-                      <p className="font-semibold text-[#0A2463] dark:text-white">Dr. Suresh Kumar</p>
-                      <p className="text-gray-700 dark:text-gray-300">HOD, Computer Science & Engineering</p>
+          {/* Activities Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('activities')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Activities</h2>
+              {isSectionExpanded('activities') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('activities') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Technical Workshops</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Regular workshops on emerging technologies like cloud computing, artificial intelligence, machine learning, and cybersecurity to enhance students' technical skills.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Coding Competitions</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Annual coding competitions, hackathons, and debugging challenges to promote algorithmic thinking and problem-solving abilities among students.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Industry Visits</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Regular visits to leading IT companies and software development organizations to give students exposure to professional work environments and industry practices.</p>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Guest Lectures</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Series of guest lectures by industry professionals and academic experts to provide insights on current trends and developments in the IT sector.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Contact Section */}
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('contact')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Contact</h2>
+              {isSectionExpanded('contact') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('contact') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Department Contact Information</h3>
+                    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Department:</span> Computer Science & Engineering</p>
+                      <p><span className="font-semibold">Email:</span> cse@jsspwmys.org</p>
+                      <p><span className="font-semibold">Phone:</span> +91-821-2548234</p>
+                      <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 9:00 AM to 5:00 PM</p>
+                      <p><span className="font-semibold">Location:</span> Third Floor, Main Building, JSS Polytechnic for Women</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <Phone className="mr-3 h-5 w-5 text-[#3E92CC]" />
-                    <a href="tel:9876543211" className="text-gray-700 dark:text-gray-300 hover:text-[#3E92CC]">9876543211</a>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <Mail className="mr-3 h-5 w-5 text-[#3E92CC]" />
-                    <a href="mailto:cse@jsspwmys.org" className="text-gray-700 dark:text-gray-300 hover:text-[#3E92CC]">cse@jsspwmys.org</a>
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Contact the HOD</h3>
+                    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Name:</span> Prof. Anitha K</p>
+                      <p><span className="font-semibold">Email:</span> anitha@jsspwmys.org</p>
+                      <p><span className="font-semibold">Phone:</span> +91-821-2548235</p>
+                      <p><span className="font-semibold">Office:</span> Room 304, Computer Science Department</p>
+                      <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 10:00 AM to 4:00 PM</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Syllabus Tab */}
-          {activeTab === 'syllabus' && (
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-[#0A2463] dark:text-white mb-4">Syllabus</h2>
-              
-              <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Computer Science & Engineering Diploma Program Syllabus</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">Access the complete syllabus for the Computer Science & Engineering Diploma Program.</p>
-                
-                <a 
-                  href="#" 
-                  className="inline-flex items-center px-6 py-3 bg-[#0A2463] text-white rounded-md hover:bg-[#0A2463]/90 transition-colors"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Syllabus (PDF)
-                </a>
+          {/* Syllabus Section */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between p-5 text-left"
+              onClick={() => toggleSection('syllabus')}
+            >
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Syllabus</h2>
+              {isSectionExpanded('syllabus') ? (
+                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
+              ) : (
+                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
+              )}
+            </button>
+            
+            {isSectionExpanded('syllabus') && (
+              <div className="px-5 pb-5 pt-1 space-y-6">
+                <div className="space-y-6">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Diploma in Computer Science & Engineering</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6">Below is the semester-wise syllabus for the Diploma program. Click on the links to download detailed syllabus for each semester.</p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">First Year (Semesters 1 & 2)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">1st Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">2nd Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">Second Year (Semesters 3 & 4)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">3rd Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">4th Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-lg font-medium text-[#0A2463] dark:text-white mb-2">Third Year (Semesters 5 & 6)</h4>
+                        <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">5th Semester Syllabus (PDF)</a>
+                          </li>
+                          <li className="flex items-center">
+                            <Download className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                            <a href="#" className="text-[#3E92CC] hover:underline">6th Semester Syllabus (PDF)</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
