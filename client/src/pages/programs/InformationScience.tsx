@@ -36,7 +36,7 @@ const InformationScience = () => {
               Back
             </a>
           </div>
-          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Information Science</h1>
+          <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Information Science and Technology</h1>
         </div>
         
         {/* Collapsible Sections */}
@@ -58,7 +58,7 @@ const InformationScience = () => {
             {isSectionExpanded('about') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Information Science Program</h3>
+                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Information Science and Technology Program</h3>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
                     The Information Science program at JSS Polytechnic for Women provides a comprehensive education in information management, data systems, and knowledge organization. The program prepares students for careers in the rapidly evolving field of information technology and data management.
                   </p>
@@ -214,14 +214,14 @@ const InformationScience = () => {
                     <div className="mb-4 flex justify-center">
                       <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Dr. Sunitha Rao</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Head of Department</p>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Tejaswini R.G.</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD</p>
                     <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> Ph.D. in Information Science</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Information Retrieval, Digital Libraries</p>
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> VLSI and Embedded System</p>
                       <p className="flex items-center">
                         <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:sunitha@jsspwmys.org" className="text-[#3E92CC] hover:underline">sunitha@jsspwmys.org</a>
+                        <a href="mailto:teju.rg57@gmail.com" className="text-[#3E92CC] hover:underline">teju.rg57@gmail.com</a>
                       </p>
                     </div>
                   </div>
@@ -230,14 +230,14 @@ const InformationScience = () => {
                     <div className="mb-4 flex justify-center">
                       <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Raj Kumar</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Associate Professor</p>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nandashree H M</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                     <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Information Systems</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Database Management, Data Mining</p>
+                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Software Engineering</p>
                       <p className="flex items-center">
                         <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:raj@jsspwmys.org" className="text-[#3E92CC] hover:underline">raj@jsspwmys.org</a>
+                        <a href="mailto:nandashree@jsspwmys.org" className="text-[#3E92CC] hover:underline">nandashree@jsspwmys.org</a>
                       </p>
                     </div>
                   </div>
@@ -246,14 +246,30 @@ const InformationScience = () => {
                     <div className="mb-4 flex justify-center">
                       <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Prof. Meena Sharma</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Assistant Professor</p>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Asha L</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                     <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech in Information Management</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Information Security, Knowledge Management</p>
+                      <p><span className="font-semibold">Educational Qualification:</span> BE</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Computer Science and Engineering</p>
                       <p className="flex items-center">
                         <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:meena@jsspwmys.org" className="text-[#3E92CC] hover:underline">meena@jsspwmys.org</a>
+                        <a href="mailto:ashal.0708@gmail.com" className="text-[#3E92CC] hover:underline">ashal.0708@gmail.com</a>
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
+                    <div className="mb-4 flex justify-center">
+                      <img src={facultyImg} alt="Faculty Member" className="h-32 w-32 rounded-full object-cover" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nayana K G</h3>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
+                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <p><span className="font-semibold">Educational Qualification:</span> BE</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Information Science</p>
+                      <p className="flex items-center">
+                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
+                        <a href="mailto:nayana.kg2001@gmail.com" className="text-[#3E92CC] hover:underline">nayana.kg2001@gmail.com</a>
                       </p>
                     </div>
                   </div>
@@ -321,39 +337,23 @@ const InformationScience = () => {
               <div className="px-5 pb-5 pt-1 space-y-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Data Science Workshops</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">Regular workshops on data science techniques, tools, and applications to develop students' analytical skills.</p>
-                    <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Workshop Schedule (PDF)
-                    </a>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Innovation Challenge Achievement</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Kum Akshatha of 6th sem IS&T participated in state level "INNOVATION CHALLENGE" organized by Dept of Computer Science and Engg, JSS Polytechnic Mysuru and won first prize.</p>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Information Systems Projects</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">Hands-on projects where students design and implement information systems for real-world scenarios.</p>
-                    <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Project Guidelines (PDF)
-                    </a>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Ideathon Event</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">Under Dyuthi Student Forum an "Ideathon" was conducted on 18-Jan-2025.</p>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Industry Visits</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">Regular visits to IT companies, data centers, and digital libraries to understand professional information management practices.</p>
-                    <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Visit Schedule (PDF)
-                    </a>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Guest Lecture on Cloud Computing</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">A guest lecture on Cloud computing was delivered by Mrs Sudhamani N, Cloud engineer, Ellucian higher education system on 18th March 2025 for the benefit of 4th sem students of IS&T.</p>
                   </div>
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Information Science Symposium</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">Annual symposium featuring expert talks, paper presentations, and panel discussions on current trends in information science.</p>
-                    <a href="#" className="inline-flex items-center text-[#3E92CC] hover:text-[#0A2463]">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Symposium Details (PDF)
-                    </a>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">National Level Project Competition</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">IS students won the third prize in National level project presentation computation held by Bharathi Vidhyapeeta college of Engineering, Pune on 12-04-2025 which included 5000rs cash prize.</p>
                   </div>
                 </div>
               </div>
@@ -380,7 +380,7 @@ const InformationScience = () => {
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Department Contact Information</h3>
                     <div className="space-y-4 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Department:</span> Information Science</p>
+                      <p><span className="font-semibold">Department:</span> Information Science and Technology</p>
                       <p><span className="font-semibold">Email:</span> infoscience@jsspwmys.org</p>
                       <p><span className="font-semibold">Phone:</span> +91-821-2548236</p>
                       <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 9:00 AM to 5:00 PM</p>
@@ -391,8 +391,8 @@ const InformationScience = () => {
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Contact the HOD</h3>
                     <div className="space-y-4 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Name:</span> Dr. Sunitha Rao</p>
-                      <p><span className="font-semibold">Email:</span> sunitha@jsspwmys.org</p>
+                      <p><span className="font-semibold">Name:</span> Tejaswini R.G.</p>
+                      <p><span className="font-semibold">Email:</span> teju.rg57@gmail.com</p>
                       <p><span className="font-semibold">Phone:</span> +91-821-2548237</p>
                       <p><span className="font-semibold">Office:</span> Room 304, Information Science Department</p>
                       <p><span className="font-semibold">Office Hours:</span> Monday to Friday, 10:00 AM to 4:00 PM</p>
