@@ -8,17 +8,17 @@ const DarkModeToggle: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed z-50 right-0 top-1/2 transform -translate-y-1/2">
+    <div className="fixed z-50 right-0 top-1/4 transform -translate-y-1/4">
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-10 w-10 items-center justify-center rounded-l-lg bg-gray-100 text-gray-800 shadow-md transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+        className="flex h-12 w-12 items-center justify-center rounded-l-lg bg-[#0A2463] text-white shadow-lg transition-colors hover:bg-[#0A2463]/90 dark:bg-[#D8315B] dark:text-white dark:hover:bg-[#D8315B]/90"
         aria-label="Toggle theme settings"
       >
         {isOpen ? (
-          <X className="h-5 w-5" />
+          <X className="h-6 w-6" />
         ) : (
-          <PanelRight className="h-5 w-5" />
+          <Moon className="h-6 w-6" />
         )}
       </button>
 
