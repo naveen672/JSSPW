@@ -4,9 +4,9 @@ import { Menu, ChevronDown } from "lucide-react";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
 // Default CSS classes for navigation items
-const NAV_LINK_CLASSES = "px-3 py-2 font-medium transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
+const NAV_LINK_CLASSES = "px-2 py-2 text-[13px] font-medium transition-colors duration-200 ease-in-out text-gray-700 dark:text-gray-200 hover:text-[#D8315B] dark:hover:text-[#D8315B]";
 const NAV_LINK_ACTIVE_CLASSES = "text-[#0A2463] dark:text-white";
-const NAV_DROPDOWN_TRIGGER_CLASSES = "flex items-center gap-1";
+const NAV_DROPDOWN_TRIGGER_CLASSES = "flex items-center gap-1 whitespace-nowrap";
 const NAV_DROPDOWN_ITEM_CLASSES = "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700";
 
 // Navigation structure
@@ -14,15 +14,21 @@ const navItems = [
   {
     title: "HOME",
     href: "/",
-    children: []
+    children: [
+      { title: "About JSSMVP", href: "/home/about-jssmvp" },
+      { title: "Technical Education under JSSMVP", href: "/home/technical-education" },
+      { title: "About JSSPW", href: "/home/about-jsspw" },
+      { title: "Vision, Mission", href: "/home/vision-mission" },
+      { title: "Messages", href: "/home/messages" },
+      { title: "Administration", href: "/home/administration" }
+    ]
   },
   {
-    title: "ABOUT",
-    href: "#about",
+    title: "ADMISSION",
+    href: "/admission",
     children: [
-      { title: "JSS MAHAVIDYAPEETHA", href: "/jss-mahavidyapeetha" },
-      { title: "Technical Education under JSSMVP", href: "/technical-education" },
-      { title: "About the College", href: "/about-college" }
+      { title: "Diploma Programs", href: "/admission/diploma-programs" },
+      { title: "Admission Help Desk/Contact", href: "/admission/help-desk" }
     ]
   },
   {
@@ -34,33 +40,55 @@ const navItems = [
       { title: "Commercial Practice", href: "/programs/commercial-practice" },
       { title: "Computer Science & Engineering", href: "/programs/computer-science" },
       { title: "Electronics & Communication Engineering", href: "/programs/electronics-communication" },
-      { title: "Electronics Instrumentation and Control ENGG", href: "/programs/electronics-instrumentation" },
-      { title: "Interior Design", href: "/programs/interior-design" },
-      { title: "Information Science", href: "/programs/information-science" }
+      { title: "Electronics Instrumentation and Control Engg.", href: "/programs/electronics-instrumentation" },
+      { title: "Interior Decoration", href: "/programs/interior-decoration" },
+      { title: "Information Science and Technology", href: "/programs/information-science" }
     ]
   },
   {
-    title: "ADMISSION",
-    href: "/admission",
-    children: []
+    title: "FACILITIES",
+    href: "/facilities",
+    children: [
+      { title: "Hostel", href: "/facilities/hostel" },
+      { title: "Peripheral OPD", href: "/facilities/peripheral-opd" },
+      { title: "Sports", href: "/facilities/sports" },
+      { title: "Library", href: "/facilities/library" }
+    ]
   },
   {
     title: "SUPPORTS",
     href: "#supports",
     children: [
-      { title: "III Cell (Placements & Training Cell)", href: "/supports/iii-cell" },
-      { title: "Hostel", href: "/supports/hostel" },
-      { title: "Library", href: "/supports/library" },
-      { title: "NSS", href: "/supports/nss" },
-      { title: "NCC", href: "/supports/ncc" },
+      { title: "III Cell", href: "/supports/iii-cell" },
       { title: "ISTE Chapter", href: "/supports/iste-chapter" },
-      { title: "Community Development Through Polytechnic", href: "/supports/community-development" }
+      { title: "NSS", href: "/supports/nss" },
+      { title: "NCC", href: "/supports/ncc" }
     ]
   },
   {
     title: "EXAMS",
     href: "/exams",
-    children: []
+    children: [
+      { title: "Brief", href: "/exams/brief" },
+      { title: "Notification", href: "/exams/notification" },
+      { title: "Syllabus", href: "/exams/syllabus" },
+      { title: "Time Table", href: "/exams/time-table" },
+      { title: "IA Marks", href: "/exams/ia-marks" },
+      { title: "Results", href: "/exams/results" },
+      { title: "Contact", href: "/exams/contact" }
+    ]
+  },
+  {
+    title: "ALUMNI",
+    href: "/alumni",
+    children: [
+      { title: "Brief", href: "/alumni/brief" },
+      { title: "Distinguished Alumni", href: "/alumni/distinguished" },
+      { title: "Form", href: "/alumni/form" },
+      { title: "Photo Gallery", href: "/alumni/gallery" },
+      { title: "Contact", href: "/alumni/contact" },
+      { title: "Reports", href: "/alumni/reports" }
+    ]
   },
   {
     title: "CIRCULARS",
@@ -79,9 +107,18 @@ const navItems = [
     ]
   },
   {
-    title: "ALUMNI",
-    href: "/alumni",
+    title: "CONTACT",
+    href: "/contact",
     children: []
+  },
+  {
+    title: "MORE",
+    href: "#more",
+    children: [
+      { title: "RTI", href: "/more/rti" },
+      { title: "Photo Gallery", href: "/more/gallery" },
+      { title: "Grievance Cell", href: "/more/grievance" }
+    ]
   }
 ];
 
@@ -175,7 +212,7 @@ const Header = () => {
           </div>
           
           {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-0.5">
             {navItems.map((item, index) => (
               <div key={index} className="relative" ref={(el) => (dropdownRefs.current[index] = el)}>
                 {item.children.length > 0 ? (
@@ -186,7 +223,7 @@ const Header = () => {
                     >
                       {item.title}
                       <ChevronDown 
-                        className={`w-4 h-4 transition-transform ${activeDropdown === index ? 'rotate-180' : ''}`}
+                        className={`w-3 h-3 transition-transform ${activeDropdown === index ? 'rotate-180' : ''}`}
                       />
                     </button>
                     {activeDropdown === index && (
