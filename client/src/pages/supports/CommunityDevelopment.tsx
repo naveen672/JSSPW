@@ -5,14 +5,16 @@ const CommunityDevelopment = () => {
     <div className="bg-white dark:bg-gray-900 py-20">
       <div className="container mx-auto px-6">
         {/* Page Header */}
-        <div className="mb-8 flex items-center">
-          <a 
-            href="/#supports" 
-            className="mr-4 inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
-          </a>
+        <div className="mb-8">
+          <div className="mb-4">
+            <a 
+              href="/#supports" 
+              className="inline-flex items-center text-[#0A2463] dark:text-blue-400 hover:text-[#D8315B]"
+            >
+              <ArrowLeft className="mr-2 h-5 w-5" />
+              Back
+            </a>
+          </div>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Community Development Through Polytechnic</h1>
         </div>
         
