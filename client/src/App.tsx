@@ -334,9 +334,9 @@ function App() {
                 <>
                   <Footer />
                   <BackToTop />
-                  <DarkModeToggle />
                 </>
               )}
+              {!isAdminRoute && <DarkModeToggle />}
             </>
           )}
           <Toaster />
