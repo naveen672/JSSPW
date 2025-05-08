@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeft, Download, Mail, Plus, Minus } from 'lucide-react';
 import facultyImg from '@assets/dhananjaya.jpg';
 import buildingImg from '@assets/bg1.jpg';
+import departmentImg from '@assets/DSC_0831.jpg';
 
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
@@ -294,25 +295,25 @@ const InformationScience = () => {
             
             {isSectionExpanded('gallery') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
-                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                  {/* Using the building image as placeholder for the gallery */}
+                <div className="grid gap-6 grid-cols-1">
+                  {/* Featured image - IST department with students and faculty */}
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={departmentImg} alt="Information Science and Technology Department Students and Faculty" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <div className="p-4 bg-gray-50 dark:bg-gray-800">
+                      <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">Information Science and Technology Department Students and Faculty</h4>
+                    </div>
                   </div>
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Information Science Department" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  
+                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                    <div className="overflow-hidden rounded-lg shadow-md">
+                      <img src={buildingImg} alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="overflow-hidden rounded-lg shadow-md">
+                      <img src={buildingImg} alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="overflow-hidden rounded-lg shadow-md">
+                      <img src={buildingImg} alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               </div>
