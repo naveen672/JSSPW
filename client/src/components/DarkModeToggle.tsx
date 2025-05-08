@@ -16,19 +16,14 @@ const DarkModeToggle: React.FC = () => {
       {/* Arrow button that's always visible */}
       <motion.button
         onClick={toggleVisibility}
-        className="fixed z-50 bottom-[30%] right-0 flex h-5 w-2 items-center justify-center bg-[#0A2463] text-white shadow-sm rounded-l-sm border-l border-t border-b border-white dark:border-gray-800 dark:bg-[#D8315B] transition-all duration-300 hover:cursor-pointer opacity-70 hover:opacity-100"
-        whileHover={{ 
-          width: 12, 
-          height: 12, 
-          x: -7,
-          borderRadius: "6px 0 0 6px"
-        }}
+        className="fixed z-50 bottom-[30%] right-0 flex h-10 w-8 items-center justify-center bg-[#0A2463] text-white shadow-lg rounded-l-lg border-l-2 border-t-2 border-b-2 border-white dark:border-gray-800 dark:bg-[#D8315B]"
+        whileHover={{ width: 12, x: -4 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Show theme toggle"
       >
-        <ArrowLeft className={`h-2 w-2 transition-all duration-300 ${isVisible ? 'rotate-180' : ''}`} />
-        <div className="absolute top-1/2 -left-12 transform -translate-y-1/2 bg-black/70 text-white px-1 py-0.5 rounded-md text-[10px] opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-          {isVisible ? "Hide" : "Show"}
+        <ArrowLeft className={`h-4 w-4 transition-transform duration-300 ${isVisible ? 'rotate-180' : ''}`} />
+        <div className="absolute top-1/2 -left-16 transform -translate-y-1/2 bg-black/70 text-white px-2 py-1 rounded-lg text-xs opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+          {isVisible ? "Hide Theme" : "Show Theme"}
         </div>
       </motion.button>
 
