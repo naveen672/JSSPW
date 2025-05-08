@@ -1,8 +1,6 @@
 import HeroSection from "@/sections/HeroSection";
 import AboutSection from "@/sections/AboutSection";
 import ProgramsSection from "@/sections/ProgramsSection";
-import FacultySection from "@/sections/FacultySection";
-import CampusLifeSection from "@/sections/CampusLifeSection";
 import EventsSection from "@/sections/EventsSection";
 import ParallaxCTA from "@/sections/ParallaxCTA";
 import ContactSection from "@/sections/ContactSection";
@@ -43,8 +41,6 @@ const Home = () => {
       <AboutSection />
       <ProgramsSection />
       <AccreditationSection />
-      <FacultySection />
-      <CampusLifeSection />
       <EventsSection />
       <ParallaxCTA />
       <ContactSection />
