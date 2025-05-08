@@ -262,13 +262,15 @@ const Header = () => {
                 )}
               </div>
             ))}
+            <DarkModeToggle />
           </div>
           
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center">
+            <DarkModeToggle />
             <button 
               onClick={toggleMobileMenu}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-200"
+              className="ml-2 p-2 rounded-md text-gray-700 dark:text-gray-200"
             >
               <Menu className="h-6 w-6" />
             </button>
