@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { ArrowLeft, Download, Mail, Plus, Minus } from 'lucide-react';
 import facultyImg from '@assets/dhananjaya.jpg';
 import buildingImg from '@assets/bg1.jpg';
-import departmentImg from '@assets/DSC_0831.jpg';
 
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
@@ -298,7 +297,7 @@ const InformationScience = () => {
                 <div className="grid gap-6 grid-cols-1">
                   {/* Featured image - IST department with students and faculty */}
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={departmentImg} alt="Information Science and Technology Department Students and Faculty" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/images/department-ist.jpg" alt="Information Science and Technology Department Students and Faculty" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
                     <div className="p-4 bg-gray-50 dark:bg-gray-800">
                       <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">Information Science and Technology Department Students and Faculty</h4>
                     </div>
