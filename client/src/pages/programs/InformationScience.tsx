@@ -66,7 +66,7 @@ const InformationScience = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Information Science and Technology Program</h3>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    The Information Science program at JSS Polytechnic for Women provides a comprehensive education in information management, data systems, and knowledge organization. The program prepares students for careers in the rapidly evolving field of information technology and data management.
+                    The Information Science and Technology program at JSS Polytechnic for Women provides a comprehensive education in information management, data systems, and knowledge organization. The program prepares students for careers in the rapidly evolving field of information technology and data management.
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
                     Our curriculum combines theoretical principles with practical applications, covering areas such as database management, information retrieval, data analytics, and information security. Students gain hands-on experience with modern information systems and technologies through laboratory sessions and project work.
@@ -83,7 +83,7 @@ const InformationScience = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Mission</h3>
                   <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
-                    <li>Providing quality education in information science with a focus on both theoretical foundations and practical applications.</li>
+                    <li>Providing quality education in information science and technology with a focus on both theoretical foundations and practical applications.</li>
                     <li>Equipping students with the skills to design, implement, and manage information systems that meet organizational needs.</li>
                     <li>Fostering analytical thinking and problem-solving abilities in the context of information challenges.</li>
                     <li>Promoting ethical considerations in information handling, privacy, and security.</li>
@@ -94,7 +94,7 @@ const InformationScience = () => {
                   <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Educational Objectives</h3>
                   <ul className="space-y-4 text-gray-700 dark:text-gray-300">
                     <li>
-                      <span className="font-semibold">PEO - 1:</span> To provide a strong foundation in information science principles and methodologies.
+                      <span className="font-semibold">PEO - 1:</span> To provide a strong foundation in information science and technology principles and methodologies.
                     </li>
                     <li>
                       <span className="font-semibold">PEO - 2:</span> To develop technical skills in information system design, implementation, and management.
@@ -112,7 +112,7 @@ const InformationScience = () => {
                   <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Program Outcomes</h3>
                   <ul className="space-y-4 text-gray-700 dark:text-gray-300">
                     <li>
-                      <span className="font-semibold">PO - 1: Information Science Knowledge:</span> Apply knowledge of information science principles to solve real-world information management problems.
+                      <span className="font-semibold">PO - 1: Information Science and Technology Knowledge:</span> Apply knowledge of information science and technology principles to solve real-world information management problems.
                     </li>
                     <li>
                       <span className="font-semibold">PO - 2: Problem Analysis:</span> Identify and analyze information organization and retrieval challenges using systematic approaches.
@@ -272,7 +272,7 @@ const InformationScience = () => {
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
                     <div className="space-y-2 text-gray-700 dark:text-gray-300">
                       <p><span className="font-semibold">Educational Qualification:</span> BE</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Information Science</p>
+                      <p><span className="font-semibold">Area of Specialization:</span> Information Science and Technology</p>
                       <p className="flex items-center">
                         <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
                         <a href="mailto:nayana.kg2001@gmail.com" className="text-[#3E92CC] hover:underline">nayana.kg2001@gmail.com</a>

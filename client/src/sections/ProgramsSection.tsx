@@ -61,7 +61,7 @@ const programData = [
   {
     id: 8,
     icon: <LineChart className="text-3xl" />,
-    title: "Information Science",
+    title: "Information Science and Technology",
     description: "Studies focused on information systems, data science, web development, and IT infrastructure.",
     features: ["3-year Diploma Program", "Software Project Experience", "Industry Internships"],
     link: "/programs/information-science"
