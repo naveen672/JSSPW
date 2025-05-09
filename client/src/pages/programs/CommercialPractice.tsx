@@ -3,6 +3,15 @@ import { ArrowLeft, Download, Mail, User, BookOpen, Building, Image, CalendarClo
 import buildingImg from "@assets/bg3.jpg";
 import jssLogo from "@assets/logo_jss.jpeg";
 
+// Faculty images
+import varalakmiFacultyImg from '/images/faculty/commercial-practice/varalakshmi.png';
+import madhusudhanFacultyImg from '/images/faculty/commercial-practice/madhusudhan.png';
+import vaishaliFacultyImg from '/images/faculty/commercial-practice/vaishali.png';
+import shilpashreeFacultyImg from '/images/faculty/commercial-practice/shilpashree.png';
+import sandhyaFacultyImg from '/images/faculty/commercial-practice/sandhya.png';
+import jyothiFacultyImg from '/images/faculty/commercial-practice/jyothi.png';
+import savithaFacultyImg from '/images/faculty/commercial-practice/savitha.png';
+
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
 const CommercialPractice = () => {
@@ -67,7 +76,7 @@ const CommercialPractice = () => {
             <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white mb-4">Message from HOD</h2>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
               <div className="flex-shrink-0">
-                <img src={jssLogo} alt="SAVITHA M - HOD" className="h-32 w-32 rounded-full object-cover border-4 border-[#0A2463] dark:border-[#3E92CC]" />
+                <img src={savithaFacultyImg} alt="SAVITHA M - HOD" className="h-32 w-32 rounded-full object-cover border-4 border-[#0A2463] dark:border-[#3E92CC]" />
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 italic mb-4">
@@ -303,7 +312,7 @@ const CommercialPractice = () => {
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="SAVITHA M" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={savithaFacultyImg} alt="SAVITHA M" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">SAVITHA M</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD</p>
@@ -319,7 +328,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="VARALAKSHMI B" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={varalakmiFacultyImg} alt="VARALAKSHMI B" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">VARALAKSHMI B</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -335,7 +344,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="Madhu Sudhan T" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={madhusudhanFacultyImg} alt="Madhu Sudhan T" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Madhu Sudhan T</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -351,7 +360,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="VAISHALI B C" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={vaishaliFacultyImg} alt="VAISHALI B C" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">VAISHALI B C</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -367,7 +376,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="Shilpashree" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={shilpashreeFacultyImg} alt="Shilpashree" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Shilpashree</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -383,7 +392,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="SANDHYA R K" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={sandhyaFacultyImg} alt="SANDHYA R K" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">SANDHYA R K</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -399,7 +408,7 @@ const CommercialPractice = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src={jssLogo} alt="JYOTHI N" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={jyothiFacultyImg} alt="JYOTHI N" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">JYOTHI N</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
