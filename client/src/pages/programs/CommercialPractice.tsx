@@ -34,6 +34,10 @@ import dance2 from '/images/gallery/commercial-practice/dance-2.jpg';
 
 // Internship and Guest Lectures
 import internship1 from '/images/gallery/commercial-practice/internship-1.jpg';
+import internship2 from '@assets/Internship 2.jpg';
+import internship3 from '@assets/Internship 3.JPG';
+import offerLetter from '@assets/Receiving offer letter by company.jpg';
+import seminarHall from '@assets/Seminar hall.jpg';
 import guestLecture1 from '/images/gallery/commercial-practice/guest-lecture-1.jpg';
 
 // College Day Events
@@ -42,6 +46,16 @@ import collegeDay2 from '/images/gallery/commercial-practice/college-day-2.jpg';
 import collegeDay3 from '/images/gallery/commercial-practice/college-day-3.jpg';
 import collegeDay4 from '/images/gallery/commercial-practice/college-day-4.jpg';
 import collegeDay5 from '/images/gallery/commercial-practice/college-day-5.jpg';
+
+// Sports Activities
+import sports1 from '@assets/Sports 1.jpg';
+import sports2 from '@assets/Sports 2.png';
+import sports3 from '@assets/Sports 3.jpg';
+import sports4 from '@assets/Sports 4.png';
+
+// Classrooms
+import classRoom1 from '@assets/Class Room.jpg';
+import classRoom2 from '@assets/Class Room (2).jpg';
 
 
 
