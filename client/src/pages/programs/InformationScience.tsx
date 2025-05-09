@@ -244,7 +244,7 @@ const InformationScience = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src="/images/faculty/nandashree.jpg" alt="Nandashree H M" className="h-32 w-32 rounded-full object-cover" />
+                      <img src="/attached_assets/Computer Lab (5).jpg" alt="Nandashree H M" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nandashree H M</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -260,7 +260,7 @@ const InformationScience = () => {
 
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src="/images/faculty/asha.jpg" alt="Asha L" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={ashaLImg} alt="Asha L" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Asha L</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -276,7 +276,7 @@ const InformationScience = () => {
                   
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src="/images/faculty/nayana.jpg" alt="Nayana K G" className="h-32 w-32 rounded-full object-cover" />
+                      <img src={nayanaImg} alt="Nayana K G" className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nayana K G</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
@@ -311,23 +311,23 @@ const InformationScience = () => {
             {isSectionExpanded('gallery') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
                 <div className="grid gap-6 grid-cols-1">
-                  {/* Featured image - IST department with students and faculty */}
+                  {/* Featured image - IST department computer lab */}
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src="/images/department-ist.jpg" alt="Information Science and Technology Department Students and Faculty" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Computer Lab.jpg" alt="Information Science and Technology Department Computer Lab" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
                     <div className="p-4 bg-gray-50 dark:bg-gray-800">
-                      <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">Information Science and Technology Department Students and Faculty</h4>
+                      <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">Information Science and Technology Department Computer Lab</h4>
                     </div>
                   </div>
                   
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/images/lab-ist.jpg" alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/attached_assets/Computer Lab (2).jpg" alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/images/project-ist.jpg" alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/attached_assets/Computer Lab (3).jpg" alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/images/computer-lab.jpg" alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                      <img src="/attached_assets/Computer Lab (4).jpg" alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
