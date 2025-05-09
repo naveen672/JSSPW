@@ -42,7 +42,7 @@ const navItems = [
       { title: "Electronics & Communication Engineering", href: "/programs/electronics-communication" },
       { title: "Electronics Instrumentation and Control Engg.", href: "/programs/electronics-instrumentation" },
       { title: "Interior Design", href: "/programs/interior-design" },
-      { title: "Information Science", href: "/programs/information-science" }
+      { title: "Information Science & Technology", href: "/programs/information-science" }
     ]
   },
   {
