@@ -35,16 +35,16 @@ import dance2 from '/images/gallery/commercial-practice/dance-2.jpg';
 // Internship and Guest Lectures
 import internship1 from '/images/gallery/commercial-practice/internship-1.jpg';
 import internship2 from '@assets/Internship 2.jpg';
-import internship3 from '@assets/Internship 3.JPG';
+import internship3 from '@assets/Internship 3.JPG' assert { type: 'jpg' };
 import offerLetter from '@assets/Receiving offer letter by company.jpg';
 import seminarHall from '@assets/Seminar hall.jpg';
 import guestLecture1 from '/images/gallery/commercial-practice/guest-lecture-1.jpg';
 
 // College Day Events
-import collegeDay1 from '/images/gallery/commercial-practice/college-day-1.jpg';
-import collegeDay2 from '/images/gallery/commercial-practice/college-day-2.jpg';
-import collegeDay3 from '/images/gallery/commercial-practice/college-day-3.jpg';
-import collegeDay4 from '/images/gallery/commercial-practice/college-day-4.jpg';
+import collegeDay1 from '@assets/College day 1.JPG';
+import collegeDay2 from '@assets/College day 2.JPG';
+import collegeDay3 from '@assets/College day 3.JPG';
+import collegeDay4 from '@assets/College day 4.JPG';
 import collegeDay5 from '/images/gallery/commercial-practice/college-day-5.jpg';
 
 // Sports Activities
@@ -521,13 +521,25 @@ const CommercialPractice = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Internships</h3>
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Internships & Placements</h3>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img src={internship1} alt="Student Internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={internship2} alt="Student Internship at Mysore Chamber of Commerce" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={internship3} alt="Students working during internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={offerLetter} alt="Student receiving offer letter" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
                     <img src={guestLecture1} alt="Guest Lecture" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={seminarHall} alt="Seminar in progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
                 
@@ -557,6 +569,32 @@ const CommercialPractice = () => {
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img src={collegeDay5} alt="College Day 5" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Sports Activities</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={sports1} alt="Students playing Carrom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={sports2} alt="Badminton Match" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={sports3} alt="Outdoor Sports" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={sports4} alt="Chess Tournament" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Classrooms</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={classRoom1} alt="Modern Classroom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={classRoom2} alt="Lecture in Progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
               </div>
