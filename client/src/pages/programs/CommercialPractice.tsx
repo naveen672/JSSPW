@@ -13,18 +13,37 @@ import jyothiFacultyImg from '/images/faculty/commercial-practice/jyothi.png';
 import savithaFacultyImg from '/images/faculty/commercial-practice/savitha.png';
 
 // Gallery images
-import internshipImg from '/images/gallery/commercial-practice/internship.jpg';
-import collegeDay5Img from '/images/gallery/commercial-practice/college-day-5.jpg';
-import collegeDay6Img from '/images/gallery/commercial-practice/college-day-6.jpg';
-import collegeDay7Img from '/images/gallery/commercial-practice/college-day-7.jpg';
-import collegeDay8Img from '/images/gallery/commercial-practice/college-day-8.jpg';
-import collegeDay9Img from '/images/gallery/commercial-practice/college-day-9.jpg';
-import computerLab2Img from '/images/gallery/commercial-practice/computer-lab-2.jpg';
-import computerLab3Img from '/images/gallery/commercial-practice/computer-lab-3.jpg';
-import computerLab4Img from '/images/gallery/commercial-practice/computer-lab-4.jpg';
-import computerLab5Img from '/images/gallery/commercial-practice/computer-lab-5.jpg';
-import computerLabImg from '/images/gallery/commercial-practice/computer-lab.jpg';
-import dance1Img from '/images/gallery/commercial-practice/dance-1.jpg';
+// Computer Lab
+import computerLab1 from '/images/gallery/commercial-practice/computer-lab-1.jpg';
+import computerLab2 from '/images/gallery/commercial-practice/computer-lab-2.jpg';
+import computerLab3 from '/images/gallery/commercial-practice/computer-lab-3.jpg';
+import computerLab4 from '/images/gallery/commercial-practice/computer-lab-4.jpg';
+import computerLab5 from '/images/gallery/commercial-practice/computer-lab-5.jpg';
+
+// Industrial Visits
+import industrialVisit1 from '/images/gallery/commercial-practice/industrial-visit-1.jpg';
+import industrialVisit2 from '/images/gallery/commercial-practice/industrial-visit-2.jpg';
+import industrialVisit3 from '/images/gallery/commercial-practice/industrial-visit-3.jpg';
+import industrialVisit4 from '/images/gallery/commercial-practice/industrial-visit-4.jpg';
+import industrialVisit5 from '/images/gallery/commercial-practice/industrial-visit-5.jpg';
+import industrialVisit6 from '/images/gallery/commercial-practice/industrial-visit-6.jpg';
+
+// Cultural Events
+import dance1 from '/images/gallery/commercial-practice/dance-1.jpg';
+import dance2 from '/images/gallery/commercial-practice/dance-2.jpg';
+
+// Internship and Guest Lectures
+import internship1 from '/images/gallery/commercial-practice/internship-1.jpg';
+import guestLecture1 from '/images/gallery/commercial-practice/guest-lecture-1.jpg';
+
+// College Day Events
+import collegeDay1 from '/images/gallery/commercial-practice/college-day-1.jpg';
+import collegeDay2 from '/images/gallery/commercial-practice/college-day-2.jpg';
+import collegeDay3 from '/images/gallery/commercial-practice/college-day-3.jpg';
+import collegeDay4 from '/images/gallery/commercial-practice/college-day-4.jpg';
+import collegeDay5 from '/images/gallery/commercial-practice/college-day-5.jpg';
+
+
 
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
@@ -456,19 +475,74 @@ const CommercialPractice = () => {
             
             {isSectionExpanded('gallery') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3">Computer Labs</h3>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                  {/* Using the building image as placeholder for the gallery */}
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={computerLab1} alt="Computer Lab 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Student Activities" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={computerLab2} alt="Computer Lab 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Industrial Visit" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={computerLab3} alt="Computer Lab 3" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Industrial Visits</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={industrialVisit1} alt="Industrial Visit 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={buildingImg} alt="Project Presentation" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={industrialVisit2} alt="Industrial Visit 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={industrialVisit3} alt="Industrial Visit 3" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={industrialVisit4} alt="Industrial Visit 4" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={industrialVisit5} alt="Industrial Visit 5" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Internships</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={internship1} alt="Student Internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={guestLecture1} alt="Guest Lecture" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Cultural Events</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={dance1} alt="Cultural Performance 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={dance2} alt="Cultural Performance 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">College Day Celebrations</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={collegeDay1} alt="College Day 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={collegeDay2} alt="College Day 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={collegeDay3} alt="College Day 3" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={collegeDay4} alt="College Day 4" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <div className="overflow-hidden rounded-lg shadow-md">
+                    <img src={collegeDay5} alt="College Day 5" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
               </div>
