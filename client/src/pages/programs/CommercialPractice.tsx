@@ -34,28 +34,10 @@ import dance2 from '/images/gallery/commercial-practice/dance-2.jpg';
 
 // Internship and Guest Lectures
 import internship1 from '/images/gallery/commercial-practice/internship-1.jpg';
-import internship2 from '@assets/Internship 2.jpg';
-import internship3 from '@assets/Internship 3.JPG' assert { type: 'jpg' };
-import offerLetter from '@assets/Receiving offer letter by company.jpg';
-import seminarHall from '@assets/Seminar hall.jpg';
 import guestLecture1 from '/images/gallery/commercial-practice/guest-lecture-1.jpg';
 
 // College Day Events
-import collegeDay1 from '@assets/College day 1.JPG';
-import collegeDay2 from '@assets/College day 2.JPG';
-import collegeDay3 from '@assets/College day 3.JPG';
-import collegeDay4 from '@assets/College day 4.JPG';
 import collegeDay5 from '/images/gallery/commercial-practice/college-day-5.jpg';
-
-// Sports Activities
-import sports1 from '@assets/Sports 1.jpg';
-import sports2 from '@assets/Sports 2.png';
-import sports3 from '@assets/Sports 3.jpg';
-import sports4 from '@assets/Sports 4.png';
-
-// Classrooms
-import classRoom1 from '@assets/Class Room.jpg';
-import classRoom2 from '@assets/Class Room (2).jpg';
 
 
 
@@ -527,19 +509,19 @@ const CommercialPractice = () => {
                     <img src={internship1} alt="Student Internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={internship2} alt="Student Internship at Mysore Chamber of Commerce" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Internship 2.jpg" alt="Student Internship at Mysore Chamber of Commerce" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={internship3} alt="Students working during internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Internship 3.jpg" alt="Students working during internship" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={offerLetter} alt="Student receiving offer letter" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Receiving offer letter by company.jpg" alt="Student receiving offer letter" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img src={guestLecture1} alt="Guest Lecture" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={seminarHall} alt="Seminar in progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Seminar hall.jpg" alt="Seminar in progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
                 
@@ -556,16 +538,16 @@ const CommercialPractice = () => {
                 <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">College Day Celebrations</h3>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={collegeDay1} alt="College Day 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/College day 1.jpg" alt="College Day 1" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={collegeDay2} alt="College Day 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/College day 2.jpg" alt="College Day 2" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={collegeDay3} alt="College Day 3" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/College day 3.jpg" alt="College Day 3" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={collegeDay4} alt="College Day 4" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/College day 4.jpg" alt="College Day 4" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img src={collegeDay5} alt="College Day 5" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
