@@ -557,26 +557,26 @@ const CommercialPractice = () => {
                 <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Sports Activities</h3>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={sports1} alt="Students playing Carrom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Sports 1.jpg" alt="Students playing Carrom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={sports2} alt="Badminton Match" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Sports 2.png" alt="Badminton Match" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={sports3} alt="Outdoor Sports" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Sports 3.jpg" alt="Outdoor Sports" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={sports4} alt="Chess Tournament" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Sports 4.png" alt="Chess Tournament" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
                 
                 <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-3 mt-8">Classrooms</h3>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={classRoom1} alt="Modern Classroom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Class Room.jpg" alt="Modern Classroom" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src={classRoom2} alt="Lecture in Progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src="/attached_assets/Class Room (2).jpg" alt="Lecture in Progress" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
                   </div>
                 </div>
               </div>
