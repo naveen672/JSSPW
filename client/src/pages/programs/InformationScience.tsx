@@ -2,16 +2,10 @@ import { useState } from 'react';
 import { ArrowLeft, Download, Mail, Plus, Minus } from 'lucide-react';
 import buildingImg from "@assets/bg3.jpg";
 
-// We'll use direct URLs instead of imports for better compatibility
+// Use direct URL for HOD image
 const tejaswiniImg = "/attached_assets/HOS-is(tejaswini).jpeg";
-const ashaLImg = "/attached_assets/IS-ASha L.jpeg";
-const nayanaImg = "/attached_assets/IS-NAyana.jpeg";
-const computerLab1Img = "/attached_assets/Computer Lab.jpg";
-const computerLab2Img = "/attached_assets/Computer Lab (2).jpg";
-const classRoom1Img = "/attached_assets/Class Room.jpg";
-const classRoom2Img = "/attached_assets/Class Room (2).jpg";
 
-type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
+type SectionType = 'about' | 'facilities' | 'faculty' | 'activities' | 'contact' | 'syllabus';
 
 const InformationScience = () => {
   const [expandedSections, setExpandedSections] = useState<Set<SectionType>>(new Set());
@@ -46,11 +40,11 @@ const InformationScience = () => {
           </div>
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Information Science and Technology</h1>
           
-          {/* Department photo below title */}
-          <div className="mt-6 overflow-hidden rounded-lg shadow-md">
-            <img src="/images/department-ist.jpg" alt="Information Science and Technology Department" className="w-full object-cover" />
+          {/* Department photo below title - smaller size */}
+          <div className="mt-6 overflow-hidden rounded-lg shadow-md max-w-lg mx-auto">
+            <img src="/attached_assets/Computer Lab (2).jpg" alt="Information Science and Technology Department" className="w-full h-64 object-cover" />
             <div className="p-3 bg-gray-50 dark:bg-gray-800">
-              <p className="text-lg text-[#0A2463] dark:text-white">Information Science and Technology Department Students and Faculty</p>
+              <p className="text-lg text-[#0A2463] dark:text-white">Information Science and Technology Department</p>
             </div>
           </div>
         </div>
@@ -225,13 +219,14 @@ const InformationScience = () => {
             
             {isSectionExpanded('faculty') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2">
+                  {/* HOD Information */}
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
                       <img src={tejaswiniImg} alt="Tejaswini R.G." className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Tejaswini R.G.</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD</p>
+                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD, Information Science and Technology</p>
                     <div className="space-y-2 text-gray-700 dark:text-gray-300">
                       <p><span className="font-semibold">Educational Qualification:</span> M.Tech</p>
                       <p><span className="font-semibold">Area of Specialization:</span> VLSI and Embedded System</p>
@@ -242,51 +237,13 @@ const InformationScience = () => {
                     </div>
                   </div>
 
+                  {/* HOD's Message */}
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <div className="mb-4 flex justify-center">
-                      <img src="/attached_assets/Computer Lab (5).jpg" alt="Nandashree H M" className="h-32 w-32 rounded-full object-cover" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nandashree H M</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> M.Tech</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Software Engineering</p>
-                      <p className="flex items-center">
-                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:nandashree@jsspwmys.org" className="text-[#3E92CC] hover:underline">nandashree@jsspwmys.org</a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <div className="mb-4 flex justify-center">
-                      <img src={ashaLImg} alt="Asha L" className="h-32 w-32 rounded-full object-cover" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Asha L</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> BE</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Computer Science and Engineering</p>
-                      <p className="flex items-center">
-                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:ashal.0708@gmail.com" className="text-[#3E92CC] hover:underline">ashal.0708@gmail.com</a>
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
-                    <div className="mb-4 flex justify-center">
-                      <img src={nayanaImg} alt="Nayana K G" className="h-32 w-32 rounded-full object-cover" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Nayana K G</h3>
-                    <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">Lecturer</p>
-                    <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                      <p><span className="font-semibold">Educational Qualification:</span> BE</p>
-                      <p><span className="font-semibold">Area of Specialization:</span> Information Science and Technology</p>
-                      <p className="flex items-center">
-                        <Mail className="mr-2 h-4 w-4 text-[#3E92CC]" />
-                        <a href="mailto:nayana.kg2001@gmail.com" className="text-[#3E92CC] hover:underline">nayana.kg2001@gmail.com</a>
-                      </p>
+                    <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">HOD's Message</h3>
+                    <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <p>Welcome to the Department of Information Science and Technology at JSS Polytechnic for Women. Our department aims to provide quality education in the field of information science with a focus on practical applications in the industry.</p>
+                      <p>We are committed to shaping young women into professionals equipped with the latest technological knowledge and skills required in the ever-evolving IT sector.</p>
+                      <p>Our faculty consists of experienced educators dedicated to student success, and our curriculum is designed to meet current industry demands while fostering innovation and research.</p>
                     </div>
                   </div>
                 </div>
@@ -294,46 +251,7 @@ const InformationScience = () => {
             )}
           </div>
 
-          {/* Gallery Section */}
-          <div className="border-b border-gray-200 dark:border-gray-700">
-            <button
-              className="w-full flex items-center justify-between p-5 text-left"
-              onClick={() => toggleSection('gallery')}
-            >
-              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Gallery</h2>
-              {isSectionExpanded('gallery') ? (
-                <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
-              ) : (
-                <Plus className="h-5 w-5 text-[#0A2463] dark:text-white" />
-              )}
-            </button>
-            
-            {isSectionExpanded('gallery') && (
-              <div className="px-5 pb-5 pt-1 space-y-6">
-                <div className="grid gap-6 grid-cols-1">
-                  {/* Featured image - IST department computer lab */}
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img src="/attached_assets/Computer Lab.jpg" alt="Information Science and Technology Department Computer Lab" className="w-full object-cover hover:scale-105 transition-transform duration-300" />
-                    <div className="p-4 bg-gray-50 dark:bg-gray-800">
-                      <h4 className="text-lg font-semibold text-[#0A2463] dark:text-white">Information Science and Technology Department Computer Lab</h4>
-                    </div>
-                  </div>
-                  
-                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                    <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/attached_assets/Computer Lab (2).jpg" alt="Information Science Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/attached_assets/Computer Lab (3).jpg" alt="Student Projects" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <div className="overflow-hidden rounded-lg shadow-md">
-                      <img src="/attached_assets/Computer Lab (4).jpg" alt="Computer Lab" className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          {/* We're removing the gallery section as per user's instructions */}
 
           {/* Activities Section */}
           <div className="border-b border-gray-200 dark:border-gray-700">
