@@ -1,5 +1,15 @@
 import { useState } from 'react';
 import { ArrowLeft, Download, Mail, Plus, Minus } from 'lucide-react';
+import buildingImg from "@assets/bg3.jpg";
+
+// We'll use direct URLs instead of imports for better compatibility
+const tejaswiniImg = "/attached_assets/HOS-is(tejaswini).jpeg";
+const ashaLImg = "/attached_assets/IS-ASha L.jpeg";
+const nayanaImg = "/attached_assets/IS-NAyana.jpeg";
+const computerLab1Img = "/attached_assets/Computer Lab.jpg";
+const computerLab2Img = "/attached_assets/Computer Lab (2).jpg";
+const classRoom1Img = "/attached_assets/Class Room.jpg";
+const classRoom2Img = "/attached_assets/Class Room (2).jpg";
 
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
@@ -218,7 +228,7 @@ const InformationScience = () => {
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
-                      <img src="/images/faculty/tejaswini.jpg" alt="Tejaswini R.G." className="h-32 w-32 rounded-full object-cover" />
+                      <img src={tejaswiniImg} alt="Tejaswini R.G." className="h-32 w-32 rounded-full object-cover" />
                     </div>
                     <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-2 text-center">Tejaswini R.G.</h3>
                     <p className="text-[#D8315B] dark:text-[#ff7f9c] mb-4 text-center">HOD</p>
