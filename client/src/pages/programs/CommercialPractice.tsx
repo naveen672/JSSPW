@@ -12,6 +12,20 @@ import sandhyaFacultyImg from '/images/faculty/commercial-practice/sandhya.png';
 import jyothiFacultyImg from '/images/faculty/commercial-practice/jyothi.png';
 import savithaFacultyImg from '/images/faculty/commercial-practice/savitha.png';
 
+// Gallery images
+import internshipImg from '/images/gallery/commercial-practice/internship.jpg';
+import collegeDay5Img from '/images/gallery/commercial-practice/college-day-5.jpg';
+import collegeDay6Img from '/images/gallery/commercial-practice/college-day-6.jpg';
+import collegeDay7Img from '/images/gallery/commercial-practice/college-day-7.jpg';
+import collegeDay8Img from '/images/gallery/commercial-practice/college-day-8.jpg';
+import collegeDay9Img from '/images/gallery/commercial-practice/college-day-9.jpg';
+import computerLab2Img from '/images/gallery/commercial-practice/computer-lab-2.jpg';
+import computerLab3Img from '/images/gallery/commercial-practice/computer-lab-3.jpg';
+import computerLab4Img from '/images/gallery/commercial-practice/computer-lab-4.jpg';
+import computerLab5Img from '/images/gallery/commercial-practice/computer-lab-5.jpg';
+import computerLabImg from '/images/gallery/commercial-practice/computer-lab.jpg';
+import dance1Img from '/images/gallery/commercial-practice/dance-1.jpg';
+
 type SectionType = 'about' | 'facilities' | 'faculty' | 'gallery' | 'activities' | 'contact' | 'syllabus';
 
 const CommercialPractice = () => {
