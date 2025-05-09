@@ -39,24 +39,60 @@ const CommercialPractice = () => {
           <h1 className="text-3xl font-bold text-[#0A2463] dark:text-white md:text-4xl">Commercial Practice</h1>
         </div>
         
-        {/* Featured Image */}
-        <div className="mb-10 overflow-hidden rounded-lg shadow-lg">
+        {/* Featured Image - Smaller size */}
+        <div className="mb-6 overflow-hidden rounded-lg shadow-lg max-w-3xl mx-auto">
           <img 
             src={buildingImg} 
             alt="Commercial Practice Department" 
-            className="h-full w-full object-cover"
+            className="h-64 w-full object-cover"
           />
+        </div>
+        
+        {/* About Department Section (Not Collapsible) */}
+        <div className="mb-10">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Commercial Practice Department</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Department of Commercial Practice (CP) was established in JSS Polytechnic for Women in the year 1980 with an intake of 30. Considering the demand for the Programme, the intake was increased to 60. Being a Veteran Programme, it is a Six Semester Diploma Programme, providing a broad based training in both theoretical and practical aspects related to Accounting, Commerce, Management, Secretarial Services, Documentation, Communication, Economics, Business Law, Professional Ethics and Computers.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              With a view to provide quality education and overall improvement of the students, the Strengths and Weaknesses of the students are assessed and Counseling and Mentoring is done to overcome the weaknesses and build their personality.
+            </p>
+          </div>
+        </div>
+        
+        {/* HOD Message Section (Not Collapsible) */}
+        <div className="mb-10">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white mb-4">Message from HOD</h2>
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div className="flex-shrink-0">
+                <img src={jssLogo} alt="SAVITHA M - HOD" className="h-32 w-32 rounded-full object-cover border-4 border-[#0A2463] dark:border-[#3E92CC]" />
+              </div>
+              <div>
+                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                  "The world is changing fast with new innovations and technologies every day. These newer technologies are helping the people to improve their standards of lives. The Department of Commercial Practice always keeps a watch on this and updates itself with respect to the Curriculum, Faculty, Technical Staff, Infrastructure and Pedagogy, so that its Students become very competitive with regard to Knowledge and Skill and get better jobs and live a comfortable life."
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
+                  "After assessing the requirements of Industries, the Curriculum is changed through the Faculty who are Members in the State Level Curriculum Revision Committee. All Faculty and Technical Staff update themselves accordingly, so that effective teaching is done with most appropriate Teaching Methods. Correspondingly, Infrastructural facilities like Computer Center, Class Rooms, Laboratories, Library, etc., are developed with the support of Management of the Polytechnic."
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-2 text-right font-semibold">
+                  - SAVITHA M, HOD Commercial Practice
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Collapsible Sections */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md divide-y divide-gray-200 dark:divide-gray-700">
-          {/* About Section */}
+          {/* About Section (Details) */}
           <div className="border-b border-gray-200 dark:border-gray-700">
             <button
               className="w-full flex items-center justify-between p-5 text-left"
               onClick={() => toggleSection('about')}
             >
-              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">About</h2>
+              <h2 className="text-2xl font-semibold text-[#0A2463] dark:text-white">Department Details</h2>
               {isSectionExpanded('about') ? (
                 <Minus className="h-5 w-5 text-[#D8315B] dark:text-[#ff7f9c]" />
               ) : (
@@ -67,13 +103,6 @@ const CommercialPractice = () => {
             {isSectionExpanded('about') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">About the Commercial Practice Department</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Department of Commercial Practice (CP) was established in JSS Polytechnic for Women in the year 1980 with an intake of 30. Considering the demand for the Programme, the intake was increased to 60. Being a Veteran Programme, it is a Six Semester Diploma Programme, providing a broad based training in both theoretical and practical aspects related to Accounting, Commerce, Management, Secretarial Services, Documentation, Communication, Economics, Business Law, Professional Ethics and Computers.
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    With a view to provide quality education and overall improvement of the students, the Strengths and Weaknesses of the students are assessed and Counseling and Mentoring is done to overcome the weaknesses and build their personality.
-                  </p>
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
                     The Department prides in having very good infrastructure, and dedicated and qualified Faculty and Supporting staff. Parents-Teachers Meeting is organized periodically to have good rapport amongst Teachers, Parents and Students. Also, the Department is in constant touch with its Alumni.
                   </p>
@@ -271,34 +300,6 @@ const CommercialPractice = () => {
             
             {isSectionExpanded('faculty') && (
               <div className="px-5 pb-5 pt-1 space-y-6">
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-[#0A2463] dark:text-white mb-4">Message from HOD</h3>
-                  <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                      <div className="flex-shrink-0">
-                        <img src={jssLogo} alt="SAVITHA M - HOD" className="h-32 w-32 rounded-full object-cover border-4 border-[#0A2463] dark:border-[#3E92CC]" />
-                      </div>
-                      <div>
-                        <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                          "The world is changing fast with new innovations and technologies every day. These newer technologies are helping the people to improve their standards of lives. The Department of Commercial Practice always keeps a watch on this and updates itself with respect to the Curriculum, Faculty, Technical Staff, Infrastructure and Pedagogy, so that its Students become very competitive with regard to Knowledge and Skill and get better jobs and live a comfortable life."
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                          "After assessing the requirements of Industries, the Curriculum is changed through the Faculty who are Members in the State Level Curriculum Revision Committee. All Faculty and Technical Staff update themselves accordingly, so that effective teaching is done with most appropriate Teaching Methods. Correspondingly, Infrastructural facilities like Computer Center, Class Rooms, Laboratories, Library, etc., are developed with the support of Management of the Polytechnic."
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                          "For the overall development of the Students, the Department provides additional training in Communication Skills, Soft Skills and Employability Skills which are the needs of the hour. Through NCC, NSS, Sports and Cultural Activities, the Department sees that the students are disciplined and motivated."
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                          "With this approach, the Department has churned about 7000 girl students since 1980, who express their gratitude to the Department. In recent years, this Programme is much sought after by the students, especially those who want to get employment."
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 italic mb-4">
-                          "I welcome all the students to our Department."
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-6 shadow-md">
                     <div className="mb-4 flex justify-center">
